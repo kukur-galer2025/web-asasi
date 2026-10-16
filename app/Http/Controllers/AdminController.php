@@ -184,6 +184,55 @@ class AdminController extends Controller
         return back()->with('success', 'Halaman navigasi & Gambar Hero berhasil ditambahkan!');
     }
 
+    public function editPage($id)
+    {
+        $page = Page::findOrFail($id);
+        return view('admin.pages-edit', compact('page'));
+    }
+
+    public function updatePage(Request $request, $id)
+    {
+        $page = Page::findOrFail($id);
+
+        $request->validate([
+            'menu_induk'    => 'required|in:profil,bidang,berita,keanggotaan,kontak',
+            'judul'         => 'required|string|max:100',
+            'hero_subtitle' => 'nullable|string|max:150',
+            'hero_image'    => 'nullable|image|max:3072',
+            'konten'        => 'required|string',
+            'urutan'        => 'nullable|integer',
+        ]);
+
+        $imagePath = $page->hero_image;
+        if ($request->hasFile('hero_image')) {
+            if ($page->hero_image) {
+                Storage::disk('public')->delete($page->hero_image);
+            }
+            $imagePath = $request->file('hero_image')->store('heroes', 'public');
+        }
+
+        // Jika judul berubah, perbarui slug secara otomatis
+        $newSlug = $page->slug;
+        if ($request->judul !== $page->judul) {
+            $newSlug = Str::slug($request->judul) . '-' . Str::random(3);
+        }
+
+        $page->update([
+            'menu_induk'    => $request->menu_induk,
+            'judul'         => $request->judul,
+            'slug'          => $newSlug,
+            'hero_subtitle' => $request->hero_subtitle,
+            'hero_image'    => $imagePath,
+            'konten'        => $request->konten,
+            'urutan'        => $request->urutan ?? 1,
+        ]);
+
+        Cache::forget('navbar_pages');
+        Cache::forget('navbar_pages_array');
+
+        return redirect()->route('admin.pages')->with('success', 'Halaman navigasi berhasil diperbarui!');
+    }
+
     public function deletePage($id)
     {
         $page = Page::findOrFail($id);

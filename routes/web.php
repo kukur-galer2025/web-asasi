@@ -45,6 +45,8 @@ Route::middleware('auth')->group(function () {
     // Kelola Sub-Menu Navbar + Upload Hero
     Route::get('/admin/pages', [AdminController::class, 'pages'])->name('admin.pages');
     Route::post('/admin/pages', [AdminController::class, 'storePage'])->name('admin.pages.store');
+    Route::get('/admin/pages/{id}/edit', [AdminController::class, 'editPage'])->name('admin.pages.edit');
+    Route::put('/admin/pages/{id}', [AdminController::class, 'updatePage'])->name('admin.pages.update');
     Route::delete('/admin/pages/{id}', [AdminController::class, 'deletePage'])->name('admin.pages.delete');
 
     // Endpoint Khusus Upload Gambar di Dalam Rich Text Editor (Anti-Lag)

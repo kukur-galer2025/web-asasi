@@ -88,6 +88,7 @@
                             </span>
                         </td>
                         <td class="px-4 py-3.5 text-right">
+                            <a href="{{ route('admin.pages.edit', $p->id) }}" class="text-xs text-asasi-navy hover:underline font-bold mr-3">Edit</a>
                             <form action="{{ route('admin.pages.delete', $p->id) }}" method="POST" class="inline">
                                 @csrf
                                 @method('DELETE')
