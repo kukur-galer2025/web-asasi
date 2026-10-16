@@ -108,10 +108,13 @@
 </div>
 
 <script>
+    Quill.register('modules/blotFormatter', QuillBlotFormatter.default);
+
     const quill = new Quill('#editor-container', {
         theme: 'snow',
         placeholder: 'Ketikkan isi halaman di sini. Klik ikon gambar di toolbar untuk menyisipkan foto/bagan struktur organisasi...',
         modules: {
+            blotFormatter: {},
             toolbar: {
                 container: [
                     [{ 'header': [1, 2, 3, false] }],
