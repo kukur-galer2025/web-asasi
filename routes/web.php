@@ -24,31 +24,32 @@ Route::get('/auth/google/callback', [AuthController::class, 'googleCallback']);
 // 3. RUTE TERPROTEKSI (Wajib Login)
 Route::middleware('auth')->group(function () {
 
-    // Area Member
+    // Area Member (Khusus Anggota)
     Route::get('/member/dashboard', [MemberController::class, 'dashboard'])->name('member.dashboard');
     Route::post('/member/profile', [MemberController::class, 'saveProfile'])->name('member.profile.save');
     Route::get('/member/cetak-kta', [MemberController::class, 'cetakKta'])->name('member.cetak.kta');
 
-    // Area Admin
-    Route::get('/admin/members', [AdminController::class, 'members'])->name('admin.members');
-    Route::post('/admin/members/{id}/approve', [AdminController::class, 'approveMember'])->name('admin.approve');
-    Route::get('/admin/members/{id}/cetak-kta', [AdminController::class, 'cetakKta'])->name('admin.cetak.kta');
+    // Area Admin (Khusus Pengurus dengan role: admin)
+    Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
+        Route::get('/members', [AdminController::class, 'members'])->name('members');
+        Route::post('/members/{id}/approve', [AdminController::class, 'approveMember'])->name('approve');
+        Route::get('/members/{id}/cetak-kta', [AdminController::class, 'cetakKta'])->name('cetak.kta');
 
-    // Kelola Berita + Upload Hero
-    // Kelola Berita + Edit + Upload Hero
-    Route::get('/admin/posts', [AdminController::class, 'posts'])->name('admin.posts');
-    Route::post('/admin/posts', [AdminController::class, 'storePost'])->name('admin.posts.store');
-    Route::get('/admin/posts/{id}/edit', [AdminController::class, 'editPost'])->name('admin.posts.edit');
-    Route::put('/admin/posts/{id}', [AdminController::class, 'updatePost'])->name('admin.posts.update');
-    Route::delete('/admin/posts/{id}', [AdminController::class, 'deletePost'])->name('admin.posts.delete');
-    
-    // Kelola Sub-Menu Navbar + Upload Hero
-    Route::get('/admin/pages', [AdminController::class, 'pages'])->name('admin.pages');
-    Route::post('/admin/pages', [AdminController::class, 'storePage'])->name('admin.pages.store');
-    Route::get('/admin/pages/{id}/edit', [AdminController::class, 'editPage'])->name('admin.pages.edit');
-    Route::put('/admin/pages/{id}', [AdminController::class, 'updatePage'])->name('admin.pages.update');
-    Route::delete('/admin/pages/{id}', [AdminController::class, 'deletePage'])->name('admin.pages.delete');
+        // Kelola Berita + Edit + Upload Hero
+        Route::get('/posts', [AdminController::class, 'posts'])->name('posts');
+        Route::post('/posts', [AdminController::class, 'storePost'])->name('posts.store');
+        Route::get('/posts/{id}/edit', [AdminController::class, 'editPost'])->name('posts.edit');
+        Route::put('/posts/{id}', [AdminController::class, 'updatePost'])->name('posts.update');
+        Route::delete('/posts/{id}', [AdminController::class, 'deletePost'])->name('posts.delete');
+        
+        // Kelola Sub-Menu Navbar + Upload Hero
+        Route::get('/pages', [AdminController::class, 'pages'])->name('pages');
+        Route::post('/pages', [AdminController::class, 'storePage'])->name('pages.store');
+        Route::get('/pages/{id}/edit', [AdminController::class, 'editPage'])->name('pages.edit');
+        Route::put('/pages/{id}', [AdminController::class, 'updatePage'])->name('pages.update');
+        Route::delete('/pages/{id}', [AdminController::class, 'deletePage'])->name('pages.delete');
 
-    // Endpoint Khusus Upload Gambar di Dalam Rich Text Editor (Anti-Lag)
-    Route::post('/admin/upload-editor-image', [AdminController::class, 'uploadEditorImage'])->name('admin.editor.upload');
+        // Endpoint Khusus Upload Gambar di Dalam Rich Text Editor (Anti-Lag)
+        Route::post('/upload-editor-image', [AdminController::class, 'uploadEditorImage'])->name('editor.upload');
+    });
 });
