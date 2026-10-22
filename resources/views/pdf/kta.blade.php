@@ -6,7 +6,7 @@
     <style>
         @page {
             margin: 0px;
-            size: 325pt 204pt; /* Ukuran standar ID Card KTA */
+            size: 325pt 204pt; /* Ukuran standar ID Card KTA Landscape */
         }
         body {
             margin: 0px;
@@ -22,50 +22,62 @@
             width: 325pt; height: 204pt;
             border: 3pt solid #C5A059;
             box-sizing: border-box;
-            padding: 10pt 12pt;
+            padding: 9pt 11pt;
         }
-        .header-table { width: 100%; border-bottom: 1.5pt solid #C5A059; padding-bottom: 4pt; margin-bottom: 6pt; }
-        .org-title { font-family: "Times New Roman", Times, serif; font-size: 12pt; font-weight: bold; letter-spacing: 0.8px; color: #0F2C59; }
-        .org-subtitle { font-size: 6pt; color: #64748B; text-transform: uppercase; letter-spacing: 0.4px; margin-top: 1pt; }
-        .badge-kta { background-color: #0F2C59; color: #FFFFFF; font-size: 6pt; font-weight: bold; letter-spacing: 0.8px; padding: 2.5pt 5pt; border-radius: 2pt; }
+        .header-table { width: 100%; border-bottom: 1.5pt solid #C5A059; padding-bottom: 3.5pt; margin-bottom: 5pt; }
+        .org-title { font-family: "Times New Roman", Times, serif; font-size: 11.5pt; font-weight: bold; letter-spacing: 0.8px; color: #0F2C59; }
+        .org-subtitle { font-size: 5.5pt; color: #64748B; text-transform: uppercase; letter-spacing: 0.4px; margin-top: 1pt; }
+        .badge-kta { background-color: #0F2C59; color: #FFFFFF; font-size: 5.5pt; font-weight: bold; letter-spacing: 0.8px; padding: 2.5pt 5pt; border-radius: 2pt; }
         
         .main-layout { width: 100%; border-collapse: collapse; margin-top: 2pt; }
-        .photo-cell { width: 62pt; vertical-align: top; text-align: left; }
+        .photo-cell { width: 56pt; vertical-align: top; text-align: left; }
         .photo-frame {
-            width: 54pt; height: 72pt;
-            border: 1.5pt solid #C5A059;
+            width: 48pt; height: 66pt;
+            border: 1.2pt solid #C5A059;
             background-color: #FFFFFF;
             overflow: hidden;
             text-align: center;
         }
         .photo-img {
-            width: 54pt; height: 72pt;
+            width: 48pt; height: 66pt;
             object-fit: cover;
             display: block;
         }
         .photo-placeholder {
-            width: 54pt; height: 72pt;
+            width: 48pt; height: 66pt;
             background-color: #F1F5F9;
             color: #94A3B8;
-            font-size: 6pt;
+            font-size: 5.5pt;
             text-align: center;
-            padding-top: 24pt;
+            padding-top: 21pt;
             box-sizing: border-box;
             font-weight: bold;
             line-height: 1.3;
         }
         
-        .data-cell { vertical-align: top; padding-left: 8pt; }
-        .id-banner { background-color: #F8FAFC; border-left: 3pt solid #0F2C59; padding: 3pt 6pt; margin-bottom: 5pt; }
-        .id-label { font-size: 5.5pt; color: #64748B; text-transform: uppercase; letter-spacing: 0.6px; }
-        .id-number { font-size: 9.5pt; font-family: Courier, monospace; font-weight: bold; color: #0F2C59; letter-spacing: 0.8px; }
+        .data-cell { vertical-align: top; padding: 0 6pt; }
+        .id-banner { background-color: #F8FAFC; border-left: 2.5pt solid #0F2C59; padding: 2.5pt 5pt; margin-bottom: 4pt; }
+        .id-label { font-size: 5pt; color: #64748B; text-transform: uppercase; letter-spacing: 0.5px; }
+        .id-number { font-size: 8.5pt; font-family: Courier, monospace; font-weight: bold; color: #0F2C59; letter-spacing: 0.7px; }
         
         .data-table { width: 100%; border-collapse: collapse; }
-        .data-table td { padding: 1.5pt 0; font-size: 7.5pt; vertical-align: top; line-height: 1.2; }
-        .data-label { width: 55pt; color: #64748B; text-transform: uppercase; font-size: 6.5pt; }
+        .data-table td { padding: 1.2pt 0; font-size: 7pt; vertical-align: top; line-height: 1.15; }
+        .data-label { width: 48pt; color: #64748B; text-transform: uppercase; font-size: 5.8pt; }
         .data-value { font-weight: bold; color: #0F172A; }
         
-        .footer-fixed { position: absolute; bottom: 8pt; left: 12pt; right: 12pt; border-top: 0.5pt solid #E2E8F0; padding-top: 4pt; font-size: 6pt; color: #64748B; }
+        .qr-cell { width: 52pt; vertical-align: top; text-align: center; }
+        .qr-frame {
+            width: 44pt; height: 44pt;
+            border: 1pt solid #C5A059;
+            background-color: #FFFFFF;
+            padding: 1.5pt;
+            box-sizing: border-box;
+            display: inline-block;
+        }
+        .qr-img { width: 40pt; height: 40pt; display: block; }
+        .qr-caption { font-size: 4.5pt; font-weight: bold; color: #0F2C59; text-transform: uppercase; letter-spacing: 0.3px; margin-top: 2pt; text-align: center; }
+
+        .footer-fixed { position: absolute; bottom: 7pt; left: 11pt; right: 11pt; border-top: 0.5pt solid #E2E8F0; padding-top: 3pt; font-size: 5.5pt; color: #64748B; }
     </style>
 </head>
 <body>
@@ -79,6 +91,21 @@
                 if ($fileData !== false) {
                     $photoBase64 = 'data:image/' . $ext . ';base64,' . base64_encode($fileData);
                 }
+            }
+        }
+
+        $qrBase64 = null;
+        if (!empty($member->nomor_anggota)) {
+            try {
+                $verifyUrl = route('kta.verify', ['nomor' => $member->nomor_anggota]);
+                $qrOptions = new \chillerlan\QRCode\QROptions([
+                    'outputInterface' => \chillerlan\QRCode\Output\QRGdImagePNG::class,
+                    'scale'           => 3,
+                    'outputBase64'    => true,
+                ]);
+                $qrBase64 = (new \chillerlan\QRCode\QRCode($qrOptions))->render($verifyUrl);
+            } catch (\Throwable $e) {
+                $qrBase64 = null;
             }
         }
     @endphp
@@ -98,7 +125,7 @@
 
         <table class="main-layout" cellpadding="0" cellspacing="0">
             <tr>
-                <!-- Kolom Pas Foto 3x4 Formal -->
+                <!-- 1. Kolom Pas Foto 3x4 Formal -->
                 <td class="photo-cell">
                     <div class="photo-frame">
                         @if($photoBase64)
@@ -111,7 +138,7 @@
                     </div>
                 </td>
 
-                <!-- Kolom Data Anggota -->
+                <!-- 2. Kolom Data Anggota -->
                 <td class="data-cell">
                     <div class="id-banner">
                         <div class="id-label">Nomor Induk Keanggotaan Nasional</div>
@@ -121,16 +148,16 @@
                     <table class="data-table" cellpadding="0" cellspacing="0">
                         <tr>
                             <td class="data-label">Nama & Gelar</td>
-                            <td class="data-value">: {{ \Illuminate\Support\Str::limit($member->nama_lengkap, 34) }}</td>
+                            <td class="data-value">: {{ \Illuminate\Support\Str::limit($member->nama_lengkap, 28) }}</td>
                         </tr>
                         <tr>
                             <td class="data-label">Afiliasi Utama</td>
-                            <td class="data-value">: {{ \Illuminate\Support\Str::limit($member->instansi, 34) }}</td>
+                            <td class="data-value">: {{ \Illuminate\Support\Str::limit($member->instansi, 28) }}</td>
                         </tr>
                         @if($member->wilayah_dpw)
                         <tr>
                             <td class="data-label">Wilayah DPW</td>
-                            <td class="data-value">: {{ \Illuminate\Support\Str::limit($member->wilayah_dpw, 34) }}</td>
+                            <td class="data-value">: {{ \Illuminate\Support\Str::limit($member->wilayah_dpw, 28) }}</td>
                         </tr>
                         @endif
                         <tr>
@@ -138,6 +165,21 @@
                             <td class="data-value" style="color: #059669;">: Anggota Aktif Terverifikasi</td>
                         </tr>
                     </table>
+                </td>
+
+                <!-- 3. Kolom QR Code Scan Validasi -->
+                <td class="qr-cell">
+                    @if($qrBase64)
+                        <div class="qr-frame">
+                            <img src="{{ $qrBase64 }}" class="qr-img" alt="QR Verifikasi">
+                        </div>
+                        <div class="qr-caption">Scan Validasi</div>
+                    @else
+                        <div class="qr-frame" style="background-color: #F8FAFC;">
+                            <div style="font-size: 5pt; color: #94A3B8; padding-top: 15pt;">QR CODE</div>
+                        </div>
+                        <div class="qr-caption">Scan Validasi</div>
+                    @endif
                 </td>
             </tr>
         </table>

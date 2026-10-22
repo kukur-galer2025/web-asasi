@@ -12,6 +12,7 @@ Route::get('/halaman/{slug}', [PublicController::class, 'showPage'])->name('page
 Route::get('/berita/{slug}', [PublicController::class, 'showPost'])->name('post.show');
 
 Route::get('/daftar-anggota', [MemberController::class, 'redirectRegister'])->name('register.member');
+Route::get('/verifikasi-kta/{nomor?}', [PublicController::class, 'verifyKta'])->name('kta.verify');
 
 // 2. RUTE AUTENTIKASI & GOOGLE LOGIN
 Route::get('/login', [AuthController::class, 'loginForm'])->name('login');

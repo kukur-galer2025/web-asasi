@@ -33,19 +33,27 @@
                         <span class="font-mono text-xs font-bold px-3 py-1 rounded-lg bg-slate-100 text-asasi-navy border border-slate-200">
                             {{ $member->nomor_anggota }}
                         </span>
-                        <span class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700">
+                        <a href="{{ route('kta.verify', $member->nomor_anggota) }}" title="Lihat Sertifikat Verifikasi" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 hover:bg-emerald-100 transition">
                             ● Terverifikasi
-                        </span>
+                        </a>
                     </div>
-                    <h3 class="font-serif font-bold text-slate-900 text-base group-hover:text-asasi-navy transition">
-                        {{ $member->nama_lengkap }}
-                    </h3>
+                    <a href="{{ route('kta.verify', $member->nomor_anggota) }}" class="block">
+                        <h3 class="font-serif font-bold text-slate-900 text-base group-hover:text-asasi-navy transition">
+                            {{ $member->nama_lengkap }}
+                        </h3>
+                    </a>
                     <p class="text-xs text-slate-500 font-medium mt-1">{{ $member->instansi }}</p>
                 </div>
 
-                <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] text-slate-400 flex justify-between items-center">
-                    <span>Masa Berlaku KTA</span>
-                    <span class="font-semibold text-slate-700">{{ optional($member->masa_berlaku_sampai)->format('d M Y') }}</span>
+                <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-[11px]">
+                    <div class="text-slate-400">
+                        <span>Berlaku s/d: </span>
+                        <strong class="text-slate-700">{{ optional($member->masa_berlaku_sampai)->format('d M Y') }}</strong>
+                    </div>
+                    <a href="{{ route('kta.verify', $member->nomor_anggota) }}" class="text-asasi-navy font-bold hover:text-asasi-gold flex items-center gap-1 transition">
+                        <span>Verifikasi KTA</span>
+                        <span>→</span>
+                    </a>
                 </div>
             </div>
         @empty

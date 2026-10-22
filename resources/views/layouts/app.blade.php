@@ -151,6 +151,9 @@
                         <a href="{{ route('home') }}#direktori-anggota" class="block px-5 py-2.5 hover:bg-slate-50 hover:text-asasi-navy">
                             Direktori & Cek KTA
                         </a>
+                        <a href="{{ route('kta.verify') }}" class="block px-5 py-2.5 hover:bg-slate-50 hover:text-asasi-navy">
+                            Verifikasi Keaslian KTA
+                        </a>
 
                         @foreach($menuKeanggotaan as $item)
                             <a href="{{ route('page.show', $item['slug']) }}" class="block px-5 py-2.5 hover:bg-slate-50 hover:text-asasi-navy transition">
@@ -228,6 +231,7 @@
             <div class="space-y-1.5 border-t border-slate-100 pt-3">
                 <span class="text-[10px] font-extrabold uppercase tracking-widest text-asasi-gold">Keanggotaan & Berita</span>
                 <a href="{{ route('home') }}#direktori-anggota" class="block py-1 text-slate-600">Direktori & Cek KTA</a>
+                <a href="{{ route('kta.verify') }}" class="block py-1 text-slate-600 hover:text-asasi-navy">Verifikasi Keaslian KTA</a>
                 <a href="{{ route('home') }}#berita-terbaru" class="block py-1 text-slate-600">Berita & Kegiatan</a>
                 @foreach($menuKeanggotaan as $item)
                     <a href="{{ route('page.show', $item['slug']) }}" class="block py-1 text-slate-600">{{ $item['judul'] }}</a>
@@ -327,6 +331,9 @@
                         </li>
                         <li>
                             <a href="{{ route('home') }}#direktori-anggota" class="hover:text-amber-300 transition text-slate-300">Direktori & Cek KTA</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('kta.verify') }}" class="hover:text-amber-300 transition text-slate-300">Verifikasi Keaslian KTA</a>
                         </li>
                         <li>
                             <a href="{{ route('home') }}#berita-terbaru" class="hover:text-amber-300 transition text-slate-300">Berita & Publikasi</a>
