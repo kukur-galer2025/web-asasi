@@ -154,8 +154,8 @@
                         <a href="{{ route('register.member') }}" class="block px-5 py-2.5 hover:bg-slate-50 hover:text-asasi-navy">
                             Ajukan Keanggotaan Baru
                         </a>
-                        <a href="{{ route('home') }}#direktori-anggota" class="block px-5 py-2.5 hover:bg-slate-50 hover:text-asasi-navy">
-                            Direktori & Cek KTA
+                        <a href="{{ route('member.directory') }}" class="block px-5 py-2.5 hover:bg-slate-50 hover:text-asasi-navy">
+                            Direktori Anggota Nasional
                         </a>
                         <a href="{{ route('kta.verify') }}" class="block px-5 py-2.5 hover:bg-slate-50 hover:text-asasi-navy">
                             Verifikasi Keaslian KTA
@@ -197,7 +197,7 @@
                 @endif
 
                 <!-- Ikon Search -->
-                <a href="{{ route('home') }}#direktori-anggota" title="Cari Anggota" class="text-slate-600 hover:text-asasi-navy pl-2">
+                <a href="{{ route('member.directory') }}" title="Cari Direktori Anggota" class="text-slate-600 hover:text-asasi-navy pl-2">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M21 21l-5.2-5.2m1.7-5.3a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                 </a>
 
@@ -246,7 +246,7 @@
             <div class="space-y-1.5 border-t border-slate-100 pt-3">
                 <span class="text-[10px] font-extrabold uppercase tracking-widest text-asasi-gold">Keanggotaan</span>
                 <a href="{{ route('register.member') }}" class="block py-1 text-slate-600">Ajukan Anggota Baru</a>
-                <a href="{{ route('home') }}#direktori-anggota" class="block py-1 text-slate-600">Direktori & Cek KTA</a>
+                <a href="{{ route('member.directory') }}" class="block py-1 text-slate-600">Direktori Anggota Nasional</a>
                 <a href="{{ route('kta.verify') }}" class="block py-1 text-slate-600 hover:text-asasi-navy">Verifikasi Keaslian KTA</a>
                 @foreach($menuKeanggotaan as $item)
                     <a href="{{ route('page.show', $item['slug']) }}" class="block py-1 text-slate-600">{{ $item['judul'] }}</a>
@@ -345,13 +345,13 @@
                             <a href="{{ route('home') }}#tentang-kami" class="hover:text-amber-300 transition text-slate-300">Profil & Visi Misi</a>
                         </li>
                         <li>
-                            <a href="{{ route('home') }}#direktori-anggota" class="hover:text-amber-300 transition text-slate-300">Direktori & Cek KTA</a>
+                            <a href="{{ route('member.directory') }}" class="hover:text-amber-300 transition text-slate-300">Direktori Anggota Nasional</a>
                         </li>
                         <li>
                             <a href="{{ route('kta.verify') }}" class="hover:text-amber-300 transition text-slate-300">Verifikasi Keaslian KTA</a>
                         </li>
                         <li>
-                            <a href="{{ route('home') }}#berita-terbaru" class="hover:text-amber-300 transition text-slate-300">Berita & Publikasi</a>
+                            <a href="{{ route('posts.index') }}" class="hover:text-amber-300 transition text-slate-300">Portal Warta & Berita</a>
                         </li>
                         <li>
                             <a href="{{ route('register.member') }}" class="text-amber-300/90 font-semibold hover:text-amber-200 transition">Daftar Keanggotaan →</a>

@@ -675,11 +675,139 @@
 
 
     <!-- =========================================================================
-         4. PANGKALAN DATA & VALIDASI ANGGOTA (LIVEWIRE COMPONENT)
+         4. PUSAT LAYANAN: DIREKTORI ANGGOTA & VALIDASI KTA
          ========================================================================= -->
-    <div id="direktori-anggota" class="scroll-mt-28">
-        <livewire:member-search />
-    </div>
+    <section id="direktori-anggota" class="space-y-10 scroll-mt-28">
+        
+        <!-- Header Section -->
+        <div class="text-center max-w-3xl mx-auto space-y-3">
+            <span class="text-xs font-bold uppercase tracking-widest text-asasi-gold">
+                Pangkalan Data Resmi & Integritas Akademik
+            </span>
+            <h2 class="font-display text-3xl sm:text-4xl md:text-[40px] font-extrabold text-slate-900 tracking-tight leading-tight">
+                Direktori Anggota & Layanan Validasi KTA
+            </h2>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                Pusat layanan digital terintegrasi untuk menelusuri kepakaran saintis Indonesia dan memverifikasi keaslian Kartu Tanda Anggota secara instan.
+            </p>
+        </div>
+
+        <!-- Dual Gateway Cards -->
+        <div class="grid lg:grid-cols-2 gap-8">
+            
+            <!-- Gateway Card 1: Direktori Anggota Nasional -->
+            <div class="group relative rounded-3xl p-8 sm:p-10 bg-gradient-to-br from-white via-slate-50 to-blue-50/50 border-2 border-slate-200/90 hover:border-asasi-navy shadow-lg hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between overflow-hidden">
+                <div class="absolute top-0 right-0 w-36 h-36 bg-blue-100/60 rounded-bl-full -mr-6 -mt-6 pointer-events-none group-hover:scale-110 transition-transform"></div>
+
+                <div class="relative z-10 space-y-6">
+                    <div class="flex items-center justify-between">
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-asasi-navy to-slate-900 text-amber-300 flex items-center justify-center shadow-lg shadow-asasi-navy/20 group-hover:scale-105 transition-transform">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                        </div>
+                        <span class="text-[10px] font-extrabold px-3 py-1.5 rounded-full bg-asasi-navy/10 text-asasi-navy border border-asasi-navy/15 uppercase tracking-wider font-display">
+                            Pangkalan Data Nasional
+                        </span>
+                    </div>
+
+                    <div class="space-y-3">
+                        <h3 class="font-display font-extrabold text-2xl text-slate-900 group-hover:text-asasi-navy transition leading-snug">
+                            Direktori Anggota & Peneliti
+                        </h3>
+                        <p class="text-slate-600 text-sm sm:text-[15px] leading-relaxed font-normal">
+                            Akses data pencarian komprehensif profil dosen, peneliti, dan ilmuwan ASASI di seluruh perguruan tinggi dan lembaga riset se-Indonesia dengan filter kampus, nama, dan nomor KTA.
+                        </p>
+                    </div>
+
+                    <!-- Highlight Features -->
+                    <ul class="space-y-2.5 text-xs text-slate-700 font-semibold border-t border-slate-200/80 pt-4">
+                        <li class="flex items-center gap-2.5">
+                            <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs">✓</span>
+                            <span>Pangkalan data terbuka untuk perguruan tinggi & publik</span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs">✓</span>
+                            <span>Terintegrasi rekam jejak kepakaran & DPW 38 Provinsi</span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs">✓</span>
+                            <span>Pencarian cepat berbasis Livewire realtime</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="relative z-10 pt-8 mt-6 border-t border-slate-200/70">
+                    <a href="{{ route('member.directory') }}" class="w-full inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-2xl bg-asasi-navy hover:bg-asasi-dark text-white font-display font-bold text-xs uppercase tracking-wider shadow-lg shadow-asasi-navy/20 hover:scale-[1.01] active:scale-[0.99] transition-all">
+                        <span>Buka Direktori Anggota Nasional</span>
+                        <span>→</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Gateway Card 2: Validasi Keaslian KTA -->
+            <div class="group relative rounded-3xl p-8 sm:p-10 bg-gradient-to-br from-[#0F284E] via-[#0C203F] to-[#07152B] text-white border-2 border-amber-500/30 hover:border-amber-400 shadow-xl hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between overflow-hidden">
+                <div class="absolute top-0 right-0 w-36 h-36 bg-amber-400/10 rounded-bl-full -mr-6 -mt-6 pointer-events-none group-hover:scale-110 transition-transform"></div>
+                <div class="absolute -left-10 -bottom-10 w-44 h-44 bg-blue-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+                <div class="relative z-10 space-y-6">
+                    <div class="flex items-center justify-between">
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-400 to-amber-300 text-slate-950 flex items-center justify-center shadow-lg shadow-amber-500/25 group-hover:scale-105 transition-transform">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        </div>
+                        <span class="text-[10px] font-extrabold px-3 py-1.5 rounded-full bg-amber-400/20 text-amber-300 border border-amber-400/40 uppercase tracking-wider font-display">
+                            Verifikasi Digital 24/7
+                        </span>
+                    </div>
+
+                    <div class="space-y-3">
+                        <h3 class="font-display font-extrabold text-2xl text-white group-hover:text-amber-200 transition leading-snug">
+                            Verifikasi Keaslian KTA (E-KTA)
+                        </h3>
+                        <p class="text-slate-300 text-sm sm:text-[15px] leading-relaxed font-normal">
+                            Sistem otentikasi resmi untuk memvalidasi keaslian fisik maupun digital Kartu Tanda Anggota menggunakan QR Code berkeamanan kriptografi DPP ASASI.
+                        </p>
+                    </div>
+
+                    <!-- Highlight Features -->
+                    <ul class="space-y-2.5 text-xs text-amber-100/90 font-semibold border-t border-white/10 pt-4">
+                        <li class="flex items-center gap-2.5">
+                            <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs">✓</span>
+                            <span>Pengecekan instan via Scan QR Code kamera HP</span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs">✓</span>
+                            <span>Tervalidasi langsung dengan Pangkalan Data Pusat</span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs">✓</span>
+                            <span>Mencegah pemalsuan identitas profesi akademisi</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="relative z-10 pt-8 mt-6 border-t border-white/10">
+                    <a href="{{ route('kta.verify') }}" class="w-full inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 text-slate-950 font-display font-bold text-xs uppercase tracking-wider shadow-lg shadow-amber-500/20 hover:scale-[1.01] active:scale-[0.99] transition-all">
+                        <span>Validasi Keaslian KTA Sekarang</span>
+                        <span>→</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Banner Ringkas Ajakan Pendaftaran Anggota Baru -->
+        <div class="rounded-3xl p-6 sm:p-8 bg-gradient-to-r from-[#071830] via-[#0D2447] to-[#081B36] border border-amber-500/20 shadow-md text-white flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="space-y-1 text-center md:text-left">
+                <span class="text-[11px] font-bold uppercase tracking-wider text-amber-300">Bergabung Menjadi Anggota Resmi</span>
+                <h4 class="font-display font-bold text-lg sm:text-xl text-white">Belum Terdaftar Sebagai Anggota ASASI?</h4>
+                <p class="text-xs sm:text-sm text-slate-300">Pendaftaran mudah secara online dengan akun Google dan langsung terbitkan e-KTA resmi.</p>
+            </div>
+            <a href="{{ route('register.member') }}" class="shrink-0 inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-amber-300 border border-amber-400/40 text-xs font-bold uppercase tracking-wider transition">
+                <span>Ajukan Pendaftaran Anggota</span>
+                <span>→</span>
+            </a>
+        </div>
+
+    </section>
 
 
     <!-- =========================================================================

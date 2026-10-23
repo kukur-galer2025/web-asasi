@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminController;
 // 1. RUTE PUBLIK
 Route::get('/', [PublicController::class, 'index'])->name('home');
 Route::get('/berita', [PublicController::class, 'postsIndex'])->name('posts.index');
+Route::get('/direktori-anggota', [PublicController::class, 'memberDirectory'])->name('member.directory');
 Route::get('/halaman/{slug}', [PublicController::class, 'showPage'])->name('page.show');
 Route::get('/berita/{slug}', [PublicController::class, 'showPost'])->name('post.show');
 

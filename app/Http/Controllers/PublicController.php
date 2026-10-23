@@ -103,6 +103,16 @@ class PublicController extends Controller
         ));
     }
 
+    // Halaman Khusus Direktori Anggota Nasional & Peneliti
+    public function memberDirectory()
+    {
+        $totalActive = MemberProfile::where('status', 'active')->count();
+        $totalInstitutions = MemberProfile::where('status', 'active')->distinct('instansi')->count('instansi');
+        $totalDpw = MemberProfile::where('status', 'active')->whereNotNull('wilayah_dpw')->distinct('wilayah_dpw')->count('wilayah_dpw');
+
+        return view('frontend.member-directory', compact('totalActive', 'totalInstitutions', 'totalDpw'));
+    }
+
     // Menampilkan Halaman Statis Sub-Menu (Profil & Bidang)
     public function showPage($slug)
     {
