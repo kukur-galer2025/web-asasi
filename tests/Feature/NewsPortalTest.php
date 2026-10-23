@@ -125,4 +125,13 @@ class NewsPortalTest extends TestCase
         $this->assertTrue($posts->contains('id', $post1->id));
         $this->assertFalse($posts->contains('id', $post2->id));
     }
+
+    public function test_post_excerpt_decodes_html_entities_properly(): void
+    {
+        $post = new Post([
+            'konten' => '<p>Konferensi mengenai Sains &amp; Teknologi serta industri &quot;berkelanjutan&quot; &amp; inovasi modern.</p>',
+        ]);
+
+        $this->assertEquals('Konferensi mengenai Sains & Teknologi serta industri "berkelanjutan" & inovasi modern.', $post->excerpt());
+    }
 }

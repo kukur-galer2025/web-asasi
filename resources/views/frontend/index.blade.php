@@ -870,7 +870,7 @@
                                 {{ $post->judul }}
                             </h3>
                             <p class="text-slate-600 text-sm leading-relaxed line-clamp-3 font-normal">
-                                {{ Str::limit(strip_tags($post->konten), 120) }}
+                                {{ $post->excerpt(120) }}
                             </p>
                         </div>
                     </div>

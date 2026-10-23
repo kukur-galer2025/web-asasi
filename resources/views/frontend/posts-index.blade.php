@@ -230,7 +230,7 @@
                             </a>
                         </h2>
                         <p class="text-slate-600 text-xs sm:text-sm leading-relaxed line-clamp-3 font-normal">
-                            {{ Str::limit(strip_tags($featuredPost->konten), 160) }}
+                            {{ $featuredPost->excerpt(160) }}
                         </p>
                     </div>
 
@@ -325,7 +325,7 @@
                                 </h4>
 
                                 <p class="text-slate-600 text-xs sm:text-sm leading-relaxed line-clamp-3 font-normal">
-                                    {{ Str::limit(strip_tags($post->konten), 110) }}
+                                    {{ $post->excerpt(110) }}
                                 </p>
                             </div>
                         </div>
