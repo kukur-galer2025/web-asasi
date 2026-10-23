@@ -690,15 +690,21 @@
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b-2 border-slate-200/80 pb-5">
             <div>
                 <span class="text-xs font-bold uppercase tracking-widest text-asasi-gold">
-                    Warta & Publikasi Resmi
+                    Warta & Publikasi Terbaru
                 </span>
                 <h2 class="font-display text-3xl sm:text-4xl md:text-[40px] font-extrabold text-slate-900 tracking-tight mt-1">
                     Kabar & Agenda Akademisi
                 </h2>
             </div>
-            <p class="text-sm text-slate-500 max-w-md">
-                Dokumentasi kegiatan ilmiah, agenda konferensi, dan pengumuman strategis kepengurusan ASASI di seluruh Nusantara.
-            </p>
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                <p class="text-sm text-slate-500 max-w-sm">
+                    Dokumentasi rilis pers, agenda ilmiah, dan pengumuman strategis kepengurusan ASASI.
+                </p>
+                <a href="{{ route('posts.index') }}" class="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-asasi-navy hover:bg-asasi-dark text-white font-display font-bold text-xs uppercase tracking-wider shadow-md transition">
+                    <span>Portal Berita</span>
+                    <span>→</span>
+                </a>
+            </div>
         </div>
         
         <div class="grid md:grid-cols-3 gap-8">
@@ -711,11 +717,18 @@
                                 $thumbImg = $post->gambar 
                                     ? (Str::startsWith($post->gambar, 'http') ? $post->gambar : asset('storage/' . $post->gambar))
                                     : 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80';
+
+                                $catColor = match($post->kategori) {
+                                    'kegiatan'   => 'bg-emerald-600 text-white',
+                                    'pengumuman' => 'bg-amber-400 text-slate-950 font-black',
+                                    'publikasi'  => 'bg-indigo-600 text-white',
+                                    default      => 'bg-asasi-navy text-white',
+                                };
                             @endphp
                             <img src="{{ $thumbImg }}" alt="{{ $post->judul }}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                             
                             <!-- Kategori Badge -->
-                            <span class="absolute top-4 left-4 text-[10px] font-extrabold px-3 py-1 rounded-full bg-white/95 text-asasi-navy shadow-md uppercase tracking-wider backdrop-blur-sm font-display">
+                            <span class="absolute top-4 left-4 text-[10px] font-extrabold px-3 py-1 rounded-full {{ $catColor }} shadow-md uppercase tracking-wider backdrop-blur-sm font-display">
                                 {{ $post->kategori }}
                             </span>
                         </div>
@@ -745,6 +758,17 @@
                     <p class="text-xs text-slate-400">Silakan kembali lagi nanti untuk melihat publikasi artikel terbaru dari pengurus.</p>
                 </div>
             @endforelse
+        </div>
+
+        <!-- Tombol Bawah Menuju Portal Berita -->
+        <div class="pt-6 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <span class="text-xs text-slate-500 font-medium">
+                Menampilkan 6 artikel & kegiatan paling mutakhir dari seluruh Indonesia.
+            </span>
+            <a href="{{ route('posts.index') }}" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 text-slate-950 font-display font-bold text-xs uppercase tracking-wider shadow-md hover:brightness-110 active:scale-95 transition">
+                <span>Buka Portal Berita & Arsip Lengkap</span>
+                <span>→</span>
+            </a>
         </div>
     </section>
 

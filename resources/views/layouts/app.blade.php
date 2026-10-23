@@ -120,18 +120,23 @@
 
                 <!-- 3. Dropdown BERITA -->
                 <div x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false" class="relative py-8">
-                    <button class="flex items-center gap-1 hover:text-asasi-navy transition uppercase">
+                    <a href="{{ route('posts.index') }}" class="flex items-center gap-1 hover:text-asasi-navy transition uppercase">
                         <span>BERITA</span>
                         <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-200" :class="open ? 'rotate-180 text-asasi-navy' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
-                    </button>
-                    <div x-show="open" x-transition class="absolute left-0 top-20 w-60 bg-white rounded-2xl shadow-xl shadow-slate-200/70 border border-slate-100 py-2.5 z-50 normal-case font-semibold text-slate-600" style="display: none;">
-                        <a href="{{ route('home', ['kategori' => 'berita']) }}#berita-terbaru" class="block px-5 py-2.5 hover:bg-slate-50 hover:text-asasi-navy">Berita Utama</a>
-                        <a href="{{ route('home', ['kategori' => 'kegiatan']) }}#berita-terbaru" class="block px-5 py-2.5 hover:bg-slate-50 hover:text-asasi-navy">Agenda & Kegiatan</a>
-                        <a href="{{ route('home', ['kategori' => 'pengumuman']) }}#berita-terbaru" class="block px-5 py-2.5 hover:bg-slate-50 hover:text-asasi-navy">Pengumuman Resmi</a>
+                    </a>
+                    <div x-show="open" x-transition class="absolute left-0 top-20 w-64 bg-white rounded-2xl shadow-xl shadow-slate-200/70 border border-slate-100 py-2.5 z-50 normal-case font-semibold text-slate-600" style="display: none;">
+                        <a href="{{ route('posts.index') }}" class="block px-5 py-2.5 hover:bg-slate-50 text-asasi-navy font-bold border-b border-slate-100 flex items-center justify-between">
+                            <span>Portal Berita Lengkap</span>
+                            <span class="text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full uppercase">Warta</span>
+                        </a>
+                        <a href="{{ route('posts.index', ['kategori' => 'berita']) }}" class="block px-5 py-2 hover:bg-slate-50 hover:text-asasi-navy">Berita Utama</a>
+                        <a href="{{ route('posts.index', ['kategori' => 'kegiatan']) }}" class="block px-5 py-2 hover:bg-slate-50 hover:text-asasi-navy">Agenda & Kegiatan</a>
+                        <a href="{{ route('posts.index', ['kategori' => 'pengumuman']) }}" class="block px-5 py-2 hover:bg-slate-50 hover:text-asasi-navy">Pengumuman Resmi</a>
+                        <a href="{{ route('posts.index', ['kategori' => 'publikasi']) }}" class="block px-5 py-2 hover:bg-slate-50 hover:text-asasi-navy">Publikasi & Riset</a>
                         @if(count($menuBerita) > 0)
                             <div class="border-t border-slate-100 my-1"></div>
                             @foreach($menuBerita as $item)
-                                <a href="{{ route('page.show', $item['slug']) }}" class="block px-5 py-2.5 hover:bg-slate-50 hover:text-asasi-navy transition">
+                                <a href="{{ route('page.show', $item['slug']) }}" class="block px-5 py-2 hover:bg-slate-50 hover:text-asasi-navy transition">
                                     {{ $item['judul'] }}
                                 </a>
                             @endforeach
@@ -230,10 +235,19 @@
             @endif
 
             <div class="space-y-1.5 border-t border-slate-100 pt-3">
-                <span class="text-[10px] font-extrabold uppercase tracking-widest text-asasi-gold">Keanggotaan & Berita</span>
+                <span class="text-[10px] font-extrabold uppercase tracking-widest text-asasi-gold">Warta & Berita</span>
+                <a href="{{ route('posts.index') }}" class="block py-1 text-slate-700 font-bold hover:text-asasi-navy">Portal Berita Lengkap</a>
+                <a href="{{ route('posts.index', ['kategori' => 'berita']) }}" class="block py-1 text-slate-500 pl-3">• Berita Utama</a>
+                <a href="{{ route('posts.index', ['kategori' => 'kegiatan']) }}" class="block py-1 text-slate-500 pl-3">• Agenda & Kegiatan</a>
+                <a href="{{ route('posts.index', ['kategori' => 'pengumuman']) }}" class="block py-1 text-slate-500 pl-3">• Pengumuman Resmi</a>
+                <a href="{{ route('posts.index', ['kategori' => 'publikasi']) }}" class="block py-1 text-slate-500 pl-3">• Publikasi Riset</a>
+            </div>
+
+            <div class="space-y-1.5 border-t border-slate-100 pt-3">
+                <span class="text-[10px] font-extrabold uppercase tracking-widest text-asasi-gold">Keanggotaan</span>
+                <a href="{{ route('register.member') }}" class="block py-1 text-slate-600">Ajukan Anggota Baru</a>
                 <a href="{{ route('home') }}#direktori-anggota" class="block py-1 text-slate-600">Direktori & Cek KTA</a>
                 <a href="{{ route('kta.verify') }}" class="block py-1 text-slate-600 hover:text-asasi-navy">Verifikasi Keaslian KTA</a>
-                <a href="{{ route('home') }}#berita-terbaru" class="block py-1 text-slate-600">Berita & Kegiatan</a>
                 @foreach($menuKeanggotaan as $item)
                     <a href="{{ route('page.show', $item['slug']) }}" class="block py-1 text-slate-600">{{ $item['judul'] }}</a>
                 @endforeach

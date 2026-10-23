@@ -12,16 +12,95 @@ use Illuminate\Http\Request;
 
 class PublicController extends Controller
 {
-    // Menampilkan Beranda & Daftar Berita
-    public function index(Request $request)
+    // Menampilkan Beranda: Khusus Menampilkan Berita Terbaru (Tidak Berubah Ketika Navigasi Menu)
+    public function index()
     {
         $posts = Post::where('is_published', true)
-            ->when($request->kategori, fn($q) => $q->where('kategori', $request->kategori))
-            ->when($request->tag, fn($q) => $q->where('tags', 'like', '%' . $request->tag . '%'))
             ->latest()
+            ->take(6)
             ->get();
 
         return view('frontend.index', compact('posts'));
+    }
+
+    // Portal Berita Lengkap (Kategori, Pencarian, Tag, Paginasi, Sidebar)
+    public function postsIndex(Request $request)
+    {
+        $query = Post::where('is_published', true);
+
+        // Filter Kategori
+        $selectedCategory = $request->kategori ? strtolower(trim($request->kategori)) : null;
+        if ($selectedCategory && in_array($selectedCategory, ['berita', 'kegiatan', 'pengumuman', 'publikasi'])) {
+            $query->where('kategori', $selectedCategory);
+        }
+
+        // Filter Tag
+        $selectedTag = $request->tag ? trim($request->tag) : null;
+        if ($selectedTag) {
+            $query->where('tags', 'like', '%' . $selectedTag . '%');
+        }
+
+        // Pencarian Kata Kunci
+        $searchQuery = $request->q ? trim($request->q) : null;
+        if ($searchQuery) {
+            $query->where(function ($q) use ($searchQuery) {
+                $q->where('judul', 'like', '%' . $searchQuery . '%')
+                  ->orWhere('konten', 'like', '%' . $searchQuery . '%')
+                  ->orWhere('tags', 'like', '%' . $searchQuery . '%');
+            });
+        }
+
+        // Berita Utama / Headline (hanya jika di halaman 1 dan tanpa filter/pencarian spesifik)
+        $isFirstPage = (int) $request->input('page', 1) === 1;
+        $hasFilter = $selectedCategory || $selectedTag || $searchQuery;
+
+        $featuredPost = null;
+        if ($isFirstPage && !$hasFilter) {
+            $featuredPost = (clone $query)->latest()->first();
+            if ($featuredPost) {
+                // Jangan duplikasi headline di grid daftar jika sudah jadi headline utama
+                $query->where('id', '!=', $featuredPost->id);
+            }
+        }
+
+        // Paginasi 8 artikel per halaman
+        $posts = $query->latest()->paginate(8)->withQueryString();
+
+        // Berita Terkini / Populer untuk Sidebar (5 artikel terbaru)
+        $recentPosts = Post::where('is_published', true)->latest()->take(5)->get();
+
+        // Hitung total warta per kategori untuk counter widget
+        $categoryCounts = [
+            'total'      => Post::where('is_published', true)->count(),
+            'berita'     => Post::where('is_published', true)->where('kategori', 'berita')->count(),
+            'kegiatan'   => Post::where('is_published', true)->where('kategori', 'kegiatan')->count(),
+            'pengumuman' => Post::where('is_published', true)->where('kategori', 'pengumuman')->count(),
+            'publikasi'  => Post::where('is_published', true)->where('kategori', 'publikasi')->count(),
+        ];
+
+        // Daftar Tags Terpopuler
+        $popularTags = Post::where('is_published', true)
+            ->whereNotNull('tags')
+            ->pluck('tags')
+            ->flatMap(fn($t) => explode(',', $t))
+            ->map(fn($t) => trim($t))
+            ->filter()
+            ->countBy()
+            ->sortDesc()
+            ->take(12)
+            ->keys()
+            ->values();
+
+        return view('frontend.posts-index', compact(
+            'posts',
+            'featuredPost',
+            'recentPosts',
+            'categoryCounts',
+            'popularTags',
+            'selectedCategory',
+            'selectedTag',
+            'searchQuery'
+        ));
     }
 
     // Menampilkan Halaman Statis Sub-Menu (Profil & Bidang)

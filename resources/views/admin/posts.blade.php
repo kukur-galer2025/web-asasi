@@ -78,9 +78,13 @@
                     @forelse($posts as $post)
                     <tr class="hover:bg-slate-50/60 transition">
                         <td class="px-4 py-3.5">
-                            <div class="flex items-start gap-3">
-                                @if($post->gambar)
-                                    <img src="{{ asset('storage/' . $post->gambar) }}" class="w-12 h-12 rounded-lg object-cover border border-slate-200 shrink-0 mt-0.5">
+                                @php
+                                    $adminThumb = $post->gambar 
+                                        ? (\Illuminate\Support\Str::startsWith($post->gambar, 'http') ? $post->gambar : asset('storage/' . $post->gambar))
+                                        : null;
+                                @endphp
+                                @if($adminThumb)
+                                    <img src="{{ $adminThumb }}" alt="{{ $post->judul }}" class="w-12 h-12 rounded-lg object-cover border border-slate-200 shrink-0 mt-0.5">
                                 @else
                                     <div class="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-400 shrink-0 mt-0.5">NO IMG</div>
                                 @endif
