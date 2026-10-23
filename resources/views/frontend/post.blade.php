@@ -3,7 +3,7 @@
 @section('content')
 @php
     $heroBerita = $post->gambar 
-        ? asset('storage/' . $post->gambar) 
+        ? (\Illuminate\Support\Str::startsWith($post->gambar, 'http') ? $post->gambar : asset('storage/' . $post->gambar))
         : 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1600&q=80';
 @endphp
 

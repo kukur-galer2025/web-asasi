@@ -707,11 +707,12 @@
                     <div>
                         <!-- Thumbnail Berita -->
                         <div class="h-52 w-full bg-slate-100 overflow-hidden relative">
-                            @if($post->gambar)
-                                <img src="{{ asset('storage/' . $post->gambar) }}" alt="{{ $post->judul }}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                            @else
-                                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80" alt="{{ $post->judul }}" loading="lazy" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition duration-500">
-                            @endif
+                            @php
+                                $thumbImg = $post->gambar 
+                                    ? (Str::startsWith($post->gambar, 'http') ? $post->gambar : asset('storage/' . $post->gambar))
+                                    : 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80';
+                            @endphp
+                            <img src="{{ $thumbImg }}" alt="{{ $post->judul }}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                             
                             <!-- Kategori Badge -->
                             <span class="absolute top-4 left-4 text-[10px] font-extrabold px-3 py-1 rounded-full bg-white/95 text-asasi-navy shadow-md uppercase tracking-wider backdrop-blur-sm font-display">

@@ -3,7 +3,7 @@
 @section('content')
 @php
     $heroUrl = $page->hero_image 
-        ? asset('storage/' . $page->hero_image) 
+        ? (\Illuminate\Support\Str::startsWith($page->hero_image, 'http') ? $page->hero_image : asset('storage/' . $page->hero_image))
         : 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1600&q=80';
 @endphp
 
