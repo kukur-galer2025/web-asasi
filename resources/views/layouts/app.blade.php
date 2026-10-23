@@ -32,6 +32,9 @@
         }
     </script>
 
+    <!-- Alpine.js (Garansi 100% Interaktivitas Dropdown & Menu Mobile) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
+
     @livewireStyles
     @stack('styles')
 </head>
@@ -75,7 +78,7 @@
             </a>
 
             <!-- Tombol Hamburger Khusus Layar HP -->
-            <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden p-2.5 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-50">
+            <button @click="mobileMenuOpen = !mobileMenuOpen" type="button" class="lg:hidden p-2.5 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-50">
                 <svg x-show="!mobileMenuOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
                 <svg x-show="mobileMenuOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="display: none;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
@@ -86,12 +89,12 @@
                 <a href="{{ route('home') }}" class="hover:text-asasi-navy transition">HOME</a>
 
                 <!-- 1. Dropdown PROFIL -->
-                <div x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false" class="relative py-8">
-                    <button class="flex items-center gap-1 hover:text-asasi-navy transition uppercase">
+                <div x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false" @click.outside="open = false" class="relative py-8 group">
+                    <button @click="open = !open" type="button" class="flex items-center gap-1 hover:text-asasi-navy transition uppercase">
                         <span>PROFIL</span>
                         <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-200" :class="open ? 'rotate-180 text-asasi-navy' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
                     </button>
-                    <div x-show="open" x-transition class="absolute left-0 top-20 w-60 bg-white rounded-2xl shadow-xl shadow-slate-200/70 border border-slate-100 py-2.5 z-50 normal-case font-semibold text-slate-600" style="display: none;">
+                    <div x-show="open" :class="open ? '!block' : ''" x-transition class="hidden group-hover:block absolute left-0 top-20 w-60 bg-white rounded-2xl shadow-xl shadow-slate-200/70 border border-slate-100 py-2.5 z-50 normal-case font-semibold text-slate-600">
                         @forelse($menuProfil as $item)
                             <a href="{{ route('page.show', $item['slug']) }}" class="block px-5 py-2.5 hover:bg-slate-50 hover:text-asasi-navy transition">
                                 {{ $item['judul'] }}
@@ -103,12 +106,12 @@
                 </div>
 
                 <!-- 2. Dropdown BIDANG -->
-                <div x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false" class="relative py-8">
-                    <button class="flex items-center gap-1 hover:text-asasi-navy transition uppercase">
+                <div x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false" @click.outside="open = false" class="relative py-8 group">
+                    <button @click="open = !open" type="button" class="flex items-center gap-1 hover:text-asasi-navy transition uppercase">
                         <span>BIDANG</span>
                         <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-200" :class="open ? 'rotate-180 text-asasi-navy' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
                     </button>
-                    <div x-show="open" x-transition class="absolute left-0 top-20 w-64 bg-white rounded-2xl shadow-xl shadow-slate-200/70 border border-slate-100 py-2.5 z-50 normal-case font-semibold text-slate-600" style="display: none;">
+                    <div x-show="open" :class="open ? '!block' : ''" x-transition class="hidden group-hover:block absolute left-0 top-20 w-64 bg-white rounded-2xl shadow-xl shadow-slate-200/70 border border-slate-100 py-2.5 z-50 normal-case font-semibold text-slate-600">
                         @forelse($menuBidang as $item)
                             <a href="{{ route('page.show', $item['slug']) }}" class="block px-5 py-2.5 hover:bg-slate-50 hover:text-asasi-navy transition">
                                 {{ $item['judul'] }}
@@ -120,12 +123,16 @@
                 </div>
 
                 <!-- 3. Dropdown BERITA -->
-                <div x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false" class="relative py-8">
-                    <a href="{{ route('posts.index') }}" class="flex items-center gap-1 hover:text-asasi-navy transition uppercase">
-                        <span>BERITA</span>
-                        <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-200" :class="open ? 'rotate-180 text-asasi-navy' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
-                    </a>
-                    <div x-show="open" x-transition class="absolute left-0 top-20 w-64 bg-white rounded-2xl shadow-xl shadow-slate-200/70 border border-slate-100 py-2.5 z-50 normal-case font-semibold text-slate-600" style="display: none;">
+                <div x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false" @click.outside="open = false" class="relative py-8 group">
+                    <div class="flex items-center gap-1">
+                        <a href="{{ route('posts.index') }}" class="hover:text-asasi-navy transition uppercase">
+                            <span>BERITA</span>
+                        </a>
+                        <button @click="open = !open" type="button" class="p-1 hover:text-asasi-navy transition">
+                            <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-200" :class="open ? 'rotate-180 text-asasi-navy' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                    </div>
+                    <div x-show="open" :class="open ? '!block' : ''" x-transition class="hidden group-hover:block absolute left-0 top-20 w-64 bg-white rounded-2xl shadow-xl shadow-slate-200/70 border border-slate-100 py-2.5 z-50 normal-case font-semibold text-slate-600">
                         <a href="{{ route('posts.index') }}" class="block px-5 py-2.5 hover:bg-slate-50 text-asasi-navy font-bold border-b border-slate-100 flex items-center justify-between">
                             <span>Portal Berita Lengkap</span>
                             <span class="text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full uppercase">Warta</span>
@@ -146,12 +153,12 @@
                 </div>
 
                 <!-- 4. Dropdown KEANGGOTAAN -->
-                <div x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false" class="relative py-8">
-                    <button class="flex items-center gap-1 hover:text-asasi-navy transition uppercase">
+                <div x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false" @click.outside="open = false" class="relative py-8 group">
+                    <button @click="open = !open" type="button" class="flex items-center gap-1 hover:text-asasi-navy transition uppercase">
                         <span>KEANGGOTAAN</span>
                         <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-200" :class="open ? 'rotate-180 text-asasi-navy' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
                     </button>
-                    <div x-show="open" x-transition class="absolute left-0 top-20 w-64 bg-white rounded-2xl shadow-xl shadow-slate-200/70 border border-slate-100 py-2.5 z-50 normal-case font-semibold text-slate-600" style="display: none;">
+                    <div x-show="open" :class="open ? '!block' : ''" x-transition class="hidden group-hover:block absolute left-0 top-20 w-64 bg-white rounded-2xl shadow-xl shadow-slate-200/70 border border-slate-100 py-2.5 z-50 normal-case font-semibold text-slate-600">
                         <a href="{{ route('register.member') }}" class="block px-5 py-2.5 hover:bg-slate-50 hover:text-asasi-navy">
                             Ajukan Keanggotaan Baru
                         </a>
