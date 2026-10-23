@@ -194,56 +194,59 @@
             };
         @endphp
 
-        <div class="bg-white rounded-3xl border border-slate-200/90 shadow-xl overflow-hidden hover:shadow-2xl transition duration-300">
-            <div class="grid lg:grid-cols-12 gap-0">
+        <div class="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/90 shadow-md hover:shadow-xl transition duration-300 overflow-hidden">
+            <div class="grid lg:grid-cols-12 gap-0 lg:h-[320px]">
                 
-                <!-- Gambar Headline -->
-                <div class="lg:col-span-7 h-64 sm:h-80 lg:h-auto min-h-[300px] relative overflow-hidden bg-slate-900 group">
+                <!-- Gambar Headline (Tinggi Dibatasi Agar Pas & Tidak Raksasa) -->
+                <div class="lg:col-span-6 xl:col-span-7 h-52 sm:h-64 lg:h-full relative overflow-hidden bg-slate-900 group">
                     <img 
                         src="{{ $featuredImg }}" 
                         alt="{{ $featuredPost->judul }}" 
-                        class="w-full h-full object-cover group-hover:scale-105 transition duration-700"
+                        class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500"
                     >
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
                     
-                    <span class="absolute top-5 left-5 text-[10px] font-extrabold px-3.5 py-1.5 rounded-full {{ $badgeColor }} uppercase tracking-wider shadow-md font-display">
+                    <span class="absolute top-4 left-4 text-[9px] sm:text-[10px] font-extrabold px-3 py-1 rounded-full {{ $badgeColor }} uppercase tracking-wider shadow-md font-display">
                         ★ HEADLINE UTAMA • {{ strtoupper($featuredPost->kategori) }}
                     </span>
 
-                    <span class="absolute bottom-5 left-5 text-xs text-white/90 font-medium flex items-center gap-2">
+                    <span class="absolute bottom-4 left-4 text-xs text-white/90 font-medium flex items-center gap-2">
                         <span>📅 {{ $featuredPost->created_at->format('d F Y') }}</span>
                         <span>•</span>
                         <span>Redaksi ASASI</span>
                     </span>
                 </div>
 
-                <!-- Teks Headline -->
-                <div class="lg:col-span-5 p-7 sm:p-10 flex flex-col justify-between space-y-6">
-                    <div class="space-y-3.5">
-                        <span class="text-xs font-bold uppercase tracking-wider text-asasi-gold">Artikel Terpopuler Pekan Ini</span>
-                        <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-slate-900 leading-snug hover:text-asasi-navy transition">
+                <!-- Teks Headline (Rapi, Proporsional, Tidak Boros Ruang) -->
+                <div class="lg:col-span-6 xl:col-span-5 p-5 sm:p-6 lg:p-7 flex flex-col justify-between h-full bg-white space-y-3">
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-asasi-gold">
+                            <span class="w-1.5 h-1.5 rounded-full bg-asasi-gold"></span>
+                            <span>Sorotan Warta Terpopuler</span>
+                        </div>
+                        <h2 class="font-display font-extrabold text-lg sm:text-xl lg:text-[22px] text-slate-900 leading-snug hover:text-asasi-navy transition line-clamp-2 tracking-tight">
                             <a href="{{ route('post.show', $featuredPost->slug) }}">
                                 {{ $featuredPost->judul }}
                             </a>
                         </h2>
-                        <p class="text-slate-600 text-sm sm:text-base leading-relaxed line-clamp-4 font-normal">
-                            {{ Str::limit(strip_tags($featuredPost->konten), 220) }}
+                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed line-clamp-3 font-normal">
+                            {{ Str::limit(strip_tags($featuredPost->konten), 160) }}
                         </p>
                     </div>
 
-                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                    <div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-3">
                         <a 
                             href="{{ route('post.show', $featuredPost->slug) }}" 
-                            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-asasi-navy hover:bg-asasi-dark text-white font-display font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-lg transition-all"
+                            class="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-asasi-navy hover:bg-asasi-dark text-white font-display font-bold text-xs uppercase tracking-wider shadow-sm hover:shadow transition-all"
                         >
-                            <span>Baca Selengkapnya</span>
+                            <span>Baca Lengkap</span>
                             <span>→</span>
                         </a>
 
                         @if($featuredPost->tags)
                             @php $firstTag = trim(explode(',', $featuredPost->tags)[0] ?? ''); @endphp
                             @if($firstTag)
-                                <a href="{{ route('posts.index', ['tag' => $firstTag]) }}" class="text-xs text-slate-500 hover:text-asasi-navy font-semibold">
+                                <a href="{{ route('posts.index', ['tag' => $firstTag]) }}" class="text-xs text-slate-500 hover:text-asasi-navy font-semibold truncate max-w-[140px]">
                                     #{{ $firstTag }}
                                 </a>
                             @endif
