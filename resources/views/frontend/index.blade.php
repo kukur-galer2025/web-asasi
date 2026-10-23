@@ -26,31 +26,31 @@
                     <span>Organisasi Profesi Berbadan Hukum RI</span>
                 </div>
 
-                <!-- Judul Utama yang Megah -->
-                <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-bold text-white tracking-tight leading-[1.14]">
-                    Membentuk <span class="bg-gradient-to-r from-amber-200 via-amber-400 to-amber-200 bg-clip-text text-transparent">Akademisi Unggul</span>, Mendorong Kemajuan Bangsa
+                <!-- Judul Utama yang Megah & User-Friendly -->
+                <h1 class="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-extrabold text-white tracking-tight leading-[1.15]">
+                    Membentuk <span class="bg-gradient-to-r from-amber-200 via-amber-300 to-amber-100 bg-clip-text text-transparent">Akademisi Unggul</span>, Mendorong Kemajuan Bangsa
                 </h1>
 
                 <!-- Paragraf Penjelasan -->
-                <p class="text-slate-300 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
+                <p class="text-slate-300 text-sm sm:text-base md:text-[17px] leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
                     Wadah terdepan yang menghimpun para dosen, peneliti, dan ilmuwan di seluruh perguruan tinggi dan lembaga riset Indonesia untuk kolaborasi riset strategis, publikasi bereputasi, serta inovasi sains berdaya saing global.
                 </p>
 
                 <!-- Tombol Aksi Utama (Luxury Dual CTA) -->
                 <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-3">
-                    <a href="{{ route('register.member') }}" wire:navigate class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-[#D4AF37] via-[#E5C178] to-[#C5A059] text-slate-950 font-bold text-sm tracking-wide shadow-xl shadow-amber-500/20 hover:brightness-110 hover:scale-[1.02] active:scale-[0.98] transition-all">
+                    <a href="{{ route('register.member') }}" wire:navigate class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-[#D4AF37] via-[#E5C178] to-[#C5A059] text-slate-950 font-display font-bold text-sm tracking-wide shadow-xl shadow-amber-500/20 hover:brightness-110 hover:scale-[1.02] active:scale-[0.98] transition-all">
                         <span>Ajukan Keanggotaan Nasional</span>
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                     </a>
                     
-                    <a href="#direktori-anggota" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-2xl bg-white/10 hover:bg-white/15 text-white border border-white/20 font-semibold text-sm backdrop-blur-md transition-all hover:border-amber-400/40">
+                    <a href="#direktori-anggota" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-2xl bg-white/10 hover:bg-white/15 text-white border border-white/20 font-display font-semibold text-sm backdrop-blur-md transition-all hover:border-amber-400/40">
                         <svg class="w-4 h-4 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                         <span>Cek Direktori & KTA</span>
                     </a>
                 </div>
 
                 <!-- Trust Indicators -->
-                <div class="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-xs text-slate-400 border-t border-white/10">
+                <div class="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-xs text-slate-300/90 border-t border-white/10 font-medium">
                     <div class="flex items-center gap-1.5">
                         <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                         <span>SK Kemenkumham Resmi</span>
@@ -93,11 +93,11 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <span class="font-serif font-bold text-lg tracking-wider text-white block leading-tight">ASASI INDONESIA</span>
-                                    <span class="text-[9px] uppercase tracking-widest text-amber-300/80 block">Kartu Tanda Anggota Resmi</span>
+                                    <span class="font-display font-extrabold text-lg tracking-wider text-white block leading-tight">ASASI INDONESIA</span>
+                                    <span class="text-[9px] uppercase tracking-widest text-amber-300/80 block font-medium">Kartu Tanda Anggota Resmi</span>
                                 </div>
                             </div>
-                            <span class="px-2.5 py-1 rounded-md bg-amber-400/20 border border-amber-400/40 text-amber-300 text-[10px] font-bold uppercase tracking-wider">
+                            <span class="px-2.5 py-1 rounded-md bg-amber-400/20 border border-amber-400/40 text-amber-300 text-[10px] font-bold uppercase tracking-wider font-display">
                                 E-KTA
                             </span>
                         </div>
@@ -145,7 +145,7 @@
                         <!-- Footer Kartu -->
                         <div class="mt-5 pt-3.5 border-t border-amber-500/20 flex justify-between items-center text-[10px] text-slate-400">
                             <span>Masa Berlaku: <strong class="text-slate-200">Aktif s/d {{ date('Y') + 1 }}</strong></span>
-                            <span class="font-serif font-bold text-amber-300/90 tracking-wider">DPP ASASI PUSAT</span>
+                            <span class="font-display font-bold text-amber-300/90 tracking-wider">DPP ASASI PUSAT</span>
                         </div>
 
                     </div>
@@ -176,37 +176,37 @@
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 bg-white/95 backdrop-blur-xl p-6 sm:p-8 rounded-3xl border border-slate-200/90 shadow-xl shadow-slate-900/5">
         
         <div class="p-3 text-center border-r-0 md:border-r border-slate-100">
-            <span class="font-serif text-2xl sm:text-3xl md:text-4xl font-extrabold text-asasi-navy block">
+            <span class="font-display text-3xl sm:text-4xl md:text-[42px] font-black text-asasi-navy block tracking-tight leading-none">
                 3.500+
             </span>
-            <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mt-1">
+            <span class="text-xs font-bold text-slate-600 uppercase tracking-wider block mt-2">
                 Akademisi & Saintis
             </span>
         </div>
 
         <div class="p-3 text-center border-r-0 md:border-r border-slate-100">
-            <span class="font-serif text-2xl sm:text-3xl md:text-4xl font-extrabold text-asasi-navy block">
+            <span class="font-display text-3xl sm:text-4xl md:text-[42px] font-black text-asasi-navy block tracking-tight leading-none">
                 180+
             </span>
-            <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mt-1">
+            <span class="text-xs font-bold text-slate-600 uppercase tracking-wider block mt-2">
                 Perguruan Tinggi
             </span>
         </div>
 
         <div class="p-3 text-center border-r-0 md:border-r border-slate-100">
-            <span class="font-serif text-2xl sm:text-3xl md:text-4xl font-extrabold text-asasi-navy block">
+            <span class="font-display text-3xl sm:text-4xl md:text-[42px] font-black text-asasi-navy block tracking-tight leading-none">
                 38
             </span>
-            <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mt-1">
+            <span class="text-xs font-bold text-slate-600 uppercase tracking-wider block mt-2">
                 Wilayah Provinsi (DPW)
             </span>
         </div>
 
         <div class="p-3 text-center">
-            <span class="font-serif text-2xl sm:text-3xl md:text-4xl font-extrabold text-asasi-gold block">
+            <span class="font-display text-3xl sm:text-4xl md:text-[42px] font-black text-asasi-gold block tracking-tight leading-none">
                 100%
             </span>
-            <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mt-1">
+            <span class="text-xs font-bold text-slate-600 uppercase tracking-wider block mt-2">
                 KTA Terverifikasi Resmi
             </span>
         </div>
@@ -226,7 +226,7 @@
             <span class="text-xs font-bold uppercase tracking-widest text-asasi-gold">
                 Komitmen & Nilai Strategis
             </span>
-            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 leading-tight">
+            <h2 class="font-display text-3xl sm:text-4xl md:text-[40px] font-extrabold text-slate-900 tracking-tight leading-tight">
                 Tiga Pilar Utama Pengabdian ASASI
             </h2>
             <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
@@ -241,13 +241,13 @@
                 <div class="absolute top-0 right-0 w-24 h-24 bg-blue-50/70 rounded-bl-full -mr-4 -mt-4 transition group-hover:scale-110"></div>
                 
                 <div class="space-y-4 relative z-10">
-                    <div class="w-14 h-14 rounded-2xl bg-[#0F2C59]/10 text-asasi-navy flex items-center justify-center font-serif text-2xl font-bold group-hover:bg-asasi-navy group-hover:text-amber-300 transition-colors">
+                    <div class="w-14 h-14 rounded-2xl bg-[#0F2C59]/10 text-asasi-navy flex items-center justify-center font-display text-2xl font-black group-hover:bg-asasi-navy group-hover:text-amber-300 transition-colors">
                         01
                     </div>
-                    <h3 class="font-serif text-xl font-bold text-slate-900 group-hover:text-asasi-navy transition-colors">
+                    <h3 class="font-display text-xl font-extrabold text-slate-900 group-hover:text-asasi-navy transition-colors tracking-tight leading-snug">
                         Riset & Publikasi Bereputasi
                     </h3>
-                    <p class="text-sm text-slate-600 leading-relaxed">
+                    <p class="text-sm text-slate-600 leading-relaxed font-normal">
                         Fasilitasi kolaborasi riset lintas universitas, bimbingan penulisan jurnal internasional bereputasi (Scopus/SINTA), serta penyelenggaraan seminar dan konferensi ilmiah berkala.
                     </p>
                 </div>
@@ -263,13 +263,13 @@
                 <div class="absolute top-0 right-0 w-24 h-24 bg-amber-50/70 rounded-bl-full -mr-4 -mt-4 transition group-hover:scale-110"></div>
                 
                 <div class="space-y-4 relative z-10">
-                    <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-700 flex items-center justify-center font-serif text-2xl font-bold group-hover:bg-asasi-navy group-hover:text-amber-300 transition-colors">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-700 flex items-center justify-center font-display text-2xl font-black group-hover:bg-asasi-navy group-hover:text-amber-300 transition-colors">
                         02
                     </div>
-                    <h3 class="font-serif text-xl font-bold text-slate-900 group-hover:text-asasi-navy transition-colors">
+                    <h3 class="font-display text-xl font-extrabold text-slate-900 group-hover:text-asasi-navy transition-colors tracking-tight leading-snug">
                         Advokasi & Hilirisasi Inovasi
                     </h3>
-                    <p class="text-sm text-slate-600 leading-relaxed">
+                    <p class="text-sm text-slate-600 leading-relaxed font-normal">
                         Menjadi jembatan antara temuan riset akademisi dengan industri dan pemangku kebijakan publik demi terwujudnya hilirisasi sains yang memberi solusi nyata bagi masyarakat.
                     </p>
                 </div>
@@ -285,13 +285,13 @@
                 <div class="absolute top-0 right-0 w-24 h-24 bg-emerald-50/70 rounded-bl-full -mr-4 -mt-4 transition group-hover:scale-110"></div>
                 
                 <div class="space-y-4 relative z-10">
-                    <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 text-emerald-700 flex items-center justify-center font-serif text-2xl font-bold group-hover:bg-asasi-navy group-hover:text-amber-300 transition-colors">
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 text-emerald-700 flex items-center justify-center font-display text-2xl font-black group-hover:bg-asasi-navy group-hover:text-amber-300 transition-colors">
                         03
                     </div>
-                    <h3 class="font-serif text-xl font-bold text-slate-900 group-hover:text-asasi-navy transition-colors">
+                    <h3 class="font-display text-xl font-extrabold text-slate-900 group-hover:text-asasi-navy transition-colors tracking-tight leading-snug">
                         Rekognisi & E-KTA Nasional
                     </h3>
-                    <p class="text-sm text-slate-600 leading-relaxed">
+                    <p class="text-sm text-slate-600 leading-relaxed font-normal">
                         Penerbitan identitas resmi keanggotaan berbadan hukum dengan QR Code digital, pangkalan data nasional terverifikasi, serta hak akses portal mandiri keilmuan ASASI.
                     </p>
                 </div>
@@ -324,7 +324,7 @@
                 <span class="text-xs font-bold uppercase tracking-widest text-asasi-gold">
                     Warta & Publikasi Resmi
                 </span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 mt-1">
+                <h2 class="font-display text-3xl sm:text-4xl md:text-[40px] font-extrabold text-slate-900 tracking-tight mt-1">
                     Kabar & Agenda Akademisi
                 </h2>
             </div>
@@ -346,7 +346,7 @@
                             @endif
                             
                             <!-- Kategori Badge -->
-                            <span class="absolute top-4 left-4 text-[10px] font-extrabold px-3 py-1 rounded-full bg-white/95 text-asasi-navy shadow-md uppercase tracking-wider backdrop-blur-sm">
+                            <span class="absolute top-4 left-4 text-[10px] font-extrabold px-3 py-1 rounded-full bg-white/95 text-asasi-navy shadow-md uppercase tracking-wider backdrop-blur-sm font-display">
                                 {{ $post->kategori }}
                             </span>
                         </div>
@@ -356,10 +356,10 @@
                             <span class="text-xs text-slate-400 font-medium block">
                                 📅 {{ $post->created_at->format('d M Y') }}
                             </span>
-                            <h3 class="font-serif font-bold text-xl text-slate-900 group-hover:text-asasi-navy transition-colors leading-snug line-clamp-2">
+                            <h3 class="font-display font-bold text-lg sm:text-xl text-slate-900 group-hover:text-asasi-navy transition-colors leading-snug line-clamp-2 tracking-tight">
                                 {{ $post->judul }}
                             </h3>
-                            <p class="text-slate-600 text-sm leading-relaxed line-clamp-3">
+                            <p class="text-slate-600 text-sm leading-relaxed line-clamp-3 font-normal">
                                 {{ Str::limit(strip_tags($post->konten), 120) }}
                             </p>
                         </div>
@@ -372,7 +372,7 @@
                 </a>
             @empty
                 <div class="col-span-3 bg-white rounded-3xl border border-dashed border-slate-300 p-16 text-center text-slate-500 space-y-2">
-                    <p class="font-serif font-bold text-lg text-slate-700">Belum ada warta kegiatan yang diterbitkan</p>
+                    <p class="font-display font-bold text-lg text-slate-700">Belum ada warta kegiatan yang diterbitkan</p>
                     <p class="text-xs text-slate-400">Silakan kembali lagi nanti untuk melihat publikasi artikel terbaru dari pengurus.</p>
                 </div>
             @endforelse
@@ -381,7 +381,7 @@
 
 
     <!-- =========================================================================
-         6. EXECUTIVE INVITATION BANNER (Penutup Beranda yang Megah)
+         6. EXECUTIVE INVITATION BANNER (Penutup Beranda yang Megah & Bersahabat)
          ========================================================================= -->
     <div class="relative rounded-3xl p-8 sm:p-12 md:p-14 overflow-hidden bg-gradient-to-r from-[#0F284E] via-[#0C203F] to-[#07152B] border border-amber-500/30 shadow-2xl text-white">
         <!-- Glow Ambient -->
@@ -393,7 +393,7 @@
                 <span class="text-xs font-bold uppercase tracking-widest text-amber-300 block">
                     Panggilan Partisipasi Akademisi
                 </span>
-                <h3 class="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight">
+                <h3 class="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold text-white leading-tight tracking-tight">
                     Bergabunglah Bersama Ribuan Saintis & Intelektual Indonesia
                 </h3>
                 <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
@@ -402,7 +402,7 @@
             </div>
 
             <div class="shrink-0 w-full sm:w-auto">
-                <a href="{{ route('register.member') }}" wire:navigate class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-9 py-4 rounded-2xl bg-gradient-to-r from-[#D4AF37] via-[#E5C178] to-[#C5A059] text-slate-950 font-bold text-sm tracking-wide shadow-xl shadow-amber-500/20 hover:brightness-110 hover:scale-[1.02] active:scale-[0.98] transition-all">
+                <a href="{{ route('register.member') }}" wire:navigate class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-9 py-4 rounded-2xl bg-gradient-to-r from-[#D4AF37] via-[#E5C178] to-[#C5A059] text-slate-950 font-display font-bold text-sm tracking-wide shadow-xl shadow-amber-500/20 hover:brightness-110 hover:scale-[1.02] active:scale-[0.98] transition-all">
                     <span>Daftar Anggota Sekarang</span>
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                 </a>

@@ -5,7 +5,7 @@
     <div class="flex flex-col lg:flex-row justify-between lg:items-center gap-6 mb-8 pb-6 border-b border-slate-100">
         <div>
             <span class="text-xs font-bold uppercase tracking-widest text-asasi-gold">Pangkalan Data Resmi</span>
-            <h2 class="font-serif text-2xl md:text-3xl font-bold text-slate-900 mt-1">Direktori & Validasi Anggota</h2>
+            <h2 class="font-display text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight mt-1">Direktori & Validasi Anggota</h2>
             <p class="text-sm text-slate-500 mt-1">Ketik nama akademisi, universitas, atau Nomor KTA untuk memverifikasi keanggotaan.</p>
         </div>
 
@@ -38,7 +38,7 @@
                         </a>
                     </div>
                     <a href="{{ route('kta.verify', $member->nomor_anggota) }}" class="block">
-                        <h3 class="font-serif font-bold text-slate-900 text-base group-hover:text-asasi-navy transition">
+                        <h3 class="font-display font-bold text-slate-900 text-base group-hover:text-asasi-navy transition tracking-tight">
                             {{ $member->nama_lengkap }}
                         </h3>
                     </a>

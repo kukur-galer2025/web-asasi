@@ -7,7 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -15,8 +15,9 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', '-apple-system', 'sans-serif'],
+                        display: ['"Outfit"', '"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
                     },
                     colors: {
                         asasi: {
@@ -67,7 +68,7 @@
                 <svg class="w-14 sm:w-16 h-8 sm:h-9 text-asasi-navy group-hover:text-asasi-gold transition" viewBox="0 0 64 36" fill="currentColor">
                     <path d="M32 2L2 14l30 12 24-9.6V28h4V14L32 2zm-18 17.6v8.4c0 4.4 8.1 8 18 8s18-3.6 18-8v-8.4L32 27.2 14 19.6z"/>
                 </svg>
-                <span class="font-serif font-bold text-base sm:text-lg tracking-[0.28em] text-asasi-navy -mt-1 border-b-2 border-asasi-gold pb-0.5">
+                <span class="font-display font-extrabold text-base sm:text-lg tracking-[0.25em] text-asasi-navy -mt-1 border-b-2 border-asasi-gold pb-0.5">
                     ASASI
                 </span>
             </a>
@@ -288,7 +289,7 @@
                             </svg>
                         </div>
                         <div>
-                            <span class="font-serif font-extrabold text-xl tracking-[0.18em] text-white block leading-none">
+                            <span class="font-display font-black text-2xl tracking-[0.18em] text-white block leading-none">
                                 ASASI
                             </span>
                             <span class="text-[11px] font-medium tracking-wide text-amber-400/90 block mt-1">
@@ -320,7 +321,7 @@
 
                 <!-- 2. Tautan Penting (md:col-span-3) -->
                 <div class="md:col-span-3 space-y-2.5">
-                    <h4 class="font-serif font-bold text-white text-sm tracking-wider">TAUTAN CEPAT</h4>
+                    <h4 class="font-display font-bold text-white text-sm tracking-wider">TAUTAN CEPAT</h4>
                     <div class="w-6 h-0.5 bg-amber-400 mb-2"></div>
                     <ul class="space-y-1.5 text-xs">
                         <li>
@@ -346,7 +347,7 @@
 
                 <!-- 3. Kontak Ringkas (md:col-span-4) -->
                 <div class="md:col-span-4 space-y-2.5">
-                    <h4 class="font-serif font-bold text-white text-sm tracking-wider">SEKRETARIAT PUSAT</h4>
+                    <h4 class="font-display font-bold text-white text-sm tracking-wider">SEKRETARIAT PUSAT</h4>
                     <div class="w-6 h-0.5 bg-amber-400 mb-2"></div>
                     <div class="space-y-2 text-xs text-slate-300">
                         <div class="flex items-start gap-2">
