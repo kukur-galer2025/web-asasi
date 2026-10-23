@@ -220,7 +220,335 @@
      ========================================================================= -->
 <div class="max-w-7xl mx-auto px-4 sm:px-8 py-16 sm:py-24 space-y-24">
 
-    <!-- Section: 3 Pilar Utama ASASI -->
+    <!-- =========================================================================
+         2A. SAMBUTAN KETUA UMUM ASASI (Prof. Dr. apt. Elfahmi, M.Si.)
+         ========================================================================= -->
+    <section class="relative bg-white rounded-3xl border border-slate-200/90 shadow-xl shadow-slate-900/5 p-6 sm:p-10 lg:p-12 overflow-hidden">
+        <!-- Garis Aksen Emas di Bagian Atas -->
+        <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-asasi-navy via-amber-400 to-asasi-navy"></div>
+        
+        <!-- Watermark Logo Toga Samar di Pojok -->
+        <div class="absolute -right-12 -bottom-12 w-80 h-80 opacity-[0.03] pointer-events-none text-asasi-navy">
+            <svg viewBox="0 0 64 36" fill="currentColor">
+                <path d="M32 2L2 14l30 12 24-9.6V28h4V14L32 2zm-18 17.6v8.4c0 4.4 8.1 8 18 8s18-3.6 18-8v-8.4L32 27.2 14 19.6z"/>
+            </svg>
+        </div>
+
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            <!-- Kolom Foto Profil Ketua Umum (lg:col-span-4) -->
+            <div class="lg:col-span-4 flex flex-col items-center">
+                <div class="relative w-64 sm:w-72">
+                    <!-- Glow & Frame Emas Elegan -->
+                    <div class="absolute -inset-2 bg-gradient-to-tr from-amber-400/30 via-asasi-navy/20 to-blue-600/20 rounded-3xl blur-md"></div>
+                    
+                    <div class="relative rounded-3xl overflow-hidden bg-gradient-to-b from-slate-100 via-[#EBF1F8] to-slate-200 border-2 border-amber-400/70 shadow-xl flex flex-col items-center pt-4">
+                        <img 
+                            src="{{ asset('elfahmi.webp') }}" 
+                            alt="Prof. Dr. apt. Elfahmi, M.Si. - Ketua Umum ASASI" 
+                            class="w-56 sm:w-64 h-auto object-contain drop-shadow-2xl transition duration-500 hover:scale-105"
+                        >
+                        <!-- Badge Nama di Bawah Foto -->
+                        <div class="w-full bg-asasi-navy text-white text-center py-3 px-3 border-t border-amber-400/40">
+                            <span class="font-display font-extrabold text-sm block tracking-wide">Prof. Dr. apt. Elfahmi, M.Si.</span>
+                            <span class="text-[10px] text-amber-300 font-semibold uppercase tracking-wider block mt-0.5">Ketua Umum DPP ASASI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4 text-center space-y-1">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-[11px] font-bold border border-slate-200">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                        Periode Kepengurusan 2022–2027
+                    </span>
+                    <p class="text-xs text-slate-500 font-medium">Guru Besar Sekolah Farmasi ITB</p>
+                </div>
+            </div>
+
+            <!-- Kolom Teks Sambutan (lg:col-span-8) -->
+            <div class="lg:col-span-8 space-y-5">
+                
+                <div class="flex items-center justify-between gap-4 border-b border-slate-100 pb-4">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-asasi-navy/5 border border-asasi-navy/15 text-asasi-navy text-xs font-bold uppercase tracking-wider">
+                        <svg class="w-4 h-4 text-asasi-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                        </svg>
+                        <span>Pesan Kepemimpinan</span>
+                    </div>
+
+                    <span class="text-xs font-mono font-bold text-slate-400 uppercase tracking-widest hidden sm:inline-block">
+                        DPP ASASI INDONESIA
+                    </span>
+                </div>
+
+                <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                    Sambutan Ketua Umum ASASI
+                </h2>
+
+                <!-- Teks Sambutan Lengkap Sesuai Permintaan -->
+                <div class="space-y-4 text-slate-600 text-sm sm:text-base leading-relaxed">
+                    <p class="font-serif italic text-base sm:text-lg text-asasi-navy font-semibold">
+                        Assalamu’alaikum Warahmatullahi Wabarakatuh,
+                    </p>
+                    <p>
+                        Selamat datang di website resmi perkumpulan <strong>Akademisi dan Saintis Indonesia (ASASI)</strong>.
+                    </p>
+                    <p>
+                        Alhamdulilah website ASASI kembali hadir dengan format baru yang merupakan sarana komunikasi Pengurus Pusat, Pengurus Daerah, Pengurus Cabang, anggota ASASI dan masyarakat luas dari berbagai kalangan dalam rangka optimalisasi peran akademisi dan saintis Indonesia untuk Indonesia yang maju dan unggul.
+                    </p>
+                    <p>
+                        Website ini berisi berbagai macam kegiatan yang diadakan oleh ASASI dalam rangka mewujudkan visi, misi dan cita-citanya; berbagai <em>(sharing)</em> keilmuan dan kepakaran, memperluas jaringan <em>(network)</em> dan informasi lainnya yang bermanfaat dan bagi kemaslahatan yang banyak. Saya mengundang Masyarakat luas terutama para akademisi dan saintis Indonesia untuk dapat memanfaatkan website ini sehingga manfaatnya bisa dirasakan secara luas.
+                    </p>
+                </div>
+
+                <!-- Footer Sambutan: Identitas & Aksi -->
+                <div class="pt-5 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                        <h3 class="font-display font-extrabold text-base sm:text-lg text-slate-900">
+                            Prof. Dr. apt. Elfahmi, M.Si.
+                        </h3>
+                        <p class="text-xs font-bold text-amber-600 uppercase tracking-wider mt-0.5">
+                            Ketua Umum ASASI Periode 2022-2027
+                        </p>
+                        <p class="text-xs text-slate-500 font-medium">
+                            Guru Besar Sekolah Farmasi ITB
+                        </p>
+                    </div>
+
+                    <div class="shrink-0">
+                        <a href="{{ route('register.member') }}" wire:navigate class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-asasi-navy hover:bg-slate-900 text-white text-xs font-bold transition shadow-sm shadow-asasi-navy/20">
+                            <span>Daftar Anggota ASASI</span>
+                            <span class="text-amber-300">→</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =========================================================================
+         2B. KEUNGGULAN ANGGOTA ASASI (PROGRAM UPSKILL & FASILITAS KEANGGOTAAN)
+         ========================================================================= -->
+    <section class="space-y-12">
+        <div class="text-center max-w-3xl mx-auto space-y-3">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-800 text-xs font-bold uppercase tracking-wider">
+                <svg class="w-4 h-4 text-amber-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
+                </svg>
+                <span>Program Akselerasi & Fasilitas</span>
+            </div>
+            <h2 class="font-display text-3xl sm:text-4xl md:text-[40px] font-extrabold text-slate-900 tracking-tight leading-tight">
+                Keunggulan Anggota ASASI Upskill
+            </h2>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                Kembangkan potensi akademik dan perluas kematangan riset Anda bersama fasilitas pembinaan terpadu dan jejaring intelektual terkemuka di Indonesia.
+            </p>
+        </div>
+
+        <!-- Grid 8 Keunggulan (Responsif: 1 Kolom HP, 2 Kolom Tablet, 4 Kolom Desktop) -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <!-- 1. Sharing Ilmu Terbaru (THWA) -->
+            <div class="group bg-white p-6 sm:p-7 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-amber-400/80 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-amber-50 rounded-bl-full -mr-4 -mt-4 transition group-hover:scale-110"></div>
+                <div class="relative z-10 space-y-3">
+                    <div class="flex justify-between items-start">
+                        <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-700 flex items-center justify-center group-hover:bg-asasi-navy group-hover:text-amber-300 transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded-md bg-amber-100 text-amber-800 uppercase tracking-wide">
+                            Rutin Mingguan
+                        </span>
+                    </div>
+                    <h3 class="font-display font-extrabold text-slate-900 text-base sm:text-lg group-hover:text-asasi-navy transition-colors tracking-tight leading-snug">
+                        Sharing Ilmu Terbaru (THWA)
+                    </h3>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                        Sesi rutin <em>The Health & World Affairs</em> setiap Sabtu jam 16.00 WIB untuk membedah inovasi dan isu sains terkini bersama pakar.
+                    </p>
+                </div>
+                <div class="pt-4 mt-4 border-t border-slate-100 text-[11px] font-bold text-amber-700 flex items-center gap-1">
+                    <span>Setiap Sabtu 16.00 WIB</span>
+                </div>
+            </div>
+
+            <!-- 2. Penulisan Artikel Ilmiah -->
+            <div class="group bg-white p-6 sm:p-7 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-blue-500/80 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-bl-full -mr-4 -mt-4 transition group-hover:scale-110"></div>
+                <div class="relative z-10 space-y-3">
+                    <div class="w-12 h-12 rounded-2xl bg-[#0F2C59]/10 text-asasi-navy flex items-center justify-center group-hover:bg-asasi-navy group-hover:text-amber-300 transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-extrabold text-slate-900 text-base sm:text-lg group-hover:text-asasi-navy transition-colors tracking-tight leading-snug">
+                        Penulisan Artikel Ilmiah
+                    </h3>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                        Klinik bimbingan intensif penulisan manuskrip jurnal ilmiah bereputasi internasional (Scopus/WoS) dan nasional (SINTA).
+                    </p>
+                </div>
+                <div class="pt-4 mt-4 border-t border-slate-100 text-[11px] font-bold text-asasi-navy flex items-center gap-1">
+                    <span>Scopus & SINTA Coaching</span>
+                </div>
+            </div>
+
+            <!-- 3. Penulisan Proposal Penelitian -->
+            <div class="group bg-white p-6 sm:p-7 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-emerald-500/80 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-emerald-50 rounded-bl-full -mr-4 -mt-4 transition group-hover:scale-110"></div>
+                <div class="relative z-10 space-y-3">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-700 flex items-center justify-center group-hover:bg-asasi-navy group-hover:text-amber-300 transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-extrabold text-slate-900 text-base sm:text-lg group-hover:text-asasi-navy transition-colors tracking-tight leading-snug">
+                        Proposal Penelitian
+                    </h3>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                        Pelatihan perumusan proposal hibah riset kompetitif kementerian, BRIN, LPDP, dan donor riset internasional dengan review pakar.
+                    </p>
+                </div>
+                <div class="pt-4 mt-4 border-t border-slate-100 text-[11px] font-bold text-emerald-700 flex items-center gap-1">
+                    <span>Lolos Hibah Kompetitif</span>
+                </div>
+            </div>
+
+            <!-- 4. Penulisan Proposal PPM -->
+            <div class="group bg-white p-6 sm:p-7 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-amber-400/80 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-amber-50 rounded-bl-full -mr-4 -mt-4 transition group-hover:scale-110"></div>
+                <div class="relative z-10 space-y-3">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-700 flex items-center justify-center group-hover:bg-asasi-navy group-hover:text-amber-300 transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-extrabold text-slate-900 text-base sm:text-lg group-hover:text-asasi-navy transition-colors tracking-tight leading-snug">
+                        Penulisan Proposal PPM
+                    </h3>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                        Pendampingan penyusunan proposal Pengabdian Pada Masyarakat (PPM) berbasis solusi tepat guna yang berdampak nyata bagi bangsa.
+                    </p>
+                </div>
+                <div class="pt-4 mt-4 border-t border-slate-100 text-[11px] font-bold text-amber-700 flex items-center gap-1">
+                    <span>Pengabdian Masyarakat Aplikatif</span>
+                </div>
+            </div>
+
+            <!-- 5. Pendampingan Kenaikan Jafung -->
+            <div class="group bg-white p-6 sm:p-7 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-purple-500/80 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-purple-50 rounded-bl-full -mr-4 -mt-4 transition group-hover:scale-110"></div>
+                <div class="relative z-10 space-y-3">
+                    <div class="w-12 h-12 rounded-2xl bg-purple-500/10 text-purple-700 flex items-center justify-center group-hover:bg-asasi-navy group-hover:text-amber-300 transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-extrabold text-slate-900 text-base sm:text-lg group-hover:text-asasi-navy transition-colors tracking-tight leading-snug">
+                        Pendampingan Jafung
+                    </h3>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                        Bimbingan teknis kenaikan jabatan fungsional dosen dan peneliti (Asisten Ahli, Lektor, Lektor Kepala, hingga Guru Besar).
+                    </p>
+                </div>
+                <div class="pt-4 mt-4 border-t border-slate-100 text-[11px] font-bold text-purple-700 flex items-center gap-1">
+                    <span>Karier Dosen & Peneliti</span>
+                </div>
+            </div>
+
+            <!-- 6. Diskon Harga Kegiatan ASASI -->
+            <div class="group bg-white p-6 sm:p-7 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-rose-500/80 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-rose-50 rounded-bl-full -mr-4 -mt-4 transition group-hover:scale-110"></div>
+                <div class="relative z-10 space-y-3">
+                    <div class="w-12 h-12 rounded-2xl bg-rose-500/10 text-rose-700 flex items-center justify-center group-hover:bg-asasi-navy group-hover:text-amber-300 transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-extrabold text-slate-900 text-base sm:text-lg group-hover:text-asasi-navy transition-colors tracking-tight leading-snug">
+                        Diskon Harga Kegiatan
+                    </h3>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                        Tarif khusus dan diskon eksklusif untuk seluruh seminar nasional, konferensi internasional, sertifikasi, dan lokakarya ASASI.
+                    </p>
+                </div>
+                <div class="pt-4 mt-4 border-t border-slate-100 text-[11px] font-bold text-rose-700 flex items-center gap-1">
+                    <span>Tarif Khusus Member</span>
+                </div>
+            </div>
+
+            <!-- 7. Jejaring Para Expert Se-Indonesia -->
+            <div class="group bg-white p-6 sm:p-7 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-asasi-gold/80 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-amber-50 rounded-bl-full -mr-4 -mt-4 transition group-hover:scale-110"></div>
+                <div class="relative z-10 space-y-3">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-700 flex items-center justify-center group-hover:bg-asasi-navy group-hover:text-amber-300 transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-extrabold text-slate-900 text-base sm:text-lg group-hover:text-asasi-navy transition-colors tracking-tight leading-snug">
+                        Jejaring Expert Indonesia
+                    </h3>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                        Koneksi kolaborasi riset strategis dengan para pakar lintas disiplin ilmu yang tersebar di perguruan tinggi seluruh provinsi.
+                    </p>
+                </div>
+                <div class="pt-4 mt-4 border-t border-slate-100 text-[11px] font-bold text-asasi-navy flex items-center gap-1">
+                    <span>Kolaborasi 38 DPW Provinsi</span>
+                </div>
+            </div>
+
+            <!-- 8. Jejaring 70+ Profesor & 1000+ Doktor -->
+            <div class="group bg-gradient-to-br from-white via-amber-50/40 to-amber-100/30 p-6 sm:p-7 rounded-3xl border-2 border-amber-400/80 shadow-md hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 flex flex-col justify-between relative overflow-hidden">
+                <div class="absolute -right-6 -bottom-6 w-28 h-28 bg-amber-400/10 rounded-full blur-xl pointer-events-none"></div>
+                <div class="relative z-10 space-y-3">
+                    <div class="flex justify-between items-start">
+                        <div class="w-12 h-12 rounded-2xl bg-amber-500 text-slate-950 flex items-center justify-center font-black shadow-md">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a10.912 10.912 0 01-.25 2.149c-.279.882-.72 1.66-1.328 2.308a1 1 0 00.728 1.692h11.2a1 1 0 00.728-1.692c-.608-.648-1.049-1.426-1.328-2.308-.093-.7-.17-1.42-.25-2.149l2.644-1.131a1 1 0 000-1.84l-7-3zM5.5 16a2 2 0 100-4 2 2 0 000 4zm9 0a2 2 0 100-4 2 2 0 000 4z" />
+                            </svg>
+                        </div>
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 rounded-md bg-amber-400 text-slate-950 uppercase tracking-wide shadow-sm">
+                            Jejaring Elit
+                        </span>
+                    </div>
+                    <h3 class="font-display font-extrabold text-slate-900 text-base sm:text-lg tracking-tight leading-snug">
+                        70+ Profesor & 1000+ Doktor
+                    </h3>
+                    <p class="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+                        Bergabung dalam lingkaran akademisi tingkat tertinggi bersama lebih dari 70 Guru Besar dan 1.000+ Doktor dari berbagai disiplin ilmu.
+                    </p>
+                </div>
+                <div class="pt-4 mt-4 border-t border-amber-200/80 text-[11px] font-black text-amber-900 flex items-center gap-1">
+                    <span>Komunitas Intelektual Terbesar</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Banner Ringkas Ajakan Gabung di Bawah Upskill -->
+        <div class="rounded-2xl bg-slate-900 text-white p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 border border-amber-400/30 shadow-lg">
+            <div class="space-y-1.5 text-center md:text-left">
+                <span class="text-xs font-bold uppercase tracking-wider text-amber-400">Siap Mengembangkan Karier Akademik Anda?</span>
+                <h4 class="font-display font-extrabold text-lg sm:text-xl text-white">Dapatkan Seluruh Benefit & Fasilitas Upskill ASASI</h4>
+                <p class="text-xs sm:text-sm text-slate-300">Pendaftaran mudah secara online dengan akun Google dan terbitkan KTA resmi berbadan hukum.</p>
+            </div>
+            <a href="{{ route('register.member') }}" wire:navigate class="shrink-0 inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 text-slate-950 font-display font-bold text-xs uppercase tracking-wider shadow-md hover:brightness-110 transition">
+                <span>Daftar Sekarang</span>
+                <span>→</span>
+            </a>
+        </div>
+    </section>
+
+
+    <!-- =========================================================================
+         3. PILAR UTAMA ASASI
+         ========================================================================= -->
     <section id="tentang-kami" class="space-y-12">
         <div class="text-center max-w-3xl mx-auto space-y-3">
             <span class="text-xs font-bold uppercase tracking-widest text-asasi-gold">
