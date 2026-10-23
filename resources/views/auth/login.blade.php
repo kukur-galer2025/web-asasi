@@ -129,21 +129,21 @@
                         <div class="w-full border-t border-slate-200"></div>
                     </div>
                     <div class="relative flex justify-center text-[11px] uppercase">
-                        <span class="bg-white px-4 text-slate-400 font-bold tracking-widest">Atau Login Pengurus (Admin)</span>
+                        <span class="bg-white px-4 text-slate-400 font-bold tracking-widest">Atau Masuk dengan Email & Sandi</span>
                     </div>
                 </div>
 
-                <!-- Opsi 2: Form Login Pengurus -->
-                <form action="{{ route('login.process') }}" method="POST" class="space-y-5">
+                <!-- Opsi 2: Form Login Email & Password (Admin & Member) -->
+                <form action="{{ route('login.process') }}" method="POST" class="space-y-4">
                     @csrf
                     <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">Email Pengurus</label>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">Email Terdaftar</label>
                         <input 
                             type="email" 
                             name="email" 
                             value="{{ old('email') }}" 
                             required 
-                            placeholder="admin@asasi.or.id" 
+                            placeholder="nama@asasi.or.id" 
                             class="w-full bg-slate-50/80 border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-slate-900 placeholder-slate-400 focus:bg-white focus:border-asasi-navy focus:ring-4 focus:ring-asasi-navy/5 outline-none transition"
                         >
                     </div>
@@ -160,9 +160,35 @@
                     </div>
 
                     <button type="submit" class="w-full bg-asasi-navy hover:bg-slate-800 text-white font-bold py-3.5 rounded-xl text-sm shadow-md shadow-asasi-navy/10 transition">
-                        Masuk ke Panel Pengurus
+                        Masuk ke Portal
                     </button>
                 </form>
+
+                <!-- Kotak Bantuan Akun Demo Uji Coba -->
+                <div class="mt-6 p-4 rounded-2xl bg-slate-50 border border-slate-200/90 text-xs space-y-2.5">
+                    <div class="flex items-center justify-between text-slate-700 font-bold">
+                        <span class="flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                            Akun Demo Uji Coba
+                        </span>
+                        <span class="text-[10px] font-mono bg-slate-200/80 text-slate-700 px-2 py-0.5 rounded-md font-semibold">
+                            Password: <strong class="text-slate-900">password123</strong>
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2 text-[11px]">
+                        <div class="bg-white p-2.5 rounded-xl border border-slate-200">
+                            <span class="block font-bold text-asasi-navy text-xs">👑 Admin / Pengurus</span>
+                            <span class="font-mono text-slate-600 text-[10px] select-all block mt-0.5">admin@asasi.or.id</span>
+                            <span class="text-[9px] text-slate-400 block">Workspace Pengurus</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded-xl border border-slate-200">
+                            <span class="block font-bold text-emerald-700 text-xs">🎓 Member Aktif</span>
+                            <span class="font-mono text-slate-600 text-[10px] select-all block mt-0.5">member@asasi.or.id</span>
+                            <span class="text-[9px] text-slate-400 block">Dashboard & Unduh KTA</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="text-center lg:text-left text-xs text-slate-400">
