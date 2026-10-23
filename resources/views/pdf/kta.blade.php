@@ -6,78 +6,191 @@
     <style>
         @page {
             margin: 0px;
-            size: 325pt 204pt; /* Ukuran standar ID Card KTA Landscape */
+            size: 325pt 204pt;
         }
-        body {
-            margin: 0px;
-            padding: 0px;
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 325pt;
+            height: 204pt;
             font-family: Helvetica, Arial, sans-serif;
             background-color: #FCFBF7;
             color: #1E293B;
+            -webkit-print-color-adjust: exact;
         }
-        /* Kunci posisi agar kartu presisi dan tidak bocor ke halaman 2 */
-        .card-fixed {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            width: 325pt; height: 204pt;
-            border: 3pt solid #C5A059;
-            box-sizing: border-box;
-            padding: 9pt 11pt;
+        /* Outer Card Table: Exactly 318pt x 196pt + 2pt border = 322pt x 200pt (Safe Inside 325x204) */
+        table.outer-card {
+            width: 318pt;
+            height: 196pt;
+            border: 2pt solid #C5A059;
+            border-collapse: collapse;
+            table-layout: fixed;
+            background-color: #FCFBF7;
+            margin: 0 auto;
         }
-        .header-table { width: 100%; border-bottom: 1.5pt solid #C5A059; padding-bottom: 3.5pt; margin-bottom: 5pt; }
-        .org-title { font-family: "Times New Roman", Times, serif; font-size: 11.5pt; font-weight: bold; letter-spacing: 0.8px; color: #0F2C59; }
-        .org-subtitle { font-size: 5.5pt; color: #64748B; text-transform: uppercase; letter-spacing: 0.4px; margin-top: 1pt; }
-        .badge-kta { background-color: #0F2C59; color: #FFFFFF; font-size: 5.5pt; font-weight: bold; letter-spacing: 0.8px; padding: 2.5pt 5pt; border-radius: 2pt; }
-        
-        .main-layout { width: 100%; border-collapse: collapse; margin-top: 2pt; }
-        .photo-cell { width: 56pt; vertical-align: top; text-align: left; }
+        td.card-padding {
+            padding: 6pt 8pt;
+            vertical-align: top;
+        }
+
+        /* Header Table */
+        table.header-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-bottom: 1.2pt solid #C5A059;
+            padding-bottom: 2pt;
+            margin-bottom: 3pt;
+        }
+        .org-title {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 10.5pt;
+            font-weight: bold;
+            letter-spacing: 0.8px;
+            color: #0F2C59;
+            line-height: 1.1;
+        }
+        .org-subtitle {
+            font-size: 5pt;
+            color: #64748B;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            margin-top: 1pt;
+        }
+        .badge-kta {
+            background-color: #0F2C59;
+            color: #FFFFFF;
+            font-size: 5.5pt;
+            font-weight: bold;
+            letter-spacing: 0.8px;
+            padding: 2pt 5pt;
+            border-radius: 2pt;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        /* Body Section Table */
+        table.content-table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+        .photo-col {
+            width: 48pt;
+            vertical-align: top;
+        }
         .photo-frame {
-            width: 48pt; height: 66pt;
-            border: 1.2pt solid #C5A059;
+            width: 42pt;
+            height: 58pt;
+            border: 1pt solid #C5A059;
             background-color: #FFFFFF;
             overflow: hidden;
             text-align: center;
         }
         .photo-img {
-            width: 48pt; height: 66pt;
+            width: 42pt;
+            height: 58pt;
             object-fit: cover;
             display: block;
         }
         .photo-placeholder {
-            width: 48pt; height: 66pt;
+            width: 42pt;
+            height: 58pt;
             background-color: #F1F5F9;
             color: #94A3B8;
-            font-size: 5.5pt;
+            font-size: 5pt;
             text-align: center;
-            padding-top: 21pt;
-            box-sizing: border-box;
+            padding-top: 17pt;
             font-weight: bold;
             line-height: 1.3;
         }
-        
-        .data-cell { vertical-align: top; padding: 0 6pt; }
-        .id-banner { background-color: #F8FAFC; border-left: 2.5pt solid #0F2C59; padding: 2.5pt 5pt; margin-bottom: 4pt; }
-        .id-label { font-size: 5pt; color: #64748B; text-transform: uppercase; letter-spacing: 0.5px; }
-        .id-number { font-size: 8.5pt; font-family: Courier, monospace; font-weight: bold; color: #0F2C59; letter-spacing: 0.7px; }
-        
-        .data-table { width: 100%; border-collapse: collapse; }
-        .data-table td { padding: 1.2pt 0; font-size: 7pt; vertical-align: top; line-height: 1.15; }
-        .data-label { width: 48pt; color: #64748B; text-transform: uppercase; font-size: 5.8pt; }
-        .data-value { font-weight: bold; color: #0F172A; }
-        
-        .qr-cell { width: 52pt; vertical-align: top; text-align: center; }
+
+        .data-col {
+            vertical-align: top;
+            padding: 0 5pt;
+        }
+        .id-banner {
+            background-color: #F1F5F9;
+            border-left: 2pt solid #0F2C59;
+            padding: 2pt 4pt;
+            margin-bottom: 2.5pt;
+        }
+        .id-label {
+            font-size: 4.5pt;
+            color: #64748B;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .id-number {
+            font-size: 7.5pt;
+            font-family: Courier, monospace;
+            font-weight: bold;
+            color: #0F2C59;
+            letter-spacing: 0.5px;
+        }
+
+        table.info-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table.info-table td {
+            padding: 0.8pt 0;
+            font-size: 6.5pt;
+            vertical-align: top;
+            line-height: 1.15;
+        }
+        .info-label {
+            width: 42pt;
+            color: #64748B;
+            text-transform: uppercase;
+            font-size: 5.2pt;
+        }
+        .info-val {
+            font-weight: bold;
+            color: #0F172A;
+        }
+
+        .qr-col {
+            width: 50pt;
+            vertical-align: top;
+            text-align: right;
+        }
         .qr-frame {
-            width: 44pt; height: 44pt;
+            width: 42pt;
+            height: 42pt;
             border: 1pt solid #C5A059;
             background-color: #FFFFFF;
-            padding: 1.5pt;
-            box-sizing: border-box;
+            padding: 1pt;
             display: inline-block;
+            text-align: center;
         }
-        .qr-img { width: 40pt; height: 40pt; display: block; }
-        .qr-caption { font-size: 4.5pt; font-weight: bold; color: #0F2C59; text-transform: uppercase; letter-spacing: 0.3px; margin-top: 2pt; text-align: center; }
+        .qr-img {
+            width: 40pt;
+            height: 40pt;
+            display: block;
+            margin: 0 auto;
+        }
+        .qr-caption {
+            font-size: 4.2pt;
+            font-weight: bold;
+            color: #0F2C59;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            margin-top: 1.5pt;
+            text-align: center;
+        }
 
-        .footer-fixed { position: absolute; bottom: 7pt; left: 11pt; right: 11pt; border-top: 0.5pt solid #E2E8F0; padding-top: 3pt; font-size: 5.5pt; color: #64748B; }
+        /* Footer Table */
+        table.footer-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-top: 0.5pt solid #E2E8F0;
+            margin-top: 3pt;
+            padding-top: 2pt;
+        }
+        table.footer-table td {
+            font-size: 5pt;
+            color: #64748B;
+        }
     </style>
 </head>
 <body>
@@ -110,92 +223,101 @@
         }
     @endphp
 
-    <div class="card-fixed">
-        <table class="header-table" cellpadding="0" cellspacing="0">
-            <tr>
-                <td style="vertical-align: middle;">
-                    <div class="org-title">ASASI INDONESIA</div>
-                    <div class="org-subtitle">Perkumpulan Akademisi & Saintis Indonesia</div>
-                </td>
-                <td style="vertical-align: middle; text-align: right; width: 85pt;">
-                    <span class="badge-kta">KARTU ANGGOTA</span>
-                </td>
-            </tr>
-        </table>
+    <table class="outer-card" cellpadding="0" cellspacing="0">
+        <tr>
+            <td class="card-padding">
+                
+                <!-- 1. Header -->
+                <table class="header-table" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td style="vertical-align: middle;">
+                            <div class="org-title">ASASI INDONESIA</div>
+                            <div class="org-subtitle">Perkumpulan Akademisi & Saintis Indonesia</div>
+                        </td>
+                        <td style="vertical-align: middle; text-align: right; width: 75pt;">
+                            <span class="badge-kta">KARTU ANGGOTA</span>
+                        </td>
+                    </tr>
+                </table>
 
-        <table class="main-layout" cellpadding="0" cellspacing="0">
-            <tr>
-                <!-- 1. Kolom Pas Foto 3x4 Formal -->
-                <td class="photo-cell">
-                    <div class="photo-frame">
-                        @if($photoBase64)
-                            <img src="{{ $photoBase64 }}" class="photo-img" alt="Pas Foto">
-                        @else
-                            <div class="photo-placeholder">
-                                PAS FOTO<br>3 x 4
+                <!-- 2. Main Body -->
+                <table class="content-table" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <!-- Foto Formal -->
+                        <td class="photo-col">
+                            <div class="photo-frame">
+                                @if($photoBase64)
+                                    <img src="{{ $photoBase64 }}" class="photo-img" alt="Pas Foto">
+                                @else
+                                    <div class="photo-placeholder">
+                                        PAS FOTO<br>3 x 4
+                                    </div>
+                                @endif
                             </div>
-                        @endif
-                    </div>
-                </td>
+                        </td>
 
-                <!-- 2. Kolom Data Anggota -->
-                <td class="data-cell">
-                    <div class="id-banner">
-                        <div class="id-label">Nomor Induk Keanggotaan Nasional</div>
-                        <div class="id-number">{{ $member->nomor_anggota }}</div>
-                    </div>
+                        <!-- Data Member -->
+                        <td class="data-col">
+                            <div class="id-banner">
+                                <div class="id-label">Nomor Induk Keanggotaan Nasional</div>
+                                <div class="id-number">{{ $member->nomor_anggota }}</div>
+                            </div>
 
-                    <table class="data-table" cellpadding="0" cellspacing="0">
-                        <tr>
-                            <td class="data-label">Nama & Gelar</td>
-                            <td class="data-value">: {{ \Illuminate\Support\Str::limit($member->nama_lengkap, 28) }}</td>
-                        </tr>
-                        <tr>
-                            <td class="data-label">Afiliasi Utama</td>
-                            <td class="data-value">: {{ \Illuminate\Support\Str::limit($member->instansi, 28) }}</td>
-                        </tr>
-                        @if($member->wilayah_dpw)
-                        <tr>
-                            <td class="data-label">Wilayah DPW</td>
-                            <td class="data-value">: {{ \Illuminate\Support\Str::limit($member->wilayah_dpw, 28) }}</td>
-                        </tr>
-                        @endif
-                        <tr>
-                            <td class="data-label">Status Resmi</td>
-                            <td class="data-value" style="color: #059669;">: Anggota Aktif Terverifikasi</td>
-                        </tr>
-                    </table>
-                </td>
+                            <table class="info-table" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td class="info-label">Nama & Gelar</td>
+                                    <td class="info-val">: {{ \Illuminate\Support\Str::limit($member->nama_lengkap, 26) }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="info-label">Afiliasi</td>
+                                    <td class="info-val">: {{ \Illuminate\Support\Str::limit($member->instansi, 26) }}</td>
+                                </tr>
+                                @if($member->wilayah_dpw)
+                                <tr>
+                                    <td class="info-label">Wilayah DPW</td>
+                                    <td class="info-val">: {{ \Illuminate\Support\Str::limit($member->wilayah_dpw, 26) }}</td>
+                                </tr>
+                                @endif
+                                <tr>
+                                    <td class="info-label">Status Resmi</td>
+                                    <td class="info-val" style="color: #059669;">: Anggota Aktif Terverifikasi</td>
+                                </tr>
+                            </table>
+                        </td>
 
-                <!-- 3. Kolom QR Code Scan Validasi -->
-                <td class="qr-cell">
-                    @if($qrBase64)
-                        <div class="qr-frame">
-                            <img src="{{ $qrBase64 }}" class="qr-img" alt="QR Verifikasi">
-                        </div>
-                        <div class="qr-caption">Scan Validasi</div>
-                    @else
-                        <div class="qr-frame" style="background-color: #F8FAFC;">
-                            <div style="font-size: 5pt; color: #94A3B8; padding-top: 15pt;">QR CODE</div>
-                        </div>
-                        <div class="qr-caption">Scan Validasi</div>
-                    @endif
-                </td>
-            </tr>
-        </table>
+                        <!-- QR Code -->
+                        <td class="qr-col">
+                            <div style="text-align: center; width: 44pt; float: right;">
+                                @if($qrBase64)
+                                    <div class="qr-frame">
+                                        <img src="{{ $qrBase64 }}" class="qr-img" alt="QR Verifikasi">
+                                    </div>
+                                    <div class="qr-caption">Scan Validasi</div>
+                                @else
+                                    <div class="qr-frame" style="background-color: #F8FAFC;">
+                                        <div style="font-size: 5pt; color: #94A3B8; padding-top: 15pt;">QR CODE</div>
+                                    </div>
+                                    <div class="qr-caption">Scan Validasi</div>
+                                @endif
+                            </div>
+                        </td>
+                    </tr>
+                </table>
 
-        <div class="footer-fixed">
-            <table width="100%" cellpadding="0" cellspacing="0">
-                <tr>
-                    <td style="text-align: left;">
-                        Berlaku s/d: <strong style="color: #0F172A;">{{ optional($member->masa_berlaku_sampai)->format('d M Y') }}</strong>
-                    </td>
-                    <td style="text-align: right; font-weight: bold; color: #0F2C59; text-transform: uppercase;">
-                        Dewan Pengurus Pusat ASASI
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
+                <!-- 3. Footer -->
+                <table class="footer-table" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td style="text-align: left;">
+                            Masa Berlaku: <strong style="color: #0F172A;">{{ optional($member->masa_berlaku_sampai)->format('d M Y') ?? 'Seumur Hidup' }}</strong>
+                        </td>
+                        <td style="text-align: right; font-weight: bold; color: #0F2C59; text-transform: uppercase;">
+                            Dewan Pengurus Pusat ASASI
+                        </td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+    </table>
 </body>
 </html>
