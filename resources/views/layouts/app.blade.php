@@ -32,9 +32,6 @@
         }
     </script>
 
-    <!-- Alpine.js (Garansi 100% Interaktivitas Dropdown & Menu Mobile) -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
-
     @livewireStyles
     @stack('styles')
 </head>
