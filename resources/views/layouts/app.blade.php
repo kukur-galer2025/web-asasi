@@ -33,6 +33,7 @@
     </script>
 
     @livewireStyles
+    @stack('styles')
 </head>
 <body class="bg-[#F9FAFB] text-slate-700 font-sans min-h-screen flex flex-col antialiased">
 

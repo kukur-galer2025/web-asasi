@@ -7,7 +7,7 @@
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
 
         <!-- Header / Breadcrumb -->
-        <div class="text-center mb-10">
+        <div class="text-center mb-10 no-print">
             <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-asasi-navy/5 border border-asasi-navy/15 text-asasi-navy text-xs font-bold uppercase tracking-wider mb-4">
                 <svg class="w-4 h-4 text-asasi-gold" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v3a1 1 0 102 0V7z" clip-rule="evenodd" />
@@ -23,7 +23,7 @@
         </div>
 
         <!-- Card Pencarian Nomor KTA -->
-        <div class="bg-white rounded-3xl border border-slate-200/90 shadow-xl shadow-slate-200/50 p-6 md:p-8 mb-10 relative overflow-hidden">
+        <div class="bg-white rounded-3xl border border-slate-200/90 shadow-xl shadow-slate-200/50 p-6 md:p-8 mb-10 relative overflow-hidden no-print">
             <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-asasi-navy via-asasi-gold to-asasi-navy"></div>
 
             <form action="{{ route('kta.verify') }}" method="GET" class="flex flex-col sm:flex-row items-stretch gap-3">
@@ -65,7 +65,7 @@
 
         @if($verificationStatus === 'valid' && $member)
             <!-- HASIL 1: VALID & AKTIF (SERTIFIKAT RESMI) -->
-            <div id="print-certificate" class="bg-white rounded-3xl border-2 border-asasi-gold/50 shadow-2xl shadow-asasi-gold/10 p-6 md:p-10 relative overflow-hidden mb-10">
+            <div id="print-certificate" class="bg-white rounded-3xl border-2 border-asasi-gold/50 shadow-2xl shadow-asasi-gold/10 p-6 md:p-8 relative overflow-hidden mb-10">
                 <!-- Watermark Logo -->
                 <div class="absolute -right-16 -bottom-16 w-80 h-80 opacity-[0.03] pointer-events-none text-asasi-navy">
                     <svg viewBox="0 0 64 36" fill="currentColor">
@@ -73,40 +73,62 @@
                     </svg>
                 </div>
 
-                <!-- Pita Status Header -->
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-100 mb-8">
+                <!-- Kop Resmi DPP ASASI (Tampak di Layar & Cetak) -->
+                <div class="print-kop flex items-center justify-between pb-4 mb-5 border-b-2 border-slate-100">
                     <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center shrink-0">
-                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-10 h-6 sm:w-12 sm:h-7 text-asasi-navy shrink-0" viewBox="0 0 64 36" fill="currentColor">
+                            <path d="M32 2L2 14l30 12 24-9.6V28h4V14L32 2zm-18 17.6v8.4c0 4.4 8.1 8 18 8s18-3.6 18-8v-8.4L32 27.2 14 19.6z"/>
+                        </svg>
+                        <div>
+                            <div class="font-display font-extrabold text-xs sm:text-sm tracking-wider text-asasi-navy uppercase leading-tight">
+                                PERKUMPULAN AKADEMISI DAN SAINTIS INDONESIA (ASASI)
+                            </div>
+                            <div class="text-[10px] text-slate-500 font-semibold tracking-wide uppercase">
+                                Dewan Pimpinan Pusat • Surat Bukti Verifikasi Keabsahan KTA Elektronik
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden sm:block text-right">
+                        <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-slate-100 text-[10px] font-mono font-bold text-slate-600 border border-slate-200 uppercase">
+                            Dokumen Resmi
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Pita Status Header -->
+                <div class="print-status-row flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100 mb-5">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                             </svg>
                         </div>
                         <div>
-                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-100 text-emerald-800 border border-emerald-300">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-emerald-100 text-emerald-800 border border-emerald-300">
                                 <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                                 TERVERIFIKASI RESMI &amp; AKTIF
                             </span>
-                            <div class="text-xs text-slate-500 mt-1">
+                            <div class="text-[11px] text-slate-500 mt-0.5">
                                 Diverifikasi oleh Sistem Sentral DPP ASASI pada {{ now()->translatedFormat('d F Y, H:i') }} WIB
                             </div>
                         </div>
                     </div>
 
                     @if($securityHash)
-                        <div class="text-left md:text-right bg-slate-50 md:bg-transparent p-3 md:p-0 rounded-xl border md:border-none border-slate-100">
-                            <div class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Integrity Digital Digest</div>
+                        <div class="text-left sm:text-right bg-slate-50 sm:bg-transparent p-2 sm:p-0 rounded-xl border sm:border-none border-slate-100">
+                            <div class="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Integrity Digital Digest</div>
                             <div class="font-mono text-xs font-bold text-asasi-navy tracking-wider">{{ $securityHash }}</div>
                         </div>
                     @endif
                 </div>
 
                 <!-- Konten Profil Member -->
-                <div class="grid md:grid-cols-12 gap-8 items-start">
+                <div class="print-profile-grid grid md:grid-cols-12 gap-6 items-start">
                     
-                    <!-- Kolom Pas Foto & QR Code Stamp (3 Kolom) -->
-                    <div class="md:col-span-4 flex flex-col items-center text-center">
+                    <!-- Kolom Pas Foto & QR Code Stamp -->
+                    <div class="print-photo-col md:col-span-4 flex flex-col items-center text-center">
                         <!-- Frame Pas Foto Formal 3x4 -->
-                        <div class="relative w-36 h-48 rounded-xl p-1 bg-gradient-to-b from-asasi-gold via-slate-200 to-asasi-gold shadow-md">
+                        <div class="print-photo-card relative w-32 h-44 sm:w-36 sm:h-48 rounded-xl p-1 bg-gradient-to-b from-asasi-gold via-slate-200 to-asasi-gold shadow-md">
                             <div class="w-full h-full rounded-lg overflow-hidden bg-slate-100 flex items-center justify-center">
                                 @if($member->foto_profil && \Illuminate\Support\Facades\Storage::disk('public')->exists($member->foto_profil))
                                     <img 
@@ -115,11 +137,11 @@
                                         class="w-full h-full object-cover"
                                     >
                                 @else
-                                    <div class="flex flex-col items-center justify-center text-slate-400 p-4">
-                                        <svg class="w-12 h-12 text-slate-300 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <div class="flex flex-col items-center justify-center text-slate-400 p-3">
+                                        <svg class="w-10 h-10 text-slate-300 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                                         </svg>
-                                        <span class="text-[10px] font-bold uppercase tracking-wider">Pas Foto Resmi</span>
+                                        <span class="text-[9px] font-bold uppercase tracking-wider">Pas Foto Resmi</span>
                                     </div>
                                 @endif
                             </div>
@@ -127,62 +149,62 @@
 
                         <!-- QR Code Digital Certificate Stamp -->
                         @if($qrBase64)
-                            <div class="mt-4 p-2 bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col items-center">
-                                <img src="{{ $qrBase64 }}" class="w-24 h-24" alt="QR Code Verifikasi">
-                                <span class="text-[9px] font-mono font-bold text-slate-500 uppercase tracking-widest mt-1">SCAN UNTUK VALIDASI</span>
+                            <div class="print-qr-card mt-3 p-2 bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col items-center">
+                                <img src="{{ $qrBase64 }}" class="w-20 h-20 sm:w-22 sm:h-22" alt="QR Code Verifikasi">
+                                <span class="text-[8px] sm:text-[9px] font-mono font-bold text-slate-500 uppercase tracking-widest mt-1">SCAN UNTUK VALIDASI</span>
                             </div>
                         @endif
                     </div>
 
-                    <!-- Kolom Rincian Data Akademisi (8 Kolom) -->
-                    <div class="md:col-span-8">
-                        <div class="mb-4">
-                            <span class="text-[11px] font-bold uppercase tracking-widest text-asasi-gold">Identitas Anggota Terdaftar</span>
-                            <h2 class="font-serif text-2xl md:text-3xl font-extrabold text-slate-900 mt-0.5">
+                    <!-- Kolom Rincian Data Akademisi -->
+                    <div class="print-info-col md:col-span-8">
+                        <div class="mb-3">
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-asasi-gold">Identitas Anggota Terdaftar</span>
+                            <h2 class="font-serif text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 mt-0.5 leading-snug">
                                 {{ $member->nama_lengkap }}
                             </h2>
                         </div>
 
                         <!-- Banner Nomor KTA -->
-                        <div class="bg-slate-50 rounded-2xl border border-slate-200 p-4 mb-6 flex flex-wrap justify-between items-center gap-3">
+                        <div class="print-nomor-banner bg-slate-50 rounded-xl border border-slate-200 p-3 mb-4 flex flex-wrap justify-between items-center gap-2">
                             <div>
-                                <div class="text-[11px] font-bold uppercase text-slate-400">Nomor Tanda Anggota (KTA ID)</div>
-                                <div class="font-mono text-xl font-extrabold text-asasi-navy tracking-wider mt-0.5">
+                                <div class="text-[10px] font-bold uppercase text-slate-400">Nomor Tanda Anggota (KTA ID)</div>
+                                <div class="font-mono text-lg sm:text-xl font-extrabold text-asasi-navy tracking-wider mt-0.5">
                                     {{ $member->nomor_anggota }}
                                 </div>
                             </div>
-                            <span class="text-xs px-3 py-1 rounded-lg bg-asasi-navy text-white font-bold">
+                            <span class="text-[11px] px-2.5 py-1 rounded-md bg-asasi-navy text-white font-bold">
                                 Keanggotaan Penuh
                             </span>
                         </div>
 
                         <!-- Grid Rincian -->
-                        <dl class="grid sm:grid-cols-2 gap-4 text-sm">
-                            <div class="bg-white rounded-xl p-3.5 border border-slate-100">
-                                <dt class="text-xs text-slate-400 font-semibold uppercase">Afiliasi / Universitas</dt>
-                                <dd class="font-bold text-slate-800 mt-1">{{ $member->instansi }}</dd>
+                        <dl class="print-details-grid grid sm:grid-cols-2 gap-2.5 sm:gap-3 text-xs sm:text-sm">
+                            <div class="print-field-card bg-white rounded-xl p-3 border border-slate-100">
+                                <dt class="text-[10px] sm:text-xs text-slate-400 font-semibold uppercase">Afiliasi / Universitas</dt>
+                                <dd class="font-bold text-slate-800 mt-0.5 text-xs sm:text-sm">{{ $member->instansi }}</dd>
                             </div>
 
-                            <div class="bg-white rounded-xl p-3.5 border border-slate-100">
-                                <dt class="text-xs text-slate-400 font-semibold uppercase">Bidang Keahlian / Kepakaran</dt>
-                                <dd class="font-bold text-slate-800 mt-1">{{ $member->bidang_keahlian ?: '-' }}</dd>
+                            <div class="print-field-card bg-white rounded-xl p-3 border border-slate-100">
+                                <dt class="text-[10px] sm:text-xs text-slate-400 font-semibold uppercase">Bidang Keahlian / Kepakaran</dt>
+                                <dd class="font-bold text-slate-800 mt-0.5 text-xs sm:text-sm">{{ $member->bidang_keahlian ?: '-' }}</dd>
                             </div>
 
-                            <div class="bg-white rounded-xl p-3.5 border border-slate-100">
-                                <dt class="text-xs text-slate-400 font-semibold uppercase">Dewan Pimpinan Wilayah (DPW)</dt>
-                                <dd class="font-bold text-slate-800 mt-1">{{ $member->wilayah_dpw ?: 'Dewan Pimpinan Pusat (DPP)' }}</dd>
+                            <div class="print-field-card bg-white rounded-xl p-3 border border-slate-100">
+                                <dt class="text-[10px] sm:text-xs text-slate-400 font-semibold uppercase">Dewan Pimpinan Wilayah (DPW)</dt>
+                                <dd class="font-bold text-slate-800 mt-0.5 text-xs sm:text-sm">{{ $member->wilayah_dpw ?: 'Dewan Pimpinan Pusat (DPP)' }}</dd>
                             </div>
 
-                            <div class="bg-white rounded-xl p-3.5 border border-slate-100">
-                                <dt class="text-xs text-slate-400 font-semibold uppercase">Masa Berlaku Kartu</dt>
-                                <dd class="font-bold text-emerald-700 mt-1">
+                            <div class="print-field-card bg-white rounded-xl p-3 border border-slate-100">
+                                <dt class="text-[10px] sm:text-xs text-slate-400 font-semibold uppercase">Masa Berlaku Kartu</dt>
+                                <dd class="font-bold text-emerald-700 mt-0.5 text-xs sm:text-sm">
                                     Sampai {{ optional($member->masa_berlaku_sampai)->translatedFormat('d F Y') }}
                                 </dd>
                             </div>
 
-                            <div class="bg-white rounded-xl p-3.5 border border-slate-100">
-                                <dt class="text-xs text-slate-400 font-semibold uppercase">Nomor Induk Kependudukan</dt>
-                                <dd class="font-mono font-semibold text-slate-700 mt-1">
+                            <div class="print-field-card bg-white rounded-xl p-3 border border-slate-100">
+                                <dt class="text-[10px] sm:text-xs text-slate-400 font-semibold uppercase">Nomor Induk Kependudukan</dt>
+                                <dd class="font-mono font-semibold text-slate-700 mt-0.5 text-xs sm:text-sm">
                                     @if($member->nik)
                                         {{ substr($member->nik, 0, 4) . ' •••• •••• ' . substr($member->nik, -2) }}
                                     @else
@@ -191,9 +213,9 @@
                                 </dd>
                             </div>
 
-                            <div class="bg-white rounded-xl p-3.5 border border-slate-100">
-                                <dt class="text-xs text-slate-400 font-semibold uppercase">Tanggal Registrasi</dt>
-                                <dd class="font-semibold text-slate-700 mt-1">
+                            <div class="print-field-card bg-white rounded-xl p-3 border border-slate-100">
+                                <dt class="text-[10px] sm:text-xs text-slate-400 font-semibold uppercase">Tanggal Registrasi</dt>
+                                <dd class="font-semibold text-slate-700 mt-0.5 text-xs sm:text-sm">
                                     {{ optional($member->created_at)->translatedFormat('d F Y') }}
                                 </dd>
                             </div>
@@ -202,31 +224,42 @@
                 </div>
 
                 <!-- Maklumat Keaslian Hukum DPP ASASI -->
-                <div class="mt-8 pt-6 border-t border-slate-100">
-                    <div class="rounded-2xl bg-slate-50 border border-slate-200 p-4 text-xs text-slate-600 flex items-start gap-3">
-                        <svg class="w-5 h-5 text-asasi-gold shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="print-legal-notice mt-5 pt-4 border-t border-slate-100">
+                    <div class="rounded-xl bg-slate-50 border border-slate-200 p-3 text-[11px] leading-relaxed text-slate-600 flex items-start gap-2.5">
+                        <svg class="w-4 h-4 text-asasi-gold shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        <div class="leading-relaxed">
-                            <strong>Ketetapan Keaslian:</strong> Data di atas tercatat secara sah dan otentik dalam Pangkalan Data Sentral Perkumpulan Akademisi dan Saintis Indonesia (DPP ASASI). KTA ini sah digunakan sebagai bukti identitas profesi akademisi dan saintis di seluruh wilayah Negara Kesatuan Republik Indonesia.
+                        <div>
+                            <strong>Ketetapan Keaslian:</strong> Data di atas tercatat secara sah dan otentik dalam Pangkalan Data Sentral Perkumpulan Akademisi dan Saintis Indonesia (DPP ASASI). Dokumen verifikasi ini sah digunakan sebagai bukti pemenuhan identitas profesi akademisi dan saintis di seluruh wilayah Negara Kesatuan Republik Indonesia.
                         </div>
                     </div>
                 </div>
 
-                <!-- Tombol Aksi -->
+                <!-- Footer Catatan Validasi Elektronik Resmi ASASI (Tampak di Cetak) -->
+                <div class="print-footer-note mt-3 pt-2.5 border-t border-slate-200 flex justify-between items-center text-[9px] text-slate-400">
+                    <div>
+                        <span>Dicetak secara elektronik dari Portal Resmi DPP ASASI (asasi.or.id)</span> • 
+                        <span>Ref ID: <strong class="font-mono text-slate-600">VRF-{{ strtoupper(substr(md5($member->nomor_anggota . $member->created_at), 0, 10)) }}</strong></span>
+                    </div>
+                    <div class="font-mono font-bold text-emerald-700">
+                        DPP ASASI VERIFIED &amp; SECURED
+                    </div>
+                </div>
+
+                <!-- Tombol Aksi (Hanya di Layar) -->
                 <div class="mt-6 flex flex-wrap items-center justify-between gap-3 no-print">
                     <button 
                         onclick="window.print()" 
-                        class="inline-flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold px-5 py-2.5 rounded-xl text-xs transition"
+                        class="inline-flex items-center gap-2 bg-asasi-navy hover:bg-slate-900 text-white font-bold px-5 py-2.5 rounded-xl text-xs transition shadow-sm"
                     >
-                        <svg class="w-4 h-4 text-asasi-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-4 h-4 text-asasi-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
                         </svg>
                         <span>Cetak Bukti Verifikasi</span>
                     </button>
 
                     <a 
-                        href="{{ route('home') }}#direktori-anggota" 
+                        href="{{ route('member.directory') }}" 
                         class="text-xs font-bold text-asasi-navy hover:text-asasi-gold transition flex items-center gap-1"
                     >
                         <span>Kembali ke Direktori Anggota</span>
@@ -351,22 +384,197 @@
 
 <style>
 @media print {
-    body * {
-        visibility: hidden;
+    @page {
+        size: A4 portrait;
+        margin: 8mm 10mm;
     }
-    #print-certificate, #print-certificate * {
-        visibility: visible;
+
+    /* Force background colors and borders in print preview */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
     }
-    #print-certificate {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        border: none !important;
-        box-shadow: none !important;
+
+    html, body {
+        background: #ffffff !important;
+        color: #0f172a !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        height: auto !important;
+        min-height: auto !important;
     }
-    .no-print {
+
+    /* Hide global site elements */
+    header, footer, nav, form, .no-print {
         display: none !important;
+    }
+
+    /* Reset main layout wrappers */
+    main {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        display: block !important;
+    }
+
+    main > div {
+        background: transparent !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    main > div > div {
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* Ensure certificate container is strictly 1 page */
+    #print-certificate {
+        position: relative !important;
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        padding: 8mm 10mm !important;
+        border: 1.5pt solid #C5A059 !important;
+        border-radius: 12px !important;
+        box-shadow: none !important;
+        background: #ffffff !important;
+        box-sizing: border-box !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+        overflow: hidden !important;
+    }
+
+    /* Force Kop header */
+    .print-kop {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding-bottom: 8px !important;
+        margin-bottom: 10px !important;
+        border-bottom: 1.5pt solid #CBD5E1 !important;
+    }
+
+    /* Force status row side-by-side */
+    .print-status-row {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding-bottom: 8px !important;
+        margin-bottom: 10px !important;
+        border-bottom: 1px solid #E2E8F0 !important;
+    }
+
+    /* Force 2-column layout in print (Left: Photo & QR, Right: Data) */
+    .print-profile-grid {
+        display: grid !important;
+        grid-template-columns: 125px 1fr !important;
+        gap: 16px !important;
+        align-items: start !important;
+    }
+
+    .print-photo-col {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+
+    .print-photo-card {
+        width: 105px !important;
+        height: 140px !important;
+        border-radius: 8px !important;
+        margin: 0 auto !important;
+        padding: 2px !important;
+    }
+
+    .print-qr-card {
+        width: 80px !important;
+        margin-top: 6px !important;
+        padding: 3px !important;
+        border: 1px solid #E2E8F0 !important;
+        border-radius: 6px !important;
+    }
+
+    .print-qr-card img {
+        width: 65px !important;
+        height: 65px !important;
+    }
+
+    .print-info-col {
+        display: block !important;
+    }
+
+    .print-info-col h2 {
+        font-size: 15pt !important;
+        line-height: 1.2 !important;
+        margin-top: 2px !important;
+        margin-bottom: 6px !important;
+    }
+
+    .print-nomor-banner {
+        padding: 5px 10px !important;
+        margin-bottom: 8px !important;
+        border: 1px solid #E2E8F0 !important;
+        border-radius: 6px !important;
+    }
+
+    .print-nomor-banner .font-mono {
+        font-size: 13pt !important;
+    }
+
+    /* Force 2 columns grid for details */
+    .print-details-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 6px !important;
+    }
+
+    .print-field-card {
+        padding: 4px 8px !important;
+        border: 1px solid #E2E8F0 !important;
+        border-radius: 6px !important;
+        background: #F8FAFC !important;
+    }
+
+    .print-field-card dt {
+        font-size: 7.5pt !important;
+        color: #64748B !important;
+    }
+
+    .print-field-card dd {
+        font-size: 9pt !important;
+        color: #0F172A !important;
+        margin-top: 1px !important;
+    }
+
+    .print-legal-notice {
+        margin-top: 8px !important;
+        padding-top: 8px !important;
+        border-top: 1px solid #E2E8F0 !important;
+    }
+
+    .print-legal-notice > div {
+        padding: 6px 10px !important;
+        font-size: 8pt !important;
+        line-height: 1.35 !important;
+        border: 1px solid #E2E8F0 !important;
+        border-radius: 6px !important;
+        background: #F8FAFC !important;
+    }
+
+    .print-footer-note {
+        display: flex !important;
+        margin-top: 8px !important;
+        padding-top: 6px !important;
+        font-size: 7.5pt !important;
+        border-top: 1px solid #CBD5E1 !important;
     }
 }
 </style>
