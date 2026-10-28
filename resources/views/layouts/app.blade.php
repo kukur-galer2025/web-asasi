@@ -111,7 +111,7 @@
                         <span>BIDANG</span>
                         <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-200" :class="open ? 'rotate-180 text-asasi-navy' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
                     </button>
-                    <div x-show="open" :class="open ? '!block' : ''" x-transition class="hidden group-hover:block absolute left-0 top-20 w-64 bg-white rounded-2xl shadow-xl shadow-slate-200/70 border border-slate-100 py-2.5 z-50 normal-case font-semibold text-slate-600">
+                    <div x-show="open" :class="open ? '!block' : ''" x-transition class="hidden group-hover:block absolute left-0 top-20 w-80 min-w-[320px] bg-white rounded-2xl shadow-xl shadow-slate-200/70 border border-slate-100 py-2.5 z-50 normal-case font-semibold text-slate-600">
                         @forelse($menuBidang as $item)
                             <a href="{{ route('page.show', $item['slug']) }}" class="block px-5 py-2.5 hover:bg-slate-50 hover:text-asasi-navy transition">
                                 {{ $item['judul'] }}
