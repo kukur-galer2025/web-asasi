@@ -16,11 +16,53 @@ class PageSeeder extends Seeder
             // =================================================================
             [
                 'menu_induk'    => 'profil',
+                'judul'         => 'Sambutan Ketua Umum ASASI',
+                'slug'          => 'sambutan-ketua-umum',
+                'hero_subtitle' => 'Pesan kepemimpinan Ketua Umum DPP ASASI masa bakti 2022–2027.',
+                'hero_image'    => 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1600&q=80',
+                'urutan'        => 1,
+                'konten'        => '<div style="display:flex; flex-direction:column; gap:1.5rem; align-items:center; background-color:#fefaf0; border:1px solid #fde68a; border-radius:1rem; padding:1.5rem; margin-bottom:2rem;">
+                    <div style="text-align:center;">
+                        <img src="/elfahmi.webp" alt="Prof. Dr. apt. Elfahmi, M.Si." style="width:160px; height:auto; border-radius:1rem; border:2px solid #d97706; margin:0 auto; box-shadow:0 10px 15px -3px rgba(0,0,0,0.1);">
+                        <div style="background-color:#0F2C59; color:#fef08a; font-weight:bold; font-size:14px; padding:6px 14px; border-radius:8px; margin-top:12px; display:inline-block;">
+                            Prof. Dr. apt. Elfahmi, M.Si.
+                        </div>
+                        <br>
+                        <span style="display:inline-block; margin-top:8px; font-size:13px; color:#92400e; font-weight:700;">Ketua Umum DPP ASASI Periode 2022–2027</span><br>
+                        <span style="font-size:12px; color:#475569;">Guru Besar Sekolah Farmasi Institut Teknologi Bandung (ITB)</span>
+                    </div>
+                </div>
+
+                <p style="font-size:1.125rem; font-style:italic; color:#0F2C59; font-weight:600;">
+                    Assalamu’alaikum Warahmatullahi Wabarakatuh,
+                </p>
+
+                <p>
+                    Selamat datang di website resmi perkumpulan <strong>Akademisi dan Saintis Indonesia (ASASI)</strong>.
+                </p>
+
+                <p>
+                    Alhamdulillah website ASASI kembali hadir dengan format baru yang merupakan sarana komunikasi Pengurus Pusat, Pengurus Daerah, Pengurus Cabang, anggota ASASI dan masyarakat luas dari berbagai kalangan dalam rangka optimalisasi peran akademisi dan saintis Indonesia untuk Indonesia yang maju dan unggul.
+                </p>
+
+                <p>
+                    Website ini berisi berbagai macam kegiatan yang diadakan oleh ASASI dalam rangka mewujudkan visi, misi dan cita-citanya; berbagai <em>(sharing)</em> keilmuan dan kepakaran, memperluas jaringan <em>(network)</em> dan informasi lainnya yang bermanfaat dan bagi kemaslahatan yang banyak. Saya mengundang Masyarakat luas terutama para akademisi dan saintis Indonesia untuk dapat memanfaatkan website ini sehingga manfaatnya bisa dirasakan secara luas.
+                </p>
+
+                <div style="margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid #e2e8f0; color:#334155;">
+                    <p style="font-style:italic; margin-bottom:1rem;">Wassalamu’alaikum Warahmatullahi Wabarakatuh,</p>
+                    <p style="margin:0; font-size:1.05rem;"><strong>Prof. Dr. apt. Elfahmi, M.Si.</strong></p>
+                    <p style="margin:0; font-size:0.875rem; color:#64748b;">Ketua Umum Dewan Pengurus Pusat ASASI</p>
+                </div>',
+            ],
+
+            [
+                'menu_induk'    => 'profil',
                 'judul'         => 'Tentang ASASI & Sejarah Pendirian',
                 'slug'          => 'tentang-asasi',
                 'hero_subtitle' => 'Mengenal perkumpulan resmi para akademisi, peneliti, dan saintis Indonesia yang berbadan hukum.',
                 'hero_image'    => 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1600&q=80',
-                'urutan'        => 1,
+                'urutan'        => 2,
                 'konten'        => '<h2>Sekilas Perkumpulan ASASI</h2>
                 <p><strong>Perkumpulan Akademisi dan Saintis Indonesia (ASASI)</strong> adalah organisasi profesi berbadan hukum yang menghimpun para akademisi, dosen, peneliti, dan saintis lintas disiplin ilmu dari berbagai perguruan tinggi dan lembaga riset di seluruh wilayah Republik Indonesia.</p>
                 <p>Didirikan atas kesadaran kolektif para cendekiawan bangsa, ASASI hadir sebagai wadah independen, profesional, dan berintegritas untuk mengoptimalkan kontribusi sains dan teknologi dalam percepatan pembangunan Indonesia yang berdaulat, maju, dan berkeadilan sosial.</p>
@@ -38,7 +80,7 @@ class PageSeeder extends Seeder
                 'slug'          => 'visi-misi',
                 'hero_subtitle' => 'Komitmen strategis ASASI dalam mewujudkan ekosistem sains Indonesia yang unggul dan diakui dunia.',
                 'hero_image'    => 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80',
-                'urutan'        => 2,
+                'urutan'        => 3,
                 'konten'        => '<h2>Visi ASASI</h2>
                 <p class="font-serif italic text-lg text-asasi-navy">"Menjadi lokomotif transformasi kemajuan sains, teknologi, dan pendidikan tinggi Indonesia yang berintegritas, mandiri, dan berdaya saing global demi kemaslahatan bangsa."</p>
                 <hr>
@@ -58,7 +100,7 @@ class PageSeeder extends Seeder
                 'slug'          => 'struktur-organisasi',
                 'hero_subtitle' => 'Susunan Kepengurusan Dewan Pengurus Pusat (DPP) ASASI Periode 2022–2027.',
                 'hero_image'    => 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1600&q=80',
-                'urutan'        => 3,
+                'urutan'        => 4,
                 'konten'        => '<h2>Susunan Dewan Pengurus Pusat (DPP) ASASI</h2>
                 <p>Kepengurusan DPP ASASI dipimpin oleh para akademisi berintegritas tinggi dengan kepakaran yang telah diakui di tingkat nasional maupun internasional.</p>
                 <h3>Pimpinan Pusat</h3>

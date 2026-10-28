@@ -221,114 +221,92 @@
 <div class="max-w-7xl mx-auto px-4 sm:px-8 py-16 sm:py-24 space-y-24">
 
     <!-- =========================================================================
-         2A. SAMBUTAN KETUA UMUM ASASI (Prof. Dr. apt. Elfahmi, M.Si.)
+         2. WARTA & AGENDA AKADEMISI TERBARU (Kabar & Publikasi Terkini)
          ========================================================================= -->
-    <section class="relative bg-gradient-to-br from-[#FCFAF6] via-[#FAF5EC] to-[#F1E9DA] rounded-3xl border-2 border-amber-300/60 shadow-xl shadow-amber-950/5 p-6 sm:p-10 lg:p-12 overflow-hidden">
-        <!-- Ambient Warm Glows -->
-        <div class="absolute -top-16 -left-16 w-64 h-64 bg-amber-400/15 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute -bottom-16 -right-16 w-72 h-72 bg-amber-600/10 rounded-full blur-3xl pointer-events-none"></div>
-
-        <!-- Garis Aksen Emas di Bagian Atas -->
-        <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-asasi-navy via-amber-400 to-asasi-navy"></div>
+    <section id="berita-terbaru" class="space-y-10 scroll-mt-28 bg-gradient-to-b from-slate-100/80 via-[#F4F6F9] to-slate-100/50 rounded-3xl p-6 sm:p-10 border border-slate-200/90 shadow-sm">
         
-        <!-- Watermark Logo Toga Samar di Pojok -->
-        <div class="absolute -right-12 -bottom-12 w-80 h-80 opacity-[0.04] pointer-events-none text-amber-900">
-            <svg viewBox="0 0 64 36" fill="currentColor">
-                <path d="M32 2L2 14l30 12 24-9.6V28h4V14L32 2zm-18 17.6v8.4c0 4.4 8.1 8 18 8s18-3.6 18-8v-8.4L32 27.2 14 19.6z"/>
-            </svg>
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b-2 border-slate-200/80 pb-5">
+            <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-asasi-gold">
+                    Warta & Publikasi Terbaru
+                </span>
+                <h2 class="font-display text-3xl sm:text-4xl md:text-[40px] font-extrabold text-slate-900 tracking-tight mt-1">
+                    Kabar & Agenda Akademisi
+                </h2>
+            </div>
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                <p class="text-sm text-slate-500 max-w-sm">
+                    Dokumentasi rilis pers, agenda ilmiah, dan pengumuman strategis kepengurusan ASASI.
+                </p>
+                <a href="{{ route('posts.index') }}" class="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-asasi-navy hover:bg-asasi-dark text-white font-display font-bold text-xs uppercase tracking-wider shadow-md transition">
+                    <span>Portal Berita</span>
+                    <span>→</span>
+                </a>
+            </div>
         </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+            @forelse($posts as $post)
+                <a href="{{ route('post.show', $post->slug) }}" class="group bg-white rounded-3xl border border-slate-200/90 overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-2xl hover:border-asasi-navy hover:-translate-y-1 transition-all duration-300">
+                    <div>
+                        <!-- Thumbnail Berita -->
+                        <div class="h-52 w-full bg-slate-100 overflow-hidden relative">
+                            @php
+                                $thumbImg = $post->gambar 
+                                    ? (Str::startsWith($post->gambar, 'http') ? $post->gambar : asset('storage/' . $post->gambar))
+                                    : 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80';
 
-        <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
-            
-            <!-- Kolom Foto Profil Ketua Umum (lg:col-span-4) -->
-            <div class="lg:col-span-4 flex flex-col items-center">
-                <div class="relative w-64 sm:w-72">
-                    <!-- Glow & Frame Emas Elegan -->
-                    <div class="absolute -inset-2 bg-gradient-to-tr from-amber-400/40 via-asasi-navy/25 to-blue-600/20 rounded-3xl blur-md"></div>
-                    
-                    <div class="relative rounded-3xl overflow-hidden bg-gradient-to-b from-white via-[#F5EFE6] to-[#EAE0D0] border-2 border-amber-400 shadow-2xl flex flex-col items-center pt-4">
-                        <img 
-                            src="{{ asset('elfahmi.webp') }}" 
-                            alt="Prof. Dr. apt. Elfahmi, M.Si. - Ketua Umum ASASI" 
-                            class="w-56 sm:w-64 h-auto object-contain drop-shadow-2xl transition duration-500 hover:scale-105"
-                        >
-                        <!-- Badge Nama di Bawah Foto -->
-                        <div class="w-full bg-asasi-navy text-white text-center py-3 px-3 border-t border-amber-400/50">
-                            <span class="font-display font-extrabold text-sm block tracking-wide text-amber-200">Prof. Dr. apt. Elfahmi, M.Si.</span>
-                            <span class="text-[10px] text-amber-300 font-semibold uppercase tracking-wider block mt-0.5">Ketua Umum DPP ASASI</span>
+                                $catColor = match($post->kategori) {
+                                    'kegiatan'   => 'bg-emerald-600 text-white',
+                                    'pengumuman' => 'bg-amber-400 text-slate-950 font-black',
+                                    'publikasi'  => 'bg-indigo-600 text-white',
+                                    default      => 'bg-asasi-navy text-white',
+                                };
+                            @endphp
+                            <img src="{{ $thumbImg }}" alt="{{ $post->judul }}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            
+                            <!-- Kategori Badge -->
+                            <span class="absolute top-4 left-4 text-[10px] font-extrabold px-3 py-1 rounded-full {{ $catColor }} shadow-md uppercase tracking-wider backdrop-blur-sm font-display">
+                                {{ $post->kategori }}
+                            </span>
+                        </div>
+
+                        <!-- Ringkasan Teks -->
+                        <div class="p-6 sm:p-7 space-y-2.5">
+                            <span class="text-xs text-slate-400 font-medium block">
+                                📅 {{ $post->created_at->format('d M Y') }}
+                            </span>
+                            <h3 class="font-display font-bold text-lg sm:text-xl text-slate-900 group-hover:text-asasi-navy transition-colors leading-snug line-clamp-2 tracking-tight">
+                                {{ $post->judul }}
+                            </h3>
+                            <p class="text-slate-600 text-sm leading-relaxed line-clamp-3 font-normal">
+                                {{ $post->excerpt(120) }}
+                            </p>
                         </div>
                     </div>
-                </div>
 
-                <div class="mt-4 text-center space-y-1">
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 text-amber-950 text-[11px] font-bold border border-amber-300/60 shadow-sm">
-                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                        Periode Kepengurusan 2022–2027
-                    </span>
-                    <p class="text-xs text-slate-600 font-medium">Guru Besar Sekolah Farmasi ITB</p>
-                </div>
-            </div>
-
-            <!-- Kolom Teks Sambutan (lg:col-span-8) -->
-            <div class="lg:col-span-8 space-y-5">
-                
-                <div class="flex items-center justify-between gap-4 border-b border-amber-900/10 pb-4">
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-900 text-xs font-bold uppercase tracking-wider">
-                        <svg class="w-4 h-4 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-                        </svg>
-                        <span>Pesan Kepemimpinan</span>
+                    <div class="px-6 sm:px-7 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-asasi-navy group-hover:text-asasi-gold transition">
+                        <span>Baca Selengkapnya</span>
+                        <span class="group-hover:translate-x-1.5 transition-transform">→</span>
                     </div>
-
-                    <span class="text-xs font-mono font-bold text-amber-900/60 uppercase tracking-widest hidden sm:inline-block">
-                        DPP ASASI INDONESIA
-                    </span>
+                </a>
+            @empty
+                <div class="col-span-3 bg-white rounded-3xl border border-dashed border-slate-300 p-16 text-center text-slate-500 space-y-2">
+                    <p class="font-display font-bold text-lg text-slate-700">Belum ada warta kegiatan yang diterbitkan</p>
+                    <p class="text-xs text-slate-400">Silakan kembali lagi nanti untuk melihat publikasi artikel terbaru dari pengurus.</p>
                 </div>
+            @endforelse
+        </div>
 
-                <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
-                    Sambutan Ketua Umum ASASI
-                </h2>
-
-                <!-- Teks Sambutan Lengkap Sesuai Permintaan -->
-                <div class="space-y-4 text-slate-600 text-sm sm:text-base leading-relaxed">
-                    <p class="font-serif italic text-base sm:text-lg text-asasi-navy font-semibold">
-                        Assalamu’alaikum Warahmatullahi Wabarakatuh,
-                    </p>
-                    <p>
-                        Selamat datang di website resmi perkumpulan <strong>Akademisi dan Saintis Indonesia (ASASI)</strong>.
-                    </p>
-                    <p>
-                        Alhamdulilah website ASASI kembali hadir dengan format baru yang merupakan sarana komunikasi Pengurus Pusat, Pengurus Daerah, Pengurus Cabang, anggota ASASI dan masyarakat luas dari berbagai kalangan dalam rangka optimalisasi peran akademisi dan saintis Indonesia untuk Indonesia yang maju dan unggul.
-                    </p>
-                    <p>
-                        Website ini berisi berbagai macam kegiatan yang diadakan oleh ASASI dalam rangka mewujudkan visi, misi dan cita-citanya; berbagai <em>(sharing)</em> keilmuan dan kepakaran, memperluas jaringan <em>(network)</em> dan informasi lainnya yang bermanfaat dan bagi kemaslahatan yang banyak. Saya mengundang Masyarakat luas terutama para akademisi dan saintis Indonesia untuk dapat memanfaatkan website ini sehingga manfaatnya bisa dirasakan secara luas.
-                    </p>
-                </div>
-
-                <!-- Footer Sambutan: Identitas & Aksi -->
-                <div class="pt-5 border-t border-amber-900/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <div>
-                        <h3 class="font-display font-extrabold text-base sm:text-lg text-slate-900">
-                            Prof. Dr. apt. Elfahmi, M.Si.
-                        </h3>
-                        <p class="text-xs font-bold text-amber-600 uppercase tracking-wider mt-0.5">
-                            Ketua Umum ASASI Periode 2022-2027
-                        </p>
-                        <p class="text-xs text-slate-500 font-medium">
-                            Guru Besar Sekolah Farmasi ITB
-                        </p>
-                    </div>
-
-                    <div class="shrink-0">
-                        <a href="{{ route('register.member') }}" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-asasi-navy hover:bg-slate-900 text-white text-xs font-bold transition shadow-sm shadow-asasi-navy/20">
-                            <span>Daftar Anggota ASASI</span>
-                            <span class="text-amber-300">→</span>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-
+        <!-- Tombol Bawah Menuju Portal Berita -->
+        <div class="pt-6 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <span class="text-xs text-slate-500 font-medium">
+                Menampilkan 6 artikel & kegiatan paling mutakhir dari seluruh Indonesia.
+            </span>
+            <a href="{{ route('posts.index') }}" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 text-slate-950 font-display font-bold text-xs uppercase tracking-wider shadow-md hover:brightness-110 active:scale-95 transition">
+                <span>Buka Portal Berita & Arsip Lengkap</span>
+                <span>→</span>
+            </a>
         </div>
     </section>
 
@@ -810,95 +788,6 @@
     </section>
 
 
-    <!-- =========================================================================
-         5. BERITA, KEGIATAN & AGENDA ILMIAH
-         ========================================================================= -->
-    <section id="berita-terbaru" class="space-y-10 scroll-mt-28 bg-gradient-to-b from-slate-100/80 via-[#F4F6F9] to-slate-100/50 rounded-3xl p-6 sm:p-10 border border-slate-200/90 shadow-sm">
-        
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b-2 border-slate-200/80 pb-5">
-            <div>
-                <span class="text-xs font-bold uppercase tracking-widest text-asasi-gold">
-                    Warta & Publikasi Terbaru
-                </span>
-                <h2 class="font-display text-3xl sm:text-4xl md:text-[40px] font-extrabold text-slate-900 tracking-tight mt-1">
-                    Kabar & Agenda Akademisi
-                </h2>
-            </div>
-            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
-                <p class="text-sm text-slate-500 max-w-sm">
-                    Dokumentasi rilis pers, agenda ilmiah, dan pengumuman strategis kepengurusan ASASI.
-                </p>
-                <a href="{{ route('posts.index') }}" class="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-asasi-navy hover:bg-asasi-dark text-white font-display font-bold text-xs uppercase tracking-wider shadow-md transition">
-                    <span>Portal Berita</span>
-                    <span>→</span>
-                </a>
-            </div>
-        </div>
-        
-        <div class="grid md:grid-cols-3 gap-8">
-            @forelse($posts as $post)
-                <a href="{{ route('post.show', $post->slug) }}" class="group bg-white rounded-3xl border border-slate-200/90 overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-2xl hover:border-asasi-navy hover:-translate-y-1 transition-all duration-300">
-                    <div>
-                        <!-- Thumbnail Berita -->
-                        <div class="h-52 w-full bg-slate-100 overflow-hidden relative">
-                            @php
-                                $thumbImg = $post->gambar 
-                                    ? (Str::startsWith($post->gambar, 'http') ? $post->gambar : asset('storage/' . $post->gambar))
-                                    : 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80';
-
-                                $catColor = match($post->kategori) {
-                                    'kegiatan'   => 'bg-emerald-600 text-white',
-                                    'pengumuman' => 'bg-amber-400 text-slate-950 font-black',
-                                    'publikasi'  => 'bg-indigo-600 text-white',
-                                    default      => 'bg-asasi-navy text-white',
-                                };
-                            @endphp
-                            <img src="{{ $thumbImg }}" alt="{{ $post->judul }}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                            
-                            <!-- Kategori Badge -->
-                            <span class="absolute top-4 left-4 text-[10px] font-extrabold px-3 py-1 rounded-full {{ $catColor }} shadow-md uppercase tracking-wider backdrop-blur-sm font-display">
-                                {{ $post->kategori }}
-                            </span>
-                        </div>
-
-                        <!-- Ringkasan Teks -->
-                        <div class="p-6 sm:p-7 space-y-2.5">
-                            <span class="text-xs text-slate-400 font-medium block">
-                                📅 {{ $post->created_at->format('d M Y') }}
-                            </span>
-                            <h3 class="font-display font-bold text-lg sm:text-xl text-slate-900 group-hover:text-asasi-navy transition-colors leading-snug line-clamp-2 tracking-tight">
-                                {{ $post->judul }}
-                            </h3>
-                            <p class="text-slate-600 text-sm leading-relaxed line-clamp-3 font-normal">
-                                {{ $post->excerpt(120) }}
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="px-6 sm:px-7 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-asasi-navy group-hover:text-asasi-gold transition">
-                        <span>Baca Selengkapnya</span>
-                        <span class="group-hover:translate-x-1.5 transition-transform">→</span>
-                    </div>
-                </a>
-            @empty
-                <div class="col-span-3 bg-white rounded-3xl border border-dashed border-slate-300 p-16 text-center text-slate-500 space-y-2">
-                    <p class="font-display font-bold text-lg text-slate-700">Belum ada warta kegiatan yang diterbitkan</p>
-                    <p class="text-xs text-slate-400">Silakan kembali lagi nanti untuk melihat publikasi artikel terbaru dari pengurus.</p>
-                </div>
-            @endforelse
-        </div>
-
-        <!-- Tombol Bawah Menuju Portal Berita -->
-        <div class="pt-6 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <span class="text-xs text-slate-500 font-medium">
-                Menampilkan 6 artikel & kegiatan paling mutakhir dari seluruh Indonesia.
-            </span>
-            <a href="{{ route('posts.index') }}" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 text-slate-950 font-display font-bold text-xs uppercase tracking-wider shadow-md hover:brightness-110 active:scale-95 transition">
-                <span>Buka Portal Berita & Arsip Lengkap</span>
-                <span>→</span>
-            </a>
-        </div>
-    </section>
 
 
     <!-- =========================================================================
