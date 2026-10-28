@@ -164,29 +164,24 @@
                     </button>
                 </form>
 
-                <!-- Kotak Bantuan Akun Demo Uji Coba -->
+                <!-- Kotak Bantuan Akun Login Admin -->
                 <div class="mt-6 p-4 rounded-2xl bg-slate-50 border border-slate-200/90 text-xs space-y-2.5">
                     <div class="flex items-center justify-between text-slate-700 font-bold">
                         <span class="flex items-center gap-1.5">
                             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                            Akun Demo Uji Coba
+                            Akses Pengurus / Admin
                         </span>
                         <span class="text-[10px] font-mono bg-slate-200/80 text-slate-700 px-2 py-0.5 rounded-md font-semibold">
                             Password: <strong class="text-slate-900">password123</strong>
                         </span>
                     </div>
 
-                    <div class="grid grid-cols-2 gap-2 text-[11px]">
-                        <div class="bg-white p-2.5 rounded-xl border border-slate-200">
-                            <span class="block font-bold text-asasi-navy text-xs">👑 Admin / Pengurus</span>
-                            <span class="font-mono text-slate-600 text-[10px] select-all block mt-0.5">admin@asasi.or.id</span>
-                            <span class="text-[9px] text-slate-400 block">Workspace Pengurus</span>
+                    <div class="bg-white p-3 rounded-xl border border-slate-200 text-[11px] flex items-center justify-between">
+                        <div>
+                            <span class="block font-bold text-asasi-navy text-xs">👑 Super Admin ASASI</span>
+                            <span class="font-mono text-slate-600 text-[11px] select-all block mt-0.5">admin@asasi.or.id</span>
                         </div>
-                        <div class="bg-white p-2.5 rounded-xl border border-slate-200">
-                            <span class="block font-bold text-emerald-700 text-xs">🎓 Member Aktif</span>
-                            <span class="font-mono text-slate-600 text-[10px] select-all block mt-0.5">member@asasi.or.id</span>
-                            <span class="text-[9px] text-slate-400 block">Dashboard & Unduh KTA</span>
-                        </div>
+                        <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-1 rounded-md font-medium">Panel Pengurus</span>
                     </div>
                 </div>
             </div>

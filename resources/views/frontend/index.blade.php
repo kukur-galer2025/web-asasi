@@ -38,7 +38,7 @@
 
                 <!-- Tombol Aksi Utama (Luxury Dual CTA) -->
                 <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-3">
-                    <a href="{{ route('register.member') }}" wire:navigate class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-[#D4AF37] via-[#E5C178] to-[#C5A059] text-slate-950 font-display font-bold text-sm tracking-wide shadow-xl shadow-amber-500/20 hover:brightness-110 hover:scale-[1.02] active:scale-[0.98] transition-all">
+                    <a href="{{ route('register.member') }}" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-[#D4AF37] via-[#E5C178] to-[#C5A059] text-slate-950 font-display font-bold text-sm tracking-wide shadow-xl shadow-amber-500/20 hover:brightness-110 hover:scale-[1.02] active:scale-[0.98] transition-all">
                         <span>Ajukan Keanggotaan Nasional</span>
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                     </a>
@@ -320,7 +320,7 @@
                     </div>
 
                     <div class="shrink-0">
-                        <a href="{{ route('register.member') }}" wire:navigate class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-asasi-navy hover:bg-slate-900 text-white text-xs font-bold transition shadow-sm shadow-asasi-navy/20">
+                        <a href="{{ route('register.member') }}" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-asasi-navy hover:bg-slate-900 text-white text-xs font-bold transition shadow-sm shadow-asasi-navy/20">
                             <span>Daftar Anggota ASASI</span>
                             <span class="text-amber-300">→</span>
                         </a>
@@ -578,7 +578,7 @@
                 <h4 class="font-display font-extrabold text-lg sm:text-xl text-white">Dapatkan Seluruh Benefit & Fasilitas Upskill ASASI</h4>
                 <p class="text-xs sm:text-sm text-slate-300">Pendaftaran mudah secara online dengan akun Google dan terbitkan KTA resmi berbadan hukum.</p>
             </div>
-            <a href="{{ route('register.member') }}" wire:navigate class="shrink-0 inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 text-slate-950 font-display font-bold text-xs uppercase tracking-wider shadow-lg hover:brightness-110 active:scale-95 transition">
+            <a href="{{ route('register.member') }}" class="shrink-0 inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 text-slate-950 font-display font-bold text-xs uppercase tracking-wider shadow-lg hover:brightness-110 active:scale-95 transition">
                 <span>Daftar Sekarang</span>
                 <span>→</span>
             </a>
@@ -923,7 +923,7 @@
             </div>
 
             <div class="shrink-0 w-full sm:w-auto">
-                <a href="{{ route('register.member') }}" wire:navigate class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-9 py-4 rounded-2xl bg-gradient-to-r from-[#D4AF37] via-[#E5C178] to-[#C5A059] text-slate-950 font-display font-bold text-sm tracking-wide shadow-xl shadow-amber-500/20 hover:brightness-110 hover:scale-[1.02] active:scale-[0.98] transition-all">
+                <a href="{{ route('register.member') }}" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-9 py-4 rounded-2xl bg-gradient-to-r from-[#D4AF37] via-[#E5C178] to-[#C5A059] text-slate-950 font-display font-bold text-sm tracking-wide shadow-xl shadow-amber-500/20 hover:brightness-110 hover:scale-[1.02] active:scale-[0.98] transition-all">
                     <span>Daftar Anggota Sekarang</span>
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                 </a>
