@@ -17,7 +17,7 @@ return new class extends Migration
                 'menu_induk'    => 'profil',
                 'judul'         => 'Sambutan Ketua Umum ASASI',
                 'hero_subtitle' => 'Pesan kepemimpinan Ketua Umum DPP ASASI masa bakti 2022–2027.',
-                'hero_image'    => 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1600&q=80',
+                'hero_image'    => 'images/kegiatan/kegiatan-asasi-pelantikan.webp',
                 'urutan'        => 1,
                 'konten'        => '<div style="display:flex; flex-direction:column; gap:1.5rem; align-items:center; background-color:#fefaf0; border:1px solid #fde68a; border-radius:1rem; padding:1.5rem; margin-bottom:2rem;">
                     <div style="text-align:center;">
@@ -55,10 +55,19 @@ return new class extends Migration
             ]
         );
 
-        // Update urutan halaman profil lainnya
-        Page::where('slug', 'tentang-asasi')->update(['urutan' => 2]);
-        Page::where('slug', 'visi-misi')->update(['urutan' => 3]);
-        Page::where('slug', 'struktur-organisasi')->update(['urutan' => 4]);
+        // Update urutan dan foto hero halaman profil lainnya dengan dokumentasi asli ASASI
+        Page::where('slug', 'tentang-asasi')->update([
+            'urutan' => 2,
+            'hero_image' => 'images/kegiatan/rakornas-asasi-bersama.webp',
+        ]);
+        Page::where('slug', 'visi-misi')->update([
+            'urutan' => 3,
+            'hero_image' => 'images/kegiatan/kegiatan-asasi-seminar.webp',
+        ]);
+        Page::where('slug', 'struktur-organisasi')->update([
+            'urutan' => 4,
+            'hero_image' => 'images/kegiatan/kegiatan-asasi-diskusi.webp',
+        ]);
 
         Cache::forget('navbar_pages');
         Cache::forget('navbar_pages_array');

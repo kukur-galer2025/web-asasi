@@ -45,10 +45,8 @@
             <div class="absolute inset-0 bg-gradient-to-t from-[#081A38] via-[#0F2C59]/70 to-[#0F2C59]/40"></div>
 
             <div class="relative z-10 flex items-center gap-3.5">
-                <div class="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center">
-                    <svg class="w-8 h-5 text-asasi-gold" viewBox="0 0 64 36" fill="currentColor">
-                        <path d="M32 2L2 14l30 12 24-9.6V28h4V14L32 2zm-18 17.6v8.4c0 4.4 8.1 8 18 8s18-3.6 18-8v-8.4L32 27.2 14 19.6z"/>
-                    </svg>
+                <div class="p-2.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center">
+                    <img src="{{ asset('images/logo/logo-asasi-white.webp') }}" alt="Logo ASASI" class="h-8 w-auto object-contain">
                 </div>
                 <div>
                     <span class="font-serif font-bold text-xl tracking-[0.2em] text-white block leading-none">ASASI</span>

@@ -53,11 +53,9 @@
                 <!-- Brand Header Admin -->
                 <div class="h-20 px-6 flex items-center justify-between border-b border-slate-100">
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-asasi-navy flex items-center justify-center text-white font-serif font-bold text-lg shadow-sm">
-                            A
-                        </div>
+                        <img src="{{ asset('images/logo/logo-asasi-transparent.webp') }}" alt="Logo ASASI" class="h-10 w-auto object-contain">
                         <div>
-                            <span class="font-serif font-bold text-base text-asasi-navy tracking-wider block leading-none">ASASI ADMIN</span>
+                            <span class="font-display font-bold text-base text-asasi-navy tracking-wider block leading-none">ASASI ADMIN</span>
                             <span class="text-[10px] font-bold uppercase tracking-widest text-asasi-gold block mt-1">Executive Workspace</span>
                         </div>
                     </div>

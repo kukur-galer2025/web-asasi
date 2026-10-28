@@ -19,7 +19,7 @@ class PageSeeder extends Seeder
                 'judul'         => 'Sambutan Ketua Umum ASASI',
                 'slug'          => 'sambutan-ketua-umum',
                 'hero_subtitle' => 'Pesan kepemimpinan Ketua Umum DPP ASASI masa bakti 2022–2027.',
-                'hero_image'    => 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1600&q=80',
+                'hero_image'    => 'images/kegiatan/kegiatan-asasi-pelantikan.webp',
                 'urutan'        => 1,
                 'konten'        => '<div style="display:flex; flex-direction:column; gap:1.5rem; align-items:center; background-color:#fefaf0; border:1px solid #fde68a; border-radius:1rem; padding:1.5rem; margin-bottom:2rem;">
                     <div style="text-align:center;">
@@ -61,7 +61,7 @@ class PageSeeder extends Seeder
                 'judul'         => 'Tentang ASASI & Sejarah Pendirian',
                 'slug'          => 'tentang-asasi',
                 'hero_subtitle' => 'Mengenal perkumpulan resmi para akademisi, peneliti, dan saintis Indonesia yang berbadan hukum.',
-                'hero_image'    => 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1600&q=80',
+                'hero_image'    => 'images/kegiatan/rakornas-asasi-bersama.webp',
                 'urutan'        => 2,
                 'konten'        => '<h2>Sekilas Perkumpulan ASASI</h2>
                 <p><strong>Perkumpulan Akademisi dan Saintis Indonesia (ASASI)</strong> adalah organisasi profesi berbadan hukum yang menghimpun para akademisi, dosen, peneliti, dan saintis lintas disiplin ilmu dari berbagai perguruan tinggi dan lembaga riset di seluruh wilayah Republik Indonesia.</p>
@@ -79,7 +79,7 @@ class PageSeeder extends Seeder
                 'judul'         => 'Visi, Misi & Cita-Cita Organisasi',
                 'slug'          => 'visi-misi',
                 'hero_subtitle' => 'Komitmen strategis ASASI dalam mewujudkan ekosistem sains Indonesia yang unggul dan diakui dunia.',
-                'hero_image'    => 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80',
+                'hero_image'    => 'images/kegiatan/kegiatan-asasi-seminar.webp',
                 'urutan'        => 3,
                 'konten'        => '<h2>Visi ASASI</h2>
                 <p class="font-serif italic text-lg text-asasi-navy">"Menjadi lokomotif transformasi kemajuan sains, teknologi, dan pendidikan tinggi Indonesia yang berintegritas, mandiri, dan berdaya saing global demi kemaslahatan bangsa."</p>
@@ -99,7 +99,7 @@ class PageSeeder extends Seeder
                 'judul'         => 'Struktur Organisasi & Dewan Pengurus',
                 'slug'          => 'struktur-organisasi',
                 'hero_subtitle' => 'Susunan Kepengurusan Dewan Pengurus Pusat (DPP) ASASI Periode 2022–2027.',
-                'hero_image'    => 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1600&q=80',
+                'hero_image'    => 'images/kegiatan/kegiatan-asasi-diskusi.webp',
                 'urutan'        => 4,
                 'konten'        => '<h2>Susunan Dewan Pengurus Pusat (DPP) ASASI</h2>
                 <p>Kepengurusan DPP ASASI dipimpin oleh para akademisi berintegritas tinggi dengan kepakaran yang telah diakui di tingkat nasional maupun internasional.</p>

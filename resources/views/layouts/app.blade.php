@@ -64,14 +64,17 @@
     <header x-data="{ mobileMenuOpen: false }" class="bg-white/95 backdrop-blur-md border-b border-slate-200/80 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 sm:h-24 flex justify-between items-center">
             
-            <!-- Logo Toga ASASI di Kiri -->
-            <a href="{{ route('home') }}" class="flex flex-col items-center group">
-                <svg class="w-14 sm:w-16 h-8 sm:h-9 text-asasi-navy group-hover:text-asasi-gold transition" viewBox="0 0 64 36" fill="currentColor">
-                    <path d="M32 2L2 14l30 12 24-9.6V28h4V14L32 2zm-18 17.6v8.4c0 4.4 8.1 8 18 8s18-3.6 18-8v-8.4L32 27.2 14 19.6z"/>
-                </svg>
-                <span class="font-display font-extrabold text-base sm:text-lg tracking-[0.25em] text-asasi-navy -mt-1 border-b-2 border-asasi-gold pb-0.5">
-                    ASASI
-                </span>
+            <!-- Logo Resmi ASASI di Kiri -->
+            <a href="{{ route('home') }}" class="flex items-center gap-3.5 group py-2">
+                <img src="{{ asset('images/logo/logo-asasi-transparent.webp') }}" alt="Logo Resmi ASASI" class="h-12 sm:h-14 w-auto object-contain transition duration-200 group-hover:scale-105">
+                <div class="hidden sm:flex flex-col">
+                    <span class="font-display font-extrabold text-base sm:text-lg tracking-[0.2em] text-asasi-navy leading-none">
+                        ASASI
+                    </span>
+                    <span class="text-[9px] font-bold tracking-wider text-amber-600 uppercase mt-1">
+                        Akademisi & Saintis Indonesia
+                    </span>
+                </div>
             </a>
 
             <!-- Tombol Hamburger Khusus Layar HP -->
@@ -302,10 +305,8 @@
                 <!-- 1. Brand & Moto (md:col-span-5) -->
                 <div class="md:col-span-5 space-y-3.5">
                     <div class="flex items-center gap-3">
-                        <div class="p-2 rounded-xl bg-gradient-to-br from-[#0F284E] to-[#08172F] border border-amber-500/30 shadow-sm">
-                            <svg class="w-9 h-6 text-amber-400" viewBox="0 0 64 36" fill="currentColor">
-                                <path d="M32 2L2 14l30 12 24-9.6V28h4V14L32 2zm-18 17.6v8.4c0 4.4 8.1 8 18 8s18-3.6 18-8v-8.4L32 27.2 14 19.6z"/>
-                            </svg>
+                        <div class="p-2.5 rounded-2xl bg-white/10 border border-amber-500/30 shadow-sm backdrop-blur-sm">
+                            <img src="{{ asset('images/logo/logo-asasi-white.webp') }}" alt="Logo ASASI" class="h-9 w-auto object-contain">
                         </div>
                         <div>
                             <span class="font-display font-black text-2xl tracking-[0.18em] text-white block leading-none">

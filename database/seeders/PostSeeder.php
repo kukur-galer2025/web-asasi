@@ -12,14 +12,15 @@ class PostSeeder extends Seeder
     {
         $posts = [
             // 1. Konferensi Internasional
+            // 1. Konferensi Internasional
             [
-                'judul'        => 'ASASI International Conference on Applied Sciences & Technology (AICAST) 2026 Siap Digelar di Bandung',
+                'judul'        => 'ASASI International Conference on Applied Sciences & Technology (AICAST) Siap Digelar',
                 'slug'         => 'aicast-2026-siap-digelar-di-bandung',
                 'kategori'     => 'kegiatan',
-                'tags'         => 'Konferensi, Scopus, Riset Terapan, AICAST 2026',
-                'gambar'       => 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80',
-                'konten'       => '<p>Perkumpulan <strong>Akademisi dan Saintis Indonesia (ASASI)</strong> secara resmi mengumumkan penyelenggaraan <em>ASASI International Conference on Applied Sciences & Technology (AICAST) 2026</em> yang akan dihelat di Sasana Budaya Ganesa (Sabuga), Bandung.</p>
-                <p>Konferensi bergengsi ini mempertemukan lebih dari 500 delegasi saintis, guru besar, dan praktisi industri dari 12 negara. Mengangkat tema <em>"Bridging Laboratory Discoveries into National Sustainable Industrialization"</em>, forum ini berfokus pada hilirisasi riset obat bahan alam, energi terbarukan, dan kecerdasan buatan terapan.</p>
+                'tags'         => 'Konferensi, Scopus, Riset Terapan, AICAST',
+                'gambar'       => 'images/kegiatan/kegiatan-asasi-pelantikan.webp',
+                'konten'       => '<p>Perkumpulan <strong>Akademisi dan Saintis Indonesia (ASASI)</strong> secara resmi mengumumkan penyelenggaraan <em>ASASI International Conference on Applied Sciences & Technology (AICAST)</em> yang mempertemukan delegasi saintis, guru besar, dan praktisi industri nasional dan internasional.</p>
+                <p>Mengangkat tema <em>"Bridging Laboratory Discoveries into National Sustainable Industrialization"</em>, forum ini berfokus pada hilirisasi riset obat bahan alam, energi terbarukan, dan kecerdasan buatan terapan.</p>
                 <p>Seluruh artikel ilmiah terpilih yang dipresentasikan akan dipublikasikan pada prosiding internasional terindeks <strong>Scopus</strong> dan <strong>Web of Science (WoS)</strong>. Anggota aktif ASASI berhak mendapatkan potongan biaya pendaftaran sebesar 30% dan fasilitas pendampingan penulisan manuskrip secara cuma-cuma.</p>',
                 'is_published' => true,
                 'created_at'   => Carbon::now()->subDays(2),
@@ -27,42 +28,42 @@ class PostSeeder extends Seeder
 
             // 2. Sesi Rutin THWA (Mingguan)
             [
-                'judul'        => 'Sesi Rutin THWA Seri #48: Mengupas Peran Genomik dan AI dalam Presisi Medis Indonesia',
+                'judul'        => 'Sesi Diskusi Pakar ASASI: Mengupas Kolaborasi Multi-Disiplin Sains & Riset Strategis',
                 'slug'         => 'thwa-seri-48-genomik-dan-ai-presisi-medis',
                 'kategori'     => 'berita',
-                'tags'         => 'THWA, Presisi Medis, Kecerdasan Buatan, Bioinformatika',
-                'gambar'       => 'https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&w=1200&q=80',
-                'konten'       => '<p>Sesi mingguan <em>The Health & World Affairs (THWA)</em> ke-48 yang berlangsung Sabtu kemarin berhasil menyedot antusiasme ratusan akademisi dari seluruh pelosok Nusantara melalui platform virtual terintegrasi ASASI.</p>
-                <p>Menghadirkan narasumber utama Prof. Dr. Ir. Siti Nurhaliza (Pakar AI UI) dan Dr. apt. Rina Marlina (UNPAD), diskusi mengupas terobosan pemodelan data genomik populasi Indonesia untuk formulasi obat presisi berbasis variasi genetik lokal.</p>
-                <p>Ketua Umum DPP ASASI, <strong>Prof. Dr. apt. Elfahmi, M.Si.</strong>, dalam sambutannya menekankan pentingnya kedaulatan data biologis bangsa: <em>"Kita tidak boleh hanya menjadi pasar produk kesehatan asing. Riset saintis Indonesia harus mampu menjawab kebutuhan riil masyarakat kita sendiri."</em></p>',
+                'tags'         => 'Diskusi Pakar, Riset Strategis, Kolaborasi Sains',
+                'gambar'       => 'images/kegiatan/kegiatan-asasi-seminar.webp',
+                'konten'       => '<p>Sesi diskusi berkala para akademisi dan pimpinan perkumpulan ASASI berhasil menyedot antusiasme ratusan akademisi dari seluruh pelosok Nusantara melalui sarana komunikasi terpadu ASASI.</p>
+                <p>Menghadirkan para narasumber utama pimpinan perguruan tinggi dan dewan pakar, diskusi mengupas terobosan pemodelan data riset dan integrasi inovasi keilmuan untuk menjawab tantangan strategis bangsa.</p>
+                <p>Ketua Umum DPP ASASI, <strong>Prof. Dr. apt. Elfahmi, M.Si.</strong>, dalam sambutannya menekankan pentingnya kedaulatan riset nasional: <em>"Riset saintis Indonesia harus mampu menjawab kebutuhan riil masyarakat kita sendiri."</em></p>',
                 'is_published' => true,
                 'created_at'   => Carbon::now()->subDays(5),
             ],
 
-            // 3. Peluncuran Konsorsium Riset Nasional
+            // 3. Peluncuran Konsorsium Riset Nasional & Rakornas
             [
-                'judul'        => 'Peluncuran Konsorsium Riset Nasional ASASI: Kolaborasi Lintas 38 Provinsi untuk Ketahanan Pangan',
+                'judul'        => 'Rakornas & Konsolidasi Pengurus ASASI: Memperkuat Sinergi Akademisi Lintas Wilayah',
                 'slug'         => 'peluncuran-konsorsium-riset-nasional-ketahanan-pangan',
-                'kategori'     => 'publikasi',
-                'tags'         => 'Konsorsium Riset, Ketahanan Pangan, DPW ASASI, BRIN',
-                'gambar'       => 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1200&q=80',
-                'konten'       => '<p>Menjawab tantangan perubahan iklim ekstrem dan gejolak rantai pasok global, Dewan Pengurus Pusat ASASI meresmikan <strong>Konsorsium Riset Pangan Nusantara</strong>. Program strategis ini mengintegrasikan kepakaran peneliti agronomi, bioteknologi mikroba tanah, dan pakar sosial ekonomi pertanian dari 38 Dewan Pengurus Wilayah (DPW) tingkat provinsi.</p>
-                <p>Didukung oleh kemitraan strategis bersama Badan Riset dan Inovasi Nasional (BRIN), konsorsium ini menitikberatkan pada pengembangan varietas padi tahan kekeringan serta teknologi fermentasi pakan ternak berbasis limbah organik lokal.</p>
-                <p>Hasil awal penelitian terapan konsorsium ditargetkan sudah mulai diuji coba pada 1.000 hektar demplot percontohan di Jawa Timur dan Nusa Tenggara Barat pada kuartal ketiga tahun ini.</p>',
+                'kategori'     => 'kegiatan',
+                'tags'         => 'Rakornas, Konsolidasi, Pengurus Wilayah, ASASI',
+                'gambar'       => 'images/kegiatan/rakornas-asasi-bersama.webp',
+                'konten'       => '<p>Rapat Koordinasi Nasional (Rakornas) Perkumpulan Akademisi dan Saintis Indonesia (ASASI) sukses diselenggarakan dengan dihadiri oleh jajaran Pengurus Pusat, Pengurus Daerah, dan perwakilan akademisi dari berbagai perguruan tinggi.</p>
+                <p>Pertemuan ini merumuskan agenda strategis penguatan jejaring kepakaran antar-kampus, program sertifikasi keahlian dosen, serta advokasi kebijakan sains dan teknologi nasional.</p>
+                <p>Dengan semangat kebersamaan dan independensi ilmiah, ASASI terus berkomitmen menjadi rumah besar bagi seluruh cendekiawan Indonesia.</p>',
                 'is_published' => true,
                 'created_at'   => Carbon::now()->subDays(9),
             ],
 
-            // 4. Klinik Penulisan Manuskrip Scopus Q1
+            // 4. Klinik Penulisan Manuskrip & Penganugerahan Riset
             [
-                'judul'        => 'Klinik Manuskrip Scopus Q1 & Pendampingan Kenaikan Guru Besar ASASI Angkatan Ke-III',
+                'judul'        => 'Malam Penganugerahan Riset Terbaik & Best Presentation Konferensi Ilmiah ASASI',
                 'slug'         => 'klinik-manuskrip-scopus-q1-percepatan-guru-besar-angkatan-3',
-                'kategori'     => 'kegiatan',
-                'tags'         => 'Upskill, Klinik Jurnal, Scopus Q1, Guru Besar',
-                'gambar'       => 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=80',
-                'konten'       => '<p>Sebagai implementasi nyata program unggulan <em>ASASI Upskill</em>, Bidang Pembinaan Kepakaran DPP ASASI membuka pendaftaran <strong>Klinik Manuskrip Scopus Q1 dan Bimbingan Percepatan Jabatan Fungsional Dosen (Jafung)</strong> Angkatan III.</p>
-                <p>Dalam program mentoring 3 bulan ini, setiap peserta didampingi secara privat (1-on-1) oleh Guru Besar bereputasi dengan h-index Scopus di atas 15. Materi bimbingan mencakup <em>novelty framing</em>, perumusan metodologi berstandar internasional, korespondensi editor jurnal, hingga penanganan masukan <em>peer-reviewers</em> secara elegan.</p>
-                <p>Sebanyak 45 peserta angkatan sebelumnya telah sukses mempublikasikan karya mereka di jurnal tier tertinggi (Q1) dan 12 dosen berhasil meraih SK Guru Besar dari kementerian.</p>',
+                'kategori'     => 'publikasi',
+                'tags'         => 'Awards, Best Oral Presentation, Publikasi Ilmiah',
+                'gambar'       => 'images/kegiatan/kegiatan-asasi-diskusi.webp',
+                'konten'       => '<p>Sebagai bentuk rekognisi dan apresiasi atas dedikasi para peneliti muda dan akademisi berprestasi, ASASI menyelenggarakan seremoni penganugerahan <em>Best Oral Presentation Awards</em> pada rangkaian penutupan konferensi ilmiah.</p>
+                <p>Penghargaan ini diberikan kepada para presenter yang dinilai memiliki metodologi riset paling kokoh, kebaruan <em>(novelty)</em> yang tinggi, serta dampak aplikatif bagi masyarakat luas.</p>
+                <p>Para peraih penghargaan mendapatkan sertifikat kehormatan, plakat apresiasi, serta rekomendasi percepatan publikasi pada jurnal bereputasi mitra ASASI.</p>',
                 'is_published' => true,
                 'created_at'   => Carbon::now()->subDays(14),
             ],

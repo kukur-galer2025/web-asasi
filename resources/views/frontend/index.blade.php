@@ -312,7 +312,95 @@
 
 
     <!-- =========================================================================
-         2B. KEUNGGULAN ANGGOTA ASASI (EXECUTIVE MIDNIGHT SHOWCASE)
+         2B. GALERI REKAM JEJAK & DOKUMENTASI KEGIATAN ASASI
+         ========================================================================= -->
+    <section class="space-y-8 bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/90 shadow-sm">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-100 pb-5">
+            <div>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-900 border border-amber-200 text-xs font-bold uppercase tracking-wider">
+                    <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                    Dokumentasi Resmi ASASI
+                </span>
+                <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mt-2">
+                    Rekam Jejak & Kegiatan Ilmiah
+                </h2>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-500 max-w-md">
+                Potret nyata dedikasi dan kolaborasi para akademisi, guru besar, dan ilmuwan ASASI dalam memperkuat ekosistem sains Indonesia.
+            </p>
+        </div>
+
+        <!-- Grid 4 Foto Dokumentasi -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <!-- 1. Foto Rakornas Bersama -->
+            <div class="group relative rounded-2xl overflow-hidden bg-slate-900 shadow-md border border-slate-200/80 flex flex-col justify-end aspect-[4/3] sm:aspect-[3/4]">
+                <img 
+                    src="{{ asset('images/kegiatan/rakornas-asasi-bersama.webp') }}" 
+                    alt="Rapat Koordinasi Nasional ASASI" 
+                    loading="lazy" 
+                    class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-90 group-hover:opacity-100"
+                >
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+                <div class="relative z-10 p-4 space-y-1 text-white">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-amber-300 bg-amber-900/60 px-2 py-0.5 rounded backdrop-blur-sm">Konsolidasi Nasional</span>
+                    <h3 class="font-display font-bold text-sm leading-snug line-clamp-2">Rakornas Akademisi & Saintis Se-Indonesia</h3>
+                    <p class="text-[11px] text-slate-300">Auditorium Kampus & Pengurus Daerah</p>
+                </div>
+            </div>
+
+            <!-- 2. Foto Pidato Ketua Umum -->
+            <div class="group relative rounded-2xl overflow-hidden bg-slate-900 shadow-md border border-slate-200/80 flex flex-col justify-end aspect-[4/3] sm:aspect-[3/4]">
+                <img 
+                    src="{{ asset('images/kegiatan/kegiatan-asasi-pelantikan.webp') }}" 
+                    alt="Pidato Ketua Umum ASASI" 
+                    loading="lazy" 
+                    class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-90 group-hover:opacity-100"
+                >
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+                <div class="relative z-10 p-4 space-y-1 text-white">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-amber-300 bg-amber-900/60 px-2 py-0.5 rounded backdrop-blur-sm">Keynote Address</span>
+                    <h3 class="font-display font-bold text-sm leading-snug line-clamp-2">Pidato Pembuka Ketua Umum ASASI</h3>
+                    <p class="text-[11px] text-slate-300">Prof. Dr. apt. Elfahmi, M.Si.</p>
+                </div>
+            </div>
+
+            <!-- 3. Foto Forum Seminar & Tokoh Pengurus -->
+            <div class="group relative rounded-2xl overflow-hidden bg-slate-900 shadow-md border border-slate-200/80 flex flex-col justify-end aspect-[4/3] sm:aspect-[3/4]">
+                <img 
+                    src="{{ asset('images/kegiatan/kegiatan-asasi-seminar.webp') }}" 
+                    alt="Forum Pimpinan ASASI" 
+                    loading="lazy" 
+                    class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-90 group-hover:opacity-100"
+                >
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+                <div class="relative z-10 p-4 space-y-1 text-white">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-amber-300 bg-amber-900/60 px-2 py-0.5 rounded backdrop-blur-sm">Forum Dewan Pakar</span>
+                    <h3 class="font-display font-bold text-sm leading-snug line-clamp-2">Sinergi Saintis & Pimpinan Kampus</h3>
+                    <p class="text-[11px] text-slate-300">Kolaborasi Riset Lintas Wilayah</p>
+                </div>
+            </div>
+
+            <!-- 4. Foto Penghargaan & Presentasi Ilmiah -->
+            <div class="group relative rounded-2xl overflow-hidden bg-slate-900 shadow-md border border-slate-200/80 flex flex-col justify-end aspect-[4/3] sm:aspect-[3/4]">
+                <img 
+                    src="{{ asset('images/kegiatan/kegiatan-asasi-diskusi.webp') }}" 
+                    alt="Penganugerahan Awards Riset ASASI" 
+                    loading="lazy" 
+                    class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-90 group-hover:opacity-100"
+                >
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+                <div class="relative z-10 p-4 space-y-1 text-white">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-amber-300 bg-amber-900/60 px-2 py-0.5 rounded backdrop-blur-sm">Penghargaan Ilmiah</span>
+                    <h3 class="font-display font-bold text-sm leading-snug line-clamp-2">Malam Best Oral Presentation Awards</h3>
+                    <p class="text-[11px] text-slate-300">Rekognisi Peneliti & Dosen Berprestasi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================================================================
+         3. KEUNGGULAN ANGGOTA ASASI (EXECUTIVE MIDNIGHT SHOWCASE)
          ========================================================================= -->
     <section class="relative bg-gradient-to-br from-[#06152B] via-[#0B2244] to-[#040D1C] text-white rounded-[32px] sm:rounded-[40px] p-7 sm:p-12 lg:p-14 border border-amber-400/30 shadow-2xl overflow-hidden space-y-12">
         
