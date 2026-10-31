@@ -14,8 +14,8 @@
             width: 325pt;
             height: 204pt;
             font-family: Helvetica, Arial, sans-serif;
-            background-color: #041224;
-            color: #142840;
+            background-color: #071b34;
+            color: #ffffff;
             overflow: hidden;
             -webkit-print-color-adjust: exact;
         }
@@ -36,7 +36,7 @@
             z-index: 10;
         }
 
-        /* ===== TOP BRAND BAR (Navy Sky) ===== */
+        /* ===== TOP BRAND BAR ===== */
         .top-table {
             width: 100%;
             border-collapse: collapse;
@@ -81,7 +81,7 @@
             white-space: nowrap;
         }
 
-        /* ===== BODY SECTION (100% Inside Pure White Area, Starting at Y=64pt) ===== */
+        /* ===== BODY SECTION ===== */
         .body-container {
             position: absolute;
             top: 64pt;
@@ -101,9 +101,9 @@
         .photo-frame {
             width: 48pt;
             height: 65pt;
-            border: 1.5pt solid #c5a059;
+            border: 1.5pt solid #e5bd6f;
             border-radius: 4pt;
-            background-color: #e2e8f0;
+            background-color: #0b2548;
             overflow: hidden;
             text-align: center;
         }
@@ -116,8 +116,8 @@
         .photo-placeholder {
             width: 48pt;
             height: 65pt;
-            background-color: #e2e8f0;
-            color: #64748b;
+            background-color: #0b2548;
+            color: #94bfe3;
             font-size: 5pt;
             text-align: center;
             padding-top: 24pt;
@@ -134,7 +134,7 @@
             font-family: "Times New Roman", Times, Georgia, serif;
             font-size: 9.8pt;
             font-weight: bold;
-            color: #0c274a;
+            color: #ffffff;
             padding-bottom: 2.5pt;
             border-bottom: 1.2pt solid #d4a653;
             margin-bottom: 4pt;
@@ -150,23 +150,23 @@
             font-size: 6.2pt;
             vertical-align: top;
             line-height: 1.25;
-            color: #0c274a;
+            color: #e2e8f0;
         }
         .info-label {
             width: 58pt;
-            color: #64748b;
+            color: #f6d494;
             font-size: 5.4pt;
             text-transform: uppercase;
             font-weight: 600;
         }
         .info-val {
             font-weight: bold;
-            color: #0c274a;
+            color: #ffffff;
         }
         .info-val-nik {
             font-family: Courier, monospace;
             font-weight: bold;
-            color: #061b34;
+            color: #f6d494;
             font-size: 7.2pt;
             letter-spacing: 0.5px;
         }
@@ -187,12 +187,12 @@
         }
         .footer-table td {
             font-size: 4.8pt;
-            color: #64748b;
+            color: #94bfe3;
         }
         .footer-right {
             font-family: "Times New Roman", Times, Georgia, serif;
             font-weight: bold;
-            color: #8c6a28;
+            color: #f6d494;
             text-align: right;
             text-transform: uppercase;
             letter-spacing: 0.8px;
@@ -231,20 +231,25 @@
             }
         }
 
-        // Logo Hitam Transparan untuk Cap Stempel Resmi Toga ASASI (Watermark)
+        // Logo Putih untuk Cap Stempel Resmi Toga ASASI (Watermark di atas background Navy)
         $stampLogoBase64 = null;
-        $stampPath = public_path('images/logo/logo-asasi-transparent.png');
+        $stampPath = public_path('images/logo/logo-asasi-white.png');
         if (file_exists($stampPath)) {
             $stampLogoBase64 = 'data:image/png;base64,' . base64_encode(file_get_contents($stampPath));
         }
 
-        // Vector Background SVG: Navy Sky + Constellation + Sweeping Wave + Official Toga Stamp Watermark
+        // Vector Background SVG: Full Luxury Royal Navy + Constellation + Metallic Gold Wave + Official Toga Stamp
         $svgBg = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="325" height="204" viewBox="0 0 325 204">
           <defs>
-            <linearGradient id="navyBg" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#041224" />
-              <stop offset="50%" stop-color="#072242" />
-              <stop offset="100%" stop-color="#0d3663" />
+            <linearGradient id="navyMain" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#071b34" />
+              <stop offset="40%" stop-color="#0a2a52" />
+              <stop offset="80%" stop-color="#0e3768" />
+              <stop offset="100%" stop-color="#06182e" />
+            </linearGradient>
+            <linearGradient id="navyLower" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#061c38" />
+              <stop offset="100%" stop-color="#0a264a" />
             </linearGradient>
             <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stop-color="#c5a059" />
@@ -255,53 +260,53 @@
             </linearGradient>
           </defs>
 
-          <!-- Navy Background Sky -->
-          <rect width="325" height="204" fill="url(#navyBg)" />
+          <!-- Royal Navy Base Background -->
+          <rect width="325" height="204" fill="url(#navyMain)" />
 
           <!-- Constellation Nodes & Micro-Lines in Upper Sky -->
-          <g opacity="0.35">
-            <circle cx="25" cy="18" r="1.2" fill="#7eb9e6" />
-            <circle cx="80" cy="12" r="1.8" fill="#7eb9e6" />
-            <circle cx="150" cy="20" r="1.2" fill="#7eb9e6" />
-            <circle cx="230" cy="14" r="1.8" fill="#7eb9e6" />
-            <circle cx="295" cy="18" r="1.4" fill="#7eb9e6" />
-            <circle cx="55" cy="32" r="1.2" fill="#7eb9e6" />
-            <circle cx="190" cy="30" r="1.5" fill="#7eb9e6" />
-            <line x1="25" y1="18" x2="80" y2="12" stroke="#7eb9e6" stroke-width="0.5" />
-            <line x1="80" y1="12" x2="150" y2="20" stroke="#7eb9e6" stroke-width="0.5" />
-            <line x1="150" y1="20" x2="230" y2="14" stroke="#7eb9e6" stroke-width="0.5" />
-            <line x1="230" y1="14" x2="295" y2="18" stroke="#7eb9e6" stroke-width="0.5" />
-            <line x1="80" y1="12" x2="55" y2="32" stroke="#7eb9e6" stroke-width="0.5" />
-            <line x1="150" y1="20" x2="190" y2="30" stroke="#7eb9e6" stroke-width="0.5" />
+          <g opacity="0.45">
+            <circle cx="25" cy="20" r="1.2" fill="#7eb9e6" />
+            <circle cx="80" cy="14" r="1.8" fill="#7eb9e6" />
+            <circle cx="150" cy="22" r="1.2" fill="#7eb9e6" />
+            <circle cx="230" cy="15" r="1.8" fill="#7eb9e6" />
+            <circle cx="295" cy="20" r="1.4" fill="#7eb9e6" />
+            <circle cx="55" cy="35" r="1.2" fill="#7eb9e6" />
+            <circle cx="190" cy="33" r="1.5" fill="#7eb9e6" />
+            <line x1="25" y1="20" x2="80" y2="14" stroke="#7eb9e6" stroke-width="0.5" />
+            <line x1="80" y1="14" x2="150" y2="22" stroke="#7eb9e6" stroke-width="0.5" />
+            <line x1="150" y1="22" x2="230" y2="15" stroke="#7eb9e6" stroke-width="0.5" />
+            <line x1="230" y1="15" x2="295" y2="20" stroke="#7eb9e6" stroke-width="0.5" />
+            <line x1="80" y1="14" x2="55" y2="35" stroke="#7eb9e6" stroke-width="0.5" />
+            <line x1="150" y1="22" x2="190" y2="33" stroke="#7eb9e6" stroke-width="0.5" />
           </g>
+
+          <!-- Sweeping Wave with Subtle Navy Tone Variation -->
+          <path d="M 0,62 Q 90,74 190,54 T 325,46 L 325,204 L 0,204 Z" fill="url(#navyLower)" opacity="0.65" />
+
+          <!-- Wave Ambient Glow -->
+          <path d="M 0,60 Q 90,72 190,52 T 325,44" fill="none" stroke="#e5bd6f" stroke-width="3.5" opacity="0.25" />
+
+          <!-- Main Metallic Gold Ribbon -->
+          <path d="M 0,62 Q 90,74 190,54 T 325,46" fill="none" stroke="url(#goldGradient)" stroke-width="2.2" />
+
+          <!-- Shimmer Hairline Ribbon -->
+          <path d="M 0,59 Q 90,71 190,51 T 325,43" fill="none" stroke="#fdf0cd" stroke-width="0.8" opacity="0.7" />
 
           <!-- Outer Gold Luxury Hairline Border with Rounded Corners -->
           <rect x="2.5" y="2.5" width="320" height="199" rx="8" fill="none" stroke="url(#goldGradient)" stroke-width="1.4" />
 
-          <!-- White Curved Body: Starts gracefully at Y=58pt (leaves 146pt of pure white space!) -->
-          <path d="M 0,58 Q 90,70 190,52 T 325,44 L 325,204 L 0,204 Z" fill="#ffffff" />
-
-          <!-- Wave Glow -->
-          <path d="M 0,56 Q 90,68 190,50 T 325,42" fill="none" stroke="#e5bd6f" stroke-width="4" opacity="0.25" />
-
-          <!-- Main Metallic Gold Ribbon -->
-          <path d="M 0,58 Q 90,70 190,52 T 325,44" fill="none" stroke="url(#goldGradient)" stroke-width="2.5" />
-
-          <!-- Shimmer Hairline Ribbon -->
-          <path d="M 0,55 Q 90,67 190,49 T 325,41" fill="none" stroke="#fdf0cd" stroke-width="0.8" opacity="0.8" />
-
-          <!-- Cap Stempel Resmi Toga ASASI (Watermark Transparan) -->
-          <g transform="translate(246, 105) rotate(-6 40 40)" opacity="0.13">
+          <!-- Cap Stempel Resmi Toga ASASI (Watermark Emas Transparan pada Background Navy) -->
+          <g transform="translate(246, 105) rotate(-6 40 40)" opacity="0.18">
             <!-- Lingkaran Ganda Cap Dinas -->
-            <circle cx="40" cy="40" r="39" fill="none" stroke="#0c274a" stroke-width="1.6" />
-            <circle cx="40" cy="40" r="35.5" fill="none" stroke="#0c274a" stroke-width="0.8" stroke-dasharray="3,1.5" />
-            <circle cx="40" cy="40" r="26" fill="none" stroke="#0c274a" stroke-width="0.8" />
+            <circle cx="40" cy="40" r="39" fill="none" stroke="#f6d494" stroke-width="1.6" />
+            <circle cx="40" cy="40" r="35.5" fill="none" stroke="#f6d494" stroke-width="0.8" stroke-dasharray="3,1.5" />
+            <circle cx="40" cy="40" r="26" fill="none" stroke="#f6d494" stroke-width="0.8" />
 
             <!-- Teks Melingkar Stempel & Titik Ornamen -->
-            <text x="40" y="9.5" font-family="Helvetica, Arial, sans-serif" font-size="3.6" font-weight="bold" fill="#0c274a" text-anchor="middle">DEWAN PENGURUS PUSAT</text>
-            <circle cx="21" cy="72" r="0.9" fill="#0c274a" />
-            <text x="40" y="73" font-family="Helvetica, Arial, sans-serif" font-size="3.3" font-weight="bold" fill="#0c274a" text-anchor="middle">ASASI INDONESIA</text>
-            <circle cx="59" cy="72" r="0.9" fill="#0c274a" />
+            <text x="40" y="9.5" font-family="Helvetica, Arial, sans-serif" font-size="3.6" font-weight="bold" fill="#f6d494" text-anchor="middle">DEWAN PENGURUS PUSAT</text>
+            <circle cx="21" cy="72" r="0.9" fill="#f6d494" />
+            <text x="40" y="73" font-family="Helvetica, Arial, sans-serif" font-size="3.3" font-weight="bold" fill="#f6d494" text-anchor="middle">ASASI INDONESIA</text>
+            <circle cx="59" cy="72" r="0.9" fill="#f6d494" />
 
             <!-- Logo Toga ASASI di Bagian Tengah Cap (Proporsional Asli 2.56:1) -->
             ' . ($stampLogoBase64 ? '<image xlink:href="' . $stampLogoBase64 . '" x="19" y="31.8" width="42" height="16.4" />' : '') . '
@@ -343,7 +348,7 @@
             </tr>
         </table>
 
-        <!-- Body Section: Photo + Full Identity (Starts cleanly inside White Pearl Area at Y=64pt) -->
+        <!-- Body Section: Photo + Full Identity (Full Luxury Navy Theme) -->
         <div class="body-container">
             <table class="body-table" cellpadding="0" cellspacing="0">
                 <tr>
@@ -358,7 +363,7 @@
                         </div>
                     </td>
 
-                    {{-- Data Anggota Lengkap (100% Inside White Area - Sharp & Prominent) --}}
+                    {{-- Data Anggota Lengkap --}}
                     <td class="data-col">
                         <div class="member-name">{{ $member->nama_lengkap }}</div>
                         <table class="info-table" cellpadding="0" cellspacing="0">
@@ -368,7 +373,7 @@
                             </tr>
                             <tr>
                                 <td class="info-label">Status</td>
-                                <td class="info-val" style="color:#059669;">: Anggota Aktif Terverifikasi</td>
+                                <td class="info-val" style="color:#34d399;">: Anggota Aktif Terverifikasi</td>
                             </tr>
                             <tr>
                                 <td class="info-label">Wilayah DPW</td>
@@ -394,7 +399,7 @@
         <div class="footer-container">
             <table class="footer-table">
                 <tr>
-                    <td>Masa Berlaku: <strong style="color:#0c274a;">{{ optional($member->masa_berlaku_sampai)->format('d M Y') ?? 'Seumur Hidup' }}</strong></td>
+                    <td>Masa Berlaku: <strong style="color:#ffffff;">{{ optional($member->masa_berlaku_sampai)->format('d M Y') ?? 'Seumur Hidup' }}</strong></td>
                     <td class="footer-right">Dewan Pengurus Pusat ASASI</td>
                 </tr>
             </table>

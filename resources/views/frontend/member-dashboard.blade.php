@@ -35,15 +35,20 @@
                 </div>
 
                 <!-- Desain Kartu KTA Luxury — Navy & Gold Metallic Wave (No QR Code, Teks Lengkap) -->
-                <div class="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-[#C5A059] bg-[#041224]" style="min-height: 250px;">
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-[#C5A059] bg-[#071b34]" style="min-height: 250px;">
 
-                    {{-- SVG Background: Sweeping Wave, Constellation, Gold Ribbon & Watermark --}}
+                    {{-- SVG Background: Sweeping Wave, Constellation, Gold Ribbon & Watermark (Full Luxury Navy) --}}
                     <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 650 408" preserveAspectRatio="none">
                         <defs>
                             <linearGradient id="dashNavyBg" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#041224" />
-                                <stop offset="45%" stop-color="#072242" />
-                                <stop offset="100%" stop-color="#0d3663" />
+                                <stop offset="0%" stop-color="#071b34" />
+                                <stop offset="40%" stop-color="#0a2a52" />
+                                <stop offset="80%" stop-color="#0e3768" />
+                                <stop offset="100%" stop-color="#06182e" />
+                            </linearGradient>
+                            <linearGradient id="dashNavyLower" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#061c38" />
+                                <stop offset="100%" stop-color="#0a264a" />
                             </linearGradient>
                             <linearGradient id="dashGoldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
                                 <stop offset="0%" stop-color="#c5a059" />
@@ -66,31 +71,31 @@
                         <!-- Constellation Geometric Pattern -->
                         <rect width="650" height="220" fill="url(#dashConstellation)" />
 
+                        <!-- Sweeping Wave with Subtle Navy Depth -->
+                        <path d="M -10,124 Q 180,148 380,108 T 660,92 L 660,420 L -10,420 Z" fill="url(#dashNavyLower)" opacity="0.65" />
+
+                        <!-- Wave Ambient Gold Glow -->
+                        <path d="M -10,120 Q 180,144 380,104 T 660,88" fill="none" stroke="#e5bd6f" stroke-width="7" opacity="0.25" />
+
+                        <!-- Wave Main Metallic Gold Ribbon -->
+                        <path d="M -10,124 Q 180,148 380,108 T 660,92" fill="none" stroke="url(#dashGoldGrad)" stroke-width="4.5" stroke-linecap="round" />
+
+                        <!-- Wave Thin Gold Shimmer Line -->
+                        <path d="M -10,118 Q 180,142 380,102 T 660,86" fill="none" stroke="#f6d494" stroke-width="1.5" opacity="0.75" />
+
                         <!-- Outer Gold Border -->
-                        <rect x="4" y="4" width="642" height="400" rx="14" fill="none" stroke="url(#dashGoldGrad)" stroke-width="1.8" opacity="0.8" />
+                        <rect x="4" y="4" width="642" height="400" rx="14" fill="none" stroke="url(#dashGoldGrad)" stroke-width="1.8" opacity="0.85" />
 
-                        <!-- Wave 1: Ambient Gold Glow Wave -->
-                        <path d="M -10,116 Q 180,140 380,104 T 660,88 L 660,420 L -10,420 Z" fill="#e5bd6f" opacity="0.22" />
-
-                        <!-- Wave 2: Main White Pearl Body (Starts high up so all text is 100% inside white) -->
-                        <path d="M -10,120 Q 180,144 380,108 T 660,92 L 660,420 L -10,420 Z" fill="#ffffff" />
-
-                        <!-- Wave 3: Thick Metallic Gold Ribbon -->
-                        <path d="M -10,120 Q 180,144 380,108 T 660,92" fill="none" stroke="url(#dashGoldGrad)" stroke-width="5" stroke-linecap="round" />
-
-                        <!-- Wave 4: Thin Gold Shimmer Line -->
-                        <path d="M -10,114 Q 180,138 380,102 T 660,86" fill="none" stroke="#f6d494" stroke-width="1.5" opacity="0.75" />
-
-                        <!-- Cap Stempel Resmi Toga ASASI (Watermark Transparan) -->
-                        <g transform="translate(490, 215) rotate(-6 70 70)" opacity="0.12">
-                            <circle cx="70" cy="70" r="68" fill="none" stroke="#0c274a" stroke-width="2.5" />
-                            <circle cx="70" cy="70" r="62" fill="none" stroke="#0c274a" stroke-width="1.2" stroke-dasharray="5,2.5" />
-                            <circle cx="70" cy="70" r="46" fill="none" stroke="#0c274a" stroke-width="1.2" />
-                            <text x="70" y="17" font-family="Arial, sans-serif" font-size="6.2" font-weight="bold" fill="#0c274a" text-anchor="middle" letter-spacing="1.5">DEWAN PENGURUS PUSAT</text>
-                            <circle cx="36" cy="126" r="1.5" fill="#0c274a" />
-                            <text x="70" y="128" font-family="Arial, sans-serif" font-size="5.8" font-weight="bold" fill="#0c274a" text-anchor="middle" letter-spacing="1.8">ASASI INDONESIA</text>
-                            <circle cx="104" cy="126" r="1.5" fill="#0c274a" />
-                            <image href="{{ asset('images/logo/logo-asasi-transparent.png') }}" x="33" y="55.5" width="74" height="29" />
+                        <!-- Cap Stempel Resmi Toga ASASI (Watermark Emas Transparan) -->
+                        <g transform="translate(490, 215) rotate(-6 70 70)" opacity="0.18">
+                            <circle cx="70" cy="70" r="68" fill="none" stroke="#f6d494" stroke-width="2.5" />
+                            <circle cx="70" cy="70" r="62" fill="none" stroke="#f6d494" stroke-width="1.2" stroke-dasharray="5,2.5" />
+                            <circle cx="70" cy="70" r="46" fill="none" stroke="#f6d494" stroke-width="1.2" />
+                            <text x="70" y="17" font-family="Arial, sans-serif" font-size="6.2" font-weight="bold" fill="#f6d494" text-anchor="middle" letter-spacing="1.5">DEWAN PENGURUS PUSAT</text>
+                            <circle cx="36" cy="126" r="1.5" fill="#f6d494" />
+                            <text x="70" y="128" font-family="Arial, sans-serif" font-size="5.8" font-weight="bold" fill="#f6d494" text-anchor="middle" letter-spacing="1.8">ASASI INDONESIA</text>
+                            <circle cx="104" cy="126" r="1.5" fill="#f6d494" />
+                            <image href="{{ asset('images/logo/logo-asasi-white.png') }}" x="33" y="55.5" width="74" height="29" />
                         </g>
                     </svg>
 
@@ -109,15 +114,15 @@
                             <span class="text-[#f6d494] font-serif text-xs sm:text-sm font-bold tracking-widest uppercase drop-shadow">KARTU ANGGOTA</span>
                         </div>
 
-                        <!-- Bottom Area (Photo + Identity inside white wave) -->
+                        <!-- Bottom Area (Photo + Identity inside Navy Luxury Theme) -->
                         <div class="pt-4 flex gap-4 sm:gap-5 items-center">
                             {{-- Pas Foto 3x4 with Gold Frame --}}
                             <div class="w-16 h-22 sm:w-20 sm:h-26 shrink-0 rounded-xl overflow-hidden p-0.5 shadow-md flex items-center justify-center" style="background: linear-gradient(135deg, #f6d494, #c5a059, #8c6a28);">
-                                <div class="w-full h-full rounded-[10px] overflow-hidden bg-slate-100 flex items-center justify-center">
+                                <div class="w-full h-full rounded-[10px] overflow-hidden bg-[#0b2548] flex items-center justify-center">
                                     @if($member && $member->foto_profil)
                                         <img src="{{ asset('storage/' . $member->foto_profil) }}" alt="{{ $member->nama_lengkap }}" class="w-full h-full object-cover object-top">
                                     @else
-                                        <div class="text-center text-slate-400 p-1">
+                                        <div class="text-center text-[#94bfe3] p-1">
                                             <svg class="w-6 h-6 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
                                             <span class="text-[7px] font-bold uppercase tracking-wider block mt-0.5">Pas Foto</span>
                                         </div>
@@ -127,30 +132,30 @@
 
                             {{-- Data Identitas Penuh (Semua Teks Masuk, No QR) --}}
                             <div class="flex-grow overflow-hidden min-w-0">
-                                <p class="font-serif font-bold text-[#0c274a] text-sm sm:text-base leading-snug pb-1.5 border-b-2 border-[#d4a653]/60 mb-2">
+                                <p class="font-serif font-bold text-white text-sm sm:text-base leading-snug pb-1.5 border-b-2 border-[#d4a653]/60 mb-2">
                                     {{ $member->nama_lengkap ?? $user->name }}
                                 </p>
                                 <dl class="grid grid-cols-[auto_1fr] gap-x-2.5 gap-y-1 text-[11px] sm:text-xs leading-tight">
-                                    <dt class="text-slate-500 font-medium uppercase text-[10px] whitespace-nowrap">No. Anggota</dt>
-                                    <dd class="font-bold text-[#061b34] font-mono m-0">: {{ $member->nomor_anggota ?? 'MENUNGGU VERIFIKASI' }}</dd>
-                                    <dt class="text-slate-500 font-medium uppercase text-[10px] whitespace-nowrap">Status</dt>
-                                    <dd class="font-bold text-emerald-600 m-0">: Anggota Aktif Terverifikasi</dd>
-                                    <dt class="text-slate-500 font-medium uppercase text-[10px] whitespace-nowrap">Wilayah DPW</dt>
-                                    <dd class="font-bold text-[#0c274a] m-0">: {{ $member->wilayah_dpw ?? '-' }}</dd>
-                                    <dt class="text-slate-500 font-medium uppercase text-[10px] whitespace-nowrap">Afiliasi</dt>
-                                    <dd class="font-bold text-[#0c274a] m-0">: {{ $member->instansi ?? '-' }}</dd>
+                                    <dt class="text-[#f6d494] font-semibold uppercase text-[10px] whitespace-nowrap">No. Anggota</dt>
+                                    <dd class="font-bold text-[#f6d494] font-mono m-0">: {{ $member->nomor_anggota ?? 'MENUNGGU VERIFIKASI' }}</dd>
+                                    <dt class="text-[#f6d494] font-semibold uppercase text-[10px] whitespace-nowrap">Status</dt>
+                                    <dd class="font-bold text-emerald-400 m-0">: Anggota Aktif Terverifikasi</dd>
+                                    <dt class="text-[#f6d494] font-semibold uppercase text-[10px] whitespace-nowrap">Wilayah DPW</dt>
+                                    <dd class="font-bold text-white m-0">: {{ $member->wilayah_dpw ?? '-' }}</dd>
+                                    <dt class="text-[#f6d494] font-semibold uppercase text-[10px] whitespace-nowrap">Afiliasi</dt>
+                                    <dd class="font-bold text-white m-0">: {{ $member->instansi ?? '-' }}</dd>
                                     @if($member && $member->bidang_keahlian)
-                                    <dt class="text-slate-500 font-medium uppercase text-[10px] whitespace-nowrap">Bidang Riset</dt>
-                                    <dd class="font-bold text-[#0c274a] m-0">: {{ $member->bidang_keahlian }}</dd>
+                                    <dt class="text-[#f6d494] font-semibold uppercase text-[10px] whitespace-nowrap">Bidang Riset</dt>
+                                    <dd class="font-bold text-white m-0">: {{ $member->bidang_keahlian }}</dd>
                                     @endif
                                 </dl>
                             </div>
                         </div>
 
                         <!-- Footer Row -->
-                        <div class="mt-4 pt-2 border-t border-[#d4a653]/30 flex justify-between items-center text-[10px] text-slate-500">
-                            <span>Masa Berlaku: <strong class="text-[#0c274a]">{{ $member?->masa_berlaku_sampai ? $member->masa_berlaku_sampai->format('d M Y') : 'Seumur Hidup' }}</strong></span>
-                            <span class="text-[#8c6a28] font-serif font-bold uppercase tracking-wider">DPP ASASI</span>
+                        <div class="mt-4 pt-2 border-t border-[#d4a653]/30 flex justify-between items-center text-[10px] text-[#94bfe3]">
+                            <span>Masa Berlaku: <strong class="text-white">{{ $member?->masa_berlaku_sampai ? $member->masa_berlaku_sampai->format('d M Y') : 'Seumur Hidup' }}</strong></span>
+                            <span class="text-[#f6d494] font-serif font-bold uppercase tracking-wider">DPP ASASI</span>
                         </div>
 
                     </div>
