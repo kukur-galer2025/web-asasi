@@ -35,20 +35,21 @@
                 </div>
 
                 <!-- Desain Kartu KTA Luxury — Navy & Gold Metallic Wave (No QR Code, Teks Lengkap) -->
-                <div class="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-[#C5A059] bg-[#071b34]" style="min-height: 250px;">
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-[#C5A059] bg-[#092242]" style="min-height: 250px;">
 
                     {{-- SVG Background: Sweeping Wave, Constellation, Gold Ribbon & Watermark (Full Luxury Navy) --}}
                     <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 650 408" preserveAspectRatio="none">
                         <defs>
                             <linearGradient id="dashNavyBg" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#071b34" />
-                                <stop offset="40%" stop-color="#0a2a52" />
-                                <stop offset="80%" stop-color="#0e3768" />
-                                <stop offset="100%" stop-color="#06182e" />
+                                <stop offset="0%" stop-color="#092242" />
+                                <stop offset="35%" stop-color="#0d3563" />
+                                <stop offset="70%" stop-color="#144882" />
+                                <stop offset="100%" stop-color="#0a264c" />
                             </linearGradient>
                             <linearGradient id="dashNavyLower" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#061c38" />
-                                <stop offset="100%" stop-color="#0a264a" />
+                                <stop offset="0%" stop-color="#0c2d54" />
+                                <stop offset="50%" stop-color="#113e72" />
+                                <stop offset="100%" stop-color="#185294" />
                             </linearGradient>
                             <linearGradient id="dashGoldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
                                 <stop offset="0%" stop-color="#c5a059" />
@@ -57,11 +58,11 @@
                                 <stop offset="100%" stop-color="#8c6a28" />
                             </linearGradient>
                             <pattern id="dashConstellation" width="80" height="80" patternUnits="userSpaceOnUse">
-                                <circle cx="15" cy="15" r="1.5" fill="#5596c8" opacity="0.35" />
-                                <circle cx="65" cy="35" r="2" fill="#5596c8" opacity="0.4" />
-                                <circle cx="40" cy="70" r="1.2" fill="#5596c8" opacity="0.3" />
-                                <line x1="15" y1="15" x2="65" y2="35" stroke="#5596c8" stroke-width="0.5" opacity="0.2" />
-                                <line x1="65" y1="35" x2="40" y2="70" stroke="#5596c8" stroke-width="0.5" opacity="0.2" />
+                                <circle cx="15" cy="15" r="1.5" fill="#a5d2f6" opacity="0.45" />
+                                <circle cx="65" cy="35" r="2" fill="#a5d2f6" opacity="0.5" />
+                                <circle cx="40" cy="70" r="1.2" fill="#a5d2f6" opacity="0.4" />
+                                <line x1="15" y1="15" x2="65" y2="35" stroke="#7eb9e6" stroke-width="0.6" opacity="0.3" />
+                                <line x1="65" y1="35" x2="40" y2="70" stroke="#7eb9e6" stroke-width="0.6" opacity="0.3" />
                             </pattern>
                         </defs>
 
@@ -71,11 +72,11 @@
                         <!-- Constellation Geometric Pattern -->
                         <rect width="650" height="220" fill="url(#dashConstellation)" />
 
-                        <!-- Sweeping Wave with Subtle Navy Depth -->
-                        <path d="M -10,124 Q 180,148 380,108 T 660,92 L 660,420 L -10,420 Z" fill="url(#dashNavyLower)" opacity="0.65" />
+                        <!-- Sweeping Wave with Rich Navy Shade -->
+                        <path d="M -10,124 Q 180,148 380,108 T 660,92 L 660,420 L -10,420 Z" fill="url(#dashNavyLower)" opacity="0.85" />
 
                         <!-- Wave Ambient Gold Glow -->
-                        <path d="M -10,120 Q 180,144 380,104 T 660,88" fill="none" stroke="#e5bd6f" stroke-width="7" opacity="0.25" />
+                        <path d="M -10,120 Q 180,144 380,104 T 660,88" fill="none" stroke="#e5bd6f" stroke-width="7" opacity="0.3" />
 
                         <!-- Wave Main Metallic Gold Ribbon -->
                         <path d="M -10,124 Q 180,148 380,108 T 660,92" fill="none" stroke="url(#dashGoldGrad)" stroke-width="4.5" stroke-linecap="round" />
@@ -87,7 +88,7 @@
                         <rect x="4" y="4" width="642" height="400" rx="14" fill="none" stroke="url(#dashGoldGrad)" stroke-width="1.8" opacity="0.85" />
 
                         <!-- Cap Stempel Resmi Toga ASASI (Watermark Emas Transparan) -->
-                        <g transform="translate(490, 215) rotate(-6 70 70)" opacity="0.18">
+                        <g transform="translate(490, 215) rotate(-6 70 70)" opacity="0.22">
                             <circle cx="70" cy="70" r="68" fill="none" stroke="#f6d494" stroke-width="2.5" />
                             <circle cx="70" cy="70" r="62" fill="none" stroke="#f6d494" stroke-width="1.2" stroke-dasharray="5,2.5" />
                             <circle cx="70" cy="70" r="46" fill="none" stroke="#f6d494" stroke-width="1.2" />

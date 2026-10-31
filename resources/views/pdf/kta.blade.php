@@ -14,7 +14,7 @@
             width: 325pt;
             height: 204pt;
             font-family: Helvetica, Arial, sans-serif;
-            background-color: #071b34;
+            background-color: #092242;
             color: #ffffff;
             overflow: hidden;
             -webkit-print-color-adjust: exact;
@@ -242,14 +242,15 @@
         $svgBg = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="325" height="204" viewBox="0 0 325 204">
           <defs>
             <linearGradient id="navyMain" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#071b34" />
-              <stop offset="40%" stop-color="#0a2a52" />
-              <stop offset="80%" stop-color="#0e3768" />
-              <stop offset="100%" stop-color="#06182e" />
+              <stop offset="0%" stop-color="#092242" />
+              <stop offset="35%" stop-color="#0d3563" />
+              <stop offset="70%" stop-color="#144882" />
+              <stop offset="100%" stop-color="#0a264c" />
             </linearGradient>
             <linearGradient id="navyLower" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#061c38" />
-              <stop offset="100%" stop-color="#0a264a" />
+              <stop offset="0%" stop-color="#0c2d54" />
+              <stop offset="50%" stop-color="#113e72" />
+              <stop offset="100%" stop-color="#185294" />
             </linearGradient>
             <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stop-color="#c5a059" />
@@ -280,23 +281,23 @@
             <line x1="150" y1="22" x2="190" y2="33" stroke="#7eb9e6" stroke-width="0.5" />
           </g>
 
-          <!-- Sweeping Wave with Subtle Navy Tone Variation -->
-          <path d="M 0,62 Q 90,74 190,54 T 325,46 L 325,204 L 0,204 Z" fill="url(#navyLower)" opacity="0.65" />
+          <!-- Sweeping Wave with Rich Navy Shade -->
+          <path d="M 0,62 Q 90,74 190,54 T 325,46 L 325,204 L 0,204 Z" fill="url(#navyLower)" opacity="0.85" />
 
           <!-- Wave Ambient Glow -->
-          <path d="M 0,60 Q 90,72 190,52 T 325,44" fill="none" stroke="#e5bd6f" stroke-width="3.5" opacity="0.25" />
+          <path d="M 0,60 Q 90,72 190,52 T 325,44" fill="none" stroke="#e5bd6f" stroke-width="3.5" opacity="0.3" />
 
           <!-- Main Metallic Gold Ribbon -->
-          <path d="M 0,62 Q 90,74 190,54 T 325,46" fill="none" stroke="url(#goldGradient)" stroke-width="2.2" />
+          <path d="M 0,62 Q 90,74 190,54 T 325,46" fill="none" stroke="url(#goldGradient)" stroke-width="2.3" />
 
           <!-- Shimmer Hairline Ribbon -->
-          <path d="M 0,59 Q 90,71 190,51 T 325,43" fill="none" stroke="#fdf0cd" stroke-width="0.8" opacity="0.7" />
+          <path d="M 0,59 Q 90,71 190,51 T 325,43" fill="none" stroke="#fdf0cd" stroke-width="0.8" opacity="0.75" />
 
           <!-- Outer Gold Luxury Hairline Border with Rounded Corners -->
-          <rect x="2.5" y="2.5" width="320" height="199" rx="8" fill="none" stroke="url(#goldGradient)" stroke-width="1.4" />
+          <rect x="2.5" y="2.5" width="320" height="199" rx="8" fill="none" stroke="url(#goldGradient)" stroke-width="1.5" />
 
           <!-- Cap Stempel Resmi Toga ASASI (Watermark Emas Transparan pada Background Navy) -->
-          <g transform="translate(246, 105) rotate(-6 40 40)" opacity="0.18">
+          <g transform="translate(246, 105) rotate(-6 40 40)" opacity="0.22">
             <!-- Lingkaran Ganda Cap Dinas -->
             <circle cx="40" cy="40" r="39" fill="none" stroke="#f6d494" stroke-width="1.6" />
             <circle cx="40" cy="40" r="35.5" fill="none" stroke="#f6d494" stroke-width="0.8" stroke-dasharray="3,1.5" />
