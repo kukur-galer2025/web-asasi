@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>KTA - {{ $member->nomor_anggota }}</title>
+    <title>KTA ASASI - {{ $member->nomor_anggota }}</title>
     <style>
         @page {
             margin: 0px;
@@ -14,10 +14,19 @@
             width: 325pt;
             height: 204pt;
             font-family: Helvetica, Arial, sans-serif;
-            background-color: #092242;
-            color: #ffffff;
+            background-color: #061b2c;
+            color: #f9f6ee;
             overflow: hidden;
             -webkit-print-color-adjust: exact;
+        }
+        .page-break {
+            page-break-after: always;
+        }
+        .card-wrapper {
+            position: relative;
+            width: 325pt;
+            height: 204pt;
+            overflow: hidden;
         }
         .bg-layer {
             position: absolute;
@@ -27,7 +36,7 @@
             height: 204pt;
             z-index: 1;
         }
-        .svg-layer {
+        .overlay-layer {
             position: absolute;
             top: 0;
             left: 0;
@@ -42,168 +51,230 @@
             width: 325pt;
             height: 204pt;
             z-index: 10;
+            padding: 13pt 16pt;
+            box-sizing: border-box;
         }
 
         /* ===== TOP BRAND BAR ===== */
         .top-table {
             width: 100%;
             border-collapse: collapse;
-            padding: 6pt 14pt 0 14pt;
         }
         .logo-img {
-            height: 18pt;
+            height: 20pt;
             width: auto;
             display: block;
         }
-        .rule-gold {
-            border-left: 1.2pt solid #e5bd6f;
-            height: 20pt;
+        .brandline {
+            border-left: 1.2pt solid #e6c891;
+            height: 22pt;
             display: inline-block;
             vertical-align: middle;
             margin: 0 6pt;
         }
-        .org-title {
-            font-family: "Times New Roman", Times, Georgia, serif;
-            font-size: 10.5pt;
+        .brand-title {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 11.5pt;
             font-weight: bold;
-            letter-spacing: 2px;
-            color: #ffffff;
+            letter-spacing: 1.6px;
+            color: #f9f6ee;
             line-height: 1;
         }
-        .org-sub {
+        .brand-sub {
             font-size: 4pt;
-            color: #9cbddc;
+            color: #b7cbd3;
             letter-spacing: 0.6px;
             text-transform: uppercase;
-            margin-top: 1.5pt;
-            font-family: Helvetica, Arial, sans-serif;
+            margin-top: 2pt;
+            line-height: 1.3;
         }
-        .badge-kta {
-            font-family: "Times New Roman", Times, Georgia, serif;
-            font-size: 8.5pt;
+        .tier-badge {
+            border: 0.8pt solid rgba(230,200,145,0.6);
+            border-radius: 50pt;
+            padding: 3pt 6pt;
+            color: #e6c891;
+            font-size: 4.8pt;
             font-weight: bold;
-            letter-spacing: 2px;
-            color: #f6d494;
+            letter-spacing: 1px;
             text-transform: uppercase;
-            text-align: right;
             white-space: nowrap;
+            text-align: right;
+            display: inline-block;
         }
 
-        /* ===== BODY SECTION ===== */
-        .body-container {
-            position: absolute;
-            top: 64pt;
-            left: 14pt;
-            right: 14pt;
-            height: 124pt;
+        /* ===== HAIRLINE SEPARATOR ===== */
+        .hairline {
+            border-bottom: 0.8pt solid rgba(230,200,145,0.45);
+            margin: 4.5pt 0 6pt 0;
+            width: 100%;
         }
-        .body-table {
+
+        /* ===== FRONT CONTENT ===== */
+        .front-table {
             width: 100%;
             border-collapse: collapse;
         }
         .photo-col {
             width: 52pt;
-            vertical-align: top;
-            padding-top: 2pt;
+            vertical-align: middle;
         }
         .photo-frame {
             width: 48pt;
-            height: 65pt;
-            border: 1.5pt solid #e5bd6f;
-            border-radius: 4pt;
-            background-color: #0b2548;
+            height: 64pt;
+            border: 1pt solid rgba(233,204,143,0.7);
+            border-radius: 4.5pt;
+            background-color: #15374d;
             overflow: hidden;
             text-align: center;
         }
         .photo-img {
             width: 48pt;
-            height: 65pt;
+            height: 64pt;
             object-fit: cover;
             display: block;
         }
         .photo-placeholder {
             width: 48pt;
-            height: 65pt;
-            background-color: #0b2548;
-            color: #94bfe3;
+            height: 64pt;
+            background-color: #15374d;
+            color: #aebfca;
             font-size: 5pt;
             text-align: center;
             padding-top: 24pt;
             font-weight: bold;
             line-height: 1.3;
         }
-
-        /* Identity Details: Clean, Sharp, Full Width */
-        .data-col {
-            vertical-align: top;
+        .info-col {
+            vertical-align: middle;
             padding-left: 9pt;
         }
-        .member-name {
-            font-family: "Times New Roman", Times, Georgia, serif;
-            font-size: 9.8pt;
-            font-weight: bold;
-            color: #ffffff;
-            padding-bottom: 2.5pt;
-            border-bottom: 1.2pt solid #d4a653;
-            margin-bottom: 4pt;
-            line-height: 1.25;
-            letter-spacing: 0.2px;
-        }
-        .info-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .info-table td {
-            padding: 1.6pt 0;
-            font-size: 6.2pt;
-            vertical-align: top;
-            line-height: 1.25;
-            color: #e2e8f0;
-        }
-        .info-label {
-            width: 58pt;
-            color: #f6d494;
-            font-size: 5.4pt;
+        .field-label {
+            color: #aebfca;
+            font-size: 4.2pt;
+            letter-spacing: 0.8px;
             text-transform: uppercase;
-            font-weight: 600;
-        }
-        .info-val {
             font-weight: bold;
-            color: #ffffff;
+            margin-bottom: 1pt;
         }
-        .info-val-nik {
-            font-family: Courier, monospace;
+        .member-name {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 9.2pt;
             font-weight: bold;
-            color: #f6d494;
-            font-size: 7.2pt;
-            letter-spacing: 0.5px;
+            color: #f9f6ee;
+            line-height: 1.2;
+            margin-bottom: 2pt;
         }
-
-        /* ===== FOOTER SECTION ===== */
-        .footer-container {
-            position: absolute;
-            bottom: 4pt;
-            left: 14pt;
-            right: 14pt;
-            height: 11pt;
-        }
-        .footer-table {
-            width: 100%;
-            border-collapse: collapse;
-            border-top: 0.5pt solid rgba(212, 166, 83, 0.4);
-            padding-top: 2pt;
-        }
-        .footer-table td {
-            font-size: 4.8pt;
-            color: #94bfe3;
-        }
-        .footer-right {
-            font-family: "Times New Roman", Times, Georgia, serif;
-            font-weight: bold;
-            color: #f6d494;
-            text-align: right;
+        .status-text {
+            color: #e6c891;
             text-transform: uppercase;
             letter-spacing: 0.8px;
+            font-size: 4.8pt;
+            font-weight: bold;
+            margin-bottom: 4pt;
+        }
+        .details-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .details-table td {
+            vertical-align: top;
+            padding: 1.5pt 2pt 1.5pt 0;
+        }
+        .detail-item-label {
+            color: #aebfca;
+            font-size: 4pt;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            font-weight: bold;
+            display: block;
+        }
+        .detail-item-val {
+            font-size: 5.5pt;
+            color: #f2f1ec;
+            font-weight: bold;
+            display: block;
+            margin-top: 0.5pt;
+        }
+
+        /* ===== BOTTOM ROW ===== */
+        .bottom-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 5pt;
+            border-top: 0.4pt solid rgba(230,200,145,0.25);
+            padding-top: 2.5pt;
+        }
+        .bottom-motto {
+            font-size: 4.2pt;
+            color: #a9bfcb;
+            letter-spacing: 0.6px;
+        }
+        .bottom-seal {
+            font-family: Georgia, "Times New Roman", serif;
+            font-style: italic;
+            font-size: 7.2pt;
+            color: #e6c891;
+            text-align: right;
+        }
+
+        /* ===== BACK CARD ===== */
+        .back-kicker {
+            color: #e6c891;
+            letter-spacing: 1.5px;
+            font-size: 5pt;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .back-title {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 10.5pt;
+            color: #f9f6ee;
+            font-weight: normal;
+            line-height: 1.3;
+            margin: 5pt 0 4pt 0;
+        }
+        .back-desc {
+            font-size: 5pt;
+            line-height: 1.5;
+            color: #b7c7d0;
+            margin: 0;
+            max-width: 250pt;
+        }
+        .back-lower-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 14pt;
+        }
+        .barcode-box {
+            background-color: #f8f7f1;
+            border-radius: 4pt;
+            padding: 4pt 6pt 3pt 6pt;
+            display: inline-block;
+            text-align: center;
+        }
+        .barcode-caption {
+            font-size: 4.2pt;
+            color: #3b4a54;
+            letter-spacing: 0.8px;
+            margin-top: 2pt;
+            font-weight: bold;
+        }
+        .verify-portal-caption {
+            color: #e6c891;
+            font-size: 4.5pt;
+            letter-spacing: 0.8px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .verify-portal-url {
+            font-size: 7.5pt;
+            font-weight: bold;
+            color: #f9f6ee;
+            margin: 2pt 0;
+        }
+        .verify-portal-email {
+            color: #a8bbc6;
+            font-size: 4.8pt;
         }
     </style>
 </head>
@@ -240,38 +311,25 @@
             }
         }
 
-        // 3. Logo Putih untuk Cap Stempel Resmi Toga ASASI (Watermark)
-        $stampLogoBase64 = null;
-        $stampPath = public_path('images/logo/logo-asasi-white.png');
-        if (file_exists($stampPath)) {
-            $stampLogoBase64 = 'data:image/png;base64,' . base64_encode(file_get_contents($stampPath));
-        }
-
-        // 4. Background Royal Navy Luxury Gradient Image (GD Generator untuk Dompdf)
-        $navyBgBase64 = null;
+        // 3. Background Luxury Midnight Navy Gradient (#061b2c 0%, #092941 64%, #19465d 100%)
+        $bgGrad = null;
         if (function_exists('imagecreatetruecolor')) {
             $w = 650;
             $h = 408;
             $im = imagecreatetruecolor($w, $h);
-            // Gradasi diagonal mewah: #092242 (navy pekat) -> #0d3563 -> #144882 (royal blue) -> #0a264c
             for ($y = 0; $y < $h; $y++) {
                 for ($x = 0; $x < $w; $x += 2) {
-                    $t = ($x / $w * 0.35) + ($y / $h * 0.65);
-                    if ($t < 0.35) {
-                        $f = $t / 0.35;
-                        $r = (int)(9 + (13 - 9) * $f);
-                        $g = (int)(34 + (53 - 34) * $f);
-                        $b = (int)(66 + (99 - 66) * $f);
-                    } elseif ($t < 0.70) {
-                        $f = ($t - 0.35) / 0.35;
-                        $r = (int)(13 + (20 - 13) * $f);
-                        $g = (int)(53 + (72 - 53) * $f);
-                        $b = (int)(99 + (130 - 99) * $f);
+                    $t = ($x / $w * 0.45) + ($y / $h * 0.55);
+                    if ($t < 0.64) {
+                        $f = $t / 0.64;
+                        $r = (int)(6 + (9 - 6) * $f);
+                        $g = (int)(27 + (41 - 27) * $f);
+                        $b = (int)(44 + (65 - 44) * $f);
                     } else {
-                        $f = ($t - 0.70) / 0.30;
-                        $r = (int)(20 + (10 - 20) * $f);
-                        $g = (int)(72 + (38 - 72) * $f);
-                        $b = (int)(130 + (76 - 130) * $f);
+                        $f = ($t - 0.64) / 0.36;
+                        $r = (int)(9 + (25 - 9) * $f);
+                        $g = (int)(41 + (70 - 41) * $f);
+                        $b = (int)(65 + (93 - 65) * $f);
                     }
                     $col = imagecolorallocate($im, $r, $g, $b);
                     imagesetpixel($im, $x, $y, $col);
@@ -282,99 +340,79 @@
             imagepng($im);
             $data = ob_get_clean();
             imagedestroy($im);
-            $navyBgBase64 = 'data:image/png;base64,' . base64_encode($data);
+            $bgGrad = 'data:image/png;base64,' . base64_encode($data);
         }
 
-        // 5. Vector SVG Overlay: Rasi Bintang + Gelombang Emas Mewah + Border Emas + Cap Stempel Toga ASASI
-        // Gunakan solid hex color yang didukung 100% oleh php-svg-lib (TIDAK menggunakan url(#linearGradient))
-        $svgBg = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="325" height="204" viewBox="0 0 325 204">
-          ' . ($navyBgBase64 ? '' : '<rect width="325" height="204" fill="#0d3563" />') . '
+        // 4. SVG Overlay Rings & Elegant Champagne Hairline Border
+        $cardOverlay = 'data:image/svg+xml;base64,' . base64_encode('<svg xmlns="http://www.w3.org/2000/svg" width="325" height="204" viewBox="0 0 325 204">
+            <g opacity="0.6">
+                <circle cx="280" cy="15" r="75" fill="none" stroke="#e9cc8f" stroke-width="0.7" opacity="0.25" />
+                <circle cx="280" cy="15" r="95" fill="none" stroke="#e9cc8f" stroke-width="0.7" opacity="0.12" />
+                <circle cx="280" cy="15" r="115" fill="none" stroke="#e9cc8f" stroke-width="0.7" opacity="0.06" />
+            </g>
+            <rect x="2.5" y="2.5" width="320" height="199" rx="8" fill="none" stroke="#e6c891" stroke-width="0.8" opacity="0.38" />
+        </svg>');
 
-          <!-- Constellation Nodes & Micro-Lines in Upper Sky -->
-          <g opacity="0.45">
-            <circle cx="25" cy="20" r="1.2" fill="#7eb9e6" />
-            <circle cx="80" cy="14" r="1.8" fill="#7eb9e6" />
-            <circle cx="150" cy="22" r="1.2" fill="#7eb9e6" />
-            <circle cx="230" cy="15" r="1.8" fill="#7eb9e6" />
-            <circle cx="295" cy="20" r="1.4" fill="#7eb9e6" />
-            <circle cx="55" cy="35" r="1.2" fill="#7eb9e6" />
-            <circle cx="190" cy="33" r="1.5" fill="#7eb9e6" />
-            <line x1="25" y1="20" x2="80" y2="14" stroke="#7eb9e6" stroke-width="0.5" />
-            <line x1="80" y1="14" x2="150" y2="22" stroke="#7eb9e6" stroke-width="0.5" />
-            <line x1="150" y1="22" x2="230" y2="15" stroke="#7eb9e6" stroke-width="0.5" />
-            <line x1="230" y1="15" x2="295" y2="20" stroke="#7eb9e6" stroke-width="0.5" />
-            <line x1="80" y1="14" x2="55" y2="35" stroke="#7eb9e6" stroke-width="0.5" />
-            <line x1="150" y1="22" x2="190" y2="33" stroke="#7eb9e6" stroke-width="0.5" />
-          </g>
-
-          <!-- Outer Gold Luxury Hairline Border with Rounded Corners -->
-          <rect x="2.5" y="2.5" width="320" height="199" rx="8" fill="none" stroke="#e5bd6f" stroke-width="1.2" opacity="0.75" />
-
-          <!-- Cap Stempel Resmi Toga ASASI (Watermark Emas Transparan pada Background Navy) -->
-          <g transform="translate(246, 105) rotate(-6 40 40)" opacity="0.22">
-            <!-- Lingkaran Ganda Cap Dinas -->
-            <circle cx="40" cy="40" r="39" fill="none" stroke="#f6d494" stroke-width="1.6" />
-            <circle cx="40" cy="40" r="35.5" fill="none" stroke="#f6d494" stroke-width="0.8" stroke-dasharray="3,1.5" />
-            <circle cx="40" cy="40" r="26" fill="none" stroke="#f6d494" stroke-width="0.8" />
-
-            <!-- Teks Melingkar Stempel & Titik Ornamen -->
-            <text x="40" y="9.5" font-family="Helvetica, Arial, sans-serif" font-size="3.6" font-weight="bold" fill="#f6d494" text-anchor="middle">DEWAN PENGURUS PUSAT</text>
-            <circle cx="21" cy="72" r="0.9" fill="#f6d494" />
-            <text x="40" y="73" font-family="Helvetica, Arial, sans-serif" font-size="3.3" font-weight="bold" fill="#f6d494" text-anchor="middle">ASASI INDONESIA</text>
-            <circle cx="59" cy="72" r="0.9" fill="#f6d494" />
-
-            <!-- Logo Toga ASASI di Bagian Tengah Cap (Proporsional Asli 2.56:1) -->
-            ' . ($stampLogoBase64 ? '<image xlink:href="' . $stampLogoBase64 . '" x="19" y="31.8" width="42" height="16.4" />' : '') . '
-          </g>
-        </svg>';
-        $svgBase64 = 'data:image/svg+xml;base64,' . base64_encode($svgBg);
+        // 5. SVG Crisp Vector Barcode (Back Card)
+        $pattern = [2,2,1,3,1,1,3,2,1,2,2,2,1,1,4,1,2,3,1,2,1,1,3,3,2,2,1,1,2,4,1,2,1,3,2,2,1,1,3,1,2,3,1,2,1,2,2,1,3,2];
+        $bw = 140;
+        $bh = 32;
+        $bSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="'.$bw.'" height="'.$bh.'" viewBox="0 0 '.$bw.' '.$bh.'">';
+        $bx = 4;
+        $bBar = true;
+        foreach ($pattern as $pw) {
+            if ($bBar) {
+                $bSvg .= '<rect x="'.$bx.'" y="0" width="'.$pw.'" height="'.$bh.'" fill="#172b37" />';
+            }
+            $bx += $pw;
+            $bBar = !$bBar;
+            if ($bx >= $bw - 6) break;
+        }
+        $bSvg .= '</svg>';
+        $barcodeSvg = 'data:image/svg+xml;base64,' . base64_encode($bSvg);
     @endphp
 
-    {{-- Layer 1: Navy Gradient Base Image --}}
-    @if($navyBgBase64)
-    <div class="bg-layer">
-        <img src="{{ $navyBgBase64 }}" style="width:325pt; height:204pt; display:block;" />
-    </div>
-    @endif
-
-    {{-- Layer 2: Vector Accents (Wave + Glow + Ribbon + Constellations + Stempel) --}}
-    <div class="svg-layer">
-        <img src="{{ $svgBase64 }}" style="width:325pt; height:204pt; display:block;" />
-    </div>
-
-    {{-- Layer 3: Typography & Content Overlay --}}
-    <div class="content-layer">
-
-        <!-- Top Bar: Logo + Brand + Title -->
-        <table class="top-table">
-            <tr>
-                <td style="vertical-align:middle;">
-                    <table cellpadding="0" cellspacing="0"><tr>
-                        @if($logoBase64)
-                        <td style="vertical-align:middle; padding-right:4pt;">
-                            <img src="{{ $logoBase64 }}" class="logo-img" alt="Logo">
-                        </td>
-                        <td style="vertical-align:middle; padding-right:4pt;">
-                            <div class="rule-gold"></div>
-                        </td>
-                        @endif
-                        <td style="vertical-align:middle;">
-                            <div class="org-title">ASASI</div>
-                            <div class="org-sub">PERKUMPULAN AKADEMISI DAN SAINTIS INDONESIA</div>
-                        </td>
-                    </tr></table>
-                </td>
-                <td style="vertical-align:middle; text-align:right;">
-                    <div class="badge-kta">KARTU ANGGOTA</div>
-                </td>
-            </tr>
-        </table>
-
-        <!-- Body Section: Photo + Full Identity (Full Luxury Navy Theme) -->
-        <div class="body-container">
-            <table class="body-table" cellpadding="0" cellspacing="0">
+    <!-- ==================== PAGE 1: BAGIAN DEPAN (FRONT) ==================== -->
+    <div class="card-wrapper">
+        @if($bgGrad)
+            <div class="bg-layer"><img src="{{ $bgGrad }}" style="width:325pt; height:204pt; display:block;" /></div>
+        @endif
+        <div class="overlay-layer"><img src="{{ $cardOverlay }}" style="width:325pt; height:204pt; display:block;" /></div>
+        
+        <div class="content-layer">
+            <!-- TOP BRAND BAR -->
+            <table class="top-table">
                 <tr>
-                    {{-- Pas Foto 3x4 --}}
+                    <td style="vertical-align:middle;">
+                        <table cellpadding="0" cellspacing="0">
+                            <tr>
+                                @if($logoBase64)
+                                    <td style="vertical-align:middle; padding-right:3pt;">
+                                        <img src="{{ $logoBase64 }}" class="logo-img" alt="Logo ASASI">
+                                    </td>
+                                    <td style="vertical-align:middle;">
+                                        <div class="brandline"></div>
+                                    </td>
+                                @endif
+                                <td style="vertical-align:middle; padding-left:4pt;">
+                                    <div class="brand-title">ASASI</div>
+                                    <div class="brand-sub">PERKUMPULAN AKADEMISI<br>DAN SAINTIS INDONESIA</div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td style="vertical-align:middle; text-align:right;">
+                        <span class="tier-badge">MEMBER CARD</span>
+                    </td>
+                </tr>
+            </table>
+
+            <!-- HAIRLINE SEPARATOR -->
+            <div class="hairline"></div>
+
+            <!-- FRONT CONTENT: PHOTO + IDENTITAS ANGGOTA LENGKAP -->
+            <table class="front-table">
+                <tr>
                     <td class="photo-col">
                         <div class="photo-frame">
                             @if($photoBase64)
@@ -384,49 +422,85 @@
                             @endif
                         </div>
                     </td>
-
-                    {{-- Data Anggota Lengkap --}}
-                    <td class="data-col">
+                    <td class="info-col">
+                        <div class="field-label">Nama Anggota</div>
                         <div class="member-name">{{ $member->nama_lengkap }}</div>
-                        <table class="info-table" cellpadding="0" cellspacing="0">
+                        <div class="status-text">Anggota Aktif • Akademisi Terverifikasi</div>
+
+                        <table class="details-table">
                             <tr>
-                                <td class="info-label">No. Anggota</td>
-                                <td class="info-val-nik">: {{ $member->nomor_anggota }}</td>
+                                <td style="width:50%;">
+                                    <span class="detail-item-label">No. Anggota</span>
+                                    <span class="detail-item-val">{{ $member->nomor_anggota }}</span>
+                                </td>
+                                <td style="width:50%;">
+                                    <span class="detail-item-label">Berlaku Hingga</span>
+                                    <span class="detail-item-val">{{ optional($member->masa_berlaku_sampai)->format('d M Y') ?? 'Seumur Hidup' }}</span>
+                                </td>
                             </tr>
                             <tr>
-                                <td class="info-label">Status</td>
-                                <td class="info-val" style="color:#34d399;">: Anggota Aktif Terverifikasi</td>
-                            </tr>
-                            <tr>
-                                <td class="info-label">Wilayah DPW</td>
-                                <td class="info-val">: {{ $member->wilayah_dpw ?? '-' }}</td>
-                            </tr>
-                            <tr>
-                                <td class="info-label">Afiliasi</td>
-                                <td class="info-val">: {{ $member->instansi ?? '-' }}</td>
+                                <td>
+                                    <span class="detail-item-label">Wilayah DPW</span>
+                                    <span class="detail-item-val">{{ $member->wilayah_dpw ?? '-' }}</span>
+                                </td>
+                                <td>
+                                    <span class="detail-item-label">Afiliasi</span>
+                                    <span class="detail-item-val">{{ $member->instansi ?? '-' }}</span>
+                                </td>
                             </tr>
                             @if($member->bidang_keahlian)
                             <tr>
-                                <td class="info-label">Bidang Riset</td>
-                                <td class="info-val">: {{ $member->bidang_keahlian }}</td>
+                                <td colspan="2">
+                                    <span class="detail-item-label">Bidang Riset</span>
+                                    <span class="detail-item-val">{{ $member->bidang_keahlian }}</span>
+                                </td>
                             </tr>
                             @endif
                         </table>
                     </td>
                 </tr>
             </table>
-        </div>
 
-        <!-- Footer Section -->
-        <div class="footer-container">
-            <table class="footer-table">
+            <!-- BOTTOM FOOTER -->
+            <table class="bottom-table">
                 <tr>
-                    <td>Masa Berlaku: <strong style="color:#ffffff;">{{ optional($member->masa_berlaku_sampai)->format('d M Y') ?? 'Seumur Hidup' }}</strong></td>
-                    <td class="footer-right">DPP ASASI</td>
+                    <td class="bottom-motto">INTEGRITY • KNOWLEDGE • IMPACT</td>
+                    <td class="bottom-seal">DPP ASASI</td>
                 </tr>
             </table>
         </div>
+    </div>
 
+    <div class="page-break"></div>
+
+    <!-- ==================== PAGE 2: BAGIAN BELAKANG (BACK) ==================== -->
+    <div class="card-wrapper">
+        @if($bgGrad)
+            <div class="bg-layer"><img src="{{ $bgGrad }}" style="width:325pt; height:204pt; display:block;" /></div>
+        @endif
+        <div class="overlay-layer"><img src="{{ $cardOverlay }}" style="width:325pt; height:204pt; display:block;" /></div>
+        
+        <div class="content-layer" style="padding: 16pt 18pt;">
+            <span class="back-kicker">ASASI • INDONESIA</span>
+            <h2 class="back-title">Membentuk Akademisi Unggul,<br>Mendorong Perbaikan Bangsa.</h2>
+            <p class="back-desc">Kartu ini merupakan identitas keanggotaan resmi Perkumpulan Akademisi dan Saintis Indonesia (ASASI). Validitas dan status keanggotaan dapat diverifikasi secara daring melalui portal resmi ASASI.</p>
+
+            <table class="back-lower-table">
+                <tr>
+                    <td style="vertical-align:bottom; width:55%;">
+                        <div class="barcode-box">
+                            <img src="{{ $barcodeSvg }}" style="width:130pt; height:26pt; display:block;" alt="Barcode">
+                            <div class="barcode-caption">{{ $member->nomor_anggota }} • VERIFIKASI RESMI</div>
+                        </div>
+                    </td>
+                    <td style="vertical-align:bottom; text-align:right;">
+                        <div class="verify-portal-caption">PORTAL KEANGGOTAAN</div>
+                        <div class="verify-portal-url">www.asasi.or.id</div>
+                        <div class="verify-portal-email">sekretariat@asasi.or.id</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 </body>
 </html>

@@ -27,123 +27,395 @@
     <div class="grid lg:grid-cols-12 gap-8 items-start">
 
         <!-- KOLOM KIRI: Kartu KTA Digital (White & Gold Clean Luxury) -->
+        <!-- KOLOM KIRI: Kartu Anggota (KTA) Premium Luxury Preview (Depan & Belakang) -->
         <div class="lg:col-span-5 space-y-6">
-            <div class="bg-white p-7 rounded-3xl border border-slate-200/80 shadow-sm space-y-5">
-                <div>
-                    <span class="text-xs font-bold uppercase tracking-widest text-asasi-gold">Kartu Identitas Digital</span>
-                    <h2 class="font-serif text-xl font-bold text-slate-900 mt-0.5">Pratinjau Kartu Anggota (KTA)</h2>
-                </div>
-
-                <!-- Desain Kartu KTA Luxury — Navy & Gold Metallic Wave (No QR Code, Teks Lengkap) -->
-                <div class="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-[#C5A059] bg-[#092242]" style="min-height: 250px;">
-
-                    {{-- SVG Background: Sweeping Wave, Constellation, Gold Ribbon & Watermark (Full Luxury Navy) --}}
-                    <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 650 408" preserveAspectRatio="none">
-                        <defs>
-                            <linearGradient id="dashNavyBg" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#092242" />
-                                <stop offset="35%" stop-color="#0d3563" />
-                                <stop offset="70%" stop-color="#144882" />
-                                <stop offset="100%" stop-color="#0a264c" />
-                            </linearGradient>
-                            <linearGradient id="dashGoldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" stop-color="#c5a059" />
-                                <stop offset="30%" stop-color="#f6d494" />
-                                <stop offset="60%" stop-color="#e5bd6f" />
-                                <stop offset="100%" stop-color="#8c6a28" />
-                            </linearGradient>
-                            <pattern id="dashConstellation" width="80" height="80" patternUnits="userSpaceOnUse">
-                                <circle cx="15" cy="15" r="1.5" fill="#a5d2f6" opacity="0.45" />
-                                <circle cx="65" cy="35" r="2" fill="#a5d2f6" opacity="0.5" />
-                                <circle cx="40" cy="70" r="1.2" fill="#a5d2f6" opacity="0.4" />
-                                <line x1="15" y1="15" x2="65" y2="35" stroke="#7eb9e6" stroke-width="0.6" opacity="0.3" />
-                                <line x1="65" y1="35" x2="40" y2="70" stroke="#7eb9e6" stroke-width="0.6" opacity="0.3" />
-                            </pattern>
-                        </defs>
-
-                        <!-- Base Navy -->
-                        <rect width="650" height="408" fill="url(#dashNavyBg)" />
-
-                        <!-- Constellation Geometric Pattern -->
-                        <rect width="650" height="220" fill="url(#dashConstellation)" />
-
-                        <!-- Outer Gold Border -->
-                        <rect x="4" y="4" width="642" height="400" rx="14" fill="none" stroke="url(#dashGoldGrad)" stroke-width="1.8" opacity="0.85" />
-
-                        <!-- Cap Stempel Resmi Toga ASASI (Watermark Emas Transparan) -->
-                        <g transform="translate(490, 215) rotate(-6 70 70)" opacity="0.22">
-                            <circle cx="70" cy="70" r="68" fill="none" stroke="#f6d494" stroke-width="2.5" />
-                            <circle cx="70" cy="70" r="62" fill="none" stroke="#f6d494" stroke-width="1.2" stroke-dasharray="5,2.5" />
-                            <circle cx="70" cy="70" r="46" fill="none" stroke="#f6d494" stroke-width="1.2" />
-                            <text x="70" y="17" font-family="Arial, sans-serif" font-size="6.2" font-weight="bold" fill="#f6d494" text-anchor="middle" letter-spacing="1.5">DEWAN PENGURUS PUSAT</text>
-                            <circle cx="36" cy="126" r="1.5" fill="#f6d494" />
-                            <text x="70" y="128" font-family="Arial, sans-serif" font-size="5.8" font-weight="bold" fill="#f6d494" text-anchor="middle" letter-spacing="1.8">ASASI INDONESIA</text>
-                            <circle cx="104" cy="126" r="1.5" fill="#f6d494" />
-                            <image href="{{ asset('images/logo/logo-asasi-white.png') }}" x="33" y="55.5" width="74" height="29" />
-                        </g>
-                    </svg>
-
-                    {{-- Content Layer --}}
-                    <div class="relative z-10 flex flex-col justify-between h-full p-5 sm:p-6" style="min-height: 250px;">
-
-                        <!-- Top Bar: Logo + Brand + KARTU ANGGOTA -->
-                        <div class="flex justify-between items-start mb-6">
-                            <div class="flex items-center gap-3">
-                                <img src="{{ asset('images/logo/logo-asasi-white.png') }}" alt="ASASI" class="h-8 w-auto drop-shadow" onerror="this.src='{{ asset('images/logo/logo-asasi.png') }}'">
-                                <div class="border-l-2 border-[#e5bd6f] pl-3">
-                                    <p class="text-white font-serif font-bold text-sm sm:text-base tracking-widest leading-none">ASASI</p>
-                                    <p class="text-[#9cbddc] text-[8px] sm:text-[9px] uppercase tracking-wider leading-tight mt-1 font-sans">Perkumpulan Akademisi<br>dan Saintis Indonesia</p>
-                                </div>
-                            </div>
-                            <span class="text-[#f6d494] font-serif text-xs sm:text-sm font-bold tracking-widest uppercase drop-shadow">KARTU ANGGOTA</span>
-                        </div>
-
-                        <!-- Bottom Area (Photo + Identity inside Navy Luxury Theme) -->
-                        <div class="pt-4 flex gap-4 sm:gap-5 items-center">
-                            {{-- Pas Foto 3x4 with Gold Frame --}}
-                            <div class="w-16 h-22 sm:w-20 sm:h-26 shrink-0 rounded-xl overflow-hidden p-0.5 shadow-md flex items-center justify-center" style="background: linear-gradient(135deg, #f6d494, #c5a059, #8c6a28);">
-                                <div class="w-full h-full rounded-[10px] overflow-hidden bg-[#0b2548] flex items-center justify-center">
-                                    @if($member && $member->foto_profil)
-                                        <img src="{{ asset('storage/' . $member->foto_profil) }}" alt="{{ $member->nama_lengkap }}" class="w-full h-full object-cover object-top">
-                                    @else
-                                        <div class="text-center text-[#94bfe3] p-1">
-                                            <svg class="w-6 h-6 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-                                            <span class="text-[7px] font-bold uppercase tracking-wider block mt-0.5">Pas Foto</span>
-                                        </div>
-                                    @endif
-                                </div>
-                            </div>
-
-                            {{-- Data Identitas Penuh (Semua Teks Masuk, No QR) --}}
-                            <div class="flex-grow overflow-hidden min-w-0">
-                                <p class="font-serif font-bold text-white text-sm sm:text-base leading-snug pb-1.5 border-b-2 border-[#d4a653]/60 mb-2">
-                                    {{ $member->nama_lengkap ?? $user->name }}
-                                </p>
-                                <dl class="grid grid-cols-[auto_1fr] gap-x-2.5 gap-y-1 text-[11px] sm:text-xs leading-tight">
-                                    <dt class="text-[#f6d494] font-semibold uppercase text-[10px] whitespace-nowrap">No. Anggota</dt>
-                                    <dd class="font-bold text-[#f6d494] font-mono m-0">: {{ $member->nomor_anggota ?? 'MENUNGGU VERIFIKASI' }}</dd>
-                                    <dt class="text-[#f6d494] font-semibold uppercase text-[10px] whitespace-nowrap">Status</dt>
-                                    <dd class="font-bold text-emerald-400 m-0">: Anggota Aktif Terverifikasi</dd>
-                                    <dt class="text-[#f6d494] font-semibold uppercase text-[10px] whitespace-nowrap">Wilayah DPW</dt>
-                                    <dd class="font-bold text-white m-0">: {{ $member->wilayah_dpw ?? '-' }}</dd>
-                                    <dt class="text-[#f6d494] font-semibold uppercase text-[10px] whitespace-nowrap">Afiliasi</dt>
-                                    <dd class="font-bold text-white m-0">: {{ $member->instansi ?? '-' }}</dd>
-                                    @if($member && $member->bidang_keahlian)
-                                    <dt class="text-[#f6d494] font-semibold uppercase text-[10px] whitespace-nowrap">Bidang Riset</dt>
-                                    <dd class="font-bold text-white m-0">: {{ $member->bidang_keahlian }}</dd>
-                                    @endif
-                                </dl>
-                            </div>
-                        </div>
-
-                        <!-- Footer Row -->
-                        <div class="mt-4 pt-2 border-t border-[#d4a653]/30 flex justify-between items-center text-[10px] text-[#94bfe3]">
-                            <span>Masa Berlaku: <strong class="text-white">{{ $member?->masa_berlaku_sampai ? $member->masa_berlaku_sampai->format('d M Y') : 'Seumur Hidup' }}</strong></span>
-                            <span class="text-[#f6d494] font-serif font-bold uppercase tracking-wider">DPP ASASI</span>
-                        </div>
-
+            <div class="bg-white p-6 sm:p-7 rounded-3xl border border-slate-200/80 shadow-sm space-y-5">
+                <div class="flex items-center justify-between gap-2">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-asasi-gold">Kartu Identitas Digital</span>
+                        <h2 class="font-serif text-xl font-bold text-slate-900 mt-0.5">Pratinjau KTA ASASI</h2>
+                    </div>
+                    <!-- Switch Tampak Depan / Belakang -->
+                    <div class="inline-flex p-1 bg-slate-100 rounded-xl text-xs font-bold shrink-0">
+                        <button type="button" onclick="switchKtaSide('front')" id="btn-kta-front" class="px-3 py-1.5 rounded-lg transition bg-white text-slate-900 shadow-sm">Depan</button>
+                        <button type="button" onclick="switchKtaSide('back')" id="btn-kta-back" class="px-3 py-1.5 rounded-lg transition text-slate-500 hover:text-slate-900">Belakang</button>
                     </div>
                 </div>
+
+                <!-- Custom Scoped CSS untuk Premium Membership Card ASASI -->
+                <style>
+                    .asasi-card-wrap {
+                        --midnight: #061b2c;
+                        --navy: #092941;
+                        --slate: #15374d;
+                        --champagne: #e6c891;
+                        --gold: #bc965b;
+                        --ivory: #f9f6ee;
+                        --muted: #acbcc5;
+                        --card-ratio: 85.6 / 54;
+                    }
+                    .asasi-card {
+                        position: relative;
+                        isolation: isolate;
+                        overflow: hidden;
+                        aspect-ratio: var(--card-ratio);
+                        border: 1px solid rgba(245,224,178,.38);
+                        border-radius: 18px;
+                        background: linear-gradient(128deg, var(--midnight) 0%, var(--navy) 64%, #19465d 100%);
+                        color: var(--ivory);
+                        box-shadow: 0 20px 45px rgba(6,27,44,.28), 0 6px 16px rgba(6,27,44,.18);
+                    }
+                    .asasi-card::before {
+                        content: "";
+                        position: absolute;
+                        inset: 0;
+                        z-index: -2;
+                        opacity: .56;
+                        background: radial-gradient(circle at 95% 0%, rgba(242,214,161,.13), transparent 36%),
+                                    radial-gradient(circle at 0% 100%, rgba(95,163,195,.10), transparent 46%);
+                    }
+                    .asasi-card::after {
+                        content: "";
+                        position: absolute;
+                        width: 55%;
+                        height: 88%;
+                        right: -20%;
+                        top: -38%;
+                        border-radius: 50%;
+                        border: 1px solid rgba(233,204,143,.19);
+                        box-shadow: 0 0 0 25px rgba(231,201,146,.025), 0 0 0 50px rgba(231,201,146,.025);
+                        pointer-events: none;
+                    }
+                    .asasi-card .card-inner {
+                        position: relative;
+                        height: 100%;
+                        padding: 6% 6.5%;
+                        display: flex;
+                        flex-direction: column;
+                    }
+                    .asasi-card .top {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        gap: 10px;
+                    }
+                    .asasi-card .brand {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        min-width: 0;
+                    }
+                    .asasi-card .brand img {
+                        display: block;
+                        width: 46px;
+                        height: 32px;
+                        object-fit: contain;
+                    }
+                    .asasi-card .brandline {
+                        width: 1px;
+                        height: 28px;
+                        background: linear-gradient(transparent, var(--champagne), transparent);
+                        flex: none;
+                    }
+                    .asasi-card .brand-title {
+                        font-family: Georgia, serif;
+                        letter-spacing: .14em;
+                        font-weight: 700;
+                        font-size: 16px;
+                        line-height: 1;
+                        color: #f9f6ee;
+                    }
+                    .asasi-card .brand-sub {
+                        font-size: 5.5px;
+                        letter-spacing: .12em;
+                        color: #b7cbd3;
+                        margin-top: 3px;
+                        line-height: 1.4;
+                        text-transform: uppercase;
+                    }
+                    .asasi-card .tier {
+                        border: 1px solid rgba(230,200,145,.48);
+                        border-radius: 100px;
+                        padding: 4px 8px;
+                        color: var(--champagne);
+                        font-size: 7.5px;
+                        font-weight: 800;
+                        letter-spacing: .16em;
+                        white-space: nowrap;
+                        text-transform: uppercase;
+                    }
+                    .asasi-card .hairline {
+                        height: 1px;
+                        background: linear-gradient(90deg, transparent, rgba(230,200,145,.7), transparent);
+                        margin: 4% 0;
+                    }
+                    .asasi-card .front-content {
+                        display: grid;
+                        grid-template-columns: 24% 1fr;
+                        gap: 5%;
+                        flex: 1;
+                        min-height: 0;
+                        align-items: center;
+                    }
+                    .asasi-card .portrait {
+                        width: 100%;
+                        aspect-ratio: 3/4;
+                        background: linear-gradient(145deg, #d8e1e5, #879ca9);
+                        border-radius: 8px;
+                        padding: 2.5px;
+                        border: 1px solid rgba(233,204,143,.7);
+                        box-shadow: 0 5px 14px rgba(0,0,0,0.3);
+                    }
+                    .asasi-card .portrait .portrait-inner {
+                        width: 100%;
+                        height: 100%;
+                        background: #15374d;
+                        border-radius: 5.5px;
+                        display: grid;
+                        place-items: center;
+                        overflow: hidden;
+                    }
+                    .asasi-card .label {
+                        color: #aebfca;
+                        font-size: 7.5px;
+                        letter-spacing: .14em;
+                        text-transform: uppercase;
+                        font-weight: 800;
+                    }
+                    .asasi-card .member-name {
+                        margin: 3px 0 4px;
+                        font: 600 clamp(12px, 1.35vw, 17px)/1.22 Georgia, serif;
+                        color: var(--ivory);
+                    }
+                    .asasi-card .status {
+                        color: var(--champagne);
+                        text-transform: uppercase;
+                        letter-spacing: .14em;
+                        font-size: 7.5px;
+                        font-weight: 750;
+                    }
+                    .asasi-card .details {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        gap: 6px 10px;
+                        margin-top: 7px;
+                    }
+                    .asasi-card .details strong {
+                        display: block;
+                        font-size: 9.5px;
+                        letter-spacing: .02em;
+                        margin-top: 1.5px;
+                        color: #f2f1ec;
+                        font-weight: 600;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                    .asasi-card .bottom {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: end;
+                        gap: 10px;
+                        margin-top: auto;
+                        padding-top: 5px;
+                        border-top: 1px solid rgba(230,200,145,0.25);
+                    }
+                    .asasi-card .bottom small {
+                        font-size: 7px;
+                        color: #a9bfcb;
+                        letter-spacing: .08em;
+                    }
+                    .asasi-card .bottom .seal {
+                        color: var(--champagne);
+                        font: italic 12px Georgia, serif;
+                        white-space: nowrap;
+                    }
+
+                    /* Back Card */
+                    .asasi-card.back .card-inner {
+                        padding: 6.5% 7.5%;
+                    }
+                    .asasi-card.back .back-kicker {
+                        color: var(--champagne);
+                        letter-spacing: .2em;
+                        font-size: 8px;
+                        font-weight: 800;
+                        text-transform: uppercase;
+                    }
+                    .asasi-card.back h2 {
+                        margin: 7px 0 5px;
+                        font: 500 clamp(13px, 1.45vw, 18px)/1.3 Georgia, serif;
+                        color: #f9f6ee;
+                    }
+                    .asasi-card.back p {
+                        font-size: 8px;
+                        line-height: 1.5;
+                        color: #b7c7d0;
+                        margin: 2px 0;
+                    }
+                    .asasi-card.back .back-lower {
+                        display: flex;
+                        align-items: end;
+                        justify-content: space-between;
+                        gap: 12px;
+                        margin-top: auto;
+                        padding-top: 6px;
+                    }
+                    .asasi-card.back .barcode-wrap {
+                        background: #f8f7f1;
+                        border-radius: 6px;
+                        padding: 8px 10px 6px;
+                        width: 55%;
+                    }
+                    .asasi-card.back .barcode {
+                        height: 32px;
+                        background: repeating-linear-gradient(90deg, #172b37 0px, #172b37 2px, transparent 2px, transparent 4px, #172b37 4px, #172b37 5px, transparent 5px, transparent 9px, #172b37 9px, #172b37 13px, transparent 13px, transparent 16px);
+                    }
+                    .asasi-card.back .barcode-label {
+                        display: block;
+                        text-align: center;
+                        color: #3b4a54;
+                        margin-top: 4px;
+                        font-size: 7px;
+                        letter-spacing: .14em;
+                        font-weight: bold;
+                    }
+                    .asasi-card.back .verification {
+                        text-align: right;
+                    }
+                    .asasi-card.back .verification .caption {
+                        color: var(--champagne);
+                        font-size: 7px;
+                        letter-spacing: .14em;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                    }
+                    .asasi-card.back .verification strong {
+                        display: block;
+                        font-size: 11px;
+                        margin: 3px 0 1px;
+                        letter-spacing: .02em;
+                        color: #f9f6ee;
+                    }
+                    .asasi-card.back .verification small {
+                        color: #a8bbc6;
+                        font-size: 7px;
+                    }
+                </style>
+
+                <div class="asasi-card-wrap">
+                    <!-- ==================== KARTU BAGIAN DEPAN (FRONT) ==================== -->
+                    <article id="kta-card-front" class="asasi-card front" aria-label="Kartu anggota ASASI bagian depan">
+                        <div class="card-inner">
+                            <div class="top">
+                                <div class="brand">
+                                    <img src="{{ asset('images/logo/logo-asasi-white.png') }}" alt="Logo ASASI" onerror="this.src='{{ asset('images/logo/logo-asasi.png') }}'">
+                                    <span class="brandline" aria-hidden="true"></span>
+                                    <div>
+                                        <div class="brand-title">ASASI</div>
+                                        <div class="brand-sub">PERKUMPULAN AKADEMISI<br>DAN SAINTIS INDONESIA</div>
+                                    </div>
+                                </div>
+                                <span class="tier">MEMBER CARD</span>
+                            </div>
+
+                            <div class="hairline"></div>
+
+                            <div class="front-content">
+                                <div class="portrait" aria-label="Tempat foto profil anggota">
+                                    <div class="portrait-inner">
+                                        @if($member && $member->foto_profil)
+                                            <img src="{{ asset('storage/' . $member->foto_profil) }}" alt="{{ $member->nama_lengkap }}" class="w-full h-full object-cover object-top">
+                                        @else
+                                            <svg viewBox="0 0 100 130" role="img" aria-label="Ilustrasi foto profil" class="w-[90%] h-[90%]">
+                                                <circle cx="50" cy="39" r="24" fill="#738796"/>
+                                                <path d="M3 130c3-35 19-46 38-49l9 15 9-15c21 4 36 18 38 49Z" fill="#60798b"/>
+                                                <path d="m41 81 9 15 9-15-9 9Z" fill="#e7edf0"/>
+                                            </svg>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="member-info">
+                                    <div class="label">Nama Anggota</div>
+                                    <h2 class="member-name">{{ $member->nama_lengkap ?? $user->name }}</h2>
+                                    <div class="status">ANGGOTA AKTIF • {{ strtoupper($member?->status === 'active' ? 'TERVERIFIKASI' : ($member?->status ?? 'MENUNGGU')) }}</div>
+                                    
+                                    <div class="details">
+                                        <div>
+                                            <span class="label">No. Anggota</span>
+                                            <strong>{{ $member->nomor_anggota ?? 'MENUNGGU VERIFIKASI' }}</strong>
+                                        </div>
+                                        <div>
+                                            <span class="label">Berlaku Hingga</span>
+                                            <strong>{{ $member?->masa_berlaku_sampai ? $member->masa_berlaku_sampai->format('d M Y') : 'Seumur Hidup' }}</strong>
+                                        </div>
+                                        <div>
+                                            <span class="label">Wilayah DPW</span>
+                                            <strong title="{{ $member->wilayah_dpw ?? '-' }}">{{ $member->wilayah_dpw ?? '-' }}</strong>
+                                        </div>
+                                        <div>
+                                            <span class="label">Afiliasi</span>
+                                            <strong title="{{ $member->instansi ?? '-' }}">{{ $member->instansi ?? '-' }}</strong>
+                                        </div>
+                                        @if($member && $member->bidang_keahlian)
+                                        <div class="col-span-2">
+                                            <span class="label">Bidang Riset</span>
+                                            <strong title="{{ $member->bidang_keahlian }}">{{ $member->bidang_keahlian }}</strong>
+                                        </div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bottom">
+                                <small>INTEGRITY • KNOWLEDGE • IMPACT</small>
+                                <span class="seal">DPP ASASI</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ==================== KARTU BAGIAN BELAKANG (BACK) ==================== -->
+                    <article id="kta-card-back" class="asasi-card back hidden" aria-label="Kartu anggota ASASI bagian belakang">
+                        <div class="card-inner">
+                            <span class="back-kicker">ASASI • INDONESIA</span>
+                            <h2>Membentuk Akademisi Unggul,<br>Mendorong Perbaikan Bangsa.</h2>
+                            <p>Kartu ini merupakan identitas keanggotaan resmi Perkumpulan Akademisi dan Saintis Indonesia (ASASI). Validitas dan status keanggotaan dapat diverifikasi melalui portal resmi ASASI.</p>
+                            
+                            <div class="back-lower">
+                                <div class="barcode-wrap" aria-label="Barcode resmi anggota">
+                                    <div class="barcode" aria-hidden="true"></div>
+                                    <span class="barcode-label">{{ $member->nomor_anggota ?? 'ASASI-2026-0001' }} • VERIFIKASI RESMI</span>
+                                </div>
+                                <div class="verification">
+                                    <span class="caption">PORTAL KEANGGOTAAN</span>
+                                    <strong>www.asasi.or.id</strong>
+                                    <small>sekretariat@asasi.or.id</small>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <script>
+                    function switchKtaSide(side) {
+                        const front = document.getElementById('kta-card-front');
+                        const back = document.getElementById('kta-card-back');
+                        const btnFront = document.getElementById('btn-kta-front');
+                        const btnBack = document.getElementById('btn-kta-back');
+
+                        if (side === 'front') {
+                            front.classList.remove('hidden');
+                            back.classList.add('hidden');
+                            btnFront.className = 'px-3 py-1.5 rounded-lg transition bg-white text-slate-900 shadow-sm';
+                            btnBack.className = 'px-3 py-1.5 rounded-lg transition text-slate-500 hover:text-slate-900';
+                        } else {
+                            front.classList.add('hidden');
+                            back.classList.remove('hidden');
+                            btnBack.className = 'px-3 py-1.5 rounded-lg transition bg-white text-slate-900 shadow-sm';
+                            btnFront.className = 'px-3 py-1.5 rounded-lg transition text-slate-500 hover:text-slate-900';
+                        }
+                    }
+                </script>
 
                 <!-- Tombol Unduh KTA & Cek Verifikasi -->
                 @if($member && $member->status === 'active')
