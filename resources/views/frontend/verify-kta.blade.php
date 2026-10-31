@@ -174,7 +174,7 @@
                                 </div>
                             </div>
                             <span class="text-[11px] px-2.5 py-1 rounded-md bg-asasi-navy text-white font-bold">
-                                Keanggotaan Penuh
+                                Keanggotaan Aktif
                             </span>
                         </div>
 
@@ -199,17 +199,6 @@
                                 <dt class="text-[10px] sm:text-xs text-slate-400 font-semibold uppercase">Masa Berlaku Kartu</dt>
                                 <dd class="font-bold text-emerald-700 mt-0.5 text-xs sm:text-sm">
                                     Sampai {{ optional($member->masa_berlaku_sampai)->translatedFormat('d F Y') }}
-                                </dd>
-                            </div>
-
-                            <div class="print-field-card bg-white rounded-xl p-3 border border-slate-100">
-                                <dt class="text-[10px] sm:text-xs text-slate-400 font-semibold uppercase">Nomor Induk Kependudukan</dt>
-                                <dd class="font-mono font-semibold text-slate-700 mt-0.5 text-xs sm:text-sm">
-                                    @if($member->nik)
-                                        {{ substr($member->nik, 0, 4) . ' •••• •••• ' . substr($member->nik, -2) }}
-                                    @else
-                                        -
-                                    @endif
                                 </dd>
                             </div>
 
