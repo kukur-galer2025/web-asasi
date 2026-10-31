@@ -105,19 +105,6 @@
                         color: var(--ivory);
                         box-shadow: 0 20px 45px rgba(6,27,44,.28), 0 6px 16px rgba(6,27,44,.18);
                     }
-                    .asasi-card::after {
-                        content: "";
-                        position: absolute;
-                        width: 55%;
-                        height: 88%;
-                        right: -20%;
-                        top: -38%;
-                        border-radius: 50%;
-                        border: 1px solid rgba(233,204,143,.19);
-                        box-shadow: 0 0 0 25px rgba(231,201,146,.025), 0 0 0 50px rgba(231,201,146,.025);
-                        pointer-events: none;
-                        background: none;
-                    }
                     .asasi-card .card-inner {
                         position: relative;
                         height: 100%;

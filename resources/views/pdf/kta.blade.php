@@ -366,13 +366,8 @@
             $bgGrad = 'data:image/png;base64,' . base64_encode($data);
         }
 
-        // 4. SVG Overlay Rings & Elegant Champagne Hairline Border
+        // 4. SVG Elegant Champagne Hairline Border
         $cardOverlay = 'data:image/svg+xml;base64,' . base64_encode('<svg xmlns="http://www.w3.org/2000/svg" width="325" height="204" viewBox="0 0 325 204">
-            <g opacity="0.6">
-                <circle cx="280" cy="15" r="75" fill="none" stroke="#e9cc8f" stroke-width="0.7" opacity="0.25" />
-                <circle cx="280" cy="15" r="95" fill="none" stroke="#e9cc8f" stroke-width="0.7" opacity="0.12" />
-                <circle cx="280" cy="15" r="115" fill="none" stroke="#e9cc8f" stroke-width="0.7" opacity="0.06" />
-            </g>
             <rect x="2.5" y="2.5" width="320" height="199" rx="10" fill="none" stroke="#e6c891" stroke-width="0.8" opacity="0.38" />
         </svg>');
 
