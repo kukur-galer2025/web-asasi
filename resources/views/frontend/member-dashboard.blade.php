@@ -121,7 +121,7 @@
                     .asasi-card .card-inner {
                         position: relative;
                         height: 100%;
-                        padding: 5% 6%;
+                        padding: 4% 5.5%;
                         display: flex;
                         flex-direction: column;
                         justify-content: space-between;
@@ -130,7 +130,7 @@
                         display: flex;
                         align-items: center;
                         justify-content: space-between;
-                        gap: 10px;
+                        gap: 8px;
                     }
                     .asasi-card .brand {
                         display: flex;
@@ -140,13 +140,13 @@
                     }
                     .asasi-card .brand img {
                         display: block;
-                        width: 44px;
-                        height: 30px;
+                        width: 40px;
+                        height: 26px;
                         object-fit: contain;
                     }
                     .asasi-card .brandline {
                         width: 1px;
-                        height: 26px;
+                        height: 24px;
                         background: rgba(230,200,145,0.7);
                         flex: none;
                     }
@@ -154,24 +154,24 @@
                         font-family: Georgia, serif;
                         letter-spacing: .14em;
                         font-weight: 700;
-                        font-size: 15px;
+                        font-size: 14px;
                         line-height: 1;
                         color: #f9f6ee;
                     }
                     .asasi-card .brand-sub {
                         font-size: 5px;
-                        letter-spacing: .1em;
+                        letter-spacing: .09em;
                         color: #b7cbd3;
-                        margin-top: 3px;
-                        line-height: 1.3;
+                        margin-top: 2.5px;
+                        line-height: 1.25;
                         text-transform: uppercase;
                     }
                     .asasi-card .tier {
                         border: 1px solid rgba(230,200,145,.48);
                         border-radius: 100px;
-                        padding: 3px 7px;
+                        padding: 2.5px 6.5px;
                         color: var(--champagne);
-                        font-size: 7px;
+                        font-size: 6.5px;
                         font-weight: 800;
                         letter-spacing: .14em;
                         white-space: nowrap;
@@ -180,44 +180,44 @@
                     .asasi-card .hairline {
                         height: 1px;
                         background: rgba(230,200,145,.45);
-                        margin: 3.5% 0;
+                        margin: 2% 0 2.5% 0;
                     }
                     .asasi-card .front-content {
                         display: grid;
-                        grid-template-columns: 24% 1fr;
-                        gap: 4.5%;
+                        grid-template-columns: 22% 1fr;
+                        gap: 4%;
                         flex: 1;
                         min-height: 0;
-                        align-items: center;
+                        align-items: flex-start;
                     }
                     .asasi-card .portrait {
                         width: 100%;
                         aspect-ratio: 3/4;
                         background: #15374d;
-                        border-radius: 8px;
-                        padding: 2.5px;
+                        border-radius: 7px;
+                        padding: 2px;
                         border: 1px solid rgba(233,204,143,.7);
-                        box-shadow: 0 5px 14px rgba(0,0,0,0.35);
+                        box-shadow: 0 4px 10px rgba(0,0,0,0.35);
                     }
                     .asasi-card .portrait .portrait-inner {
                         width: 100%;
                         height: 100%;
                         background: #15374d;
-                        border-radius: 5.5px;
+                        border-radius: 5px;
                         display: grid;
                         place-items: center;
                         overflow: hidden;
                     }
                     .asasi-card .label {
                         color: #aebfca;
-                        font-size: 7px;
+                        font-size: 6.5px;
                         letter-spacing: .12em;
                         text-transform: uppercase;
                         font-weight: 800;
                     }
                     .asasi-card .member-name {
-                        margin: 2px 0 3px;
-                        font: bold clamp(12px, 1.4vw, 16px)/1.22 Georgia, serif;
+                        margin: 1px 0 2px;
+                        font: bold clamp(11px, 1.3vw, 15px)/1.2 Georgia, serif;
                         color: var(--ivory);
                         white-space: nowrap;
                         overflow: hidden;
@@ -227,20 +227,21 @@
                         color: var(--champagne);
                         text-transform: uppercase;
                         letter-spacing: .12em;
-                        font-size: 7.5px;
+                        font-size: 7px;
                         font-weight: 750;
+                        margin-bottom: 2px;
                     }
                     .asasi-card .details {
                         display: grid;
                         grid-template-columns: 1fr 1fr;
-                        gap: 3px 8px;
-                        margin-top: 5px;
+                        gap: 2px 8px;
+                        margin-top: 3px;
                     }
                     .asasi-card .details strong {
                         display: block;
-                        font-size: 9px;
+                        font-size: 8.5px;
                         letter-spacing: .02em;
-                        margin-top: 1px;
+                        margin-top: 0.5px;
                         color: #f2f1ec;
                         font-weight: 600;
                         white-space: nowrap;
@@ -253,17 +254,17 @@
                         align-items: flex-end;
                         gap: 8px;
                         margin-top: auto;
-                        padding-top: 4px;
+                        padding-top: 3px;
                         border-top: 1px solid rgba(230,200,145,0.25);
                     }
                     .asasi-card .bottom small {
-                        font-size: 6.5px;
+                        font-size: 6px;
                         color: #a9bfcb;
                         letter-spacing: .08em;
                     }
                     .asasi-card .bottom .seal {
                         color: var(--champagne);
-                        font: italic 11px Georgia, serif;
+                        font: italic 10.5px Georgia, serif;
                         white-space: nowrap;
                     }
 
@@ -463,16 +464,10 @@
                 <!-- Tombol Unduh KTA & Cek Verifikasi -->
                 @if($member && $member->status === 'active')
                     <div class="space-y-2">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                            <a href="{{ route('member.cetak.kta') }}" target="_blank" class="w-full flex items-center justify-center gap-2 bg-asasi-navy hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-xl text-xs shadow-sm transition">
-                                <svg class="w-4 h-4 shrink-0 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                                <span>Unduh PDF Resmi</span>
-                            </a>
-                            <button type="button" onclick="downloadKtaImage('current')" class="w-full flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-4 rounded-xl text-xs shadow-sm transition">
-                                <svg class="w-4 h-4 shrink-0 text-amber-100" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                                <span>Unduh Gambar HD (PNG)</span>
-                            </button>
-                        </div>
+                        <button type="button" onclick="downloadKtaImage('current')" class="w-full flex items-center justify-center gap-2 bg-asasi-navy hover:bg-slate-800 text-white font-bold py-3.5 px-4 rounded-xl text-xs sm:text-sm shadow-md transition border border-amber-400/30">
+                            <svg class="w-4 h-4 shrink-0 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                            <span>Unduh Gambar HD (PNG)</span>
+                        </button>
                         <a href="{{ route('kta.verify', $member->nomor_anggota) }}" target="_blank" class="w-full flex items-center justify-center gap-2 bg-slate-50 hover:bg-slate-100 text-asasi-navy font-bold py-2.5 px-4 rounded-xl text-xs transition border border-slate-200">
                             <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                             <span>Lihat Sertifikat Verifikasi Publik</span>
