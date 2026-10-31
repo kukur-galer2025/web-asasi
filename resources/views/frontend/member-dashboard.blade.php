@@ -20,6 +20,24 @@
     if (file_exists($logoPath)) {
         $logoBase64 = 'data:image/png;base64,' . base64_encode(file_get_contents($logoPath));
     }
+
+    // Barcode SVG Vector untuk Kartu Belakang (Crisp & Bebas Tainted Canvas)
+    $pattern = [2,2,1,3,1,1,3,2,1,2,2,2,1,1,4,1,2,3,1,2,1,1,3,3,2,2,1,1,2,4,1,2,1,3,2,2,1,1,3,1,2,3,1,2,1,2,2,1,3,2];
+    $bw = 200;
+    $bh = 34;
+    $bSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="'.$bh.'" viewBox="0 0 '.$bw.' '.$bh.'">';
+    $bx = 6;
+    $bBar = true;
+    foreach ($pattern as $pw) {
+        if ($bBar) {
+            $bSvg .= '<rect x="'.$bx.'" y="0" width="'.$pw.'" height="'.$bh.'" fill="#172b37" />';
+        }
+        $bx += $pw;
+        $bBar = !$bBar;
+        if ($bx >= $bw - 8) break;
+    }
+    $bSvg .= '</svg>';
+    $barcodeSvg = 'data:image/svg+xml;base64,' . base64_encode($bSvg);
 @endphp
 <div class="max-w-7xl mx-auto px-4 sm:px-8 py-12 space-y-8">
 
@@ -81,18 +99,11 @@
                         aspect-ratio: var(--card-ratio);
                         border: 1px solid rgba(245,224,178,.38);
                         border-radius: 18px;
-                        background: linear-gradient(128deg, var(--midnight) 0%, var(--navy) 64%, #19465d 100%);
+                        background: radial-gradient(circle at 95% 0%, rgba(242,214,161,.13) 0%, transparent 36%),
+                                    radial-gradient(circle at 0% 100%, rgba(95,163,195,.10) 0%, transparent 46%),
+                                    linear-gradient(128deg, #061b2c 0%, #092941 64%, #19465d 100%);
                         color: var(--ivory);
                         box-shadow: 0 20px 45px rgba(6,27,44,.28), 0 6px 16px rgba(6,27,44,.18);
-                    }
-                    .asasi-card::before {
-                        content: "";
-                        position: absolute;
-                        inset: 0;
-                        z-index: -2;
-                        opacity: .56;
-                        background: radial-gradient(circle at 95% 0%, rgba(242,214,161,.13), transparent 36%),
-                                    radial-gradient(circle at 0% 100%, rgba(95,163,195,.10), transparent 46%);
                     }
                     .asasi-card::after {
                         content: "";
@@ -105,6 +116,7 @@
                         border: 1px solid rgba(233,204,143,.19);
                         box-shadow: 0 0 0 25px rgba(231,201,146,.025), 0 0 0 50px rgba(231,201,146,.025);
                         pointer-events: none;
+                        background: none;
                     }
                     .asasi-card .card-inner {
                         position: relative;
@@ -135,7 +147,7 @@
                     .asasi-card .brandline {
                         width: 1px;
                         height: 26px;
-                        background: linear-gradient(transparent, var(--champagne), transparent);
+                        background: rgba(230,200,145,0.7);
                         flex: none;
                     }
                     .asasi-card .brand-title {
@@ -167,7 +179,7 @@
                     }
                     .asasi-card .hairline {
                         height: 1px;
-                        background: linear-gradient(90deg, transparent, rgba(230,200,145,.7), transparent);
+                        background: rgba(230,200,145,.45);
                         margin: 3.5% 0;
                     }
                     .asasi-card .front-content {
@@ -181,7 +193,7 @@
                     .asasi-card .portrait {
                         width: 100%;
                         aspect-ratio: 3/4;
-                        background: linear-gradient(145deg, #d8e1e5, #879ca9);
+                        background: #15374d;
                         border-radius: 8px;
                         padding: 2.5px;
                         border: 1px solid rgba(233,204,143,.7);
@@ -293,7 +305,10 @@
                     }
                     .asasi-card.back .barcode {
                         height: 32px;
-                        background: repeating-linear-gradient(90deg, #172b37 0px, #172b37 2px, transparent 2px, transparent 4px, #172b37 4px, #172b37 5px, transparent 5px, transparent 9px, #172b37 9px, #172b37 13px, transparent 13px, transparent 16px);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        overflow: hidden;
                     }
                     .asasi-card.back .barcode-label {
                         display: block;
@@ -407,7 +422,11 @@
                             
                             <div class="back-lower">
                                 <div class="barcode-wrap" aria-label="Barcode resmi anggota">
-                                    <div class="barcode" aria-hidden="true"></div>
+                                    <div class="barcode" aria-hidden="true">
+                                        @if(!empty($barcodeSvg))
+                                            <img src="{{ $barcodeSvg }}" alt="Barcode" style="width:100%; height:28px; display:block;">
+                                        @endif
+                                    </div>
                                     <span class="barcode-label">{{ $member->nomor_anggota ?? 'ASASI-2026-0001' }} • VERIFIKASI RESMI</span>
                                 </div>
                                 <div class="verification">
@@ -460,7 +479,8 @@
                         </a>
                     </div>
 
-                    <!-- Library HTML2Canvas untuk unduh gambar HD langsung dari browser -->
+                    <!-- Pustaka html-to-image (Native SVG Engine) & html2canvas Fallback -->
+                    <script src="{{ asset('vendor/html-to-image/html-to-image.min.js') }}" onerror="this.onerror=null;this.src='https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js';"></script>
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
                     <script>
                         async function downloadKtaImage(side = 'current') {
@@ -468,7 +488,7 @@
                             const origHtml = btn ? btn.innerHTML : null;
                             if (btn) {
                                 btn.disabled = true;
-                                btn.innerHTML = `<svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg> Memproses...`;
+                                btn.innerHTML = `<svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg> Memproses Gambar HD...`;
                             }
 
                             let targetId = 'kta-card-front';
@@ -479,30 +499,44 @@
                             const wasHidden = card.classList.contains('hidden');
                             if (wasHidden) {
                                 card.classList.remove('hidden');
-                                await new Promise(r => setTimeout(r, 60));
+                                await new Promise(r => setTimeout(r, 80));
                             }
 
                             try {
-                                const canvas = await html2canvas(card, {
-                                    scale: 3,
-                                    useCORS: true,
-                                    logging: false,
-                                    backgroundColor: null,
-                                });
+                                let dataUrl = null;
+                                if (typeof htmlToImage !== 'undefined') {
+                                    dataUrl = await htmlToImage.toPng(card, {
+                                        pixelRatio: 3,
+                                        backgroundColor: null,
+                                        cacheBust: false,
+                                    });
+                                } else if (typeof html2canvas !== 'undefined') {
+                                    const canvas = await html2canvas(card, {
+                                        scale: 3,
+                                        useCORS: true,
+                                        logging: false,
+                                        backgroundColor: null,
+                                        width: card.offsetWidth,
+                                        height: card.offsetHeight,
+                                    });
+                                    dataUrl = canvas.toDataURL('image/png');
+                                } else {
+                                    throw new Error('Pustaka pengubah gambar sedang diunduh, silakan ulangi kembali.');
+                                }
 
                                 if (wasHidden) card.classList.add('hidden');
 
                                 const link = document.createElement('a');
                                 const sideName = targetId === 'kta-card-front' ? 'DEPAN' : 'BELAKANG';
                                 link.download = `KTA-ASASI-${sideName}-{{ $member->nomor_anggota ?? 'MEMBER' }}.png`;
-                                link.href = canvas.toDataURL('image/png');
+                                link.href = dataUrl;
                                 document.body.appendChild(link);
                                 link.click();
                                 document.body.removeChild(link);
                             } catch (e) {
                                 if (wasHidden) card.classList.add('hidden');
-                                console.error('HTML2Canvas error:', e);
-                                alert('Perhatian: Gambar tidak dapat diekspor langsung (' + (e.message || e) + '). Silakan unduh versi PDF Resmi.');
+                                console.error('Download KTA Image Error:', e);
+                                alert('Perhatian: Gagal mengekspor gambar (' + (e.message || e) + '). Silakan gunakan tombol Unduh PDF Resmi.');
                             } finally {
                                 if (btn && origHtml) {
                                     btn.disabled = false;
