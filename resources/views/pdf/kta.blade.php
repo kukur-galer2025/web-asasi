@@ -27,6 +27,14 @@
             height: 204pt;
             z-index: 1;
         }
+        .svg-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 325pt;
+            height: 204pt;
+            z-index: 2;
+        }
         .content-layer {
             position: absolute;
             top: 0;
@@ -201,6 +209,7 @@
 </head>
 <body>
     @php
+        // 1. Pas Foto Anggota
         $photoBase64 = null;
         if (!empty($member->foto_profil)) {
             $storagePath = storage_path('app/public/' . $member->foto_profil);
@@ -213,7 +222,7 @@
             }
         }
 
-        // Logo Putih Transparan Murni (Header)
+        // 2. Logo Putih Transparan (Header)
         $logoBase64 = null;
         $logoPaths = [
             public_path('images/logo/logo-asasi-white.png'),
@@ -231,38 +240,55 @@
             }
         }
 
-        // Logo Putih untuk Cap Stempel Resmi Toga ASASI (Watermark di atas background Navy)
+        // 3. Logo Putih untuk Cap Stempel Resmi Toga ASASI (Watermark)
         $stampLogoBase64 = null;
         $stampPath = public_path('images/logo/logo-asasi-white.png');
         if (file_exists($stampPath)) {
             $stampLogoBase64 = 'data:image/png;base64,' . base64_encode(file_get_contents($stampPath));
         }
 
-        // Vector Background SVG: Full Luxury Royal Navy + Constellation + Metallic Gold Wave + Official Toga Stamp
-        $svgBg = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="325" height="204" viewBox="0 0 325 204">
-          <defs>
-            <linearGradient id="navyMain" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#092242" />
-              <stop offset="35%" stop-color="#0d3563" />
-              <stop offset="70%" stop-color="#144882" />
-              <stop offset="100%" stop-color="#0a264c" />
-            </linearGradient>
-            <linearGradient id="navyLower" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#0c2d54" />
-              <stop offset="50%" stop-color="#113e72" />
-              <stop offset="100%" stop-color="#185294" />
-            </linearGradient>
-            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#c5a059" />
-              <stop offset="25%" stop-color="#f6d494" />
-              <stop offset="50%" stop-color="#e5bd6f" />
-              <stop offset="75%" stop-color="#fdf0cd" />
-              <stop offset="100%" stop-color="#8c6a28" />
-            </linearGradient>
-          </defs>
+        // 4. Background Royal Navy Luxury Gradient Image (GD Generator untuk Dompdf)
+        $navyBgBase64 = null;
+        if (function_exists('imagecreatetruecolor')) {
+            $w = 650;
+            $h = 408;
+            $im = imagecreatetruecolor($w, $h);
+            // Gradasi diagonal mewah: #092242 (navy pekat) -> #0d3563 -> #144882 (royal blue) -> #0a264c
+            for ($y = 0; $y < $h; $y++) {
+                for ($x = 0; $x < $w; $x += 2) {
+                    $t = ($x / $w * 0.35) + ($y / $h * 0.65);
+                    if ($t < 0.35) {
+                        $f = $t / 0.35;
+                        $r = (int)(9 + (13 - 9) * $f);
+                        $g = (int)(34 + (53 - 34) * $f);
+                        $b = (int)(66 + (99 - 66) * $f);
+                    } elseif ($t < 0.70) {
+                        $f = ($t - 0.35) / 0.35;
+                        $r = (int)(13 + (20 - 13) * $f);
+                        $g = (int)(53 + (72 - 53) * $f);
+                        $b = (int)(99 + (130 - 99) * $f);
+                    } else {
+                        $f = ($t - 0.70) / 0.30;
+                        $r = (int)(20 + (10 - 20) * $f);
+                        $g = (int)(72 + (38 - 72) * $f);
+                        $b = (int)(130 + (76 - 130) * $f);
+                    }
+                    $col = imagecolorallocate($im, $r, $g, $b);
+                    imagesetpixel($im, $x, $y, $col);
+                    imagesetpixel($im, $x + 1, $y, $col);
+                }
+            }
+            ob_start();
+            imagepng($im);
+            $data = ob_get_clean();
+            imagedestroy($im);
+            $navyBgBase64 = 'data:image/png;base64,' . base64_encode($data);
+        }
 
-          <!-- Royal Navy Base Background -->
-          <rect width="325" height="204" fill="url(#navyMain)" />
+        // 5. Vector SVG Overlay: Rasi Bintang + Gelombang Emas Mewah + Border Emas + Cap Stempel Toga ASASI
+        // Gunakan solid hex color yang didukung 100% oleh php-svg-lib (TIDAK menggunakan url(#linearGradient))
+        $svgBg = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="325" height="204" viewBox="0 0 325 204">
+          ' . ($navyBgBase64 ? '' : '<rect width="325" height="204" fill="#0d3563" />') . '
 
           <!-- Constellation Nodes & Micro-Lines in Upper Sky -->
           <g opacity="0.45">
@@ -282,19 +308,19 @@
           </g>
 
           <!-- Sweeping Wave with Rich Navy Shade -->
-          <path d="M 0,62 Q 90,74 190,54 T 325,46 L 325,204 L 0,204 Z" fill="url(#navyLower)" opacity="0.85" />
+          <path d="M 0,62 Q 90,74 190,54 T 325,46 L 325,204 L 0,204 Z" fill="#0e3868" opacity="0.80" />
 
           <!-- Wave Ambient Glow -->
-          <path d="M 0,60 Q 90,72 190,52 T 325,44" fill="none" stroke="#e5bd6f" stroke-width="3.5" opacity="0.3" />
+          <path d="M 0,60 Q 90,72 190,52 T 325,44" fill="none" stroke="#e5bd6f" stroke-width="3.5" opacity="0.25" />
 
           <!-- Main Metallic Gold Ribbon -->
-          <path d="M 0,62 Q 90,74 190,54 T 325,46" fill="none" stroke="url(#goldGradient)" stroke-width="2.3" />
+          <path d="M 0,62 Q 90,74 190,54 T 325,46" fill="none" stroke="#e5bd6f" stroke-width="2.2" />
 
           <!-- Shimmer Hairline Ribbon -->
           <path d="M 0,59 Q 90,71 190,51 T 325,43" fill="none" stroke="#fdf0cd" stroke-width="0.8" opacity="0.75" />
 
           <!-- Outer Gold Luxury Hairline Border with Rounded Corners -->
-          <rect x="2.5" y="2.5" width="320" height="199" rx="8" fill="none" stroke="url(#goldGradient)" stroke-width="1.5" />
+          <rect x="2.5" y="2.5" width="320" height="199" rx="8" fill="none" stroke="#e5bd6f" stroke-width="1.4" opacity="0.85" />
 
           <!-- Cap Stempel Resmi Toga ASASI (Watermark Emas Transparan pada Background Navy) -->
           <g transform="translate(246, 105) rotate(-6 40 40)" opacity="0.22">
@@ -316,12 +342,19 @@
         $svgBase64 = 'data:image/svg+xml;base64,' . base64_encode($svgBg);
     @endphp
 
-    {{-- Layer 1: Vector Background --}}
+    {{-- Layer 1: Navy Gradient Base Image --}}
+    @if($navyBgBase64)
     <div class="bg-layer">
+        <img src="{{ $navyBgBase64 }}" style="width:325pt; height:204pt; display:block;" />
+    </div>
+    @endif
+
+    {{-- Layer 2: Vector Accents (Wave + Glow + Ribbon + Constellations + Stempel) --}}
+    <div class="svg-layer">
         <img src="{{ $svgBase64 }}" style="width:325pt; height:204pt; display:block;" />
     </div>
 
-    {{-- Layer 2: Content Overlay --}}
+    {{-- Layer 3: Typography & Content Overlay --}}
     <div class="content-layer">
 
         <!-- Top Bar: Logo + Brand + Title -->
@@ -401,7 +434,7 @@
             <table class="footer-table">
                 <tr>
                     <td>Masa Berlaku: <strong style="color:#ffffff;">{{ optional($member->masa_berlaku_sampai)->format('d M Y') ?? 'Seumur Hidup' }}</strong></td>
-                    <td class="footer-right">Dewan Pengurus Pusat ASASI</td>
+                    <td class="footer-right">DPP ASASI</td>
                 </tr>
             </table>
         </div>
