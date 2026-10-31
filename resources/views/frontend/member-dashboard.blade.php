@@ -81,11 +81,14 @@
                         <!-- Wave 4: Thin Gold Shimmer Line -->
                         <path d="M -10,114 Q 180,138 380,102 T 660,86" fill="none" stroke="#f6d494" stroke-width="1.5" opacity="0.75" />
 
-                        <!-- Security Watermark Crest in White Section -->
-                        <g transform="translate(520, 240) scale(0.65)" opacity="0.05">
-                            <circle cx="70" cy="70" r="65" fill="none" stroke="#0c274a" stroke-width="4" />
-                            <circle cx="70" cy="70" r="55" fill="none" stroke="#0c274a" stroke-width="1.5" stroke-dasharray="6,4" />
-                            <polygon points="70,25 82,55 115,55 88,75 98,105 70,88 42,105 52,75 25,55 58,55" fill="#0c274a" />
+                        <!-- Cap Stempel Resmi Toga ASASI (Watermark Transparan) -->
+                        <g transform="translate(490, 215) rotate(-6 70 70)" opacity="0.12">
+                            <circle cx="70" cy="70" r="68" fill="none" stroke="#0c274a" stroke-width="2.5" />
+                            <circle cx="70" cy="70" r="62" fill="none" stroke="#0c274a" stroke-width="1.2" stroke-dasharray="5,2.5" />
+                            <circle cx="70" cy="70" r="46" fill="none" stroke="#0c274a" stroke-width="1.2" />
+                            <text x="70" y="17" font-family="Arial, sans-serif" font-size="6.2" font-weight="bold" fill="#0c274a" text-anchor="middle" letter-spacing="1.5">DEWAN PENGURUS PUSAT</text>
+                            <text x="70" y="128" font-family="Arial, sans-serif" font-size="5.8" font-weight="bold" fill="#0c274a" text-anchor="middle" letter-spacing="1.8">★ ASASI INDONESIA ★</text>
+                            <image href="{{ asset('images/logo/logo-asasi-transparent.png') }}" x="28" y="42" width="84" height="56" />
                         </g>
                     </svg>
 

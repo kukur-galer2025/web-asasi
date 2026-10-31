@@ -213,7 +213,7 @@
             }
         }
 
-        // Logo Putih Transparan Murni
+        // Logo Putih Transparan Murni (Header)
         $logoBase64 = null;
         $logoPaths = [
             public_path('images/logo/logo-asasi-white.png'),
@@ -231,8 +231,15 @@
             }
         }
 
-        // Vector Background SVG: Navy Sky + Constellation + Sweeping Wave (starts at Y=58pt so all text is 100% inside white)
-        $svgBg = '<svg xmlns="http://www.w3.org/2000/svg" width="325" height="204" viewBox="0 0 325 204">
+        // Logo Hitam Transparan untuk Cap Stempel Resmi Toga ASASI (Watermark)
+        $stampLogoBase64 = null;
+        $stampPath = public_path('images/logo/logo-asasi-transparent.png');
+        if (file_exists($stampPath)) {
+            $stampLogoBase64 = 'data:image/png;base64,' . base64_encode(file_get_contents($stampPath));
+        }
+
+        // Vector Background SVG: Navy Sky + Constellation + Sweeping Wave + Official Toga Stamp Watermark
+        $svgBg = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="325" height="204" viewBox="0 0 325 204">
           <defs>
             <linearGradient id="navyBg" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stop-color="#041224" />
@@ -283,11 +290,19 @@
           <!-- Shimmer Hairline Ribbon -->
           <path d="M 0,55 Q 90,67 190,49 T 325,41" fill="none" stroke="#fdf0cd" stroke-width="0.8" opacity="0.8" />
 
-          <!-- Security Watermark Emblem in White Area -->
-          <g transform="translate(260, 115) scale(0.38)" opacity="0.05">
-            <circle cx="70" cy="70" r="65" fill="none" stroke="#0c274a" stroke-width="4" />
-            <circle cx="70" cy="70" r="55" fill="none" stroke="#0c274a" stroke-width="2" stroke-dasharray="6,4" />
-            <polygon points="70,20 84,52 118,52 90,72 101,104 70,85 39,104 50,72 22,52 56,52" fill="#0c274a" />
+          <!-- Cap Stempel Resmi Toga ASASI (Watermark Transparan) -->
+          <g transform="translate(246, 105) rotate(-6 40 40)" opacity="0.13">
+            <!-- Lingkaran Ganda Cap Dinas -->
+            <circle cx="40" cy="40" r="39" fill="none" stroke="#0c274a" stroke-width="1.6" />
+            <circle cx="40" cy="40" r="35.5" fill="none" stroke="#0c274a" stroke-width="0.8" stroke-dasharray="3,1.5" />
+            <circle cx="40" cy="40" r="26" fill="none" stroke="#0c274a" stroke-width="0.8" />
+
+            <!-- Teks Melingkar Stempel -->
+            <text x="40" y="9.5" font-family=\"Arial, sans-serif\" font-size=\"3.6\" font-weight=\"bold\" fill=\"#0c274a\" text-anchor=\"middle\" letter-spacing=\"0.8\">DEWAN PENGURUS PUSAT</text>
+            <text x="40" y="73" font-family=\"Arial, sans-serif\" font-size=\"3.3\" font-weight=\"bold\" fill=\"#0c274a\" text-anchor=\"middle\" letter-spacing=\"1\">★ ASASI INDONESIA ★</text>
+
+            <!-- Logo Toga ASASI di Bagian Tengah Cap -->
+            ' . ($stampLogoBase64 ? '<image xlink:href="' . $stampLogoBase64 . '" x="16" y="24" width="48" height="32" />' : '') . '
           </g>
         </svg>';
         $svgBase64 = 'data:image/svg+xml;base64,' . base64_encode($svgBg);
