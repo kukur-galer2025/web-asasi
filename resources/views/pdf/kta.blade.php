@@ -14,66 +14,88 @@
             width: 325pt;
             height: 204pt;
             font-family: Helvetica, Arial, sans-serif;
-            background-color: #FCFBF7;
-            color: #1E293B;
+            background-color: #061b34;
+            color: #FFFFFF;
             -webkit-print-color-adjust: exact;
         }
-        /* Outer Card Table: Exactly 318pt x 196pt + 2pt border = 322pt x 200pt (Safe Inside 325x204) */
+        /* ===== OUTER CARD: Dark Navy ===== */
         table.outer-card {
             width: 318pt;
             height: 196pt;
-            border: 2pt solid #C5A059;
+            border: 1.5pt solid #C5A059;
             border-collapse: collapse;
             table-layout: fixed;
-            background-color: #FCFBF7;
+            background-color: #061b34;
             margin: 0 auto;
         }
-        td.card-padding {
-            padding: 6pt 8pt;
-            vertical-align: top;
-        }
 
-        /* Header Table */
+        /* ===== HEADER ROW (Dark Navy) ===== */
+        td.header-td {
+            background-color: #061b34;
+            padding: 5pt 8pt 3pt 8pt;
+            vertical-align: middle;
+        }
         table.header-table {
             width: 100%;
             border-collapse: collapse;
-            border-bottom: 1.2pt solid #C5A059;
-            padding-bottom: 2pt;
-            margin-bottom: 3pt;
+        }
+        .logo-img {
+            height: 16pt;
+            width: auto;
+            display: block;
+        }
+        .rule-gold {
+            border-left: 1pt solid #C5A059;
+            height: 20pt;
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0 5pt;
         }
         .org-title {
-            font-family: "Times New Roman", Times, serif;
-            font-size: 10.5pt;
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 8pt;
             font-weight: bold;
-            letter-spacing: 0.8px;
-            color: #0F2C59;
+            letter-spacing: 1.5px;
+            color: #FFFFFF;
             line-height: 1.1;
         }
         .org-subtitle {
-            font-size: 5pt;
-            color: #64748B;
+            font-size: 4pt;
+            color: #b0c4de;
             text-transform: uppercase;
-            letter-spacing: 0.4px;
+            letter-spacing: 0.5px;
             margin-top: 1pt;
         }
         .badge-kta {
-            background-color: #0F2C59;
-            color: #FFFFFF;
-            font-size: 5.5pt;
+            color: #f6d494;
+            font-size: 6pt;
             font-weight: bold;
-            letter-spacing: 0.8px;
-            padding: 2pt 5pt;
-            border-radius: 2pt;
+            letter-spacing: 1px;
             display: inline-block;
             white-space: nowrap;
         }
 
-        /* Body Section Table */
+        /* ===== GOLD WAVE DIVIDER ===== */
+        td.wave-td {
+            height: 4pt;
+            background-color: #061b34;
+            padding: 0;
+            border-bottom: 2.5pt solid #C5A059;
+        }
+
+        /* ===== WHITE BODY ROW ===== */
+        td.body-td {
+            background-color: #FFFFFF;
+            padding: 5pt 8pt;
+            vertical-align: top;
+        }
         table.content-table {
             width: 100%;
             border-collapse: collapse;
             table-layout: fixed;
         }
+
+        /* Photo */
         .photo-col {
             width: 48pt;
             vertical-align: top;
@@ -81,10 +103,11 @@
         .photo-frame {
             width: 42pt;
             height: 58pt;
-            border: 1pt solid #C5A059;
-            background-color: #FFFFFF;
+            border: 1.5pt solid #C5A059;
+            background-color: #e8ebef;
             overflow: hidden;
             text-align: center;
+            border-radius: 3pt;
         }
         .photo-img {
             width: 42pt;
@@ -95,8 +118,8 @@
         .photo-placeholder {
             width: 42pt;
             height: 58pt;
-            background-color: #F1F5F9;
-            color: #94A3B8;
+            background-color: #e8ebef;
+            color: #64748B;
             font-size: 5pt;
             text-align: center;
             padding-top: 17pt;
@@ -104,51 +127,49 @@
             line-height: 1.3;
         }
 
+        /* Data Column */
         .data-col {
             vertical-align: top;
             padding: 0 5pt;
         }
-        .id-banner {
-            background-color: #F1F5F9;
-            border-left: 2pt solid #0F2C59;
-            padding: 2pt 4pt;
-            margin-bottom: 2.5pt;
-        }
-        .id-label {
-            font-size: 4.5pt;
-            color: #64748B;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .id-number {
-            font-size: 7.5pt;
-            font-family: Courier, monospace;
+        .member-name {
+            font-size: 8pt;
             font-weight: bold;
-            color: #0F2C59;
-            letter-spacing: 0.5px;
+            color: #0c274a;
+            padding-bottom: 3pt;
+            border-bottom: 0.5pt solid #C5A059;
+            margin-bottom: 4pt;
+            line-height: 1.2;
         }
-
         table.info-table {
             width: 100%;
             border-collapse: collapse;
         }
         table.info-table td {
             padding: 0.8pt 0;
-            font-size: 6.5pt;
+            font-size: 5.8pt;
             vertical-align: top;
-            line-height: 1.15;
+            line-height: 1.2;
+            color: #0c274a;
         }
         .info-label {
-            width: 42pt;
-            color: #64748B;
-            text-transform: uppercase;
-            font-size: 5.2pt;
+            width: 38pt;
+            color: #5a7a9f;
+            font-size: 5pt;
         }
         .info-val {
             font-weight: bold;
-            color: #0F172A;
+            color: #0c274a;
+        }
+        .info-val-nik {
+            font-family: Courier, monospace;
+            font-weight: bold;
+            color: #061b34;
+            font-size: 6.5pt;
+            letter-spacing: 0.3px;
         }
 
+        /* QR Column */
         .qr-col {
             width: 50pt;
             vertical-align: top;
@@ -157,39 +178,50 @@
         .qr-frame {
             width: 42pt;
             height: 42pt;
-            border: 1pt solid #C5A059;
+            border: 1.5pt solid #C5A059;
             background-color: #FFFFFF;
             padding: 1pt;
             display: inline-block;
             text-align: center;
+            border-radius: 3pt;
         }
         .qr-img {
-            width: 40pt;
-            height: 40pt;
+            width: 38pt;
+            height: 38pt;
             display: block;
             margin: 0 auto;
         }
         .qr-caption {
-            font-size: 4.2pt;
+            font-size: 4pt;
             font-weight: bold;
-            color: #0F2C59;
+            color: #0c274a;
             text-transform: uppercase;
             letter-spacing: 0.3px;
-            margin-top: 1.5pt;
+            margin-top: 2pt;
             text-align: center;
         }
 
-        /* Footer Table */
+        /* ===== FOOTER ROW (Dark Navy) ===== */
+        td.footer-td {
+            background-color: #061b34;
+            padding: 3pt 8pt;
+            vertical-align: middle;
+            border-top: 1pt solid #C5A059;
+        }
         table.footer-table {
             width: 100%;
             border-collapse: collapse;
-            border-top: 0.5pt solid #E2E8F0;
-            margin-top: 3pt;
-            padding-top: 2pt;
         }
         table.footer-table td {
-            font-size: 5pt;
-            color: #64748B;
+            font-size: 4.8pt;
+            color: #b0c4de;
+        }
+        .footer-right {
+            font-weight: bold;
+            color: #f6d494;
+            text-align: right;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
@@ -223,101 +255,137 @@
         }
     @endphp
 
+    @php
+        // Try to load logo as base64 for PDF embedding
+        $logoBase64 = null;
+        $logoPaths = [
+            public_path('images/logo/logo-asasi.png'),
+            public_path('images/logo/logo-asasi.webp'),
+        ];
+        foreach ($logoPaths as $lp) {
+            if (file_exists($lp)) {
+                $ext = pathinfo($lp, PATHINFO_EXTENSION) === 'webp' ? 'png' : pathinfo($lp, PATHINFO_EXTENSION);
+                $d = @file_get_contents($lp);
+                if ($d !== false) { $logoBase64 = 'data:image/' . $ext . ';base64,' . base64_encode($d); break; }
+            }
+        }
+    @endphp
+
     <table class="outer-card" cellpadding="0" cellspacing="0">
+
+        {{-- ===== ROW 1: DARK NAVY HEADER ===== --}}
         <tr>
-            <td class="card-padding">
-                
-                <!-- 1. Header -->
+            <td class="header-td">
                 <table class="header-table" cellpadding="0" cellspacing="0">
                     <tr>
+                        {{-- Brand: Logo + divider + Org name --}}
                         <td style="vertical-align: middle;">
-                            <div class="org-title">ASASI INDONESIA</div>
-                            <div class="org-subtitle">Perkumpulan Akademisi & Saintis Indonesia</div>
+                            <table cellpadding="0" cellspacing="0"><tr>
+                                @if($logoBase64)
+                                <td style="vertical-align:middle; padding-right:5pt;">
+                                    <img src="{{ $logoBase64 }}" class="logo-img" alt="Logo ASASI">
+                                </td>
+                                <td style="vertical-align:middle; padding-right:5pt;">
+                                    <div class="rule-gold"></div>
+                                </td>
+                                @endif
+                                <td style="vertical-align:middle;">
+                                    <div class="org-title">ASASI</div>
+                                    <div class="org-subtitle">PERKUMPULAN AKADEMISI<br>DAN SAINTIS INDONESIA</div>
+                                </td>
+                            </tr></table>
                         </td>
-                        <td style="vertical-align: middle; text-align: right; width: 75pt;">
+                        {{-- Badge KARTU ANGGOTA --}}
+                        <td style="vertical-align: middle; text-align: right; width: 70pt;">
                             <span class="badge-kta">KARTU ANGGOTA</span>
                         </td>
                     </tr>
                 </table>
+            </td>
+        </tr>
 
-                <!-- 2. Main Body -->
+        {{-- ===== ROW 2: GOLD WAVE ACCENT LINE ===== --}}
+        <tr>
+            <td class="wave-td"></td>
+        </tr>
+
+        {{-- ===== ROW 3: WHITE BODY ===== --}}
+        <tr>
+            <td class="body-td">
                 <table class="content-table" cellpadding="0" cellspacing="0">
                     <tr>
-                        <!-- Foto Formal -->
+                        {{-- Foto Formal --}}
                         <td class="photo-col">
                             <div class="photo-frame">
                                 @if($photoBase64)
                                     <img src="{{ $photoBase64 }}" class="photo-img" alt="Pas Foto">
                                 @else
-                                    <div class="photo-placeholder">
-                                        PAS FOTO<br>3 x 4
-                                    </div>
+                                    <div class="photo-placeholder">PAS<br>FOTO<br>3×4</div>
                                 @endif
                             </div>
                         </td>
 
-                        <!-- Data Member -->
+                        {{-- Data Member --}}
                         <td class="data-col">
-                            <div class="id-banner">
-                                <div class="id-label">Nomor Induk Keanggotaan Nasional</div>
-                                <div class="id-number">{{ $member->nomor_anggota }}</div>
-                            </div>
-
+                            <div class="member-name">{{ \Illuminate\Support\Str::limit($member->nama_lengkap, 30) }}</div>
                             <table class="info-table" cellpadding="0" cellspacing="0">
                                 <tr>
-                                    <td class="info-label">Nama & Gelar</td>
-                                    <td class="info-val">: {{ \Illuminate\Support\Str::limit($member->nama_lengkap, 26) }}</td>
+                                    <td class="info-label">No. Anggota</td>
+                                    <td class="info-val-nik">: {{ $member->nomor_anggota }}</td>
                                 </tr>
                                 <tr>
-                                    <td class="info-label">Afiliasi</td>
-                                    <td class="info-val">: {{ \Illuminate\Support\Str::limit($member->instansi, 26) }}</td>
+                                    <td class="info-label">Status</td>
+                                    <td class="info-val" style="color:#059669;">: Anggota Aktif</td>
                                 </tr>
                                 @if($member->wilayah_dpw)
                                 <tr>
-                                    <td class="info-label">Wilayah DPW</td>
-                                    <td class="info-val">: {{ \Illuminate\Support\Str::limit($member->wilayah_dpw, 26) }}</td>
+                                    <td class="info-label">Wilayah</td>
+                                    <td class="info-val">: {{ \Illuminate\Support\Str::limit($member->wilayah_dpw, 24) }}</td>
                                 </tr>
                                 @endif
                                 <tr>
-                                    <td class="info-label">Status Resmi</td>
-                                    <td class="info-val" style="color: #059669;">: Anggota Aktif Terverifikasi</td>
+                                    <td class="info-label">Afiliasi</td>
+                                    <td class="info-val">: {{ \Illuminate\Support\Str::limit($member->instansi, 24) }}</td>
                                 </tr>
                             </table>
                         </td>
 
-                        <!-- QR Code -->
+                        {{-- QR Code --}}
                         <td class="qr-col">
-                            <div style="text-align: center; width: 44pt; float: right;">
+                            <div style="text-align:center; width:44pt; float:right;">
                                 @if($qrBase64)
                                     <div class="qr-frame">
                                         <img src="{{ $qrBase64 }}" class="qr-img" alt="QR Verifikasi">
                                     </div>
-                                    <div class="qr-caption">Scan Validasi</div>
                                 @else
-                                    <div class="qr-frame" style="background-color: #F8FAFC;">
-                                        <div style="font-size: 5pt; color: #94A3B8; padding-top: 15pt;">QR CODE</div>
+                                    <div class="qr-frame">
+                                        <div style="font-size:5pt;color:#94A3B8;padding-top:14pt;">QR CODE</div>
                                     </div>
-                                    <div class="qr-caption">Scan Validasi</div>
                                 @endif
+                                <div class="qr-caption">SCAN VALIDASI</div>
                             </div>
                         </td>
                     </tr>
                 </table>
+            </td>
+        </tr>
 
-                <!-- 3. Footer -->
+        {{-- ===== ROW 4: DARK NAVY FOOTER ===== --}}
+        <tr>
+            <td class="footer-td">
                 <table class="footer-table" cellpadding="0" cellspacing="0">
                     <tr>
-                        <td style="text-align: left;">
-                            Masa Berlaku: <strong style="color: #0F172A;">{{ optional($member->masa_berlaku_sampai)->format('d M Y') ?? 'Seumur Hidup' }}</strong>
+                        <td>
+                            Berlaku s/d: <strong style="color:#f6d494;">{{ optional($member->masa_berlaku_sampai)->format('d M Y') ?? 'Seumur Hidup' }}</strong>
                         </td>
-                        <td style="text-align: right; font-weight: bold; color: #0F2C59; text-transform: uppercase;">
+                        <td class="footer-right">
                             Dewan Pengurus Pusat ASASI
                         </td>
                     </tr>
                 </table>
-
             </td>
         </tr>
+
     </table>
 </body>
 </html>

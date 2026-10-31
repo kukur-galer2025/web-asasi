@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 
 @section('content')
 <div class="max-w-7xl mx-auto px-4 sm:px-8 py-12 space-y-8">
@@ -34,65 +34,73 @@
                     <h2 class="font-serif text-xl font-bold text-slate-900 mt-0.5">Pratinjau Kartu Anggota (KTA)</h2>
                 </div>
 
-                <!-- Desain Kartu KTA White Pearl & Gold -->
-                <div class="bg-gradient-to-br from-[#FFFFFF] via-[#FCFBF7] to-[#F5EFE6] text-slate-800 rounded-2xl p-6 border-2 border-[#C5A059]/60 shadow-lg relative overflow-hidden">
-                    <div class="flex justify-between items-start border-b border-[#C5A059]/30 pb-3.5 mb-4">
-                        <div>
-                            <p class="font-serif font-bold text-asasi-navy text-base tracking-wider leading-none">ASASI INDONESIA</p>
-                            <p class="text-[10px] text-slate-500 uppercase tracking-widest mt-1">Perkumpulan Akademisi & Saintis Indonesia</p>
+                <!-- Desain Kartu KTA Dark Navy & Gold — Konsep Baru -->
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-[#C5A059]/70" style="background: linear-gradient(120deg, #061b34 0%, #103b67 90%);">
+
+                    {{-- ===== BAGIAN ATAS: NAVY Header ===== --}}
+                    <div class="px-5 pt-4 pb-3" style="background: linear-gradient(120deg, #061b34 0%, #103b67 90%);">
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center gap-3">
+                                <img src="{{ asset('images/logo/logo-asasi.png') }}" alt="ASASI" class="h-8 w-auto brightness-0 invert" onerror="this.style.display='none'">
+                                <div class="border-l border-[#C5A059]/70 pl-3">
+                                    <p class="text-white font-bold text-sm tracking-widest leading-none">ASASI</p>
+                                    <p class="text-[#b0c4de] text-[8px] uppercase tracking-wider leading-tight mt-0.5">Perkumpulan Akademisi<br>dan Saintis Indonesia</p>
+                                </div>
+                            </div>
+                            <span class="text-[#f6d494] text-[10px] font-bold tracking-widest uppercase">KARTU ANGGOTA</span>
                         </div>
-                        <span class="bg-asasi-navy text-white text-[9px] font-bold px-2.5 py-1 rounded uppercase tracking-wider">
-                            Member Card
-                        </span>
+                        {{-- Gold Wave --}}
+                        <div class="border-t-2 border-[#C5A059]/70 mt-3" style="transform: rotate(-1deg); margin-left: -4px; margin-right: -4px;"></div>
                     </div>
 
-                    <!-- Area Pas Foto & Data Utama KTA -->
-                    <div class="flex gap-4 items-center mb-4">
-                        <!-- Pas Foto 3x4 di KTA Preview -->
-                        <div class="w-20 h-24 shrink-0 rounded-lg overflow-hidden border-2 border-asasi-gold/80 bg-slate-100 shadow-sm flex items-center justify-center">
-                            @if($member && $member->foto_profil)
-                                <img src="{{ asset('storage/' . $member->foto_profil) }}" alt="{{ $member->nama_lengkap }}" class="w-full h-full object-cover object-top">
-                            @else
-                                <div class="text-center p-1 text-slate-400">
-                                    <svg class="w-7 h-7 mx-auto text-slate-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-                                    <span class="text-[8px] font-bold uppercase tracking-wider block mt-0.5">Pas Foto</span>
+                    {{-- ===== BAGIAN TENGAH: WHITE (Foto + Data + QR) ===== --}}
+                    <div class="bg-white px-5 pt-4 pb-4">
+                        <div class="flex gap-3 items-start">
+                            {{-- Pas Foto --}}
+                            <div class="w-14 h-20 shrink-0 rounded-lg overflow-hidden border-2 border-[#C5A059] bg-slate-100 flex items-center justify-center">
+                                @if($member && $member->foto_profil)
+                                    <img src="{{ asset('storage/' . $member->foto_profil) }}" alt="{{ $member->nama_lengkap }}" class="w-full h-full object-cover object-top">
+                                @else
+                                    <div class="text-center text-slate-400 p-1">
+                                        <svg class="w-6 h-6 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                                        <span class="text-[7px] font-bold uppercase tracking-wider block mt-0.5">Pas Foto</span>
+                                    </div>
+                                @endif
+                            </div>
+
+                            {{-- Data Identitas --}}
+                            <div class="flex-grow overflow-hidden min-w-0">
+                                <p class="font-bold text-[#0c274a] text-sm leading-tight pb-2 border-b border-[#C5A059]/50 mb-2 truncate">
+                                    {{ $member->nama_lengkap ?? $user->name }}
+                                </p>
+                                <dl class="grid grid-cols-[auto_1fr] gap-x-2 gap-y-0.5 text-[9px]">
+                                    <dt class="text-slate-400 font-normal whitespace-nowrap">No. Anggota</dt>
+                                    <dd class="font-bold text-[#061b34] font-mono m-0 truncate">: {{ $member->nomor_anggota ?? 'MENUNGGU' }}</dd>
+                                    <dt class="text-slate-400 font-normal">Status</dt>
+                                    <dd class="font-bold text-emerald-700 m-0">: Anggota Aktif</dd>
+                                    <dt class="text-slate-400 font-normal">Wilayah</dt>
+                                    <dd class="font-bold text-[#0c274a] m-0 truncate">: {{ $member->wilayah_dpw ?? '-' }}</dd>
+                                    <dt class="text-slate-400 font-normal">Afiliasi</dt>
+                                    <dd class="font-bold text-[#0c274a] m-0 truncate">: {{ $member->instansi ?? '-' }}</dd>
+                                </dl>
+                            </div>
+
+                            {{-- QR Code mini --}}
+                            @if($member && $member->nomor_anggota)
+                            <div class="shrink-0 text-center">
+                                <div class="w-12 h-12 border-2 border-[#C5A059] rounded-lg bg-white flex items-center justify-center overflow-hidden">
+                                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data={{ urlencode(route('kta.verify', $member->nomor_anggota)) }}" alt="QR" class="w-full h-full object-contain" onerror="this.parentElement.innerHTML='<span class=\'text-[6px] text-slate-400\'>QR</span>'">
                                 </div>
+                                <p class="text-[7px] font-bold text-[#0c274a] uppercase tracking-wide mt-1">Scan</p>
+                            </div>
                             @endif
                         </div>
-                        <div class="flex-grow space-y-1.5 text-xs overflow-hidden">
-                            <div class="bg-white/90 border-l-4 border-asasi-navy px-2.5 py-1.5 rounded-r shadow-sm">
-                                <span class="text-[8px] uppercase tracking-widest text-slate-400 font-semibold block leading-none">Nomor Anggota</span>
-                                <span class="font-mono font-bold text-xs text-asasi-navy tracking-wider truncate block">
-                                    {{ $member->nomor_anggota ?? 'MENUNGGU VERIFIKASI' }}
-                                </span>
-                            </div>
-                            <div class="space-y-1">
-                                <div class="truncate">
-                                    <span class="text-slate-400 text-[10px] uppercase font-semibold block leading-none">Nama & Gelar</span>
-                                    <strong class="text-slate-900 text-xs truncate block">{{ $member->nama_lengkap ?? $user->name }}</strong>
-                                </div>
-                                <div class="truncate">
-                                    <span class="text-slate-400 text-[10px] uppercase font-semibold block leading-none">Afiliasi</span>
-                                    <span class="text-slate-700 text-xs truncate block">{{ $member->instansi ?? 'Belum diisi' }}</span>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
-                    <div class="space-y-1.5 text-xs border-t border-slate-100 pt-3">
-                        <div class="flex">
-                            <span class="w-28 text-slate-400 uppercase text-[10px] font-semibold">Wilayah DPW</span>
-                            <span class="font-semibold text-slate-700">: {{ $member->wilayah_dpw ?? '-' }}</span>
-                        </div>
-                        <div class="flex">
-                            <span class="w-28 text-slate-400 uppercase text-[10px] font-semibold">Bidang Riset</span>
-                            <span class="font-semibold text-slate-700">: {{ $member->bidang_keahlian ?? '-' }}</span>
-                        </div>
-                    </div>
-
-                    <div class="mt-4 pt-3 border-t border-[#C5A059]/30 flex justify-between items-center text-[10px] text-slate-500">
-                        <span>Berlaku s/d: <strong class="text-slate-900">{{ $member?->masa_berlaku_sampai ? $member->masa_berlaku_sampai->format('d M Y') : '-' }}</strong></span>
-                        <span class="text-asasi-navy font-bold uppercase">DPP ASASI</span>
+                    {{-- Footer navy strip --}}
+                    <div class="flex justify-between items-center px-5 py-2 text-[9px]" style="background-color:#061b34; border-top:1px solid rgba(197,160,89,0.4);">
+                        <span class="text-[#b0c4de]">Berlaku s/d: <strong class="text-[#f6d494]">{{ $member?->masa_berlaku_sampai ? $member->masa_berlaku_sampai->format('d M Y') : '-' }}</strong></span>
+                        <span class="text-[#f6d494] font-bold uppercase tracking-wider">DPP ASASI</span>
                     </div>
                 </div>
 
