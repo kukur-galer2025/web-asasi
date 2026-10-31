@@ -46,11 +46,6 @@
                                 <stop offset="70%" stop-color="#144882" />
                                 <stop offset="100%" stop-color="#0a264c" />
                             </linearGradient>
-                            <linearGradient id="dashNavyLower" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#0c2d54" />
-                                <stop offset="50%" stop-color="#113e72" />
-                                <stop offset="100%" stop-color="#185294" />
-                            </linearGradient>
                             <linearGradient id="dashGoldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
                                 <stop offset="0%" stop-color="#c5a059" />
                                 <stop offset="30%" stop-color="#f6d494" />
@@ -71,18 +66,6 @@
 
                         <!-- Constellation Geometric Pattern -->
                         <rect width="650" height="220" fill="url(#dashConstellation)" />
-
-                        <!-- Sweeping Wave with Rich Navy Shade -->
-                        <path d="M -10,124 Q 180,148 380,108 T 660,92 L 660,420 L -10,420 Z" fill="url(#dashNavyLower)" opacity="0.85" />
-
-                        <!-- Wave Ambient Gold Glow -->
-                        <path d="M -10,120 Q 180,144 380,104 T 660,88" fill="none" stroke="#e5bd6f" stroke-width="7" opacity="0.3" />
-
-                        <!-- Wave Main Metallic Gold Ribbon -->
-                        <path d="M -10,124 Q 180,148 380,108 T 660,92" fill="none" stroke="url(#dashGoldGrad)" stroke-width="4.5" stroke-linecap="round" />
-
-                        <!-- Wave Thin Gold Shimmer Line -->
-                        <path d="M -10,118 Q 180,142 380,102 T 660,86" fill="none" stroke="#f6d494" stroke-width="1.5" opacity="0.75" />
 
                         <!-- Outer Gold Border -->
                         <rect x="4" y="4" width="642" height="400" rx="14" fill="none" stroke="url(#dashGoldGrad)" stroke-width="1.8" opacity="0.85" />

@@ -307,20 +307,8 @@
             <line x1="150" y1="22" x2="190" y2="33" stroke="#7eb9e6" stroke-width="0.5" />
           </g>
 
-          <!-- Sweeping Wave with Rich Navy Shade -->
-          <path d="M 0,62 Q 90,74 190,54 T 325,46 L 325,204 L 0,204 Z" fill="#0e3868" opacity="0.80" />
-
-          <!-- Wave Ambient Glow -->
-          <path d="M 0,60 Q 90,72 190,52 T 325,44" fill="none" stroke="#e5bd6f" stroke-width="3.5" opacity="0.25" />
-
-          <!-- Main Metallic Gold Ribbon -->
-          <path d="M 0,62 Q 90,74 190,54 T 325,46" fill="none" stroke="#e5bd6f" stroke-width="2.2" />
-
-          <!-- Shimmer Hairline Ribbon -->
-          <path d="M 0,59 Q 90,71 190,51 T 325,43" fill="none" stroke="#fdf0cd" stroke-width="0.8" opacity="0.75" />
-
           <!-- Outer Gold Luxury Hairline Border with Rounded Corners -->
-          <rect x="2.5" y="2.5" width="320" height="199" rx="8" fill="none" stroke="#e5bd6f" stroke-width="1.4" opacity="0.85" />
+          <rect x="2.5" y="2.5" width="320" height="199" rx="8" fill="none" stroke="#e5bd6f" stroke-width="1.2" opacity="0.75" />
 
           <!-- Cap Stempel Resmi Toga ASASI (Watermark Emas Transparan pada Background Navy) -->
           <g transform="translate(246, 105) rotate(-6 40 40)" opacity="0.22">
