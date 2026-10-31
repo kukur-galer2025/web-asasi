@@ -46,13 +46,23 @@
         }
         .content-layer {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 325pt;
-            height: 204pt;
+            top: 10pt;
+            left: 14pt;
+            width: 297pt;
+            height: 184pt;
             z-index: 10;
-            padding: 13pt 16pt;
-            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        .back-content-layer {
+            position: absolute;
+            top: 13pt;
+            left: 16pt;
+            width: 293pt;
+            height: 178pt;
+            z-index: 10;
+            margin: 0;
+            padding: 0;
         }
 
         /* ===== TOP BRAND BAR ===== */
@@ -480,7 +490,7 @@
         @endif
         <div class="overlay-layer"><img src="{{ $cardOverlay }}" style="width:325pt; height:204pt; display:block;" /></div>
         
-        <div class="content-layer" style="padding: 16pt 18pt;">
+        <div class="back-content-layer">
             <span class="back-kicker">ASASI • INDONESIA</span>
             <h2 class="back-title">Membentuk Akademisi Unggul,<br>Mendorong Perbaikan Bangsa.</h2>
             <p class="back-desc">Kartu ini merupakan identitas keanggotaan resmi Perkumpulan Akademisi dan Saintis Indonesia (ASASI). Validitas dan status keanggotaan dapat diverifikasi secara daring melalui portal resmi ASASI.</p>
