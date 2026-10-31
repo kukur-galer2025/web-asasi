@@ -70,19 +70,19 @@
                         <rect x="4" y="4" width="642" height="400" rx="14" fill="none" stroke="url(#dashGoldGrad)" stroke-width="1.8" opacity="0.8" />
 
                         <!-- Wave 1: Ambient Gold Glow Wave -->
-                        <path d="M -10,185 Q 160,230 360,180 T 660,150 L 660,420 L -10,420 Z" fill="#e5bd6f" opacity="0.18" />
+                        <path d="M -10,116 Q 180,140 380,104 T 660,88 L 660,420 L -10,420 Z" fill="#e5bd6f" opacity="0.22" />
 
-                        <!-- Wave 2: Main White Pearl Body -->
-                        <path d="M -10,192 Q 160,236 360,186 T 660,155 L 660,420 L -10,420 Z" fill="#ffffff" />
+                        <!-- Wave 2: Main White Pearl Body (Starts high up so all text is 100% inside white) -->
+                        <path d="M -10,120 Q 180,144 380,108 T 660,92 L 660,420 L -10,420 Z" fill="#ffffff" />
 
                         <!-- Wave 3: Thick Metallic Gold Ribbon -->
-                        <path d="M -10,192 Q 160,236 360,186 T 660,155" fill="none" stroke="url(#dashGoldGrad)" stroke-width="6" stroke-linecap="round" />
+                        <path d="M -10,120 Q 180,144 380,108 T 660,92" fill="none" stroke="url(#dashGoldGrad)" stroke-width="5" stroke-linecap="round" />
 
                         <!-- Wave 4: Thin Gold Shimmer Line -->
-                        <path d="M -10,184 Q 160,228 360,178 T 660,147" fill="none" stroke="#f6d494" stroke-width="1.5" opacity="0.7" />
+                        <path d="M -10,114 Q 180,138 380,102 T 660,86" fill="none" stroke="#f6d494" stroke-width="1.5" opacity="0.75" />
 
                         <!-- Security Watermark Crest in White Section -->
-                        <g transform="translate(520, 240) scale(0.65)" opacity="0.08">
+                        <g transform="translate(520, 240) scale(0.65)" opacity="0.05">
                             <circle cx="70" cy="70" r="65" fill="none" stroke="#0c274a" stroke-width="4" />
                             <circle cx="70" cy="70" r="55" fill="none" stroke="#0c274a" stroke-width="1.5" stroke-dasharray="6,4" />
                             <polygon points="70,25 82,55 115,55 88,75 98,105 70,88 42,105 52,75 25,55 58,55" fill="#0c274a" />
