@@ -1,6 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
+@php
+    // Siapkan base64 image untuk logo dan foto agar bebas dari CORS issue saat unduh canvas/gambar
+    $photoBase64 = null;
+    if ($member && !empty($member->foto_profil)) {
+        $storagePath = storage_path('app/public/' . $member->foto_profil);
+        if (file_exists($storagePath)) {
+            $ext = pathinfo($storagePath, PATHINFO_EXTENSION);
+            $fileData = @file_get_contents($storagePath);
+            if ($fileData !== false) {
+                $photoBase64 = 'data:image/' . $ext . ';base64,' . base64_encode($fileData);
+            }
+        }
+    }
+    
+    $logoBase64 = null;
+    $logoPath = public_path('images/logo/logo-asasi-white.png');
+    if (file_exists($logoPath)) {
+        $logoBase64 = 'data:image/png;base64,' . base64_encode(file_get_contents($logoPath));
+    }
+@endphp
 <div class="max-w-7xl mx-auto px-4 sm:px-8 py-12 space-y-8">
 
     <!-- Header Sambutan Putih Bersih -->
@@ -89,9 +109,10 @@
                     .asasi-card .card-inner {
                         position: relative;
                         height: 100%;
-                        padding: 6% 6.5%;
+                        padding: 5% 6%;
                         display: flex;
                         flex-direction: column;
+                        justify-content: space-between;
                     }
                     .asasi-card .top {
                         display: flex;
@@ -102,18 +123,18 @@
                     .asasi-card .brand {
                         display: flex;
                         align-items: center;
-                        gap: 10px;
+                        gap: 8px;
                         min-width: 0;
                     }
                     .asasi-card .brand img {
                         display: block;
-                        width: 46px;
-                        height: 32px;
+                        width: 44px;
+                        height: 30px;
                         object-fit: contain;
                     }
                     .asasi-card .brandline {
                         width: 1px;
-                        height: 28px;
+                        height: 26px;
                         background: linear-gradient(transparent, var(--champagne), transparent);
                         flex: none;
                     }
@@ -121,38 +142,38 @@
                         font-family: Georgia, serif;
                         letter-spacing: .14em;
                         font-weight: 700;
-                        font-size: 16px;
+                        font-size: 15px;
                         line-height: 1;
                         color: #f9f6ee;
                     }
                     .asasi-card .brand-sub {
-                        font-size: 5.5px;
-                        letter-spacing: .12em;
+                        font-size: 5px;
+                        letter-spacing: .1em;
                         color: #b7cbd3;
                         margin-top: 3px;
-                        line-height: 1.4;
+                        line-height: 1.3;
                         text-transform: uppercase;
                     }
                     .asasi-card .tier {
                         border: 1px solid rgba(230,200,145,.48);
                         border-radius: 100px;
-                        padding: 4px 8px;
+                        padding: 3px 7px;
                         color: var(--champagne);
-                        font-size: 7.5px;
+                        font-size: 7px;
                         font-weight: 800;
-                        letter-spacing: .16em;
+                        letter-spacing: .14em;
                         white-space: nowrap;
                         text-transform: uppercase;
                     }
                     .asasi-card .hairline {
                         height: 1px;
                         background: linear-gradient(90deg, transparent, rgba(230,200,145,.7), transparent);
-                        margin: 4% 0;
+                        margin: 3.5% 0;
                     }
                     .asasi-card .front-content {
                         display: grid;
-                        grid-template-columns: 26% 1fr;
-                        gap: 5.5%;
+                        grid-template-columns: 24% 1fr;
+                        gap: 4.5%;
                         flex: 1;
                         min-height: 0;
                         align-items: center;
@@ -161,58 +182,53 @@
                         width: 100%;
                         aspect-ratio: 3/4;
                         background: linear-gradient(145deg, #d8e1e5, #879ca9);
-                        border-radius: 9px;
-                        padding: 3px;
+                        border-radius: 8px;
+                        padding: 2.5px;
                         border: 1px solid rgba(233,204,143,.7);
-                        box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+                        box-shadow: 0 5px 14px rgba(0,0,0,0.35);
                     }
                     .asasi-card .portrait .portrait-inner {
                         width: 100%;
                         height: 100%;
                         background: #15374d;
-                        border-radius: 6px;
+                        border-radius: 5.5px;
                         display: grid;
                         place-items: center;
                         overflow: hidden;
                     }
                     .asasi-card .label {
                         color: #aebfca;
-                        font-size: 8px;
-                        letter-spacing: .15em;
+                        font-size: 7px;
+                        letter-spacing: .12em;
                         text-transform: uppercase;
                         font-weight: 800;
                     }
                     .asasi-card .member-name {
-                        margin: 4px 0 5px;
-                        font: bold clamp(13px, 1.5vw, 19px)/1.22 Georgia, serif;
+                        margin: 2px 0 3px;
+                        font: bold clamp(12px, 1.4vw, 16px)/1.22 Georgia, serif;
                         color: var(--ivory);
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
                     }
                     .asasi-card .status {
                         color: var(--champagne);
                         text-transform: uppercase;
-                        letter-spacing: .14em;
-                        font-size: 8.5px;
+                        letter-spacing: .12em;
+                        font-size: 7.5px;
                         font-weight: 750;
                     }
                     .asasi-card .details {
                         display: grid;
                         grid-template-columns: 1fr 1fr;
-                        gap: 6px 12px;
-                        margin-top: 8px;
+                        gap: 3px 8px;
+                        margin-top: 5px;
                     }
                     .asasi-card .details strong {
                         display: block;
-                        font-size: 10.5px;
+                        font-size: 9px;
                         letter-spacing: .02em;
-                        margin-top: 2px;
-                        color: #f2f1ec;
-                        font-weight: 600;
-                        white-space: nowrap;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                    }
-                        letter-spacing: .02em;
-                        margin-top: 1.5px;
+                        margin-top: 1px;
                         color: #f2f1ec;
                         font-weight: 600;
                         white-space: nowrap;
@@ -222,20 +238,20 @@
                     .asasi-card .bottom {
                         display: flex;
                         justify-content: space-between;
-                        align-items: end;
-                        gap: 10px;
+                        align-items: flex-end;
+                        gap: 8px;
                         margin-top: auto;
-                        padding-top: 5px;
+                        padding-top: 4px;
                         border-top: 1px solid rgba(230,200,145,0.25);
                     }
                     .asasi-card .bottom small {
-                        font-size: 7px;
+                        font-size: 6.5px;
                         color: #a9bfcb;
                         letter-spacing: .08em;
                     }
                     .asasi-card .bottom .seal {
                         color: var(--champagne);
-                        font: italic 12px Georgia, serif;
+                        font: italic 11px Georgia, serif;
                         white-space: nowrap;
                     }
 
@@ -317,7 +333,7 @@
                         <div class="card-inner">
                             <div class="top">
                                 <div class="brand">
-                                    <img src="{{ asset('images/logo/logo-asasi-white.png') }}" alt="Logo ASASI" onerror="this.src='{{ asset('images/logo/logo-asasi.png') }}'">
+                                    <img src="{{ $logoBase64 ?? asset('images/logo/logo-asasi-white.png') }}" crossorigin="anonymous" alt="Logo ASASI" onerror="this.src='{{ asset('images/logo/logo-asasi.png') }}'">
                                     <span class="brandline" aria-hidden="true"></span>
                                     <div>
                                         <div class="brand-title">ASASI</div>
@@ -332,8 +348,8 @@
                             <div class="front-content">
                                 <div class="portrait" aria-label="Tempat foto profil anggota">
                                     <div class="portrait-inner">
-                                        @if($member && $member->foto_profil)
-                                            <img src="{{ asset('storage/' . $member->foto_profil) }}" alt="{{ $member->nama_lengkap }}" class="w-full h-full object-cover object-top">
+                                        @if($member && ($photoBase64 || $member->foto_profil))
+                                            <img src="{{ $photoBase64 ?? asset('storage/' . $member->foto_profil) }}" crossorigin="anonymous" alt="{{ $member->nama_lengkap }}" class="w-full h-full object-cover object-top">
                                         @else
                                             <svg viewBox="0 0 100 130" role="img" aria-label="Ilustrasi foto profil" class="w-[90%] h-[90%]">
                                                 <circle cx="50" cy="39" r="24" fill="#738796"/>
@@ -448,30 +464,50 @@
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
                     <script>
                         async function downloadKtaImage(side = 'current') {
+                            const btn = event?.currentTarget;
+                            const origHtml = btn ? btn.innerHTML : null;
+                            if (btn) {
+                                btn.disabled = true;
+                                btn.innerHTML = `<svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg> Memproses...`;
+                            }
+
                             let targetId = 'kta-card-front';
                             if (side === 'back' || (side === 'current' && document.getElementById('kta-card-front').classList.contains('hidden'))) {
                                 targetId = 'kta-card-back';
                             }
                             const card = document.getElementById(targetId);
                             const wasHidden = card.classList.contains('hidden');
-                            if (wasHidden) card.classList.remove('hidden');
+                            if (wasHidden) {
+                                card.classList.remove('hidden');
+                                await new Promise(r => setTimeout(r, 60));
+                            }
 
                             try {
                                 const canvas = await html2canvas(card, {
                                     scale: 3,
                                     useCORS: true,
-                                    allowTaint: true,
+                                    logging: false,
                                     backgroundColor: null,
                                 });
 
                                 if (wasHidden) card.classList.add('hidden');
 
                                 const link = document.createElement('a');
-                                link.download = `KTA-ASASI-${targetId === 'kta-card-front' ? 'DEPAN' : 'BELAKANG'}-{{ $member->nomor_anggota ?? 'MEMBER' }}.png`;
+                                const sideName = targetId === 'kta-card-front' ? 'DEPAN' : 'BELAKANG';
+                                link.download = `KTA-ASASI-${sideName}-{{ $member->nomor_anggota ?? 'MEMBER' }}.png`;
                                 link.href = canvas.toDataURL('image/png');
+                                document.body.appendChild(link);
                                 link.click();
+                                document.body.removeChild(link);
                             } catch (e) {
-                                alert('Gagal mengunduh gambar. Silakan gunakan tombol Unduh PDF Resmi.');
+                                if (wasHidden) card.classList.add('hidden');
+                                console.error('HTML2Canvas error:', e);
+                                alert('Perhatian: Gambar tidak dapat diekspor langsung (' + (e.message || e) + '). Silakan unduh versi PDF Resmi.');
+                            } finally {
+                                if (btn && origHtml) {
+                                    btn.disabled = false;
+                                    btn.innerHTML = origHtml;
+                                }
                             }
                         }
                     </script>
