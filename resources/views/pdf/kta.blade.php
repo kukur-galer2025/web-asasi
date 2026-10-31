@@ -297,12 +297,14 @@
             <circle cx="40" cy="40" r="35.5" fill="none" stroke="#0c274a" stroke-width="0.8" stroke-dasharray="3,1.5" />
             <circle cx="40" cy="40" r="26" fill="none" stroke="#0c274a" stroke-width="0.8" />
 
-            <!-- Teks Melingkar Stempel -->
-            <text x="40" y="9.5" font-family=\"Arial, sans-serif\" font-size=\"3.6\" font-weight=\"bold\" fill=\"#0c274a\" text-anchor=\"middle\" letter-spacing=\"0.8\">DEWAN PENGURUS PUSAT</text>
-            <text x="40" y="73" font-family=\"Arial, sans-serif\" font-size=\"3.3\" font-weight=\"bold\" fill=\"#0c274a\" text-anchor=\"middle\" letter-spacing=\"1\">★ ASASI INDONESIA ★</text>
+            <!-- Teks Melingkar Stempel & Titik Ornamen -->
+            <text x="40" y="9.5" font-family="Helvetica, Arial, sans-serif" font-size="3.6" font-weight="bold" fill="#0c274a" text-anchor="middle">DEWAN PENGURUS PUSAT</text>
+            <circle cx="21" cy="72" r="0.9" fill="#0c274a" />
+            <text x="40" y="73" font-family="Helvetica, Arial, sans-serif" font-size="3.3" font-weight="bold" fill="#0c274a" text-anchor="middle">ASASI INDONESIA</text>
+            <circle cx="59" cy="72" r="0.9" fill="#0c274a" />
 
-            <!-- Logo Toga ASASI di Bagian Tengah Cap -->
-            ' . ($stampLogoBase64 ? '<image xlink:href="' . $stampLogoBase64 . '" x="16" y="24" width="48" height="32" />' : '') . '
+            <!-- Logo Toga ASASI di Bagian Tengah Cap (Proporsional Asli 2.56:1) -->
+            ' . ($stampLogoBase64 ? '<image xlink:href="' . $stampLogoBase64 . '" x="19" y="31.8" width="42" height="16.4" />' : '') . '
           </g>
         </svg>';
         $svgBase64 = 'data:image/svg+xml;base64,' . base64_encode($svgBg);

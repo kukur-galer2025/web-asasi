@@ -87,8 +87,10 @@
                             <circle cx="70" cy="70" r="62" fill="none" stroke="#0c274a" stroke-width="1.2" stroke-dasharray="5,2.5" />
                             <circle cx="70" cy="70" r="46" fill="none" stroke="#0c274a" stroke-width="1.2" />
                             <text x="70" y="17" font-family="Arial, sans-serif" font-size="6.2" font-weight="bold" fill="#0c274a" text-anchor="middle" letter-spacing="1.5">DEWAN PENGURUS PUSAT</text>
-                            <text x="70" y="128" font-family="Arial, sans-serif" font-size="5.8" font-weight="bold" fill="#0c274a" text-anchor="middle" letter-spacing="1.8">★ ASASI INDONESIA ★</text>
-                            <image href="{{ asset('images/logo/logo-asasi-transparent.png') }}" x="28" y="42" width="84" height="56" />
+                            <circle cx="36" cy="126" r="1.5" fill="#0c274a" />
+                            <text x="70" y="128" font-family="Arial, sans-serif" font-size="5.8" font-weight="bold" fill="#0c274a" text-anchor="middle" letter-spacing="1.8">ASASI INDONESIA</text>
+                            <circle cx="104" cy="126" r="1.5" fill="#0c274a" />
+                            <image href="{{ asset('images/logo/logo-asasi-transparent.png') }}" x="33" y="55.5" width="74" height="29" />
                         </g>
                     </svg>
 
