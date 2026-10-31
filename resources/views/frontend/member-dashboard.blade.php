@@ -151,8 +151,8 @@
                     }
                     .asasi-card .front-content {
                         display: grid;
-                        grid-template-columns: 24% 1fr;
-                        gap: 5%;
+                        grid-template-columns: 26% 1fr;
+                        gap: 5.5%;
                         flex: 1;
                         min-height: 0;
                         align-items: center;
@@ -161,48 +161,56 @@
                         width: 100%;
                         aspect-ratio: 3/4;
                         background: linear-gradient(145deg, #d8e1e5, #879ca9);
-                        border-radius: 8px;
-                        padding: 2.5px;
+                        border-radius: 9px;
+                        padding: 3px;
                         border: 1px solid rgba(233,204,143,.7);
-                        box-shadow: 0 5px 14px rgba(0,0,0,0.3);
+                        box-shadow: 0 6px 16px rgba(0,0,0,0.35);
                     }
                     .asasi-card .portrait .portrait-inner {
                         width: 100%;
                         height: 100%;
                         background: #15374d;
-                        border-radius: 5.5px;
+                        border-radius: 6px;
                         display: grid;
                         place-items: center;
                         overflow: hidden;
                     }
                     .asasi-card .label {
                         color: #aebfca;
-                        font-size: 7.5px;
-                        letter-spacing: .14em;
+                        font-size: 8px;
+                        letter-spacing: .15em;
                         text-transform: uppercase;
                         font-weight: 800;
                     }
                     .asasi-card .member-name {
-                        margin: 3px 0 4px;
-                        font: 600 clamp(12px, 1.35vw, 17px)/1.22 Georgia, serif;
+                        margin: 4px 0 5px;
+                        font: bold clamp(13px, 1.5vw, 19px)/1.22 Georgia, serif;
                         color: var(--ivory);
                     }
                     .asasi-card .status {
                         color: var(--champagne);
                         text-transform: uppercase;
                         letter-spacing: .14em;
-                        font-size: 7.5px;
+                        font-size: 8.5px;
                         font-weight: 750;
                     }
                     .asasi-card .details {
                         display: grid;
                         grid-template-columns: 1fr 1fr;
-                        gap: 6px 10px;
-                        margin-top: 7px;
+                        gap: 6px 12px;
+                        margin-top: 8px;
                     }
                     .asasi-card .details strong {
                         display: block;
-                        font-size: 9.5px;
+                        font-size: 10.5px;
+                        letter-spacing: .02em;
+                        margin-top: 2px;
+                        color: #f2f1ec;
+                        font-weight: 600;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
                         letter-spacing: .02em;
                         margin-top: 1.5px;
                         color: #f2f1ec;
@@ -420,15 +428,53 @@
                 <!-- Tombol Unduh KTA & Cek Verifikasi -->
                 @if($member && $member->status === 'active')
                     <div class="space-y-2">
-                        <a href="{{ route('member.cetak.kta') }}" target="_blank" class="w-full flex items-center justify-center gap-2 bg-asasi-navy hover:bg-slate-800 text-white font-bold py-3.5 px-5 rounded-xl text-sm shadow-sm transition">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                            <span>Unduh Kartu Anggota Resmi (PDF)</span>
-                        </a>
-                        <a href="{{ route('kta.verify', $member->nomor_anggota) }}" target="_blank" class="w-full flex items-center justify-center gap-2 bg-slate-50 hover:bg-slate-100 text-asasi-navy font-bold py-2.5 px-5 rounded-xl text-xs transition border border-slate-200">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            <a href="{{ route('member.cetak.kta') }}" target="_blank" class="w-full flex items-center justify-center gap-2 bg-asasi-navy hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-xl text-xs shadow-sm transition">
+                                <svg class="w-4 h-4 shrink-0 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                                <span>Unduh PDF Resmi</span>
+                            </a>
+                            <button type="button" onclick="downloadKtaImage('current')" class="w-full flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-4 rounded-xl text-xs shadow-sm transition">
+                                <svg class="w-4 h-4 shrink-0 text-amber-100" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                <span>Unduh Gambar HD (PNG)</span>
+                            </button>
+                        </div>
+                        <a href="{{ route('kta.verify', $member->nomor_anggota) }}" target="_blank" class="w-full flex items-center justify-center gap-2 bg-slate-50 hover:bg-slate-100 text-asasi-navy font-bold py-2.5 px-4 rounded-xl text-xs transition border border-slate-200">
                             <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                             <span>Lihat Sertifikat Verifikasi Publik</span>
                         </a>
                     </div>
+
+                    <!-- Library HTML2Canvas untuk unduh gambar HD langsung dari browser -->
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+                    <script>
+                        async function downloadKtaImage(side = 'current') {
+                            let targetId = 'kta-card-front';
+                            if (side === 'back' || (side === 'current' && document.getElementById('kta-card-front').classList.contains('hidden'))) {
+                                targetId = 'kta-card-back';
+                            }
+                            const card = document.getElementById(targetId);
+                            const wasHidden = card.classList.contains('hidden');
+                            if (wasHidden) card.classList.remove('hidden');
+
+                            try {
+                                const canvas = await html2canvas(card, {
+                                    scale: 3,
+                                    useCORS: true,
+                                    allowTaint: true,
+                                    backgroundColor: null,
+                                });
+
+                                if (wasHidden) card.classList.add('hidden');
+
+                                const link = document.createElement('a');
+                                link.download = `KTA-ASASI-${targetId === 'kta-card-front' ? 'DEPAN' : 'BELAKANG'}-{{ $member->nomor_anggota ?? 'MEMBER' }}.png`;
+                                link.href = canvas.toDataURL('image/png');
+                                link.click();
+                            } catch (e) {
+                                alert('Gagal mengunduh gambar. Silakan gunakan tombol Unduh PDF Resmi.');
+                            }
+                        }
+                    </script>
                 @elseif($member && $member->status === 'pending')
                     <div class="bg-amber-50/80 border border-amber-200 text-amber-900 rounded-2xl p-4 text-xs leading-relaxed">
                         <strong class="block font-bold mb-1">⏳ Permohonan Sedang Diverifikasi</strong>

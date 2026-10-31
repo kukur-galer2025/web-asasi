@@ -44,143 +44,135 @@
             height: 204pt;
             z-index: 2;
         }
-        .content-layer {
+
+        /* ===== FRONT CARD LAYOUT (Balanced proportions without empty space) ===== */
+        .front-container {
             position: absolute;
             top: 10pt;
             left: 14pt;
             width: 297pt;
             height: 184pt;
             z-index: 10;
-            margin: 0;
-            padding: 0;
-        }
-        .back-content-layer {
-            position: absolute;
-            top: 13pt;
-            left: 16pt;
-            width: 293pt;
-            height: 178pt;
-            z-index: 10;
-            margin: 0;
-            padding: 0;
         }
 
-        /* ===== TOP BRAND BAR ===== */
+        /* TOP BRAND BAR */
         .top-table {
             width: 100%;
             border-collapse: collapse;
         }
         .logo-img {
-            height: 20pt;
+            height: 23pt;
             width: auto;
             display: block;
         }
         .brandline {
             border-left: 1.2pt solid #e6c891;
-            height: 22pt;
+            height: 25pt;
             display: inline-block;
             vertical-align: middle;
             margin: 0 6pt;
         }
         .brand-title {
             font-family: Georgia, "Times New Roman", serif;
-            font-size: 11.5pt;
+            font-size: 13.5pt;
             font-weight: bold;
-            letter-spacing: 1.6px;
+            letter-spacing: 1.8px;
             color: #f9f6ee;
             line-height: 1;
         }
         .brand-sub {
-            font-size: 4pt;
+            font-size: 4.8pt;
             color: #b7cbd3;
-            letter-spacing: 0.6px;
+            letter-spacing: 0.8px;
             text-transform: uppercase;
-            margin-top: 2pt;
-            line-height: 1.3;
+            margin-top: 2.5pt;
+            line-height: 1.35;
         }
         .tier-badge {
-            border: 0.8pt solid rgba(230,200,145,0.6);
+            border: 0.9pt solid rgba(230,200,145,0.65);
             border-radius: 50pt;
-            padding: 3pt 6pt;
+            padding: 3.5pt 8pt;
             color: #e6c891;
-            font-size: 4.8pt;
+            font-size: 5.5pt;
             font-weight: bold;
-            letter-spacing: 1px;
+            letter-spacing: 1.2px;
             text-transform: uppercase;
             white-space: nowrap;
             text-align: right;
             display: inline-block;
         }
 
-        /* ===== HAIRLINE SEPARATOR ===== */
+        /* HAIRLINE SEPARATOR */
         .hairline {
-            border-bottom: 0.8pt solid rgba(230,200,145,0.45);
-            margin: 4.5pt 0 6pt 0;
+            border-bottom: 0.9pt solid rgba(230,200,145,0.5);
+            margin: 5pt 0 7pt 0;
             width: 100%;
         }
 
-        /* ===== FRONT CONTENT ===== */
+        /* FRONT CONTENT: PHOTO + MEMBER DATA */
         .front-table {
             width: 100%;
             border-collapse: collapse;
         }
         .photo-col {
-            width: 52pt;
-            vertical-align: middle;
+            width: 66pt;
+            vertical-align: top;
+            padding-top: 1pt;
         }
         .photo-frame {
-            width: 48pt;
-            height: 64pt;
-            border: 1pt solid rgba(233,204,143,0.7);
-            border-radius: 4.5pt;
+            width: 62pt;
+            height: 84pt;
+            border: 1.2pt solid rgba(233,204,143,0.75);
+            border-radius: 6pt;
             background-color: #15374d;
             overflow: hidden;
             text-align: center;
         }
         .photo-img {
-            width: 48pt;
-            height: 64pt;
+            width: 62pt;
+            height: 84pt;
             object-fit: cover;
             display: block;
         }
         .photo-placeholder {
-            width: 48pt;
-            height: 64pt;
+            width: 62pt;
+            height: 84pt;
             background-color: #15374d;
             color: #aebfca;
-            font-size: 5pt;
+            font-size: 6pt;
             text-align: center;
-            padding-top: 24pt;
+            padding-top: 32pt;
             font-weight: bold;
             line-height: 1.3;
         }
         .info-col {
-            vertical-align: middle;
-            padding-left: 9pt;
+            vertical-align: top;
+            padding-left: 10pt;
         }
         .field-label {
             color: #aebfca;
-            font-size: 4.2pt;
-            letter-spacing: 0.8px;
+            font-size: 4.8pt;
+            letter-spacing: 0.9px;
             text-transform: uppercase;
             font-weight: bold;
-            margin-bottom: 1pt;
+            margin-bottom: 1.5pt;
         }
         .member-name {
             font-family: Georgia, "Times New Roman", serif;
-            font-size: 9.2pt;
+            font-size: 13.5pt;
             font-weight: bold;
             color: #f9f6ee;
             line-height: 1.2;
             margin-bottom: 2pt;
+            letter-spacing: 0.1px;
         }
         .status-text {
             color: #e6c891;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
-            font-size: 4.8pt;
+            letter-spacing: 1px;
+            font-size: 5.8pt;
             font-weight: bold;
-            margin-bottom: 4pt;
+            margin-bottom: 5pt;
         }
         .details-table {
             width: 100%;
@@ -188,103 +180,124 @@
         }
         .details-table td {
             vertical-align: top;
-            padding: 1.5pt 2pt 1.5pt 0;
+            padding: 2.2pt 3pt 2.2pt 0;
         }
         .detail-item-label {
             color: #aebfca;
-            font-size: 4pt;
-            letter-spacing: 0.6px;
+            font-size: 4.6pt;
+            letter-spacing: 0.7px;
             text-transform: uppercase;
             font-weight: bold;
             display: block;
         }
         .detail-item-val {
-            font-size: 5.5pt;
+            font-size: 7pt;
             color: #f2f1ec;
             font-weight: bold;
             display: block;
-            margin-top: 0.5pt;
+            margin-top: 1pt;
         }
 
-        /* ===== BOTTOM ROW ===== */
+        /* BOTTOM FOOTER (Anchored at the bottom of the card) */
+        .bottom-footer {
+            position: absolute;
+            bottom: 0pt;
+            left: 0pt;
+            width: 297pt;
+            border-top: 0.5pt solid rgba(230,200,145,0.3);
+            padding-top: 3pt;
+        }
         .bottom-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 5pt;
-            border-top: 0.4pt solid rgba(230,200,145,0.25);
-            padding-top: 2.5pt;
         }
         .bottom-motto {
-            font-size: 4.2pt;
+            font-size: 5pt;
             color: #a9bfcb;
-            letter-spacing: 0.6px;
+            letter-spacing: 0.8px;
+            vertical-align: middle;
         }
         .bottom-seal {
             font-family: Georgia, "Times New Roman", serif;
             font-style: italic;
-            font-size: 7.2pt;
+            font-size: 9.5pt;
             color: #e6c891;
             text-align: right;
+            vertical-align: middle;
         }
 
-        /* ===== BACK CARD ===== */
+        /* ===== BACK CARD LAYOUT ===== */
+        .back-container {
+            position: absolute;
+            top: 14pt;
+            left: 16pt;
+            width: 293pt;
+            height: 176pt;
+            z-index: 10;
+        }
         .back-kicker {
             color: #e6c891;
-            letter-spacing: 1.5px;
-            font-size: 5pt;
+            letter-spacing: 2px;
+            font-size: 6pt;
             font-weight: bold;
             text-transform: uppercase;
         }
         .back-title {
             font-family: Georgia, "Times New Roman", serif;
-            font-size: 10.5pt;
+            font-size: 13pt;
             color: #f9f6ee;
             font-weight: normal;
             line-height: 1.3;
-            margin: 5pt 0 4pt 0;
+            margin: 6pt 0 5pt 0;
         }
         .back-desc {
-            font-size: 5pt;
-            line-height: 1.5;
+            font-size: 6.2pt;
+            line-height: 1.55;
             color: #b7c7d0;
             margin: 0;
-            max-width: 250pt;
+            max-width: 260pt;
+        }
+        .back-lower-footer {
+            position: absolute;
+            bottom: 0pt;
+            left: 0pt;
+            width: 293pt;
         }
         .back-lower-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 14pt;
         }
         .barcode-box {
             background-color: #f8f7f1;
-            border-radius: 4pt;
-            padding: 4pt 6pt 3pt 6pt;
+            border-radius: 5pt;
+            padding: 5pt 7pt 4pt 7pt;
             display: inline-block;
             text-align: center;
         }
         .barcode-caption {
-            font-size: 4.2pt;
+            font-size: 5pt;
             color: #3b4a54;
-            letter-spacing: 0.8px;
-            margin-top: 2pt;
+            letter-spacing: 1px;
+            margin-top: 3pt;
             font-weight: bold;
         }
         .verify-portal-caption {
             color: #e6c891;
-            font-size: 4.5pt;
-            letter-spacing: 0.8px;
+            font-size: 5.5pt;
+            letter-spacing: 1px;
             font-weight: bold;
             text-transform: uppercase;
         }
         .verify-portal-url {
-            font-size: 7.5pt;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 10pt;
             font-weight: bold;
             color: #f9f6ee;
-            margin: 2pt 0;
+            margin: 2.5pt 0;
         }
         .verify-portal-email {
             color: #a8bbc6;
-            font-size: 4.8pt;
+            font-size: 6pt;
         }
     </style>
 </head>
@@ -360,12 +373,12 @@
                 <circle cx="280" cy="15" r="95" fill="none" stroke="#e9cc8f" stroke-width="0.7" opacity="0.12" />
                 <circle cx="280" cy="15" r="115" fill="none" stroke="#e9cc8f" stroke-width="0.7" opacity="0.06" />
             </g>
-            <rect x="2.5" y="2.5" width="320" height="199" rx="8" fill="none" stroke="#e6c891" stroke-width="0.8" opacity="0.38" />
+            <rect x="2.5" y="2.5" width="320" height="199" rx="10" fill="none" stroke="#e6c891" stroke-width="0.8" opacity="0.38" />
         </svg>');
 
         // 5. SVG Crisp Vector Barcode (Back Card)
         $pattern = [2,2,1,3,1,1,3,2,1,2,2,2,1,1,4,1,2,3,1,2,1,1,3,3,2,2,1,1,2,4,1,2,1,3,2,2,1,1,3,1,2,3,1,2,1,2,2,1,3,2];
-        $bw = 140;
+        $bw = 145;
         $bh = 32;
         $bSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="'.$bw.'" height="'.$bh.'" viewBox="0 0 '.$bw.' '.$bh.'">';
         $bx = 4;
@@ -389,7 +402,7 @@
         @endif
         <div class="overlay-layer"><img src="{{ $cardOverlay }}" style="width:325pt; height:204pt; display:block;" /></div>
         
-        <div class="content-layer">
+        <div class="front-container">
             <!-- TOP BRAND BAR -->
             <table class="top-table">
                 <tr>
@@ -472,12 +485,14 @@
             </table>
 
             <!-- BOTTOM FOOTER -->
-            <table class="bottom-table">
-                <tr>
-                    <td class="bottom-motto">INTEGRITY • KNOWLEDGE • IMPACT</td>
-                    <td class="bottom-seal">DPP ASASI</td>
-                </tr>
-            </table>
+            <div class="bottom-footer">
+                <table class="bottom-table">
+                    <tr>
+                        <td class="bottom-motto">INTEGRITY • KNOWLEDGE • IMPACT</td>
+                        <td class="bottom-seal">DPP ASASI</td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 
@@ -490,26 +505,28 @@
         @endif
         <div class="overlay-layer"><img src="{{ $cardOverlay }}" style="width:325pt; height:204pt; display:block;" /></div>
         
-        <div class="back-content-layer">
+        <div class="back-container">
             <span class="back-kicker">ASASI • INDONESIA</span>
             <h2 class="back-title">Membentuk Akademisi Unggul,<br>Mendorong Perbaikan Bangsa.</h2>
             <p class="back-desc">Kartu ini merupakan identitas keanggotaan resmi Perkumpulan Akademisi dan Saintis Indonesia (ASASI). Validitas dan status keanggotaan dapat diverifikasi secara daring melalui portal resmi ASASI.</p>
 
-            <table class="back-lower-table">
-                <tr>
-                    <td style="vertical-align:bottom; width:55%;">
-                        <div class="barcode-box">
-                            <img src="{{ $barcodeSvg }}" style="width:130pt; height:26pt; display:block;" alt="Barcode">
-                            <div class="barcode-caption">{{ $member->nomor_anggota }} • VERIFIKASI RESMI</div>
-                        </div>
-                    </td>
-                    <td style="vertical-align:bottom; text-align:right;">
-                        <div class="verify-portal-caption">PORTAL KEANGGOTAAN</div>
-                        <div class="verify-portal-url">www.asasi.or.id</div>
-                        <div class="verify-portal-email">sekretariat@asasi.or.id</div>
-                    </td>
-                </tr>
-            </table>
+            <div class="back-lower-footer">
+                <table class="back-lower-table">
+                    <tr>
+                        <td style="vertical-align:bottom; width:55%;">
+                            <div class="barcode-box">
+                                <img src="{{ $barcodeSvg }}" style="width:145pt; height:32pt; display:block;" alt="Barcode">
+                                <div class="barcode-caption">{{ $member->nomor_anggota }} • VERIFIKASI RESMI</div>
+                            </div>
+                        </td>
+                        <td style="vertical-align:bottom; text-align:right;">
+                            <div class="verify-portal-caption">PORTAL KEANGGOTAAN</div>
+                            <div class="verify-portal-url">www.asasi.or.id</div>
+                            <div class="verify-portal-email">sekretariat@asasi.or.id</div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 </body>
