@@ -18,10 +18,11 @@
             color: #FFFFFF;
             -webkit-print-color-adjust: exact;
         }
-        /* ===== OUTER CARD: Dark Navy ===== */
+
+        /* ===== OUTER CARD: Dark Navy with Gold Border (Exact 318pt x 194pt - 1 Single Page) ===== */
         table.outer-card {
             width: 318pt;
-            height: 196pt;
+            height: 194pt;
             border: 1.5pt solid #C5A059;
             border-collapse: collapse;
             table-layout: fixed;
@@ -29,11 +30,12 @@
             margin: 0 auto;
         }
 
-        /* ===== HEADER ROW (Dark Navy) ===== */
+        /* ===== ROW 1: HEADER (Dark Navy) ===== */
         td.header-td {
             background-color: #061b34;
-            padding: 5pt 8pt 3pt 8pt;
+            padding: 4pt 10pt 3pt 10pt;
             vertical-align: middle;
+            height: 28pt;
         }
         table.header-table {
             width: 100%;
@@ -45,49 +47,54 @@
             display: block;
         }
         .rule-gold {
-            border-left: 1pt solid #C5A059;
+            border-left: 1.2pt solid #C5A059;
             height: 20pt;
             display: inline-block;
             vertical-align: middle;
-            margin: 0 5pt;
+            margin: 0 6pt;
         }
         .org-title {
-            font-family: Helvetica, Arial, sans-serif;
-            font-size: 8pt;
+            font-family: "Times New Roman", Times, Georgia, serif;
+            font-size: 9.5pt;
             font-weight: bold;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             color: #FFFFFF;
-            line-height: 1.1;
+            line-height: 1;
         }
         .org-subtitle {
             font-size: 4pt;
             color: #b0c4de;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-top: 1pt;
+            letter-spacing: 0.6px;
+            margin-top: 1.5pt;
+            font-family: Helvetica, Arial, sans-serif;
         }
         .badge-kta {
             color: #f6d494;
-            font-size: 6pt;
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 7.5pt;
             font-weight: bold;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             display: inline-block;
             white-space: nowrap;
+            text-transform: uppercase;
         }
 
-        /* ===== GOLD WAVE DIVIDER ===== */
+        /* ===== ROW 2: GOLD METALLIC ACCENT RIBBON ===== */
         td.wave-td {
-            height: 4pt;
-            background-color: #061b34;
+            height: 2.5pt;
+            background-color: #C5A059;
             padding: 0;
-            border-bottom: 2.5pt solid #C5A059;
+            line-height: 1px;
+            font-size: 1px;
         }
 
-        /* ===== WHITE BODY ROW ===== */
+        /* ===== ROW 3: PEARL WHITE BODY (TANPA QR CODE - SEMUA TEKS LENGKAP) ===== */
         td.body-td {
             background-color: #FFFFFF;
-            padding: 5pt 8pt;
+            padding: 5pt 10pt 4pt 10pt;
             vertical-align: top;
+            height: 120pt;
         }
         table.content-table {
             width: 100%;
@@ -95,14 +102,14 @@
             table-layout: fixed;
         }
 
-        /* Photo */
+        /* Foto 3x4 Formal */
         .photo-col {
-            width: 48pt;
+            width: 50pt;
             vertical-align: top;
         }
         .photo-frame {
-            width: 42pt;
-            height: 58pt;
+            width: 44pt;
+            height: 60pt;
             border: 1.5pt solid #C5A059;
             background-color: #e8ebef;
             overflow: hidden;
@@ -110,52 +117,55 @@
             border-radius: 3pt;
         }
         .photo-img {
-            width: 42pt;
-            height: 58pt;
+            width: 44pt;
+            height: 60pt;
             object-fit: cover;
             display: block;
         }
         .photo-placeholder {
-            width: 42pt;
-            height: 58pt;
+            width: 44pt;
+            height: 60pt;
             background-color: #e8ebef;
             color: #64748B;
             font-size: 5pt;
             text-align: center;
-            padding-top: 17pt;
+            padding-top: 20pt;
             font-weight: bold;
             line-height: 1.3;
         }
 
-        /* Data Column */
+        /* Data Member: Full Width (245pt) - Semua Teks Masuk Bersih */
         .data-col {
             vertical-align: top;
-            padding: 0 5pt;
+            padding-left: 8pt;
         }
         .member-name {
-            font-size: 8pt;
+            font-family: "Times New Roman", Times, Georgia, serif;
+            font-size: 9pt;
             font-weight: bold;
             color: #0c274a;
-            padding-bottom: 3pt;
-            border-bottom: 0.5pt solid #C5A059;
-            margin-bottom: 4pt;
-            line-height: 1.2;
+            padding-bottom: 2.5pt;
+            border-bottom: 1pt solid #C5A059;
+            margin-bottom: 3.5pt;
+            line-height: 1.25;
         }
         table.info-table {
             width: 100%;
             border-collapse: collapse;
         }
         table.info-table td {
-            padding: 0.8pt 0;
-            font-size: 5.8pt;
+            padding: 1.4pt 0;
+            font-size: 6.2pt;
             vertical-align: top;
-            line-height: 1.2;
+            line-height: 1.25;
             color: #0c274a;
         }
         .info-label {
-            width: 38pt;
+            width: 55pt;
             color: #5a7a9f;
-            font-size: 5pt;
+            font-size: 5.4pt;
+            text-transform: uppercase;
+            font-weight: 500;
         }
         .info-val {
             font-weight: bold;
@@ -165,48 +175,17 @@
             font-family: Courier, monospace;
             font-weight: bold;
             color: #061b34;
-            font-size: 6.5pt;
-            letter-spacing: 0.3px;
+            font-size: 7.2pt;
+            letter-spacing: 0.5px;
         }
 
-        /* QR Column */
-        .qr-col {
-            width: 50pt;
-            vertical-align: top;
-            text-align: right;
-        }
-        .qr-frame {
-            width: 42pt;
-            height: 42pt;
-            border: 1.5pt solid #C5A059;
-            background-color: #FFFFFF;
-            padding: 1pt;
-            display: inline-block;
-            text-align: center;
-            border-radius: 3pt;
-        }
-        .qr-img {
-            width: 38pt;
-            height: 38pt;
-            display: block;
-            margin: 0 auto;
-        }
-        .qr-caption {
-            font-size: 4pt;
-            font-weight: bold;
-            color: #0c274a;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-            margin-top: 2pt;
-            text-align: center;
-        }
-
-        /* ===== FOOTER ROW (Dark Navy) ===== */
+        /* ===== ROW 4: DARK NAVY FOOTER ===== */
         td.footer-td {
             background-color: #061b34;
-            padding: 3pt 8pt;
+            padding: 2.5pt 10pt;
             vertical-align: middle;
             border-top: 1pt solid #C5A059;
+            height: 12pt;
         }
         table.footer-table {
             width: 100%;
@@ -221,7 +200,8 @@
             color: #f6d494;
             text-align: right;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
+            font-family: Helvetica, Arial, sans-serif;
         }
     </style>
 </head>
@@ -239,64 +219,49 @@
             }
         }
 
-        $qrBase64 = null;
-        if (!empty($member->nomor_anggota)) {
-            try {
-                $verifyUrl = route('kta.verify', ['nomor' => $member->nomor_anggota]);
-                $qrOptions = new \chillerlan\QRCode\QROptions([
-                    'outputInterface' => \chillerlan\QRCode\Output\QRGdImagePNG::class,
-                    'scale'           => 3,
-                    'outputBase64'    => true,
-                ]);
-                $qrBase64 = (new \chillerlan\QRCode\QRCode($qrOptions))->render($verifyUrl);
-            } catch (\Throwable $e) {
-                $qrBase64 = null;
-            }
-        }
-    @endphp
-
-    @php
-        // Try to load logo as base64 for PDF embedding
+        // Prioritas logo-asasi-white.png (transparan putih murni, tanpa kotak putih)
         $logoBase64 = null;
         $logoPaths = [
+            public_path('images/logo/logo-asasi-white.png'),
+            public_path('images/logo/logo-asasi-transparent.png'),
             public_path('images/logo/logo-asasi.png'),
-            public_path('images/logo/logo-asasi.webp'),
         ];
         foreach ($logoPaths as $lp) {
             if (file_exists($lp)) {
-                $ext = pathinfo($lp, PATHINFO_EXTENSION) === 'webp' ? 'png' : pathinfo($lp, PATHINFO_EXTENSION);
+                $ext = pathinfo($lp, PATHINFO_EXTENSION);
                 $d = @file_get_contents($lp);
-                if ($d !== false) { $logoBase64 = 'data:image/' . $ext . ';base64,' . base64_encode($d); break; }
+                if ($d !== false) {
+                    $logoBase64 = 'data:image/' . $ext . ';base64,' . base64_encode($d);
+                    break;
+                }
             }
         }
     @endphp
 
     <table class="outer-card" cellpadding="0" cellspacing="0">
 
-        {{-- ===== ROW 1: DARK NAVY HEADER ===== --}}
+        {{-- ROW 1: DARK NAVY HEADER --}}
         <tr>
             <td class="header-td">
                 <table class="header-table" cellpadding="0" cellspacing="0">
                     <tr>
-                        {{-- Brand: Logo + divider + Org name --}}
                         <td style="vertical-align: middle;">
                             <table cellpadding="0" cellspacing="0"><tr>
                                 @if($logoBase64)
-                                <td style="vertical-align:middle; padding-right:5pt;">
+                                <td style="vertical-align:middle; padding-right:4pt;">
                                     <img src="{{ $logoBase64 }}" class="logo-img" alt="Logo ASASI">
                                 </td>
-                                <td style="vertical-align:middle; padding-right:5pt;">
+                                <td style="vertical-align:middle; padding-right:4pt;">
                                     <div class="rule-gold"></div>
                                 </td>
                                 @endif
                                 <td style="vertical-align:middle;">
                                     <div class="org-title">ASASI</div>
-                                    <div class="org-subtitle">PERKUMPULAN AKADEMISI<br>DAN SAINTIS INDONESIA</div>
+                                    <div class="org-subtitle">PERKUMPULAN AKADEMISI DAN SAINTIS INDONESIA</div>
                                 </td>
                             </tr></table>
                         </td>
-                        {{-- Badge KARTU ANGGOTA --}}
-                        <td style="vertical-align: middle; text-align: right; width: 70pt;">
+                        <td style="vertical-align: middle; text-align: right; width: 85pt;">
                             <span class="badge-kta">KARTU ANGGOTA</span>
                         </td>
                     </tr>
@@ -304,17 +269,17 @@
             </td>
         </tr>
 
-        {{-- ===== ROW 2: GOLD WAVE ACCENT LINE ===== --}}
+        {{-- ROW 2: GOLD METALLIC ACCENT RIBBON --}}
         <tr>
             <td class="wave-td"></td>
         </tr>
 
-        {{-- ===== ROW 3: WHITE BODY ===== --}}
+        {{-- ROW 3: PEARL WHITE BODY (TANPA QR CODE, SEMUA TEKS MASUK LENGKAP) --}}
         <tr>
             <td class="body-td">
                 <table class="content-table" cellpadding="0" cellspacing="0">
                     <tr>
-                        {{-- Foto Formal --}}
+                        {{-- Pas Foto 3x4 --}}
                         <td class="photo-col">
                             <div class="photo-frame">
                                 @if($photoBase64)
@@ -325,9 +290,9 @@
                             </div>
                         </td>
 
-                        {{-- Data Member --}}
+                        {{-- Data Anggota Lengkap (No QR Code - Ruang Lebar & Tanpa Truncate) --}}
                         <td class="data-col">
-                            <div class="member-name">{{ \Illuminate\Support\Str::limit($member->nama_lengkap, 30) }}</div>
+                            <div class="member-name">{{ $member->nama_lengkap }}</div>
                             <table class="info-table" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td class="info-label">No. Anggota</td>
@@ -335,42 +300,30 @@
                                 </tr>
                                 <tr>
                                     <td class="info-label">Status</td>
-                                    <td class="info-val" style="color:#059669;">: Anggota Aktif</td>
+                                    <td class="info-val" style="color:#059669;">: Anggota Aktif Terverifikasi</td>
                                 </tr>
-                                @if($member->wilayah_dpw)
                                 <tr>
-                                    <td class="info-label">Wilayah</td>
-                                    <td class="info-val">: {{ \Illuminate\Support\Str::limit($member->wilayah_dpw, 24) }}</td>
+                                    <td class="info-label">Wilayah DPW</td>
+                                    <td class="info-val">: {{ $member->wilayah_dpw ?? '-' }}</td>
                                 </tr>
-                                @endif
                                 <tr>
                                     <td class="info-label">Afiliasi</td>
-                                    <td class="info-val">: {{ \Illuminate\Support\Str::limit($member->instansi, 24) }}</td>
+                                    <td class="info-val">: {{ $member->instansi ?? '-' }}</td>
                                 </tr>
-                            </table>
-                        </td>
-
-                        {{-- QR Code --}}
-                        <td class="qr-col">
-                            <div style="text-align:center; width:44pt; float:right;">
-                                @if($qrBase64)
-                                    <div class="qr-frame">
-                                        <img src="{{ $qrBase64 }}" class="qr-img" alt="QR Verifikasi">
-                                    </div>
-                                @else
-                                    <div class="qr-frame">
-                                        <div style="font-size:5pt;color:#94A3B8;padding-top:14pt;">QR CODE</div>
-                                    </div>
+                                @if($member->bidang_keahlian)
+                                <tr>
+                                    <td class="info-label">Bidang Riset</td>
+                                    <td class="info-val">: {{ $member->bidang_keahlian }}</td>
+                                </tr>
                                 @endif
-                                <div class="qr-caption">SCAN VALIDASI</div>
-                            </div>
+                            </table>
                         </td>
                     </tr>
                 </table>
             </td>
         </tr>
 
-        {{-- ===== ROW 4: DARK NAVY FOOTER ===== --}}
+        {{-- ROW 4: DARK NAVY FOOTER --}}
         <tr>
             <td class="footer-td">
                 <table class="footer-table" cellpadding="0" cellspacing="0">

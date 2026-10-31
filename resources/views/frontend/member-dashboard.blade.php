@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('content')
 <div class="max-w-7xl mx-auto px-4 sm:px-8 py-12 space-y-8">
@@ -34,30 +34,31 @@
                     <h2 class="font-serif text-xl font-bold text-slate-900 mt-0.5">Pratinjau Kartu Anggota (KTA)</h2>
                 </div>
 
-                <!-- Desain Kartu KTA Dark Navy & Gold — Konsep Baru -->
-                <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-[#C5A059]/70" style="background: linear-gradient(120deg, #061b34 0%, #103b67 90%);">
+                <!-- Desain Kartu KTA Dark Navy & Gold — Luxury Concept (No QR Code, Teks Lengkap) -->
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-[#C5A059] bg-gradient-to-br from-[#061b34] via-[#092548] to-[#103b67]">
 
                     {{-- ===== BAGIAN ATAS: NAVY Header ===== --}}
-                    <div class="px-5 pt-4 pb-3" style="background: linear-gradient(120deg, #061b34 0%, #103b67 90%);">
+                    <div class="px-5 pt-4 pb-3">
                         <div class="flex justify-between items-center">
                             <div class="flex items-center gap-3">
-                                <img src="{{ asset('images/logo/logo-asasi.png') }}" alt="ASASI" class="h-8 w-auto brightness-0 invert" onerror="this.style.display='none'">
-                                <div class="border-l border-[#C5A059]/70 pl-3">
-                                    <p class="text-white font-bold text-sm tracking-widest leading-none">ASASI</p>
-                                    <p class="text-[#b0c4de] text-[8px] uppercase tracking-wider leading-tight mt-0.5">Perkumpulan Akademisi<br>dan Saintis Indonesia</p>
+                                <img src="{{ asset('images/logo/logo-asasi-white.png') }}" alt="ASASI" class="h-8 w-auto" onerror="this.src='{{ asset('images/logo/logo-asasi.png') }}'">
+                                <div class="border-l-2 border-[#C5A059] pl-3">
+                                    <p class="text-white font-serif font-bold text-sm tracking-widest leading-none">ASASI</p>
+                                    <p class="text-[#b0c4de] text-[8px] uppercase tracking-wider leading-tight mt-1 font-sans">Perkumpulan Akademisi<br>dan Saintis Indonesia</p>
                                 </div>
                             </div>
-                            <span class="text-[#f6d494] text-[10px] font-bold tracking-widest uppercase">KARTU ANGGOTA</span>
+                            <span class="text-[#f6d494] text-xs font-bold tracking-widest uppercase font-sans">KARTU ANGGOTA</span>
                         </div>
-                        {{-- Gold Wave --}}
-                        <div class="border-t-2 border-[#C5A059]/70 mt-3" style="transform: rotate(-1deg); margin-left: -4px; margin-right: -4px;"></div>
                     </div>
 
-                    {{-- ===== BAGIAN TENGAH: WHITE (Foto + Data + QR) ===== --}}
+                    {{-- Gold Wave Accent Ribbon --}}
+                    <div class="h-1 bg-gradient-to-r from-[#C5A059] via-[#f6d494] to-[#C5A059]"></div>
+
+                    {{-- ===== BAGIAN TENGAH: WHITE BODY (Tanpa QR Code, Ruang Penuh untuk Teks) ===== --}}
                     <div class="bg-white px-5 pt-4 pb-4">
-                        <div class="flex gap-3 items-start">
-                            {{-- Pas Foto --}}
-                            <div class="w-14 h-20 shrink-0 rounded-lg overflow-hidden border-2 border-[#C5A059] bg-slate-100 flex items-center justify-center">
+                        <div class="flex gap-4 items-start">
+                            {{-- Pas Foto 3x4 --}}
+                            <div class="w-16 h-[86px] shrink-0 rounded-lg overflow-hidden border-2 border-[#C5A059] bg-slate-100 shadow flex items-center justify-center">
                                 @if($member && $member->foto_profil)
                                     <img src="{{ asset('storage/' . $member->foto_profil) }}" alt="{{ $member->nama_lengkap }}" class="w-full h-full object-cover object-top">
                                 @else
@@ -68,39 +69,33 @@
                                 @endif
                             </div>
 
-                            {{-- Data Identitas --}}
+                            {{-- Data Identitas Penuh (Semua Teks Masuk, Tidak Terpotong) --}}
                             <div class="flex-grow overflow-hidden min-w-0">
-                                <p class="font-bold text-[#0c274a] text-sm leading-tight pb-2 border-b border-[#C5A059]/50 mb-2 truncate">
+                                <p class="font-serif font-bold text-[#0c274a] text-sm leading-snug pb-2 border-b border-[#C5A059]/60 mb-2.5">
                                     {{ $member->nama_lengkap ?? $user->name }}
                                 </p>
-                                <dl class="grid grid-cols-[auto_1fr] gap-x-2 gap-y-0.5 text-[9px]">
+                                <dl class="grid grid-cols-[auto_1fr] gap-x-2.5 gap-y-1 text-[11px] leading-tight">
                                     <dt class="text-slate-400 font-normal whitespace-nowrap">No. Anggota</dt>
-                                    <dd class="font-bold text-[#061b34] font-mono m-0 truncate">: {{ $member->nomor_anggota ?? 'MENUNGGU' }}</dd>
-                                    <dt class="text-slate-400 font-normal">Status</dt>
-                                    <dd class="font-bold text-emerald-700 m-0">: Anggota Aktif</dd>
-                                    <dt class="text-slate-400 font-normal">Wilayah</dt>
-                                    <dd class="font-bold text-[#0c274a] m-0 truncate">: {{ $member->wilayah_dpw ?? '-' }}</dd>
-                                    <dt class="text-slate-400 font-normal">Afiliasi</dt>
-                                    <dd class="font-bold text-[#0c274a] m-0 truncate">: {{ $member->instansi ?? '-' }}</dd>
+                                    <dd class="font-bold text-[#061b34] font-mono m-0">: {{ $member->nomor_anggota ?? 'MENUNGGU VERIFIKASI' }}</dd>
+                                    <dt class="text-slate-400 font-normal whitespace-nowrap">Status</dt>
+                                    <dd class="font-bold text-emerald-600 m-0">: Anggota Aktif Terverifikasi</dd>
+                                    <dt class="text-slate-400 font-normal whitespace-nowrap">Wilayah DPW</dt>
+                                    <dd class="font-semibold text-[#0c274a] m-0">: {{ $member->wilayah_dpw ?? '-' }}</dd>
+                                    <dt class="text-slate-400 font-normal whitespace-nowrap">Afiliasi</dt>
+                                    <dd class="font-semibold text-[#0c274a] m-0">: {{ $member->instansi ?? '-' }}</dd>
+                                    @if($member && $member->bidang_keahlian)
+                                    <dt class="text-slate-400 font-normal whitespace-nowrap">Bidang Riset</dt>
+                                    <dd class="font-semibold text-[#0c274a] m-0">: {{ $member->bidang_keahlian }}</dd>
+                                    @endif
                                 </dl>
                             </div>
-
-                            {{-- QR Code mini --}}
-                            @if($member && $member->nomor_anggota)
-                            <div class="shrink-0 text-center">
-                                <div class="w-12 h-12 border-2 border-[#C5A059] rounded-lg bg-white flex items-center justify-center overflow-hidden">
-                                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data={{ urlencode(route('kta.verify', $member->nomor_anggota)) }}" alt="QR" class="w-full h-full object-contain" onerror="this.parentElement.innerHTML='<span class=\'text-[6px] text-slate-400\'>QR</span>'">
-                                </div>
-                                <p class="text-[7px] font-bold text-[#0c274a] uppercase tracking-wide mt-1">Scan</p>
-                            </div>
-                            @endif
                         </div>
                     </div>
 
                     {{-- Footer navy strip --}}
-                    <div class="flex justify-between items-center px-5 py-2 text-[9px]" style="background-color:#061b34; border-top:1px solid rgba(197,160,89,0.4);">
-                        <span class="text-[#b0c4de]">Berlaku s/d: <strong class="text-[#f6d494]">{{ $member?->masa_berlaku_sampai ? $member->masa_berlaku_sampai->format('d M Y') : '-' }}</strong></span>
-                        <span class="text-[#f6d494] font-bold uppercase tracking-wider">DPP ASASI</span>
+                    <div class="flex justify-between items-center px-5 py-2.5 text-[10px]" style="background-color:#061b34; border-top:1px solid rgba(197,160,89,0.5);">
+                        <span class="text-[#b0c4de]">Berlaku s/d: <strong class="text-[#f6d494]">{{ $member?->masa_berlaku_sampai ? $member->masa_berlaku_sampai->format('d M Y') : 'Seumur Hidup' }}</strong></span>
+                        <span class="text-[#f6d494] font-bold uppercase tracking-wider font-sans">DPP ASASI</span>
                     </div>
                 </div>
 
