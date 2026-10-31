@@ -98,14 +98,26 @@
                     isolation: isolate;
                     overflow: hidden;
                     aspect-ratio: var(--card-ratio);
-                    border: 1px solid rgba(245,224,178,.38);
                     border-radius: 18px;
                     background: radial-gradient(circle at 95% 0%, rgba(242,214,161,.13) 0%, transparent 36%),
                                 radial-gradient(circle at 0% 100%, rgba(95,163,195,.10) 0%, transparent 46%),
                                 linear-gradient(128deg, #061b2c 0%, #092941 64%, #19465d 100%);
                     color: var(--ivory);
                     box-shadow: 0 20px 45px rgba(6,27,44,.28), 0 6px 16px rgba(6,27,44,.18);
+                    box-sizing: border-box;
                     width: 100%;
+                }
+                .asasi-card .card-border-frame {
+                    position: absolute;
+                    top: 1.5px;
+                    left: 1.5px;
+                    right: 1.5px;
+                    bottom: 1.5px;
+                    border: 1.5px solid rgba(245,224,178,.55);
+                    border-radius: 16.5px;
+                    pointer-events: none;
+                    z-index: 40;
+                    box-sizing: border-box;
                 }
                 .asasi-card .card-inner {
                     position: relative;
@@ -335,6 +347,7 @@
             <div class="asasi-card-wrap">
                 <!-- ==================== KARTU BAGIAN DEPAN (FRONT) ==================== -->
                 <article id="kta-card-front" class="asasi-card front" aria-label="Kartu anggota ASASI bagian depan">
+                    <div class="card-border-frame" aria-hidden="true"></div>
                     <div class="card-inner">
                         <div class="top">
                             <div class="brand">
@@ -405,6 +418,7 @@
 
                 <!-- ==================== KARTU BAGIAN BELAKANG (BACK) ==================== -->
                 <article id="kta-card-back" class="asasi-card back hidden" aria-label="Kartu anggota ASASI bagian belakang">
+                    <div class="card-border-frame" aria-hidden="true"></div>
                     <div class="card-inner">
                         <span class="back-kicker">ASASI • INDONESIA</span>
                         <h2>Membentuk Akademisi Unggul,<br>Mendorong Perbaikan Bangsa.</h2>
@@ -501,10 +515,13 @@
                     try {
                         let dataUrl = null;
                         if (typeof htmlToImage !== 'undefined') {
+                            const rect = card.getBoundingClientRect();
                             dataUrl = await htmlToImage.toPng(card, {
                                 pixelRatio: 3,
                                 backgroundColor: null,
                                 cacheBust: false,
+                                width: Math.ceil(rect.width),
+                                height: Math.ceil(rect.height),
                             });
                         } else if (typeof html2canvas !== 'undefined') {
                             const canvas = await html2canvas(card, {
