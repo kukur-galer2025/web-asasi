@@ -45,7 +45,7 @@ class AdminController extends Controller
         return redirect()->back()->with('success', "Pengajuan disetujui! Nomor KTA diterbitkan: {$nomorKta}");
     }
 
-    public function cetakKta($id)
+    public function cetakKta($id, Request $request)
     {
         $member = MemberProfile::findOrFail($id);
 
@@ -53,10 +53,16 @@ class AdminController extends Controller
             return redirect()->back()->with('success', 'Setujui anggota terlebih dahulu sebelum mencetak KTA.');
         }
 
-        $pdf = Pdf::loadView('pdf.kta', compact('member'))
-                  ->setPaper([0, 0, 325, 204], 'portrait');
+        // Jika secara spesifik meminta format PDF via query (?format=pdf)
+        if ($request->query('format') === 'pdf') {
+            $pdf = Pdf::loadView('pdf.kta', compact('member'))
+                      ->setPaper([0, 0, 325, 204], 'portrait');
 
-        return $pdf->stream("KTA-{$member->nomor_anggota}.pdf");
+            return $pdf->stream("KTA-{$member->nomor_anggota}.pdf");
+        }
+
+        // Tampilkan halaman pratinjau KTA HD yang seiras dengan dashboard member
+        return view('admin.member-kta', compact('member'));
     }
 
     // 2. MANAJEMEN BERITA & KEGIATAN (DENGAN GAMBAR HERO & RICH TEXT)
