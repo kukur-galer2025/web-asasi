@@ -102,8 +102,12 @@ class NotificationAndPasswordResetTest extends TestCase
 
         $this->actingAs($user);
         Livewire::test(NotificationBell::class)
-            ->assertSee('Bukti Pembayaran Perlu Diperbaiki')
+            // tertutup: polling ringan, hanya badge (daftar belum dimuat)
             ->assertSee('1 belum dibaca')
+            ->assertDontSee('Bukti Pembayaran Perlu Diperbaiki')
+            // dibuka: daftar dimuat
+            ->set('open', true)
+            ->assertSee('Bukti Pembayaran Perlu Diperbaiki')
             ->call('markAllAsRead')
             ->assertSee('Semua sudah dibaca');
 

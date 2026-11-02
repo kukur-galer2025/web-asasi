@@ -21,20 +21,21 @@
 <body class="bg-[#F9FAFB] text-slate-700 font-sans min-h-screen flex flex-col antialiased overflow-x-clip">
 
     @php
-        // Bersihkan cache lama yang menyebabkan error incomplete object
-        \Illuminate\Support\Facades\Cache::forget('navbar_pages');
-
-        // Gunakan Array Murni agar 100% aman dari error unserialize Collection di PHP 8.4
-        $navPages = \Illuminate\Support\Facades\Schema::hasTable('pages')
-            ? \Illuminate\Support\Facades\Cache::rememberForever('navbar_pages_array', function () {
+        // Menu navbar di-cache sebagai array murni (aman dari error unserialize Collection di PHP 8.4).
+        // Cache dibersihkan oleh AdminController setiap halaman ditambah/diubah/dihapus,
+        // jadi di sini cukup dibaca: tanpa query tambahan di setiap kunjungan.
+        try {
+            $navPages = \Illuminate\Support\Facades\Cache::rememberForever('navbar_pages_array', function () {
                 return \App\Models\Page::select('id', 'menu_induk', 'judul', 'slug', 'urutan')
                     ->orderBy('urutan')
                     ->get()
                     ->groupBy('menu_induk')
                     ->map(fn ($items) => $items->toArray())
                     ->toArray();
-            })
-            : [];
+            });
+        } catch (\Illuminate\Database\QueryException $e) {
+            $navPages = []; // tabel belum dimigrasi (instalasi baru)
+        }
 
         $menuProfil      = $navPages['profil'] ?? [];
         $menuBidang      = $navPages['bidang'] ?? [];

@@ -54,6 +54,12 @@ class MembershipPayment extends Model
         return (int) $nominal;
     }
 
+    // Jumlah pembayaran menunggu verifikasi; dihitung sekali per request (sidebar + statistik admin)
+    public static function pendingCount(): int
+    {
+        return once(fn () => static::where('status', self::STATUS_PENDING)->count());
+    }
+
     public static function rupiah(int $nominal): string
     {
         return 'Rp ' . number_format($nominal, 0, ',', '.');

@@ -27,10 +27,18 @@
     <!-- Tabel Daftar Anggota -->
     <div class="bg-white rounded-2xl shadow-sm border border-slate-200/80">
         <div class="p-4 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <h3 class="font-bold text-slate-800 text-sm">Daftar Seluruh Permohonan & Anggota</h3>
+            <div class="flex flex-col sm:flex-row sm:items-center gap-3 flex-1 min-w-0">
+                <h3 class="font-bold text-slate-800 text-sm shrink-0">Daftar Permohonan & Anggota</h3>
+                <form method="GET" action="{{ route('admin.members') }}" class="relative w-full sm:max-w-xs">
+                    @if($filter !== 'semua')<input type="hidden" name="filter" value="{{ $filter }}">@endif
+                    <input type="search" name="cari" value="{{ $cari }}" placeholder="Cari nama, No. KTA, kampus, WA…"
+                           class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-3 py-2 text-xs focus:bg-white focus:border-asasi-navy outline-none">
+                    <svg class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-5.2-5.2m1.7-5.3a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                </form>
+            </div>
             <div class="inline-flex flex-wrap p-1 bg-slate-100 rounded-xl text-xs font-bold">
                 @foreach(['semua' => 'Semua', 'menunggu' => 'Menunggu Verifikasi', 'aktif' => 'Aktif', 'kedaluwarsa' => 'Kedaluwarsa'] as $key => $label)
-                    <a href="{{ route('admin.members', $key === 'semua' ? [] : ['filter' => $key]) }}"
+                    <a href="{{ route('admin.members', array_filter(['filter' => $key === 'semua' ? null : $key, 'cari' => $cari ?: null])) }}"
                        class="px-3 py-1.5 rounded-lg transition {{ $filter === $key ? 'bg-white shadow-sm text-asasi-navy' : 'text-slate-500 hover:text-slate-800' }}">
                         {{ $label }}
                     </a>
@@ -137,6 +145,10 @@
                 </tbody>
             </table>
         </div>
+
+        @if($members->hasPages())
+            <div class="p-4 border-t border-slate-100">{{ $members->links() }}</div>
+        @endif
     </div>
 
 </div>

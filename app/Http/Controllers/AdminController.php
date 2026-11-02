@@ -24,24 +24,31 @@ class AdminController extends Controller
     public function members(Request $request)
     {
         $filter = $request->query('filter', 'semua');
+        $cari = trim((string) $request->query('cari', ''));
 
         $members = MemberProfile::with(['latestPayment', 'pendingPayment'])
+            ->when($cari !== '', fn ($q) => $q->where(fn ($w) => $w
+                ->where('nama_lengkap', 'like', "%{$cari}%")
+                ->orWhere('nomor_anggota', 'like', "%{$cari}%")
+                ->orWhere('instansi', 'like', "%{$cari}%")
+                ->orWhere('no_whatsapp', 'like', "%{$cari}%")))
             ->when($filter === 'menunggu', fn ($q) => $q->whereHas('payments', fn ($p) => $p->where('status', MembershipPayment::STATUS_PENDING)))
             ->when($filter === 'aktif', fn ($q) => $q->where('status', 'active')
                 ->where(fn ($w) => $w->whereNull('masa_berlaku_sampai')->orWhereDate('masa_berlaku_sampai', '>=', today())))
             ->when($filter === 'kedaluwarsa', fn ($q) => $q->where('status', 'active')->whereDate('masa_berlaku_sampai', '<', today()))
             ->latest()
-            ->get();
+            ->paginate(25)
+            ->withQueryString();
 
         $stats = [
             'total'       => MemberProfile::count(),
             'aktif'       => MemberProfile::where('status', 'active')
                 ->where(fn ($w) => $w->whereNull('masa_berlaku_sampai')->orWhereDate('masa_berlaku_sampai', '>=', today()))->count(),
             'kedaluwarsa' => MemberProfile::where('status', 'active')->whereDate('masa_berlaku_sampai', '<', today())->count(),
-            'menunggu'    => MembershipPayment::where('status', MembershipPayment::STATUS_PENDING)->count(),
+            'menunggu'    => MembershipPayment::pendingCount(),
         ];
 
-        return view('admin.members', compact('members', 'stats', 'filter'));
+        return view('admin.members', compact('members', 'stats', 'filter', 'cari'));
     }
 
     // Aktivasi manual tanpa bukti bayar (khusus data lama sebelum fitur pembayaran)

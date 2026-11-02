@@ -1,4 +1,5 @@
-<div wire:poll.15s.visible x-data="{ open: false }" @keydown.escape.window="open = false" @click.outside="open = false" class="relative">
+{{-- open di-entangle ke Livewire: daftar notifikasi hanya dimuat saat dropdown dibuka --}}
+<div wire:poll.15s.visible x-data="{ open: $wire.entangle('open').live }" @keydown.escape.window="open = false" @click.outside="open = false" class="relative">
     <button type="button" @click="open = !open" :aria-expanded="open"
             class="relative p-2.5 rounded-xl border border-slate-200 bg-white text-slate-600 hover:text-asasi-navy hover:bg-slate-50 transition"
             aria-label="Notifikasi{{ $unreadCount ? " ({$unreadCount} belum dibaca)" : '' }}">
@@ -27,6 +28,9 @@
         </div>
 
         <div class="max-h-[60vh] overflow-y-auto divide-y divide-slate-100">
+            @if(! $open)
+                <div class="px-6 py-10 text-center text-xs font-semibold text-slate-400">Memuat notifikasi…</div>
+            @else
             @forelse($notifications as $n)
                 @php
                     $level = $n->data['level'] ?? 'info';
@@ -47,6 +51,7 @@
                     <p class="text-xs text-slate-400 mt-0.5">Perubahan status keanggotaan akan muncul di sini.</p>
                 </div>
             @endforelse
+            @endif
         </div>
 
         <div class="px-4 py-2.5 border-t border-slate-100 bg-slate-50/80 text-[11px] text-slate-500 leading-relaxed">
