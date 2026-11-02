@@ -5,6 +5,8 @@
 <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/quill-blot-formatter@1.0.5/dist/quill-blot-formatter.min.js"></script>
+<link href="{{ asset('css/rich-content.css') }}" rel="stylesheet" />
+<script src="{{ asset('js/asasi-html-editor.js') }}"></script>
 
 <div class="max-w-4xl mx-auto bg-white p-7 rounded-2xl border border-slate-200/80 shadow-sm">
     <div class="flex justify-between items-center border-b border-slate-100 pb-4 mb-6">
@@ -28,7 +30,6 @@
     @endif
 
     <form action="{{ route('admin.pages.update', $page->id) }}" method="POST" enctype="multipart/form-data"
-          onsubmit="document.getElementById('konten-edit').value = quillEdit.root.innerHTML;"
           class="space-y-5">
         @csrf
         @method('PUT')
@@ -89,7 +90,7 @@
                 <label class="block text-xs font-bold uppercase tracking-wider text-slate-600">Isi Konten Halaman</label>
                 <span id="upload-status-edit" class="text-[11px] font-bold text-amber-600 hidden">⏳ Mengunggah gambar...</span>
             </div>
-            <div id="editor-edit" class="bg-white rounded-b-xl" style="height: 360px;">{!! old('konten', $page->konten) !!}</div>
+            <div id="editor-edit" class="bg-white rounded-b-xl" style="height: 360px;"></div>
             <input type="hidden" name="konten" id="konten-edit">
         </div>
 
@@ -161,6 +162,13 @@
                 }
             }
         }
+    });
+
+    AsasiHtmlEditor.attach(quillEdit, {
+        hiddenId: 'konten-edit',
+        initialHtml: {!! \Illuminate\Support\Js::from(old('konten', $page->konten) ?? '') !!},
+        cssUrl: '{{ asset('css/rich-content.css') }}',
+        appCssUrl: '{{ \Illuminate\Support\Facades\Vite::asset('resources/css/app.css') }}'
     });
 </script>
 @endsection

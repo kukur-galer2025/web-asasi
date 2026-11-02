@@ -84,7 +84,7 @@
                     Verifikasi Keaslian KTA Digital
                 </h3>
                 <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-                    Pindai atau masukkan nomor identitas kartu anggota untuk melihat sertifikat keabsahan digital, masa berlaku, dan validasi DPP ASASI.
+                    Pindai atau masukkan nomor identitas kartu anggota untuk melihat sertifikat keabsahan digital, masa berlaku, dan validasi PP ASASI.
                 </p>
             </div>
 

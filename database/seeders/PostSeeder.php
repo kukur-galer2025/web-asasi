@@ -35,7 +35,7 @@ class PostSeeder extends Seeder
                 'gambar'       => 'images/kegiatan/kegiatan-asasi-seminar.webp',
                 'konten'       => '<p>Sesi diskusi berkala para akademisi dan pimpinan perkumpulan ASASI berhasil menyedot antusiasme ratusan akademisi dari seluruh pelosok Nusantara melalui sarana komunikasi terpadu ASASI.</p>
                 <p>Menghadirkan para narasumber utama pimpinan perguruan tinggi dan dewan pakar, diskusi mengupas terobosan pemodelan data riset dan integrasi inovasi keilmuan untuk menjawab tantangan strategis bangsa.</p>
-                <p>Ketua Umum DPP ASASI, <strong>Prof. Dr. apt. Elfahmi, M.Si.</strong>, dalam sambutannya menekankan pentingnya kedaulatan riset nasional: <em>"Riset saintis Indonesia harus mampu menjawab kebutuhan riil masyarakat kita sendiri."</em></p>',
+                <p>Ketua Umum PP ASASI, <strong>Prof. Dr. apt. Elfahmi, M.Si.</strong>, dalam sambutannya menekankan pentingnya kedaulatan riset nasional: <em>"Riset saintis Indonesia harus mampu menjawab kebutuhan riil masyarakat kita sendiri."</em></p>',
                 'is_published' => true,
                 'created_at'   => Carbon::now()->subDays(5),
             ],
@@ -75,7 +75,7 @@ class PostSeeder extends Seeder
                 'kategori'     => 'pengumuman',
                 'tags'         => 'Pengumuman, Dana Hibah, Proposal Riset, Kemitraan',
                 'gambar'       => 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1200&q=80',
-                'konten'       => '<p>Dewan Pengurus Pusat ASASI membuka kesempatan bagi seluruh anggota aktif yang telah memiliki Kartu Tanda Anggota (KTA) resmi untuk mengajukan proposal pada program <strong>Hibah Riset Kolaboratif Antar-Perguruan Tinggi ASASI 2026</strong>.</p>
+                'konten'       => '<p>Pengurus Pusat ASASI membuka kesempatan bagi seluruh anggota aktif yang telah memiliki Kartu Tanda Anggota (KTA) resmi untuk mengajukan proposal pada program <strong>Hibah Riset Kolaboratif Antar-Perguruan Tinggi ASASI 2026</strong>.</p>
                 <p>Skema hibah ini mensyaratkan kolaborasi minimal 2 perguruan tinggi dari provinsi yang berbeda guna mempererat jejaring pertukaran ilmu dan transfer teknologi di seluruh Indonesia. Total alokasi dana stimulan yang disiapkan mencapai Rp 1,5 Miliar untuk 15 judul proposal terpilih.</p>
                 <p>Batas akhir pengunggahan proposal lengkap melalui portal mandiri anggota adalah <strong>30 November 2026 pukul 23.59 WIB</strong>. Pengumuman pemenang akan dirilis pada awal Desember 2026.</p>',
                 'is_published' => true,

@@ -21,7 +21,7 @@ class KtaVerificationTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertSee('Verifikasi Keaslian KTA');
-        $response->assertSee('Layanan Publik Resmi DPP ASASI');
+        $response->assertSee('Layanan Publik Resmi PP ASASI');
         $response->assertSee('Pindai Kode QR');
     }
 

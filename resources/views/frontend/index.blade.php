@@ -108,7 +108,7 @@
                             <div class="bg-black/30 border-l-4 border-amber-400 px-3.5 py-2 rounded-r-lg">
                                 <span class="text-[9px] uppercase tracking-wider text-slate-400 block font-semibold">Nomor Registrasi Nasional</span>
                                 <span class="font-mono text-sm sm:text-base font-bold text-amber-300 tracking-wider">
-                                    ASASI-{{ date('Y') }}-0829
+                                    45451-{{ date('Y') }}-0829
                                 </span>
                             </div>
 
@@ -128,7 +128,7 @@
                                         <strong class="text-white text-xs sm:text-sm font-semibold truncate block">Prof. Dr. Ir. Rian Hendrawan, M.Sc.</strong>
                                     </div>
                                     <div>
-                                        <span class="text-[10px] text-slate-400 uppercase font-semibold block">Afiliasi Riset</span>
+                                        <span class="text-[10px] text-slate-400 uppercase font-semibold block">Kampus</span>
                                         <span class="text-slate-300 text-xs truncate block">Institut Teknologi & Sains Nasional</span>
                                     </div>
                                     <div>
@@ -145,7 +145,7 @@
                         <!-- Footer Kartu -->
                         <div class="mt-5 pt-3.5 border-t border-amber-500/20 flex justify-between items-center text-[10px] text-slate-400">
                             <span>Masa Berlaku: <strong class="text-slate-200">Aktif s/d {{ date('Y') + 1 }}</strong></span>
-                            <span class="font-display font-bold text-amber-300/90 tracking-wider">DPP ASASI PUSAT</span>
+                            <span class="font-display font-bold text-amber-300/90 tracking-wider">PP ASASI PUSAT</span>
                         </div>
 
                     </div>
@@ -198,7 +198,7 @@
                 38
             </span>
             <span class="text-xs font-bold text-slate-600 uppercase tracking-wider block mt-2">
-                Wilayah Provinsi (DPW)
+                Wilayah Provinsi (PD)
             </span>
         </div>
 
@@ -450,6 +450,7 @@
                 </div>
                 <div class="pt-4 mt-4 border-t border-white/10 text-[11px] font-bold text-amber-300 flex items-center gap-1">
                     <span>Setiap Sabtu 16.00 WIB</span>
+                    <a href="{{ url('/halaman/program-unggulan') }}" class="ml-auto hover:text-white transition">Program Unggulan →</a>
                 </div>
             </div>
 
@@ -605,7 +606,7 @@
                     </p>
                 </div>
                 <div class="pt-4 mt-4 border-t border-white/10 text-[11px] font-bold text-amber-300 flex items-center gap-1">
-                    <span>Kolaborasi 38 DPW Provinsi</span>
+                    <span>Kolaborasi 38 PD Provinsi</span>
                 </div>
             </div>
 
@@ -792,7 +793,7 @@
                         </li>
                         <li class="flex items-center gap-2.5">
                             <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs">✓</span>
-                            <span>Terintegrasi rekam jejak kepakaran & DPW 38 Provinsi</span>
+                            <span>Terintegrasi rekam jejak kepakaran & PD 38 Provinsi</span>
                         </li>
                         <li class="flex items-center gap-2.5">
                             <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs">✓</span>
@@ -829,7 +830,7 @@
                             Verifikasi Keaslian KTA (E-KTA)
                         </h3>
                         <p class="text-slate-300 text-sm sm:text-[15px] leading-relaxed font-normal">
-                            Sistem otentikasi resmi untuk memvalidasi keaslian fisik maupun digital Kartu Tanda Anggota menggunakan QR Code berkeamanan kriptografi DPP ASASI.
+                            Sistem otentikasi resmi untuk memvalidasi keaslian fisik maupun digital Kartu Tanda Anggota menggunakan QR Code berkeamanan kriptografi PP ASASI.
                         </p>
                     </div>
 

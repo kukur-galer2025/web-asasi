@@ -6,6 +6,8 @@
 <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/quill-blot-formatter@1.0.5/dist/quill-blot-formatter.min.js"></script>
+<link href="{{ asset('css/rich-content.css') }}" rel="stylesheet" />
+<script src="{{ asset('js/asasi-html-editor.js') }}"></script>
 
 <div class="grid lg:grid-cols-12 gap-6">
     <!-- Form Tambah Berita -->
@@ -13,7 +15,7 @@
         <h3 class="font-serif font-bold text-lg text-slate-900 mb-1">Terbitkan Naskah Berita Baru</h3>
         <p class="text-xs text-slate-500 mb-5">Klik pada gambar di dalam editor untuk menggeser ukurannya (memperbesar/memperkecil) secara bebas.</p>
 
-        <form action="{{ route('admin.posts.store') }}" method="POST" enctype="multipart/form-data" onsubmit="document.getElementById('konten-berita').value = quillPost.root.innerHTML;" class="space-y-4">
+        <form action="{{ route('admin.posts.store') }}" method="POST" enctype="multipart/form-data" class="space-y-4">
             @csrf
             <div class="grid sm:grid-cols-3 gap-4">
                 <div class="sm:col-span-2">
@@ -183,6 +185,13 @@
                 }
             }
         }
+    });
+
+    AsasiHtmlEditor.attach(quillPost, {
+        hiddenId: 'konten-berita',
+        initialHtml: '',
+        cssUrl: '{{ asset('css/rich-content.css') }}',
+        appCssUrl: '{{ \Illuminate\Support\Facades\Vite::asset('resources/css/app.css') }}'
     });
 </script>
 @endsection

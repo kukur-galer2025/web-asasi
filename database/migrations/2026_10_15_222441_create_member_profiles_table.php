@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('member_profiles', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
-            $table->string('nomor_anggota')->unique()->nullable(); // Contoh: ASASI-2026-0001
+            $table->string('nomor_anggota')->unique()->nullable(); // Contoh: 45451-2026-0001
             $table->string('nama_lengkap'); // Nama lengkap beserta gelar akademik
             $table->string('nik', 20)->nullable();
             $table->string('instansi'); // Universitas / Lembaga asal

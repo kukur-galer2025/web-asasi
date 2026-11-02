@@ -25,7 +25,7 @@ class AdminController extends Controller
         $member = MemberProfile::findOrFail($id);
 
         $tahun = date('Y');
-        $prefix = "ASASI-{$tahun}-";
+        $prefix = "45451-{$tahun}-";
         $lastMember = MemberProfile::where('nomor_anggota', 'like', "{$prefix}%")
             ->orderByDesc('nomor_anggota')
             ->first();

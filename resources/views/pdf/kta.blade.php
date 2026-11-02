@@ -458,11 +458,11 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <span class="detail-item-label">Wilayah DPW</span>
+                                    <span class="detail-item-label">Wilayah PD</span>
                                     <span class="detail-item-val">{{ $member->wilayah_dpw ?? '-' }}</span>
                                 </td>
                                 <td>
-                                    <span class="detail-item-label">Afiliasi</span>
+                                    <span class="detail-item-label">Kampus</span>
                                     <span class="detail-item-val">{{ $member->instansi ?? '-' }}</span>
                                 </td>
                             </tr>
@@ -483,8 +483,8 @@
             <div class="bottom-footer">
                 <table class="bottom-table">
                     <tr>
-                        <td class="bottom-motto">INTEGRITY • KNOWLEDGE • IMPACT</td>
-                        <td class="bottom-seal">DPP ASASI</td>
+                        <td class="bottom-motto">KREDIBEL • INTEGRITAS • PROFESIONAL</td>
+                        <td class="bottom-seal">PP ASASI</td>
                     </tr>
                 </table>
             </div>
@@ -502,7 +502,7 @@
         
         <div class="back-container">
             <span class="back-kicker">ASASI • INDONESIA</span>
-            <h2 class="back-title">Membentuk Akademisi Unggul,<br>Mendorong Perbaikan Bangsa.</h2>
+            <h2 class="back-title">Membentuk Akademisi Unggul,<br>Bersama Membangun Bangsa.</h2>
             <p class="back-desc">Kartu ini merupakan identitas keanggotaan resmi Perkumpulan Akademisi dan Saintis Indonesia (ASASI). Validitas dan status keanggotaan dapat diverifikasi secara daring melalui portal resmi ASASI.</p>
 
             <div class="back-lower-footer">

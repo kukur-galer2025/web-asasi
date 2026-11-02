@@ -36,36 +36,10 @@
 <!-- Isi Konten Berita -->
 <div class="max-w-4xl mx-auto px-4 sm:px-8 -mt-12 relative z-10 pb-14">
     <article class="bg-white rounded-3xl border border-slate-200/90 shadow-lg p-7 sm:p-12">
-        <style>
-            .artikel-konten img {
-                border-radius: 0.75rem;
-                max-width: 100%;
-                height: auto;
-                display: inline-block;
-            }
-            .artikel-konten h1, .artikel-konten h2, .artikel-konten h3 {
-                font-family: 'Playfair Display', serif;
-                color: #0F2C59;
-                font-weight: 700;
-                margin-top: 1.5rem;
-                margin-bottom: 0.75rem;
-            }
-            .artikel-konten h2 { font-size: 1.5rem; }
-            .artikel-konten h3 { font-size: 1.25rem; }
-            .artikel-konten p { margin-bottom: 1rem; line-height: 1.8; }
-            .artikel-konten ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
-            .artikel-konten ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
-            .artikel-konten blockquote {
-                border-left: 4px solid #C5A059;
-                padding-left: 1rem;
-                font-style: italic;
-                color: #475569;
-                margin: 1.25rem 0;
-            }
-        </style>
+        <link rel="stylesheet" href="{{ asset('css/rich-content.css') }}">
 
         <!-- Konten HTML dari Rich Text Editor -->
-        <div class="artikel-konten text-slate-700 text-sm sm:text-base leading-relaxed clearfix">
+        <div class="rich-content text-sm sm:text-base">
             {!! $post->konten !!}
         </div>
 

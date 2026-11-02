@@ -5,6 +5,8 @@
 <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/quill-blot-formatter@1.0.5/dist/quill-blot-formatter.min.js"></script>
+<link href="{{ asset('css/rich-content.css') }}" rel="stylesheet" />
+<script src="{{ asset('js/asasi-html-editor.js') }}"></script>
 
 <div class="grid lg:grid-cols-12 gap-6">
     <!-- Form Buat Halaman Navigasi & Gambar Hero -->
@@ -12,7 +14,7 @@
         <h3 class="font-serif font-bold text-lg text-slate-900 mb-1">Tambah Halaman Menu & Hero Banner</h3>
         <p class="text-xs text-slate-500 mb-5">Setiap halaman dapat memiliki gambar Hero Banner yang berbeda-beda.</p>
 
-        <form action="{{ route('admin.pages.store') }}" method="POST" enctype="multipart/form-data" onsubmit="document.getElementById('konten-input').value = quill.root.innerHTML;" class="space-y-4">
+        <form action="{{ route('admin.pages.store') }}" method="POST" enctype="multipart/form-data" class="space-y-4">
             @csrf
             <div class="grid sm:grid-cols-3 gap-4">
                 <div class="sm:col-span-2">
@@ -159,6 +161,13 @@
                 }
             }
         }
+    });
+
+    AsasiHtmlEditor.attach(quill, {
+        hiddenId: 'konten-input',
+        initialHtml: '',
+        cssUrl: '{{ asset('css/rich-content.css') }}',
+        appCssUrl: '{{ \Illuminate\Support\Facades\Vite::asset('resources/css/app.css') }}'
     });
 </script>
 @endsection

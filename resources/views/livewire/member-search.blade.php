@@ -9,7 +9,7 @@
                 <span>Pangkalan Data Nasional Terpusat</span>
             </div>
             <h2 class="font-display text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">Direktori & Validasi Anggota</h2>
-            <p class="text-sm text-slate-600 mt-1">Cari nama akademisi, universitas, wilayah DPW, atau Nomor KTA resmi ASASI.</p>
+            <p class="text-sm text-slate-600 mt-1">Cari nama akademisi, universitas, wilayah PD, atau Nomor KTA resmi ASASI.</p>
         </div>
 
         <!-- Input Pencarian Bersih & Shadow -->
@@ -17,7 +17,7 @@
             <input 
                 type="text" 
                 wire:model.live.debounce.300ms="search" 
-                placeholder="Cari nama, kampus, DPW, nomor KTA..." 
+                placeholder="Cari nama, kampus, PD, nomor KTA..." 
                 class="w-full bg-white border-2 border-slate-200 rounded-2xl pl-11 pr-12 py-3.5 text-sm text-slate-800 placeholder-slate-400 focus:border-asasi-navy focus:ring-4 focus:ring-asasi-navy/10 shadow-sm outline-none transition"
             >
             <div class="absolute left-3.5 top-3.5 text-slate-400">
@@ -73,7 +73,7 @@
                             </a>
                             <p class="text-xs text-slate-600 font-medium truncate">{{ $member->instansi }}</p>
                             @if($member->wilayah_dpw)
-                                <span class="inline-block text-[10px] text-slate-400 font-medium">📍 DPW {{ $member->wilayah_dpw }}</span>
+                                <span class="inline-block text-[10px] text-slate-400 font-medium">📍 PD {{ $member->wilayah_dpw }}</span>
                             @endif
                         </div>
                     </div>

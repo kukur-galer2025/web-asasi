@@ -12,7 +12,7 @@
                 <svg class="w-4 h-4 text-asasi-gold" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v3a1 1 0 102 0V7z" clip-rule="evenodd" />
                 </svg>
-                Layanan Publik Resmi DPP ASASI
+                Layanan Publik Resmi PP ASASI
             </div>
             <h1 class="font-serif text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
                 Verifikasi Keaslian KTA
@@ -37,7 +37,7 @@
                         type="text" 
                         name="nomor" 
                         value="{{ $queryNomor }}" 
-                        placeholder="Masukkan Nomor KTA (contoh: ASASI-2026-0001)..." 
+                        placeholder="Masukkan Nomor KTA (contoh: 45451-2026-0001)..." 
                         required
                         class="w-full bg-slate-50 border border-slate-200 rounded-2xl pl-12 pr-4 py-3.5 text-sm md:text-base text-slate-800 font-mono placeholder:font-sans placeholder-slate-400 focus:bg-white focus:border-asasi-navy focus:ring-4 focus:ring-asasi-navy/10 outline-none transition uppercase"
                     >
@@ -73,7 +73,7 @@
                     </svg>
                 </div>
 
-                <!-- Kop Resmi DPP ASASI (Tampak di Layar & Cetak) -->
+                <!-- Kop Resmi PP ASASI (Tampak di Layar & Cetak) -->
                 <div class="print-kop flex items-center justify-between pb-4 mb-5 border-b-2 border-slate-100">
                     <div class="flex items-center gap-3">
                         <svg class="w-10 h-6 sm:w-12 sm:h-7 text-asasi-navy shrink-0" viewBox="0 0 64 36" fill="currentColor">
@@ -109,7 +109,7 @@
                                 TERVERIFIKASI RESMI &amp; AKTIF
                             </span>
                             <div class="text-[11px] text-slate-500 mt-0.5">
-                                Diverifikasi oleh Sistem Sentral DPP ASASI pada {{ now()->translatedFormat('d F Y, H:i') }} WIB
+                                Diverifikasi oleh Sistem Sentral PP ASASI pada {{ now()->translatedFormat('d F Y, H:i') }} WIB
                             </div>
                         </div>
                     </div>
@@ -181,7 +181,7 @@
                         <!-- Grid Rincian -->
                         <dl class="print-details-grid grid sm:grid-cols-2 gap-2.5 sm:gap-3 text-xs sm:text-sm">
                             <div class="print-field-card bg-white rounded-xl p-3 border border-slate-100">
-                                <dt class="text-[10px] sm:text-xs text-slate-400 font-semibold uppercase">Afiliasi / Universitas</dt>
+                                <dt class="text-[10px] sm:text-xs text-slate-400 font-semibold uppercase">Kampus / Universitas</dt>
                                 <dd class="font-bold text-slate-800 mt-0.5 text-xs sm:text-sm">{{ $member->instansi }}</dd>
                             </div>
 
@@ -191,8 +191,8 @@
                             </div>
 
                             <div class="print-field-card bg-white rounded-xl p-3 border border-slate-100">
-                                <dt class="text-[10px] sm:text-xs text-slate-400 font-semibold uppercase">Dewan Pimpinan Wilayah (DPW)</dt>
-                                <dd class="font-bold text-slate-800 mt-0.5 text-xs sm:text-sm">{{ $member->wilayah_dpw ?: 'Dewan Pimpinan Pusat (DPP)' }}</dd>
+                                <dt class="text-[10px] sm:text-xs text-slate-400 font-semibold uppercase">Pengurus Daerah (PD)</dt>
+                                <dd class="font-bold text-slate-800 mt-0.5 text-xs sm:text-sm">{{ $member->wilayah_dpw ?: 'Pengurus Pusat (PP)' }}</dd>
                             </div>
 
                             <div class="print-field-card bg-white rounded-xl p-3 border border-slate-100">
@@ -212,14 +212,14 @@
                     </div>
                 </div>
 
-                <!-- Maklumat Keaslian Hukum DPP ASASI -->
+                <!-- Maklumat Keaslian Hukum PP ASASI -->
                 <div class="print-legal-notice mt-5 pt-4 border-t border-slate-100">
                     <div class="rounded-xl bg-slate-50 border border-slate-200 p-3 text-[11px] leading-relaxed text-slate-600 flex items-start gap-2.5">
                         <svg class="w-4 h-4 text-asasi-gold shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                         <div>
-                            <strong>Ketetapan Keaslian:</strong> Data di atas tercatat secara sah dan otentik dalam Pangkalan Data Sentral Perkumpulan Akademisi dan Saintis Indonesia (DPP ASASI). Dokumen verifikasi ini sah digunakan sebagai bukti pemenuhan identitas profesi akademisi dan saintis di seluruh wilayah Negara Kesatuan Republik Indonesia.
+                            <strong>Ketetapan Keaslian:</strong> Data di atas tercatat secara sah dan otentik dalam Pangkalan Data Sentral Perkumpulan Akademisi dan Saintis Indonesia (PP ASASI). Dokumen verifikasi ini sah digunakan sebagai bukti pemenuhan identitas profesi akademisi dan saintis di seluruh wilayah Negara Kesatuan Republik Indonesia.
                         </div>
                     </div>
                 </div>
@@ -227,11 +227,11 @@
                 <!-- Footer Catatan Validasi Elektronik Resmi ASASI (Tampak di Cetak) -->
                 <div class="print-footer-note mt-3 pt-2.5 border-t border-slate-200 flex justify-between items-center text-[9px] text-slate-400">
                     <div>
-                        <span>Dicetak secara elektronik dari Portal Resmi DPP ASASI (asasi.or.id)</span> • 
+                        <span>Dicetak secara elektronik dari Portal Resmi PP ASASI (asasi.or.id)</span> • 
                         <span>Ref ID: <strong class="font-mono text-slate-600">VRF-{{ strtoupper(substr(md5($member->nomor_anggota . $member->created_at), 0, 10)) }}</strong></span>
                     </div>
                     <div class="font-mono font-bold text-emerald-700">
-                        DPP ASASI VERIFIED &amp; SECURED
+                        PP ASASI VERIFIED &amp; SECURED
                     </div>
                 </div>
 
@@ -274,10 +274,10 @@
                     </div>
                 </div>
                 <p class="text-sm text-slate-600 mb-4">
-                    Keanggotaan atas nama ini terdaftar secara resmi di DPP ASASI, namun masa berlaku kartu telah berakhir pada <strong>{{ optional($member->masa_berlaku_sampai)->translatedFormat('d F Y') }}</strong>.
+                    Keanggotaan atas nama ini terdaftar secara resmi di PP ASASI, namun masa berlaku kartu telah berakhir pada <strong>{{ optional($member->masa_berlaku_sampai)->translatedFormat('d F Y') }}</strong>.
                 </p>
                 <div class="bg-white rounded-xl p-4 border border-amber-200 text-xs text-slate-600">
-                    Silakan hubungi Dewan Pengurus Pusat (DPP) atau DPW terkait untuk mengajukan perpanjangan masa aktif keanggotaan.
+                    Silakan hubungi Pengurus Pusat (PP) atau PD terkait untuk mengajukan perpanjangan masa aktif keanggotaan.
                 </div>
             </div>
 
@@ -298,7 +298,7 @@
                     </div>
                 </div>
                 <p class="text-sm text-slate-600">
-                    Berkas permohonan keanggotaan ini telah diterima dalam sistem dan saat ini sedang dalam proses review administrasi oleh Pengurus DPP ASASI.
+                    Berkas permohonan keanggotaan ini telah diterima dalam sistem dan saat ini sedang dalam proses review administrasi oleh Pengurus PP ASASI.
                 </p>
             </div>
 
@@ -319,14 +319,14 @@
                             Nomor KTA "{{ $queryNomor }}" Tidak Ditemukan
                         </h2>
                         <p class="text-sm text-rose-800/90 mt-2 leading-relaxed">
-                            Nomor kartu tanda anggota yang Anda cari tidak tercantum dalam basis data resmi DPP ASASI. Harap waspada terhadap indikasi kartu tanda anggota tiruan atau tidak sah.
+                            Nomor kartu tanda anggota yang Anda cari tidak tercantum dalam basis data resmi PP ASASI. Harap waspada terhadap indikasi kartu tanda anggota tiruan atau tidak sah.
                         </p>
                         <div class="mt-4 bg-white/80 rounded-xl p-4 border border-rose-200 text-xs text-rose-900 space-y-1">
                             <strong>Saran Pemeriksaan:</strong>
                             <ul class="list-disc list-inside space-y-0.5 text-slate-600 mt-1">
                                 <li>Periksa kembali ejaan dan format nomor (contoh yang benar: <code class="font-mono font-bold text-slate-800">ASASI-2026-0001</code>).</li>
                                 <li>Pastikan pemegang kartu telah menyelesaikan proses registrasi dan disetujui pengurus.</li>
-                                <li>Jika Anda adalah pemegang kartu yang sah, silakan hubungi Sekretariat DPP ASASI melalui menu Kontak.</li>
+                                <li>Jika Anda adalah pemegang kartu yang sah, silakan hubungi Sekretariat PP ASASI melalui menu Kontak.</li>
                             </ul>
                         </div>
                     </div>
@@ -352,7 +352,7 @@
                     </div>
                     <h3 class="font-bold text-slate-900 text-base mb-1">Validasi Basis Data</h3>
                     <p class="text-xs text-slate-500 leading-relaxed">
-                        Sistem mencocokkan nomor unik keanggotaan langsung dengan Server Sentral DPP ASASI secara real-time.
+                        Sistem mencocokkan nomor unik keanggotaan langsung dengan Server Sentral PP ASASI secara real-time.
                     </p>
                 </div>
 
@@ -362,7 +362,7 @@
                     </div>
                     <h3 class="font-bold text-slate-900 text-base mb-1">Otentikasi Lengkap</h3>
                     <p class="text-xs text-slate-500 leading-relaxed">
-                        Memeriksa pas foto, gelar akademik, afiliasi perguruan tinggi, masa berlaku, dan integritas digital kartu.
+                        Memeriksa pas foto, gelar akademik, kampus, masa berlaku, dan integritas digital kartu.
                     </p>
                 </div>
             </div>

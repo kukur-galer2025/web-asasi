@@ -390,11 +390,11 @@
                                             <strong>{{ $member?->masa_berlaku_sampai ? $member->masa_berlaku_sampai->format('d M Y') : 'Seumur Hidup' }}</strong>
                                         </div>
                                         <div>
-                                            <span class="label">Wilayah DPW</span>
+                                            <span class="label">Wilayah PD</span>
                                             <strong title="{{ $member->wilayah_dpw ?? '-' }}">{{ $member->wilayah_dpw ?? '-' }}</strong>
                                         </div>
                                         <div>
-                                            <span class="label">Afiliasi</span>
+                                            <span class="label">Kampus</span>
                                             <strong title="{{ $member->instansi ?? '-' }}">{{ $member->instansi ?? '-' }}</strong>
                                         </div>
                                         @if($member && $member->bidang_keahlian)
@@ -408,8 +408,8 @@
                             </div>
 
                             <div class="bottom">
-                                <small>INTEGRITY • KNOWLEDGE • IMPACT</small>
-                                <span class="seal">DPP ASASI</span>
+                                <small>KREDIBEL • INTEGRITAS • PROFESIONAL</small>
+                                <span class="seal">PP ASASI</span>
                             </div>
                         </div>
                     </article>
@@ -419,7 +419,7 @@
                         <div class="card-border-frame" aria-hidden="true"></div>
                         <div class="card-inner">
                             <span class="back-kicker">ASASI • INDONESIA</span>
-                            <h2>Membentuk Akademisi Unggul,<br>Mendorong Perbaikan Bangsa.</h2>
+                            <h2>Membentuk Akademisi Unggul,<br>Bersama Membangun Bangsa.</h2>
                             <p>Kartu ini merupakan identitas keanggotaan resmi Perkumpulan Akademisi dan Saintis Indonesia (ASASI). Validitas dan status keanggotaan dapat diverifikasi melalui portal resmi ASASI.</p>
                             
                             <div class="back-lower">
@@ -429,7 +429,7 @@
                                             <img src="{{ $barcodeSvg }}" alt="Barcode" style="width:100%; height:28px; display:block;">
                                         @endif
                                     </div>
-                                    <span class="barcode-label">{{ $member->nomor_anggota ?? 'ASASI-2026-0001' }} • VERIFIKASI RESMI</span>
+                                    <span class="barcode-label">{{ $member->nomor_anggota ?? '45451-2026-0001' }} • VERIFIKASI RESMI</span>
                                 </div>
                                 <div class="verification">
                                     <span class="caption">PORTAL KEANGGOTAAN</span>
@@ -568,6 +568,26 @@
                 <p class="text-xs text-slate-500 mt-1">Pastikan penulisan nama dan gelar akademik sudah benar serta unggah pas foto formal untuk pencetakan KTA.</p>
             </div>
 
+            <div class="mb-6 rounded-2xl border border-amber-200 bg-amber-50/70 p-5">
+                <h3 class="text-xs font-bold uppercase tracking-widest text-amber-800 mb-3">Biaya Keanggotaan ASASI</h3>
+                <div class="grid sm:grid-cols-2 gap-4 text-xs text-slate-700">
+                    <div>
+                        <strong class="block text-slate-900 mb-1">Pendaftaran Baru</strong>
+                        <ul class="space-y-0.5">
+                            <li>Rp 200.000 / 1 tahun</li>
+                            <li>Rp 350.000 / 2 tahun sekaligus</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <strong class="block text-slate-900 mb-1">Perpanjangan</strong>
+                        <ul class="space-y-0.5">
+                            <li>Rp 150.000 / 1 tahun</li>
+                            <li>Rp 300.000 / 2 tahun sekaligus</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
             <form action="{{ route('member.profile.save') }}" method="POST" enctype="multipart/form-data" class="space-y-5">
                 @csrf
 
@@ -642,7 +662,7 @@
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">Afiliasi Perguruan Tinggi / Lembaga Riset *</label>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">Kampus / Lembaga Riset *</label>
                     <input type="text" name="instansi" value="{{ old('instansi', $member->instansi ?? '') }}" required placeholder="Contoh: Universitas Gadjah Mada" class="w-full bg-slate-50/70 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:bg-white focus:border-asasi-navy outline-none transition">
                 </div>
 
@@ -652,7 +672,7 @@
                         <input type="text" name="bidang_keahlian" value="{{ old('bidang_keahlian', $member->bidang_keahlian ?? '') }}" placeholder="Contoh: Kecerdasan Buatan / Bioteknologi" class="w-full bg-slate-50/70 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:bg-white focus:border-asasi-navy outline-none transition">
                     </div>
                     <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">Wilayah DPW (Provinsi)</label>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">Wilayah PD (Provinsi)</label>
                         <input type="text" name="wilayah_dpw" value="{{ old('wilayah_dpw', $member->wilayah_dpw ?? '') }}" placeholder="Contoh: DKI Jakarta / Jawa Barat" class="w-full bg-slate-50/70 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:bg-white focus:border-asasi-navy outline-none transition">
                     </div>
                 </div>

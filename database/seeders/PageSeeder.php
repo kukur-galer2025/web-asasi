@@ -18,7 +18,7 @@ class PageSeeder extends Seeder
                 'menu_induk'    => 'profil',
                 'judul'         => 'Sambutan Ketua Umum ASASI',
                 'slug'          => 'sambutan-ketua-umum',
-                'hero_subtitle' => 'Pesan kepemimpinan Ketua Umum DPP ASASI masa bakti 2022–2027.',
+                'hero_subtitle' => 'Pesan kepemimpinan Ketua Umum PP ASASI masa bakti 2022–2027.',
                 'hero_image'    => 'images/kegiatan/kegiatan-asasi-pelantikan.webp',
                 'urutan'        => 1,
                 'konten'        => '<div style="display:flex; flex-direction:column; gap:1.5rem; align-items:center; background-color:#fefaf0; border:1px solid #fde68a; border-radius:1rem; padding:1.5rem; margin-bottom:2rem;">
@@ -28,7 +28,7 @@ class PageSeeder extends Seeder
                             Prof. Dr. apt. Elfahmi, M.Si.
                         </div>
                         <br>
-                        <span style="display:inline-block; margin-top:8px; font-size:13px; color:#92400e; font-weight:700;">Ketua Umum DPP ASASI Periode 2022–2027</span><br>
+                        <span style="display:inline-block; margin-top:8px; font-size:13px; color:#92400e; font-weight:700;">Ketua Umum PP ASASI Periode 2022–2027</span><br>
                         <span style="font-size:12px; color:#475569;">Guru Besar Sekolah Farmasi Institut Teknologi Bandung (ITB)</span>
                     </div>
                 </div>
@@ -52,7 +52,7 @@ class PageSeeder extends Seeder
                 <div style="margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid #e2e8f0; color:#334155;">
                     <p style="font-style:italic; margin-bottom:1rem;">Wassalamu’alaikum Warahmatullahi Wabarakatuh,</p>
                     <p style="margin:0; font-size:1.05rem;"><strong>Prof. Dr. apt. Elfahmi, M.Si.</strong></p>
-                    <p style="margin:0; font-size:0.875rem; color:#64748b;">Ketua Umum Dewan Pengurus Pusat ASASI</p>
+                    <p style="margin:0; font-size:0.875rem; color:#64748b;">Ketua Umum Pengurus Pusat ASASI</p>
                 </div>',
             ],
 
@@ -98,16 +98,16 @@ class PageSeeder extends Seeder
                 'menu_induk'    => 'profil',
                 'judul'         => 'Struktur Organisasi & Dewan Pengurus',
                 'slug'          => 'struktur-organisasi',
-                'hero_subtitle' => 'Susunan Kepengurusan Dewan Pengurus Pusat (DPP) ASASI Periode 2022–2027.',
+                'hero_subtitle' => 'Susunan Kepengurusan Pengurus Pusat (PP) ASASI Periode 2022–2027.',
                 'hero_image'    => 'images/kegiatan/kegiatan-asasi-diskusi.webp',
                 'urutan'        => 4,
                 'konten'        => '<div style="background: linear-gradient(135deg, #0F2C59 0%, #1e3a8a 100%); color: white; padding: 2rem; border-radius: 1.25rem; margin-bottom: 2rem; box-shadow: 0 10px 25px -5px rgba(15, 44, 89, 0.2);">
                     <div style="display: inline-block; background-color: #C5A059; color: #001D3D; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 9999px; margin-bottom: 0.75rem;">
-                        SK Kepengurusan Resmi DPP ASASI
+                        SK Kepengurusan Resmi PP ASASI
                     </div>
                     <h2 style="color: white; margin: 0 0 0.5rem 0; font-size: 1.75rem; font-weight: 800;">Struktur Organisasi Periode 2022–2027</h2>
                     <p style="color: #cbd5e1; margin: 0; font-size: 0.95rem; line-height: 1.6;">
-                        Susunan Pimpinan, Dewan Pengurus, Dewan Penasehat, Tim Sekretariat Jenderal, dan 7 Bidang Kepengurusan Dewan Pengurus Pusat Perkumpulan Akademisi dan Saintis Indonesia (DPP ASASI).
+                        Susunan Pimpinan, Dewan Pengurus, Dewan Penasehat, Tim Sekretariat Jenderal, dan 7 Bidang Kepengurusan Pengurus Pusat Perkumpulan Akademisi dan Saintis Indonesia (PP ASASI).
                     </p>
                 </div>
 
@@ -314,7 +314,7 @@ class PageSeeder extends Seeder
                 'urutan'        => 1,
                 'konten'        => '<div style="background: linear-gradient(135deg, #0F2C59 0%, #1e3a8a 100%); color: white; padding: 2rem; border-radius: 1.25rem; margin-bottom: 2rem; box-shadow: 0 10px 25px -5px rgba(15, 44, 89, 0.2);">
                     <div style="display: inline-block; background-color: #C5A059; color: #001D3D; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 9999px; margin-bottom: 0.75rem;">
-                        Dewan Pengurus Pusat ASASI
+                        Pengurus Pusat ASASI
                     </div>
                     <h2 style="color: white; margin: 0 0 0.5rem 0; font-size: 1.75rem; font-weight: 800;">Bidang Kebijakan Publik</h2>
                     <p style="color: #cbd5e1; margin: 0; font-size: 0.95rem; line-height: 1.6;">
@@ -385,7 +385,7 @@ class PageSeeder extends Seeder
                 'urutan'        => 2,
                 'konten'        => '<div style="background: linear-gradient(135deg, #0F2C59 0%, #047857 100%); color: white; padding: 2rem; border-radius: 1.25rem; margin-bottom: 2rem; box-shadow: 0 10px 25px -5px rgba(15, 44, 89, 0.2);">
                     <div style="display: inline-block; background-color: #C5A059; color: #001D3D; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 9999px; margin-bottom: 0.75rem;">
-                        Dewan Pengurus Pusat ASASI
+                        Pengurus Pusat ASASI
                     </div>
                     <h2 style="color: white; margin: 0 0 0.5rem 0; font-size: 1.75rem; font-weight: 800;">Bidang Pengabdian Masyarakat</h2>
                     <p style="color: #e2e8f0; margin: 0; font-size: 0.95rem; line-height: 1.6;">
@@ -452,7 +452,7 @@ class PageSeeder extends Seeder
                 'urutan'        => 3,
                 'konten'        => '<div style="background: linear-gradient(135deg, #0F2C59 0%, #1e1b4b 100%); color: white; padding: 2rem; border-radius: 1.25rem; margin-bottom: 2rem; box-shadow: 0 10px 25px -5px rgba(15, 44, 89, 0.2);">
                     <div style="display: inline-block; background-color: #C5A059; color: #001D3D; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 9999px; margin-bottom: 0.75rem;">
-                        Dewan Pengurus Pusat ASASI
+                        Pengurus Pusat ASASI
                     </div>
                     <h2 style="color: white; margin: 0 0 0.5rem 0; font-size: 1.75rem; font-weight: 800;">Bidang Kerjasama Institusi</h2>
                     <p style="color: #cbd5e1; margin: 0; font-size: 0.95rem; line-height: 1.6;">
@@ -515,7 +515,7 @@ class PageSeeder extends Seeder
                 'urutan'        => 4,
                 'konten'        => '<div style="background: linear-gradient(135deg, #0F2C59 0%, #312e81 100%); color: white; padding: 2rem; border-radius: 1.25rem; margin-bottom: 2rem; box-shadow: 0 10px 25px -5px rgba(15, 44, 89, 0.2);">
                     <div style="display: inline-block; background-color: #C5A059; color: #001D3D; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 9999px; margin-bottom: 0.75rem;">
-                        Dewan Pengurus Pusat ASASI
+                        Pengurus Pusat ASASI
                     </div>
                     <h2 style="color: white; margin: 0 0 0.5rem 0; font-size: 1.75rem; font-weight: 800;">Bidang Penerbitan Jurnal Ilmiah & ASASI Press</h2>
                     <p style="color: #cbd5e1; margin: 0; font-size: 0.95rem; line-height: 1.6;">
@@ -586,7 +586,7 @@ class PageSeeder extends Seeder
                 'urutan'        => 5,
                 'konten'        => '<div style="background: linear-gradient(135deg, #0F2C59 0%, #0369a1 100%); color: white; padding: 2rem; border-radius: 1.25rem; margin-bottom: 2rem; box-shadow: 0 10px 25px -5px rgba(15, 44, 89, 0.2);">
                     <div style="display: inline-block; background-color: #C5A059; color: #001D3D; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 9999px; margin-bottom: 0.75rem;">
-                        Dewan Pengurus Pusat ASASI
+                        Pengurus Pusat ASASI
                     </div>
                     <h2 style="color: white; margin: 0 0 0.5rem 0; font-size: 1.75rem; font-weight: 800;">Bidang Penelitian</h2>
                     <p style="color: #cbd5e1; margin: 0; font-size: 0.95rem; line-height: 1.6;">
@@ -665,7 +665,7 @@ class PageSeeder extends Seeder
                 'urutan'        => 6,
                 'konten'        => '<div style="background: linear-gradient(135deg, #0F2C59 0%, #701a75 100%); color: white; padding: 2rem; border-radius: 1.25rem; margin-bottom: 2rem; box-shadow: 0 10px 25px -5px rgba(15, 44, 89, 0.2);">
                     <div style="display: inline-block; background-color: #C5A059; color: #001D3D; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 9999px; margin-bottom: 0.75rem;">
-                        Dewan Pengurus Pusat ASASI
+                        Pengurus Pusat ASASI
                     </div>
                     <h2 style="color: white; margin: 0 0 0.5rem 0; font-size: 1.75rem; font-weight: 800;">Bidang Pengembangan Anggota</h2>
                     <p style="color: #cbd5e1; margin: 0; font-size: 0.95rem; line-height: 1.6;">
@@ -732,7 +732,7 @@ class PageSeeder extends Seeder
                 'urutan'        => 7,
                 'konten'        => '<div style="background: linear-gradient(135deg, #0F2C59 0%, #0284c7 100%); color: white; padding: 2rem; border-radius: 1.25rem; margin-bottom: 2rem; box-shadow: 0 10px 25px -5px rgba(15, 44, 89, 0.2);">
                     <div style="display: inline-block; background-color: #C5A059; color: #001D3D; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 9999px; margin-bottom: 0.75rem;">
-                        Dewan Pengurus Pusat ASASI
+                        Pengurus Pusat ASASI
                     </div>
                     <h2 style="color: white; margin: 0 0 0.5rem 0; font-size: 1.75rem; font-weight: 800;">Bidang Branding & Kreativitas</h2>
                     <p style="color: #cbd5e1; margin: 0; font-size: 0.95rem; line-height: 1.6;">
@@ -817,13 +817,13 @@ class PageSeeder extends Seeder
                 'menu_induk'    => 'kontak',
                 'judul'         => 'Sekretariat Pusat & Layanan Anggota',
                 'slug'          => 'sekretariat-pusat',
-                'hero_subtitle' => 'Hubungi kantor pusat DPP ASASI untuk informasi keanggotaan, kerjasama riset, dan media.',
+                'hero_subtitle' => 'Hubungi kantor pusat PP ASASI untuk informasi keanggotaan, kerjasama riset, dan media.',
                 'hero_image'    => 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80',
                 'urutan'        => 1,
-                'konten'        => '<h2>Sekretariat Dewan Pengurus Pusat ASASI</h2>
+                'konten'        => '<h2>Sekretariat Pengurus Pusat ASASI</h2>
                 <div class="space-y-3">
                     <p><strong>Alamat Kantor Pusat:</strong><br>
-                    Gedung Pusat Akademisi dan Saintis Indonesia (DPP ASASI)<br>
+                    Gedung Pusat Akademisi dan Saintis Indonesia (PP ASASI)<br>
                     Jl. Ganesha No. 10, Kota Bandung, Jawa Barat 40132</p>
                     <p><strong>Email Korespondensi Resmi:</strong><br>
                     sekretariat@asasi.or.id | info@asasi.or.id</p>

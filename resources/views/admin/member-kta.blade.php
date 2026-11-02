@@ -392,11 +392,11 @@
                                         <strong>{{ $member?->masa_berlaku_sampai ? $member->masa_berlaku_sampai->format('d M Y') : 'Seumur Hidup' }}</strong>
                                     </div>
                                     <div>
-                                        <span class="label">Wilayah DPW</span>
+                                        <span class="label">Wilayah PD</span>
                                         <strong title="{{ $member->wilayah_dpw ?? '-' }}">{{ $member->wilayah_dpw ?? '-' }}</strong>
                                     </div>
                                     <div>
-                                        <span class="label">Afiliasi</span>
+                                        <span class="label">Kampus</span>
                                         <strong title="{{ $member->instansi ?? '-' }}">{{ $member->instansi ?? '-' }}</strong>
                                     </div>
                                     @if($member && $member->bidang_keahlian)
@@ -410,8 +410,8 @@
                         </div>
 
                         <div class="bottom">
-                            <small>INTEGRITY • KNOWLEDGE • IMPACT</small>
-                            <span class="seal">DPP ASASI</span>
+                            <small>KREDIBEL • INTEGRITAS • PROFESIONAL</small>
+                            <span class="seal">PP ASASI</span>
                         </div>
                     </div>
                 </article>
@@ -421,7 +421,7 @@
                     <div class="card-border-frame" aria-hidden="true"></div>
                     <div class="card-inner">
                         <span class="back-kicker">ASASI • INDONESIA</span>
-                        <h2>Membentuk Akademisi Unggul,<br>Mendorong Perbaikan Bangsa.</h2>
+                        <h2>Membentuk Akademisi Unggul,<br>Bersama Membangun Bangsa.</h2>
                         <p>Kartu ini merupakan identitas keanggotaan resmi Perkumpulan Akademisi dan Saintis Indonesia (ASASI). Validitas dan status keanggotaan dapat diverifikasi melalui portal resmi ASASI.</p>
                         
                         <div class="back-lower">

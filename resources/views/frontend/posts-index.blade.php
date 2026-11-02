@@ -36,7 +36,7 @@
                 </h1>
 
                 <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl font-normal">
-                    Pusat arsip berita terintegrasi, rilis pers, pengumuman hibah, serta dokumentasi kegiatan Perkumpulan Akademisi dan Saintis Indonesia (ASASI) dari 38 DPW se-Nusantara.
+                    Pusat arsip berita terintegrasi, rilis pers, pengumuman hibah, serta dokumentasi kegiatan Perkumpulan Akademisi dan Saintis Indonesia (ASASI) dari 38 PD se-Nusantara.
                 </p>
             </div>
 
