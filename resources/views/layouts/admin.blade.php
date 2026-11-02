@@ -18,7 +18,7 @@
 
     @livewireStyles
 </head>
-<body class="bg-[#F3F5F8] text-slate-800 font-sans antialiased">
+<body class="bg-[#F3F5F8] text-slate-800 font-sans antialiased overflow-x-clip">
 
     <div x-data="{ sidebarOpen: false }" class="min-h-screen flex">
 
@@ -32,8 +32,8 @@
 
         <!-- SIDEBAR KIRI KHUSUS ADMIN -->
         <aside 
-            :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'"
-            class="fixed lg:static inset-y-0 left-0 z-50 w-72 bg-white border-r border-slate-200/90 flex flex-col justify-between transition-transform duration-200 ease-in-out lg:translate-x-0"
+            :class="{ 'max-lg:-translate-x-full': !sidebarOpen }"
+            class="fixed lg:static inset-y-0 left-0 z-50 w-72 max-w-[85vw] bg-white border-r border-slate-200/90 flex flex-col justify-between transition-transform duration-200 ease-in-out max-lg:-translate-x-full"
         >
             <div>
                 <!-- Brand Header Admin -->
@@ -58,6 +58,15 @@
                     <a href="{{ route('admin.members') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold transition {{ request()->routeIs('admin.members') ? 'bg-asasi-navy text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100' }}">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"/></svg>
                         <span>Verifikasi Anggota & KTA</span>
+                    </a>
+
+                    @php $pendingPaymentsCount = \App\Models\MembershipPayment::where('status', 'pending')->count(); @endphp
+                    <a href="{{ route('admin.payments') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold transition {{ request()->routeIs('admin.payments') ? 'bg-asasi-navy text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100' }}">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                        <span class="flex-1">Verifikasi Pembayaran</span>
+                        @if($pendingPaymentsCount > 0)
+                            <span class="min-w-[22px] h-[22px] px-1.5 rounded-full bg-amber-500 text-white text-[11px] font-bold flex items-center justify-center">{{ $pendingPaymentsCount }}</span>
+                        @endif
                     </a>
 
                     <a href="{{ route('admin.posts') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold transition {{ request()->routeIs('admin.posts') ? 'bg-asasi-navy text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100' }}">
@@ -105,7 +114,8 @@
                 </div>
 
                 <!-- Profil Pengurus Login -->
-                <div class="flex items-center gap-3">
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <livewire:notification-bell />
                     <div class="text-right hidden sm:block">
                         <p class="text-xs font-bold text-slate-800">{{ auth()->user()->name }}</p>
                         <p class="text-[11px] text-asasi-gold font-semibold uppercase">Administrator</p>

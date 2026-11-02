@@ -3,46 +3,129 @@
 namespace App\Http\Controllers;
 
 use App\Models\MemberProfile;
+use App\Models\MembershipPayment;
 use App\Models\Page;
 use App\Models\Post;
+use App\Notifications\PaymentApproved;
+use App\Notifications\PaymentRejected;
+use App\Support\Notifier;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use LogicException;
 
 class AdminController extends Controller
 {
     // 1. MANAJEMEN ANGGOTA & KTA
-    public function members()
+    public function members(Request $request)
     {
-        $members = MemberProfile::latest()->get();
-        return view('admin.members', compact('members'));
+        $filter = $request->query('filter', 'semua');
+
+        $members = MemberProfile::with(['latestPayment', 'pendingPayment'])
+            ->when($filter === 'menunggu', fn ($q) => $q->whereHas('payments', fn ($p) => $p->where('status', MembershipPayment::STATUS_PENDING)))
+            ->when($filter === 'aktif', fn ($q) => $q->where('status', 'active')
+                ->where(fn ($w) => $w->whereNull('masa_berlaku_sampai')->orWhereDate('masa_berlaku_sampai', '>=', today())))
+            ->when($filter === 'kedaluwarsa', fn ($q) => $q->where('status', 'active')->whereDate('masa_berlaku_sampai', '<', today()))
+            ->latest()
+            ->get();
+
+        $stats = [
+            'total'       => MemberProfile::count(),
+            'aktif'       => MemberProfile::where('status', 'active')
+                ->where(fn ($w) => $w->whereNull('masa_berlaku_sampai')->orWhereDate('masa_berlaku_sampai', '>=', today()))->count(),
+            'kedaluwarsa' => MemberProfile::where('status', 'active')->whereDate('masa_berlaku_sampai', '<', today())->count(),
+            'menunggu'    => MembershipPayment::where('status', MembershipPayment::STATUS_PENDING)->count(),
+        ];
+
+        return view('admin.members', compact('members', 'stats', 'filter'));
     }
 
+    // Aktivasi manual tanpa bukti bayar (khusus data lama sebelum fitur pembayaran)
     public function approveMember($id)
     {
         $member = MemberProfile::findOrFail($id);
 
-        $tahun = date('Y');
-        $prefix = "45451-{$tahun}-";
-        $lastMember = MemberProfile::where('nomor_anggota', 'like', "{$prefix}%")
-            ->orderByDesc('nomor_anggota')
-            ->first();
+        if ($member->pendingPayment()->exists()) {
+            return redirect()->back()->with('success', 'Anggota ini memiliki bukti pembayaran. Verifikasi melalui tombol Setujui pada pembayarannya.');
+        }
 
-        $nextNumber = $lastMember
-            ? ((int) substr($lastMember->nomor_anggota, -4)) + 1
-            : 1;
+        $nomorKta = DB::transaction(function () use ($member) {
+            $nomor = $member->nomor_anggota ?: MemberProfile::generateNomorAnggota();
+            $member->update([
+                'nomor_anggota'       => $nomor,
+                'status'              => 'active',
+                'masa_berlaku_sampai' => now()->addYear(),
+            ]);
 
-        $nomorKta = $prefix . str_pad($nextNumber, 4, '0', STR_PAD_LEFT);
+            return $nomor;
+        });
 
-        $member->update([
-            'nomor_anggota'       => $nomorKta,
-            'status'              => 'active',
-            'masa_berlaku_sampai' => now()->addYear(),
-        ]);
+        Notifier::send($member->user, new PaymentApproved($member->fresh()));
 
         return redirect()->back()->with('success', "Pengajuan disetujui! Nomor KTA diterbitkan: {$nomorKta}");
+    }
+
+    // 1b. VERIFIKASI PEMBAYARAN (PENDAFTARAN & PERPANJANGAN)
+    public function payments(Request $request)
+    {
+        $status = $request->query('status', MembershipPayment::STATUS_PENDING);
+        $jenis = $request->query('jenis');
+
+        $payments = MembershipPayment::with(['member', 'verifier'])
+            ->when($status !== 'semua', fn ($q) => $q->where('status', $status))
+            ->when(in_array($jenis, [MembershipPayment::JENIS_PENDAFTARAN, MembershipPayment::JENIS_PERPANJANGAN], true), fn ($q) => $q->where('jenis', $jenis))
+            ->orderByRaw("CASE WHEN status = 'pending' THEN 0 ELSE 1 END")
+            ->latest()
+            ->paginate(20)
+            ->withQueryString();
+
+        $counts = MembershipPayment::selectRaw('status, COUNT(*) as total')->groupBy('status')->pluck('total', 'status');
+        $totalDiterima = MembershipPayment::where('status', MembershipPayment::STATUS_APPROVED)->sum('nominal');
+
+        return view('admin.payments', compact('payments', 'status', 'jenis', 'counts', 'totalDiterima'));
+    }
+
+    public function approvePayment(MembershipPayment $payment)
+    {
+        try {
+            $payment->approve(Auth::user());
+        } catch (LogicException $e) {
+            return redirect()->back()->with('success', $e->getMessage());
+        }
+
+        $member = $payment->member()->first();
+        Notifier::send($member->user, new PaymentApproved($member, $payment));
+
+        return redirect()->back()->with('success', sprintf(
+            '%s %s disetujui. No. KTA %s berlaku hingga %s.',
+            $payment->jenisLabel(),
+            $member->nama_lengkap,
+            $member->nomor_anggota,
+            $member->masa_berlaku_sampai->translatedFormat('d F Y')
+        ));
+    }
+
+    public function rejectPayment(Request $request, MembershipPayment $payment)
+    {
+        $request->validate([
+            'catatan_admin' => 'required|string|max:500',
+        ], [
+            'catatan_admin.required' => 'Tuliskan alasan penolakan agar anggota dapat memperbaikinya.',
+        ]);
+
+        try {
+            $payment->reject(Auth::user(), $request->catatan_admin);
+        } catch (LogicException $e) {
+            return redirect()->back()->with('success', $e->getMessage());
+        }
+
+        Notifier::send($payment->member->user, new PaymentRejected($payment));
+
+        return redirect()->back()->with('success', 'Pembayaran ditolak. Anggota dapat mengunggah ulang bukti pembayaran.');
     }
 
     public function cetakKta($id, Request $request)

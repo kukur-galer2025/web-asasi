@@ -173,12 +173,19 @@ class PublicController extends Controller
             }
         }
 
+        // Bukti verifikasi hanya boleh dicetak oleh pemilik nomor KTA (login dengan akunnya sendiri)
+        $canPrint = $member
+            && $member->user_id
+            && $request->user()
+            && $request->user()->id === $member->user_id;
+
         return view('frontend.verify-kta', compact(
             'member',
             'queryNomor',
             'verificationStatus',
             'qrBase64',
-            'securityHash'
+            'securityHash',
+            'canPrint'
         ));
     }
 }

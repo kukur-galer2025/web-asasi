@@ -54,19 +54,25 @@
             <span class="text-[11px] uppercase tracking-widest text-slate-400 font-semibold block">Status Keanggotaan</span>
             @if(!$member)
                 <span class="text-sm font-bold text-amber-600 mt-1 inline-block">● Belum Melengkapi Biodata</span>
+            @elseif($member->isExpired())
+                <span class="text-sm font-bold text-rose-600 mt-1 inline-block">● Masa Berlaku Habis, Perlu Perpanjangan</span>
             @elseif($member->status === 'active')
                 <span class="text-sm font-bold text-emerald-600 mt-1 inline-block">● Anggota Aktif Terverifikasi</span>
+            @elseif($member->payments->first()?->status === 'rejected')
+                <span class="text-sm font-bold text-rose-600 mt-1 inline-block">● Bukti Bayar Ditolak, Unggah Ulang</span>
             @else
                 <span class="text-sm font-bold text-amber-600 mt-1 inline-block">● Menunggu Verifikasi Pengurus</span>
             @endif
         </div>
     </div>
 
+    @include('partials.spam-note')
+
     <div class="grid lg:grid-cols-12 gap-8 items-start">
 
         <!-- KOLOM KIRI: Kartu KTA Digital (White & Gold Clean Luxury) -->
         <!-- KOLOM KIRI: Kartu Anggota (KTA) Premium Luxury Preview (Depan & Belakang) -->
-        <div class="lg:col-span-5 space-y-6">
+        <div class="lg:col-span-5 space-y-6 min-w-0">
             <div class="bg-white p-6 sm:p-7 rounded-3xl border border-slate-200/80 shadow-sm space-y-5">
                 <div class="flex items-center justify-between gap-2">
                     <div>
@@ -342,6 +348,7 @@
                     }
                 </style>
 
+                <script src="{{ asset('js/kta-card-fit.js') }}"></script>
                 <div class="asasi-card-wrap">
                     <!-- ==================== KARTU BAGIAN DEPAN (FRONT) ==================== -->
                     <article id="kta-card-front" class="asasi-card front" aria-label="Kartu anggota ASASI bagian depan">
@@ -443,6 +450,7 @@
 
                 <script>
                     function switchKtaSide(side) {
+                    requestAnimationFrame(() => window.fitKtaCards && window.fitKtaCards());
                         const front = document.getElementById('kta-card-front');
                         const back = document.getElementById('kta-card-back');
                         const btnFront = document.getElementById('btn-kta-front');
@@ -501,13 +509,13 @@
                             try {
                                 let dataUrl = null;
                                 if (typeof htmlToImage !== 'undefined') {
-                                    const rect = card.getBoundingClientRect();
+                                    // Ukuran layout asli (tanpa skala tampilan HP) agar hasil tetap HD
                                     dataUrl = await htmlToImage.toPng(card, {
                                         pixelRatio: 3,
                                         backgroundColor: null,
                                         cacheBust: false,
-                                        width: Math.ceil(rect.width),
-                                        height: Math.ceil(rect.height),
+                                        width: card.offsetWidth,
+                                        height: card.offsetHeight,
                                     });
                                 } else if (typeof html2canvas !== 'undefined') {
                                     const canvas = await html2canvas(card, {
@@ -547,7 +555,7 @@
                 @elseif($member && $member->status === 'pending')
                     <div class="bg-amber-50/80 border border-amber-200 text-amber-900 rounded-2xl p-4 text-xs leading-relaxed">
                         <strong class="block font-bold mb-1">⏳ Permohonan Sedang Diverifikasi</strong>
-                        Data pendaftaran dan pas foto Anda telah diterima. Tombol unduh KTA PDF akan otomatis aktif setelah disetujui oleh Pengurus Pusat.
+                        Data pendaftaran, pas foto, dan bukti pembayaran Anda telah diterima. Tombol unduh KTA akan otomatis aktif setelah pembayaran diverifikasi oleh Pengurus Pusat.
                     </div>
                 @else
                     <div class="bg-slate-50 border border-slate-200 text-slate-700 rounded-2xl p-4 text-xs leading-relaxed">
@@ -558,8 +566,13 @@
             </div>
         </div>
 
-        <!-- KOLOM KANAN: Formulir Biodata Bersih -->
-        <div class="lg:col-span-7 bg-white p-8 rounded-3xl border border-slate-200/80 shadow-sm">
+        <!-- KOLOM KANAN: Pembayaran & Formulir Biodata -->
+        <div class="lg:col-span-7 space-y-8 min-w-0">
+        @if($member)
+            @include('frontend.partials.membership-payment-card', ['member' => $member])
+        @endif
+
+        <div class="bg-white p-8 rounded-3xl border border-slate-200/80 shadow-sm">
             <div class="border-b border-slate-100 pb-5 mb-6">
                 <span class="text-xs font-bold uppercase tracking-widest text-asasi-gold">Data Akademisi & Saintis</span>
                 <h2 class="font-serif text-2xl font-bold text-slate-900 mt-1">
@@ -568,25 +581,16 @@
                 <p class="text-xs text-slate-500 mt-1">Pastikan penulisan nama dan gelar akademik sudah benar serta unggah pas foto formal untuk pencetakan KTA.</p>
             </div>
 
-            <div class="mb-6 rounded-2xl border border-amber-200 bg-amber-50/70 p-5">
-                <h3 class="text-xs font-bold uppercase tracking-widest text-amber-800 mb-3">Biaya Keanggotaan ASASI</h3>
-                <div class="grid sm:grid-cols-2 gap-4 text-xs text-slate-700">
-                    <div>
-                        <strong class="block text-slate-900 mb-1">Pendaftaran Baru</strong>
-                        <ul class="space-y-0.5">
-                            <li>Rp 200.000 / 1 tahun</li>
-                            <li>Rp 350.000 / 2 tahun sekaligus</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <strong class="block text-slate-900 mb-1">Perpanjangan</strong>
-                        <ul class="space-y-0.5">
-                            <li>Rp 150.000 / 1 tahun</li>
-                            <li>Rp 300.000 / 2 tahun sekaligus</li>
-                        </ul>
-                    </div>
+            @if(!$member && $errors->any())
+                <div class="mb-5 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700 px-4 py-3 text-xs">
+                    <strong class="block mb-1">Pengajuan belum terkirim:</strong>
+                    <ul class="list-disc list-inside space-y-0.5">
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
-            </div>
+            @endif
 
             <form action="{{ route('member.profile.save') }}" method="POST" enctype="multipart/form-data" class="space-y-5">
                 @csrf
@@ -677,12 +681,21 @@
                     </div>
                 </div>
 
+                @unless($member)
+                    <div class="pt-5 border-t border-slate-100">
+                        <h3 class="font-serif text-lg font-bold text-slate-900 mb-1">Pembayaran Pendaftaran</h3>
+                        <p class="text-xs text-slate-500 mb-4">Pengajuan pertama Anda tercatat sebagai <strong>pendaftaran baru</strong>. Perpanjangan dapat diajukan dari dashboard ini menjelang masa berlaku habis.</p>
+                        @include('frontend.partials.payment-fields', ['jenis' => 'pendaftaran'])
+                    </div>
+                @endunless
+
                 <div class="pt-4 border-t border-slate-100 flex justify-end">
                     <button type="submit" class="bg-asasi-navy hover:bg-slate-800 text-white font-bold px-7 py-3.5 rounded-xl text-sm shadow-sm transition">
-                        {{ $member ? 'Simpan Perubahan Biodata' : 'Ajukan Penerbitan KTA Sekarang' }}
+                        {{ $member ? 'Simpan Perubahan Biodata' : 'Ajukan Keanggotaan & Kirim Bukti Bayar' }}
                     </button>
                 </div>
             </form>
+        </div>
         </div>
 
         <script>

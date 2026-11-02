@@ -59,7 +59,7 @@
         <div class="lg:col-span-6 flex flex-col justify-between p-6 sm:p-12 xl:p-16 bg-white relative">
             
             <!-- Tombol Kembali ke Beranda (Tanpa wire:navigate agar layout CSS di-load bersih) -->
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center gap-3">
                 <a href="{{ route('home') }}" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-500 hover:text-asasi-navy bg-slate-50 hover:bg-slate-100 border border-slate-200/80 px-4 py-2.5 rounded-xl transition">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
@@ -131,7 +131,10 @@
                     </div>
 
                     <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">Kata Sandi</label>
+                        <div class="flex items-center justify-between mb-2">
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-600">Kata Sandi</label>
+                            <a href="{{ route('password.request') }}" class="text-xs font-bold text-asasi-navy hover:text-asasi-gold transition">Lupa kata sandi?</a>
+                        </div>
                         <input 
                             type="password" 
                             name="password" 
@@ -145,6 +148,8 @@
                         Masuk ke Portal
                     </button>
                 </form>
+
+                @include('partials.spam-note', ['class' => 'mt-6'])
 
 
             </div>

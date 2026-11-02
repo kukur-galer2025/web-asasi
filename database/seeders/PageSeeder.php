@@ -116,7 +116,7 @@ class PageSeeder extends Seeder
                     1. Pimpinan (Susunan Pengurus)
                 </h3>
 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; margin-bottom: 1.5rem;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 1rem; margin-top: 1rem; margin-bottom: 1.5rem;">
                     <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #C5A059; border-radius: 0.75rem; padding: 1.25rem;">
                         <span style="font-size: 11px; font-weight: 800; color: #92400e; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 4px;">Ketua Umum</span>
                         <h4 style="margin: 0; font-size: 1.1rem; font-weight: 800; color: #0F2C59;">Prof. Dr. apt. Elfahmi, M.Si.</h4>
@@ -151,7 +151,7 @@ class PageSeeder extends Seeder
                 </div>
 
                 <!-- Tim Sekretariat Jenderal & Tim Branding -->
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 1rem; margin-bottom: 2rem;">
                     <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.25rem;">
                         <h4 style="margin: 0 0 0.75rem 0; font-size: 0.95rem; font-weight: 700; color: #0F2C59;">Tim Sekretariat Jenderal:</h4>
                         <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.9rem; line-height: 1.7; color: #334155;">
@@ -177,7 +177,7 @@ class PageSeeder extends Seeder
                     2. Dewan
                 </h3>
 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-top: 1rem; margin-bottom: 2rem;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 1.25rem; margin-top: 1rem; margin-bottom: 2rem;">
                     <!-- Dewan Pengurus -->
                     <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
                         <span style="display: inline-block; background-color: #fef3c7; color: #92400e; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 6px; text-transform: uppercase;">Dewan Pengurus</span>
@@ -326,7 +326,7 @@ class PageSeeder extends Seeder
                     Susunan Pengurus Bidang Kebijakan Publik
                 </h3>
 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; margin-bottom: 2rem;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 1rem; margin-top: 1rem; margin-bottom: 2rem;">
                     <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #C5A059; border-radius: 0.75rem; padding: 1.25rem;">
                         <span style="font-size: 11px; font-weight: 800; color: #92400e; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 4px;">Ketua Bidang</span>
                         <h4 style="margin: 0; font-size: 1.05rem; font-weight: 700; color: #0F2C59;">Prof. Dr. Ir. Andi Irawan</h4>
@@ -346,7 +346,7 @@ class PageSeeder extends Seeder
 
                 <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 2rem;">
                     <h4 style="margin: 0 0 1rem 0; font-size: 1rem; font-weight: 700; color: #0F2C59;">Anggota Bidang:</h4>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 0.75rem;">
                         <div style="padding: 0.75rem; background-color: #f8fafc; border-radius: 0.5rem; border: 1px solid #f1f5f9;">
                             <strong style="color: #1e293b; display: block; font-size: 0.95rem;">Dr. rer. nat. Hendri Murfi</strong>
                             <span style="color: #64748b; font-size: 12px;">Universitas Indonesia (UI)</span>
@@ -397,7 +397,7 @@ class PageSeeder extends Seeder
                     Susunan Pengurus Bidang Pengabdian Masyarakat
                 </h3>
 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; margin-bottom: 2rem;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 1rem; margin-top: 1rem; margin-bottom: 2rem;">
                     <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #C5A059; border-radius: 0.75rem; padding: 1.25rem;">
                         <span style="font-size: 11px; font-weight: 800; color: #92400e; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 4px;">Ketua Bidang</span>
                         <h4 style="margin: 0; font-size: 1.05rem; font-weight: 700; color: #0F2C59;">Dr. Padil</h4>
@@ -417,7 +417,7 @@ class PageSeeder extends Seeder
 
                 <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 2rem;">
                     <h4 style="margin: 0 0 1rem 0; font-size: 1rem; font-weight: 700; color: #0F2C59;">Anggota Bidang:</h4>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 0.75rem;">
                         <div style="padding: 0.75rem; background-color: #f8fafc; border-radius: 0.5rem; border: 1px solid #f1f5f9;">
                             <strong style="color: #1e293b; display: block; font-size: 0.95rem;">Tuti Afriani, S.Kp., M.Kep</strong>
                             <span style="color: #64748b; font-size: 12px;">Universitas Indonesia (UI)</span>
@@ -464,7 +464,7 @@ class PageSeeder extends Seeder
                     Susunan Pengurus Bidang Kerjasama Institusi
                 </h3>
 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; margin-bottom: 2rem;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 1rem; margin-top: 1rem; margin-bottom: 2rem;">
                     <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #C5A059; border-radius: 0.75rem; padding: 1.25rem;">
                         <span style="font-size: 11px; font-weight: 800; color: #92400e; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 4px;">Ketua Bidang</span>
                         <h4 style="margin: 0; font-size: 1.05rem; font-weight: 700; color: #0F2C59;">Dr. Hasballah Zakaria</h4>
@@ -484,7 +484,7 @@ class PageSeeder extends Seeder
 
                 <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 2rem;">
                     <h4 style="margin: 0 0 1rem 0; font-size: 1rem; font-weight: 700; color: #0F2C59;">Anggota Bidang:</h4>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 0.75rem;">
                         <div style="padding: 0.75rem; background-color: #f8fafc; border-radius: 0.5rem; border: 1px solid #f1f5f9;">
                             <strong style="color: #1e293b; display: block; font-size: 0.95rem;">Dr. Triono, S.Sos., M.I.P.</strong>
                             <span style="color: #64748b; font-size: 12px;">Univ. Megou Pak Tulang Bawang</span>
@@ -527,7 +527,7 @@ class PageSeeder extends Seeder
                     Susunan Pengurus Bidang Penerbitan Jurnal & ASASI Press
                 </h3>
 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; margin-bottom: 2rem;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 1rem; margin-top: 1rem; margin-bottom: 2rem;">
                     <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #C5A059; border-radius: 0.75rem; padding: 1.25rem;">
                         <span style="font-size: 11px; font-weight: 800; color: #92400e; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 4px;">Ketua Bidang</span>
                         <h4 style="margin: 0; font-size: 1.05rem; font-weight: 700; color: #0F2C59;">Dr. Indra Budi</h4>
@@ -547,7 +547,7 @@ class PageSeeder extends Seeder
 
                 <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 2rem;">
                     <h4 style="margin: 0 0 1rem 0; font-size: 1rem; font-weight: 700; color: #0F2C59;">Anggota Bidang:</h4>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 0.75rem;">
                         <div style="padding: 0.75rem; background-color: #f8fafc; border-radius: 0.5rem; border: 1px solid #f1f5f9;">
                             <strong style="color: #1e293b; display: block; font-size: 0.95rem;">Munawar Agus Riyadi</strong>
                             <span style="color: #64748b; font-size: 12px;">Universitas Diponegoro (Undip)</span>
@@ -598,7 +598,7 @@ class PageSeeder extends Seeder
                     Susunan Pengurus Bidang Penelitian
                 </h3>
 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; margin-bottom: 2rem;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 1rem; margin-top: 1rem; margin-bottom: 2rem;">
                     <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #C5A059; border-radius: 0.75rem; padding: 1.25rem;">
                         <span style="font-size: 11px; font-weight: 800; color: #92400e; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 4px;">Ketua Bidang</span>
                         <h4 style="margin: 0; font-size: 1.05rem; font-weight: 700; color: #0F2C59;">Dr. Onrizal</h4>
@@ -618,7 +618,7 @@ class PageSeeder extends Seeder
 
                 <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 2rem;">
                     <h4 style="margin: 0 0 1rem 0; font-size: 1rem; font-weight: 700; color: #0F2C59;">Anggota Bidang:</h4>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 0.75rem;">
                         <div style="padding: 0.75rem; background-color: #f8fafc; border-radius: 0.5rem; border: 1px solid #f1f5f9;">
                             <strong style="color: #1e293b; display: block; font-size: 0.95rem;">Hendriwanto</strong>
                             <span style="color: #64748b; font-size: 12px;">Universitas Swadaya Gunung Jati (UGJ Cirebon)</span>
@@ -677,7 +677,7 @@ class PageSeeder extends Seeder
                     Susunan Pengurus Bidang Pengembangan Anggota
                 </h3>
 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; margin-bottom: 2rem;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 1rem; margin-top: 1rem; margin-bottom: 2rem;">
                     <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #C5A059; border-radius: 0.75rem; padding: 1.25rem;">
                         <span style="font-size: 11px; font-weight: 800; color: #92400e; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 4px;">Ketua Bidang</span>
                         <h4 style="margin: 0; font-size: 1.05rem; font-weight: 700; color: #0F2C59;">Prof. Dr. Anuraga Jayanegara</h4>
@@ -697,7 +697,7 @@ class PageSeeder extends Seeder
 
                 <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 2rem;">
                     <h4 style="margin: 0 0 1rem 0; font-size: 1rem; font-weight: 700; color: #0F2C59;">Anggota Bidang:</h4>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 0.75rem;">
                         <div style="padding: 0.75rem; background-color: #f8fafc; border-radius: 0.5rem; border: 1px solid #f1f5f9;">
                             <strong style="color: #1e293b; display: block; font-size: 0.95rem;">Dr. Fariska Zakhralativa Ruskanda</strong>
                             <span style="color: #64748b; font-size: 12px;">Institut Teknologi Bandung (ITB)</span>

@@ -32,19 +32,22 @@ class MemberPhotoAndKtaTest extends TestCase
     public function test_member_can_save_profile_with_pas_foto(): void
     {
         Storage::fake('public');
+        Storage::fake('local');
 
         $user = User::factory()->create(['role' => 'member']);
 
         $file = UploadedFile::fake()->image('pas_foto_formal.jpg', 600, 800);
 
         $response = $this->actingAs($user)->post(route('member.profile.save'), [
-            'nama_lengkap'    => 'Dr. H. Ahmad Santoso, M.Sc.',
-            'nik'             => '3201234567890001',
-            'instansi'        => 'Universitas Indonesia',
-            'bidang_keahlian' => 'Kecerdasan Buatan & Data Science',
-            'wilayah_dpw'     => 'DKI Jakarta',
-            'no_whatsapp'     => '081298765432',
-            'foto_profil'     => $file,
+            'nama_lengkap'     => 'Dr. H. Ahmad Santoso, M.Sc.',
+            'nik'              => '3201234567890001',
+            'instansi'         => 'Universitas Indonesia',
+            'bidang_keahlian'  => 'Kecerdasan Buatan & Data Science',
+            'wilayah_dpw'      => 'DKI Jakarta',
+            'no_whatsapp'      => '081298765432',
+            'foto_profil'      => $file,
+            'durasi_tahun'     => 1,
+            'bukti_pembayaran' => UploadedFile::fake()->image('bukti.jpg'),
         ]);
 
         $response->assertRedirect(route('member.dashboard'));

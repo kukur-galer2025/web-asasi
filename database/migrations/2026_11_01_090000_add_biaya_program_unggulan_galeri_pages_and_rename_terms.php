@@ -36,7 +36,7 @@ return new class extends Migration
             'hero_subtitle' => 'Dokumentasi kegiatan Perkumpulan Akademisi dan Saintis Indonesia.',
             'hero_image'    => 'images/kegiatan/rakornas-asasi-bersama.webp',
             'urutan'        => 6,
-            'konten'        => '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;">
+            'konten'        => '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(240px,100%),1fr));gap:16px;">
     <figure><img src="/images/kegiatan/kegiatan-asasi-pelantikan.webp" alt="Pelantikan Pengurus ASASI"><figcaption>Pelantikan Pengurus ASASI</figcaption></figure>
     <figure><img src="/images/kegiatan/kegiatan-asasi-seminar.webp" alt="Seminar ASASI"><figcaption>Seminar Nasional ASASI</figcaption></figure>
     <figure><img src="/images/kegiatan/kegiatan-asasi-diskusi.webp" alt="Diskusi Akademisi"><figcaption>Diskusi Akademisi &amp; Saintis</figcaption></figure>

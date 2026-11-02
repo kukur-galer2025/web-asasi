@@ -11,12 +11,18 @@ use Laravel\Socialite\Facades\Socialite;
 class AuthController extends Controller
 {
     // Menampilkan Halaman Login Split-Screen
-    public function loginForm()
+    public function loginForm(Request $request)
     {
+        // ?kembali=/path -> setelah login, kembalikan ke halaman tersebut (hanya path internal)
+        $kembali = (string) $request->query('kembali', '');
+        if (str_starts_with($kembali, '/') && ! str_starts_with($kembali, '//')) {
+            $request->session()->put('url.intended', url($kembali));
+        }
+
         if (Auth::check()) {
-            return Auth::user()->role === 'admin'
-                ? redirect()->route('admin.members')
-                : redirect()->route('member.dashboard');
+            return redirect()->intended(Auth::user()->role === 'admin'
+                ? route('admin.members')
+                : route('member.dashboard'));
         }
 
         return view('auth.login');
@@ -34,10 +40,10 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             if (Auth::user()->role === 'admin') {
-                return redirect()->route('admin.members')->with('success', 'Selamat datang di Panel Pengurus Pusat ASASI.');
+                return redirect()->intended(route('admin.members'))->with('success', 'Selamat datang di Panel Pengurus Pusat ASASI.');
             }
 
-            return redirect()->route('member.dashboard')->with('success', 'Selamat datang di Portal Keanggotaan ASASI.');
+            return redirect()->intended(route('member.dashboard'))->with('success', 'Selamat datang di Portal Keanggotaan ASASI.');
         }
 
         return back()->withErrors([
@@ -68,7 +74,7 @@ class AuthController extends Controller
 
             Auth::login($user);
 
-            return redirect()->route('member.dashboard')
+            return redirect()->intended(route('member.dashboard'))
                 ->with('success', "Selamat datang, {$user->name}! Silakan lengkapi pengajuan keanggotaan atau unduh KTA Anda.");
         } catch (\Exception $e) {
             return redirect()->route('login')

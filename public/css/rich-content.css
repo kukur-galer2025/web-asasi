@@ -111,3 +111,11 @@
 .asasi-ed.is-full .asasi-ed-stage { flex: 1; }
 .asasi-ed.is-full .asasi-ed-preview { height: 100% !important; }
 html.asasi-ed-noscroll { overflow: hidden; }
+
+/* Pengaman responsif untuk HTML yang ditulis admin (inline style): layar HP */
+.rich-content > * { max-width: 100%; }
+.rich-content [style*="display: flex"], .rich-content [style*="display:flex"] { flex-wrap: wrap; }
+@media (max-width: 520px) {
+    .rich-content [style*="grid-template-columns"] { grid-template-columns: minmax(0, 1fr) !important; }
+    .rich-content [style*="padding: 2rem"], .rich-content [style*="padding:2rem"] { padding: 1.25rem !important; }
+}

@@ -237,15 +237,27 @@
 
                 <!-- Tombol Aksi (Hanya di Layar) -->
                 <div class="mt-6 flex flex-wrap items-center justify-between gap-3 no-print">
-                    <button 
-                        onclick="window.print()" 
-                        class="inline-flex items-center gap-2 bg-asasi-navy hover:bg-slate-900 text-white font-bold px-5 py-2.5 rounded-xl text-xs transition shadow-sm"
-                    >
-                        <svg class="w-4 h-4 text-asasi-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
-                        </svg>
-                        <span>Cetak Bukti Verifikasi</span>
-                    </button>
+                    @if($canPrint)
+                        <button 
+                            onclick="window.print()" 
+                            class="inline-flex items-center gap-2 bg-asasi-navy hover:bg-slate-900 text-white font-bold px-5 py-2.5 rounded-xl text-xs transition shadow-sm"
+                        >
+                            <svg class="w-4 h-4 text-asasi-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                            </svg>
+                            <span>Cetak Bukti Verifikasi</span>
+                        </button>
+                    @else
+                        <div class="flex items-start gap-2 text-xs text-slate-500 max-w-md">
+                            <svg class="w-4 h-4 shrink-0 mt-0.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                            <span>
+                                Bukti verifikasi hanya dapat dicetak oleh <strong>pemilik KTA</strong> melalui akunnya.
+                                @guest
+                                    <a href="{{ route('login', ['kembali' => request()->getRequestUri()]) }}" class="font-bold text-asasi-navy hover:text-asasi-gold underline">Masuk untuk mencetak</a>
+                                @endguest
+                            </span>
+                        </div>
+                    @endif
 
                     <a 
                         href="{{ route('member.directory') }}" 
@@ -370,6 +382,20 @@
 
     </div>
 </div>
+
+@unless($canPrint ?? false)
+    {{-- Bukan pemilik: cegah sertifikat ikut tercetak walau menekan Ctrl+P --}}
+    <div class="print-denied" style="display:none; padding:40px; text-align:center; font-family:sans-serif;">
+        <h2 style="font-size:18px; font-weight:700;">Bukti verifikasi KTA tidak dapat dicetak</h2>
+        <p style="font-size:13px; margin-top:8px;">Hanya pemilik nomor KTA yang dapat mencetak bukti verifikasi melalui akunnya di portal ASASI.</p>
+    </div>
+    <style>
+        @media print {
+            #print-certificate { display: none !important; }
+            .print-denied { display: block !important; }
+        }
+    </style>
+@endunless
 
 <style>
 @media print {

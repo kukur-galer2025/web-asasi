@@ -11,7 +11,7 @@
 
 <div class="grid lg:grid-cols-12 gap-6">
     <!-- Form Tambah Berita -->
-    <div class="lg:col-span-7 bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm h-fit">
+    <div class="lg:col-span-7 min-w-0 bg-white p-4 sm:p-6 rounded-2xl border border-slate-200/80 shadow-sm h-fit">
         <h3 class="font-serif font-bold text-lg text-slate-900 mb-1">Terbitkan Naskah Berita Baru</h3>
         <p class="text-xs text-slate-500 mb-5">Klik pada gambar di dalam editor untuk menggeser ukurannya (memperbesar/memperkecil) secara bebas.</p>
 
@@ -64,7 +64,7 @@
     </div>
 
     <!-- Tabel Arsip Berita + Tombol Edit & Hapus -->
-    <div class="lg:col-span-5 bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden h-fit">
+    <div class="lg:col-span-5 min-w-0 bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden h-fit">
         <div class="p-4 border-b border-slate-100 bg-slate-50/70">
             <h3 class="font-bold text-xs text-slate-700 uppercase tracking-wider">Arsip Berita Terpublikasi</h3>
         </div>

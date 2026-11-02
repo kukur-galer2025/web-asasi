@@ -18,7 +18,7 @@
     @livewireStyles
     @stack('styles')
 </head>
-<body class="bg-[#F9FAFB] text-slate-700 font-sans min-h-screen flex flex-col antialiased">
+<body class="bg-[#F9FAFB] text-slate-700 font-sans min-h-screen flex flex-col antialiased overflow-x-clip">
 
     @php
         // Bersihkan cache lama yang menyebabkan error incomplete object
@@ -59,6 +59,13 @@
                     </span>
                 </div>
             </a>
+
+            <div class="flex items-center gap-2 sm:gap-3">
+            @auth
+                <div class="lg:order-last">
+                    <livewire:notification-bell />
+                </div>
+            @endauth
 
             <!-- Tombol Hamburger Khusus Layar HP -->
             <button @click="mobileMenuOpen = !mobileMenuOpen" type="button" class="lg:hidden p-2.5 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-50">
@@ -201,6 +208,7 @@
                     </form>
                 @endauth
             </nav>
+            </div>
         </div>
 
         <!-- Menu Dropdown Responsif Saat Dibuka di Layar HP -->
@@ -277,7 +285,7 @@
     </main>
 
     <!-- Footer Sedang, Luxury & Profesional ASASI Indonesia -->
-    <footer id="kontak" class="relative bg-gradient-to-b from-[#0A192F] via-[#071324] to-[#040A14] text-slate-300 py-10 md:py-12 border-t border-amber-500/20 font-sans mt-16">
+    <footer id="kontak" class="relative overflow-hidden bg-gradient-to-b from-[#0A192F] via-[#071324] to-[#040A14] text-slate-300 py-10 md:py-12 border-t border-amber-500/20 font-sans mt-16">
         
         <!-- Subtle Ambient Lighting -->
         <div class="absolute top-0 left-1/3 w-80 h-40 bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>

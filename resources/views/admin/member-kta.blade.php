@@ -344,6 +344,7 @@
                 }
             </style>
 
+            <script src="{{ asset('js/kta-card-fit.js') }}"></script>
             <div class="asasi-card-wrap">
                 <!-- ==================== KARTU BAGIAN DEPAN (FRONT) ==================== -->
                 <article id="kta-card-front" class="asasi-card front" aria-label="Kartu anggota ASASI bagian depan">
@@ -475,6 +476,7 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
             <script>
                 function switchKtaSide(side) {
+                requestAnimationFrame(() => window.fitKtaCards && window.fitKtaCards());
                     const front = document.getElementById('kta-card-front');
                     const back = document.getElementById('kta-card-back');
                     const btnFront = document.getElementById('btn-kta-front');
@@ -515,13 +517,13 @@
                     try {
                         let dataUrl = null;
                         if (typeof htmlToImage !== 'undefined') {
-                            const rect = card.getBoundingClientRect();
+                            // Ukuran layout asli (tanpa skala tampilan HP) agar hasil tetap HD
                             dataUrl = await htmlToImage.toPng(card, {
                                 pixelRatio: 3,
                                 backgroundColor: null,
                                 cacheBust: false,
-                                width: Math.ceil(rect.width),
-                                height: Math.ceil(rect.height),
+                                width: card.offsetWidth,
+                                height: card.offsetHeight,
                             });
                         } else if (typeof html2canvas !== 'undefined') {
                             const canvas = await html2canvas(card, {
