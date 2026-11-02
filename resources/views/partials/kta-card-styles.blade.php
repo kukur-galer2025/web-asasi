@@ -216,27 +216,45 @@
     margin-top: auto;
     padding-top: 6px;
 }
-.asasi-card.back .barcode-wrap {
-    background: #f8f7f1;
-    border-radius: 6px;
-    padding: 8px 10px 6px;
-    width: 55%;
-}
-.asasi-card.back .barcode {
-    height: 32px;
+.asasi-card.back .qr-wrap {
+    background: #fff;
+    border-radius: 8px;
+    padding: 0 0 4px;
+    width: 98px;
+    flex: none;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    overflow: hidden;
 }
-.asasi-card.back .barcode-label {
+.asasi-card.back .qr-img {
+    display: block;
+    width: 98px;
+    height: 98px;
+    image-rendering: pixelated; /* modul tetap tegas saat diperkecil/diekspor */
+}
+.asasi-card.back .qr-label {
     display: block;
     text-align: center;
-    color: #3b4a54;
-    margin-top: 4px;
+    color: #1f2f3a;
+    font-size: 5.5px;
+    letter-spacing: .06em;
+    font-weight: 800;
+    margin-top: -3px;
+    line-height: 1;
+    white-space: nowrap;
+}
+.asasi-card.back .qr-empty {
+    display: grid;
+    place-items: center;
+    width: 98px;
+    height: 98px;
+    padding: 10px;
+    text-align: center;
     font-size: 7px;
-    letter-spacing: .14em;
-    font-weight: bold;
+    font-weight: 700;
+    color: #5b6b76;
+    line-height: 1.3;
+    box-sizing: border-box;
 }
 .asasi-card.back .verification {
     text-align: right;

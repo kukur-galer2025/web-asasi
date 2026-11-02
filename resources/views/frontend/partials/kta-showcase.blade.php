@@ -8,16 +8,6 @@
     ];
     $berlaku = now()->addYear()->format('d M Y');
 
-    // Barcode dekoratif sisi belakang (sama seperti kartu resmi)
-    $pattern = [2,2,1,3,1,1,3,2,1,2,2,2,1,1,4,1,2,3,1,2,1,1,3,3,2,2,1,1,2,4,1,2,1,3,2,2,1,1,3,1,2,3,1,2,1,2,2,1,3,2];
-    $bSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="34" viewBox="0 0 200 34">';
-    $bx = 6; $bar = true;
-    foreach ($pattern as $pw) {
-        if ($bar) { $bSvg .= '<rect x="'.$bx.'" y="0" width="'.$pw.'" height="34" fill="#172b37"/>'; }
-        $bx += $pw; $bar = ! $bar;
-        if ($bx >= 192) break;
-    }
-    $barcode = 'data:image/svg+xml;base64,' . base64_encode($bSvg . '</svg>');
     $logo = asset('images/logo/logo-asasi-white.png');
 
     $slides = count($contoh) + 1; // + tampak belakang
@@ -131,10 +121,7 @@
                             <h3 style="margin:7px 0 5px; font:500 18px/1.3 Georgia,serif; color:#f9f6ee;">Membentuk Akademisi Unggul,<br>Bersama Membangun Bangsa.</h3>
                             <p>Kartu ini merupakan identitas keanggotaan resmi Perkumpulan Akademisi dan Saintis Indonesia (ASASI). Validitas dan status keanggotaan dapat diverifikasi melalui portal resmi ASASI.</p>
                             <div class="back-lower">
-                                <div class="barcode-wrap">
-                                    <div class="barcode" aria-hidden="true"><img src="{{ $barcode }}" alt="" style="width:100%; height:28px; display:block;"></div>
-                                    <span class="barcode-label">{{ $contoh[0]['nomor'] }} • VERIFIKASI RESMI</span>
-                                </div>
+                                @include('partials.kta-qr-block', ['nomor' => null, 'sample' => true])
                                 <div class="verification">
                                     <span class="caption">PORTAL KEANGGOTAAN</span>
                                     <strong>www.asasi.or.id</strong>
@@ -156,7 +143,7 @@
             <div class="min-w-0">
                 <span class="text-[11px] font-bold text-white block leading-tight">Verifikasi Instan 24/7</span>
                 <span class="text-[10px] text-slate-400 block truncate"
-                      x-text="i === n - 1 ? 'Tampak belakang · QR & barcode' : 'Contoh tampilan · data fiktif'">Contoh tampilan · data fiktif</span>
+                      x-text="i === n - 1 ? 'Tampak belakang · QR verifikasi' : 'Contoh tampilan · data fiktif'">Contoh tampilan · data fiktif</span>
             </div>
         </div>
         <div class="flex items-center gap-2">

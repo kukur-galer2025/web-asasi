@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\MemberProfile;
 use App\Models\Page;
 use App\Models\Post;
-use chillerlan\QRCode\QRCode;
-use chillerlan\QRCode\QROptions;
-use chillerlan\QRCode\Output\QRGdImagePNG;
+use App\Support\KtaQr;
 use Illuminate\Http\Request;
 
 class PublicController extends Controller
@@ -159,17 +157,8 @@ class PublicController extends Controller
             if ($member && $member->nomor_anggota) {
                 $securityHash = strtoupper(substr(hash('sha256', "ASASI-SEC-{$member->id}-{$member->nomor_anggota}-{$member->created_at}"), 0, 24));
 
-                try {
-                    $verifyUrl = route('kta.verify', ['nomor' => $member->nomor_anggota]);
-                    $qrOptions = new QROptions([
-                        'outputInterface' => QRGdImagePNG::class,
-                        'scale'           => 4,
-                        'outputBase64'    => true,
-                    ]);
-                    $qrBase64 = (new QRCode($qrOptions))->render($verifyUrl);
-                } catch (\Throwable $e) {
-                    $qrBase64 = null;
-                }
+                // QR dikunci ke APP_URL, level koreksi M, quiet zone standar (lihat App\Support\KtaQr)
+                $qrBase64 = KtaQr::dataUri($member->nomor_anggota);
             }
         }
 

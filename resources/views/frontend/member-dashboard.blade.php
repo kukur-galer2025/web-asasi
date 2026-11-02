@@ -21,23 +21,6 @@
         $logoBase64 = 'data:image/png;base64,' . base64_encode(file_get_contents($logoPath));
     }
 
-    // Barcode SVG Vector untuk Kartu Belakang (Crisp & Bebas Tainted Canvas)
-    $pattern = [2,2,1,3,1,1,3,2,1,2,2,2,1,1,4,1,2,3,1,2,1,1,3,3,2,2,1,1,2,4,1,2,1,3,2,2,1,1,3,1,2,3,1,2,1,2,2,1,3,2];
-    $bw = 200;
-    $bh = 34;
-    $bSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="'.$bh.'" viewBox="0 0 '.$bw.' '.$bh.'">';
-    $bx = 6;
-    $bBar = true;
-    foreach ($pattern as $pw) {
-        if ($bBar) {
-            $bSvg .= '<rect x="'.$bx.'" y="0" width="'.$pw.'" height="'.$bh.'" fill="#172b37" />';
-        }
-        $bx += $pw;
-        $bBar = !$bBar;
-        if ($bx >= $bw - 8) break;
-    }
-    $bSvg .= '</svg>';
-    $barcodeSvg = 'data:image/svg+xml;base64,' . base64_encode($bSvg);
 @endphp
 <div class="max-w-7xl mx-auto px-4 sm:px-8 py-12 space-y-8">
 
@@ -171,14 +154,7 @@
                             <p>Kartu ini merupakan identitas keanggotaan resmi Perkumpulan Akademisi dan Saintis Indonesia (ASASI). Validitas dan status keanggotaan dapat diverifikasi melalui portal resmi ASASI.</p>
                             
                             <div class="back-lower">
-                                <div class="barcode-wrap" aria-label="Barcode resmi anggota">
-                                    <div class="barcode" aria-hidden="true">
-                                        @if(!empty($barcodeSvg))
-                                            <img src="{{ $barcodeSvg }}" alt="Barcode" style="width:100%; height:28px; display:block;">
-                                        @endif
-                                    </div>
-                                    <span class="barcode-label">{{ $member->nomor_anggota ?? '45451-2026-0001' }} • VERIFIKASI RESMI</span>
-                                </div>
+                                @include('partials.kta-qr-block', ['nomor' => $member->nomor_anggota ?? null])
                                 <div class="verification">
                                     <span class="caption">PORTAL KEANGGOTAAN</span>
                                     <strong>www.asasi.or.id</strong>

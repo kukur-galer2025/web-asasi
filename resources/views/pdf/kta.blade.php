@@ -267,18 +267,19 @@
             width: 100%;
             border-collapse: collapse;
         }
-        .barcode-box {
-            background-color: #f8f7f1;
+        .qr-box {
+            background-color: #ffffff;
             border-radius: 5pt;
-            padding: 5pt 7pt 4pt 7pt;
+            padding: 0;
             display: inline-block;
             text-align: center;
         }
-        .barcode-caption {
-            font-size: 5pt;
-            color: #3b4a54;
-            letter-spacing: 1px;
-            margin-top: 3pt;
+        .qr-caption {
+            font-size: 4.5pt;
+            color: #1f2f3a;
+            letter-spacing: 0.5px;
+            margin-top: -2pt;
+            padding-bottom: 3pt;
             font-weight: bold;
         }
         .verify-portal-caption {
@@ -371,23 +372,8 @@
             <rect x="2.5" y="2.5" width="320" height="199" rx="10" fill="none" stroke="#e6c891" stroke-width="0.8" opacity="0.38" />
         </svg>');
 
-        // 5. SVG Crisp Vector Barcode (Back Card)
-        $pattern = [2,2,1,3,1,1,3,2,1,2,2,2,1,1,4,1,2,3,1,2,1,1,3,3,2,2,1,1,2,4,1,2,1,3,2,2,1,1,3,1,2,3,1,2,1,2,2,1,3,2];
-        $bw = 145;
-        $bh = 32;
-        $bSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="'.$bw.'" height="'.$bh.'" viewBox="0 0 '.$bw.' '.$bh.'">';
-        $bx = 4;
-        $bBar = true;
-        foreach ($pattern as $pw) {
-            if ($bBar) {
-                $bSvg .= '<rect x="'.$bx.'" y="0" width="'.$pw.'" height="'.$bh.'" fill="#172b37" />';
-            }
-            $bx += $pw;
-            $bBar = !$bBar;
-            if ($bx >= $bw - 6) break;
-        }
-        $bSvg .= '</svg>';
-        $barcodeSvg = 'data:image/svg+xml;base64,' . base64_encode($bSvg);
+        // 5. QR verifikasi (alamat dikunci ke APP_URL)
+        $qrUri = \App\Support\KtaQr::dataUri($member->nomor_anggota);
     @endphp
 
     <!-- ==================== PAGE 1: BAGIAN DEPAN (FRONT) ==================== -->
@@ -509,9 +495,11 @@
                 <table class="back-lower-table">
                     <tr>
                         <td style="vertical-align:bottom; width:55%;">
-                            <div class="barcode-box">
-                                <img src="{{ $barcodeSvg }}" style="width:145pt; height:32pt; display:block;" alt="Barcode">
-                                <div class="barcode-caption">{{ $member->nomor_anggota }} • VERIFIKASI RESMI</div>
+                            <div class="qr-box">
+                                @if($qrUri)
+                                    <img src="{{ $qrUri }}" style="width:70pt; height:70pt; display:block;" alt="QR Verifikasi">
+                                @endif
+                                <div class="qr-caption">{{ $member->nomor_anggota }}</div>
                             </div>
                         </td>
                         <td style="vertical-align:bottom; text-align:right;">
