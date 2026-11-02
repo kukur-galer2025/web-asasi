@@ -123,7 +123,7 @@
                                     quillEdit.setSelection(range.index + 1);
                                 }
                             } catch (e) {
-                                alert('Gagal mengunggah gambar.');
+                                AsasiUI.alert({ tone: 'danger', title: 'Gagal Mengunggah Gambar', message: 'Pastikan ukuran gambar di bawah 3MB dan formatnya JPG, PNG, atau WEBP.' });
                             } finally {
                                 statusEl.classList.add('hidden');
                             }

@@ -8,11 +8,6 @@
         Masukkan email akun Anda. Kami akan mengirimkan tautan untuk membuat kata sandi baru.
     </p>
 
-    @if(session('status'))
-        <div class="mt-6 bg-emerald-50 border border-emerald-200 text-emerald-800 px-4 py-3.5 rounded-2xl text-xs font-semibold leading-relaxed">
-            ✓ {{ session('status') }}
-        </div>
-    @endif
 
     <form action="{{ route('password.email') }}" method="POST" class="mt-6 space-y-4">
         @csrf

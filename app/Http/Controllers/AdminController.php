@@ -57,7 +57,7 @@ class AdminController extends Controller
         $member = MemberProfile::findOrFail($id);
 
         if ($member->pendingPayment()->exists()) {
-            return redirect()->back()->with('success', 'Anggota ini memiliki bukti pembayaran. Verifikasi melalui tombol Setujui pada pembayarannya.');
+            return redirect()->back()->with('warning', 'Anggota ini memiliki bukti pembayaran. Verifikasi melalui tombol Setujui pada pembayarannya.');
         }
 
         $nomorKta = DB::transaction(function () use ($member) {
@@ -101,7 +101,7 @@ class AdminController extends Controller
         try {
             $payment->approve(Auth::user());
         } catch (LogicException $e) {
-            return redirect()->back()->with('success', $e->getMessage());
+            return redirect()->back()->with('warning', $e->getMessage());
         }
 
         $member = $payment->member()->first();
@@ -127,7 +127,7 @@ class AdminController extends Controller
         try {
             $payment->reject(Auth::user(), $request->catatan_admin);
         } catch (LogicException $e) {
-            return redirect()->back()->with('success', $e->getMessage());
+            return redirect()->back()->with('warning', $e->getMessage());
         }
 
         Notifier::send($payment->member->user, new PaymentRejected($payment));
@@ -140,7 +140,7 @@ class AdminController extends Controller
         $member = MemberProfile::findOrFail($id);
 
         if ($member->status !== 'active') {
-            return redirect()->back()->with('success', 'Setujui anggota terlebih dahulu sebelum mencetak KTA.');
+            return redirect()->back()->with('warning', 'Setujui anggota terlebih dahulu sebelum mencetak KTA.');
         }
 
         // Jika secara spesifik meminta format PDF via query (?format=pdf)

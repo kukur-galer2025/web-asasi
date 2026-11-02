@@ -107,7 +107,10 @@
                             <a href="{{ route('admin.posts.edit', $post->id) }}" class="inline-block text-xs bg-slate-100 hover:bg-asasi-navy hover:text-white text-slate-700 px-3 py-1.5 rounded-lg font-bold transition mr-1">
                                 Edit
                             </a>
-                            <form action="{{ route('admin.posts.delete', $post->id) }}" method="POST" class="inline" onsubmit="return confirm('Hapus berita ini?')">
+                            <form action="{{ route('admin.posts.delete', $post->id) }}" method="POST" class="inline"
+                                  data-confirm="Berita &quot;{{ \Illuminate\Support\Str::limit($post->judul, 70) }}&quot; akan dihapus permanen beserta gambar sampulnya. Tindakan ini tidak dapat dibatalkan."
+                                  data-confirm-title="Hapus Berita?"
+                                  data-confirm-tone="danger" data-confirm-icon="trash" data-confirm-ok="Ya, Hapus">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="text-xs bg-rose-50 hover:bg-rose-600 hover:text-white text-rose-600 px-2.5 py-1.5 rounded-lg font-bold transition">
@@ -176,7 +179,7 @@
                                     quillPost.setSelection(range.index + 1);
                                 }
                             } catch (e) {
-                                alert('Gagal mengunggah gambar.');
+                                AsasiUI.alert({ tone: 'danger', title: 'Gagal Mengunggah Gambar', message: 'Pastikan ukuran gambar di bawah 3MB dan formatnya JPG, PNG, atau WEBP.' });
                             } finally {
                                 statusEl.classList.add('hidden');
                             }

@@ -8,28 +8,28 @@
 
     @if($payment->isPending())
         <form action="{{ route('admin.payments.approve', $payment) }}" method="POST" class="inline"
-              onsubmit="return confirm('Setujui {{ strtolower($payment->jenisLabel()) }} {{ $payment->durasi_tahun }} tahun ({{ $payment->nominalRupiah() }})?\nPastikan dana sudah diterima di rekening.')">
+              data-confirm="{{ $payment->jenisLabel() }} {{ $payment->durasi_tahun }} tahun sebesar {{ $payment->nominalRupiah() }} dari {{ $payment->member->nama_lengkap ?? 'anggota' }}&#10;&#10;Pastikan dana sudah diterima di rekening sebelum menyetujui."
+              data-confirm-title="Setujui Pembayaran?"
+              data-confirm-tone="success"
+              data-confirm-ok="Ya, Setujui">
             @csrf
             <button type="submit" class="text-xs font-bold px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white transition">
                 ✓ Setujui
             </button>
         </form>
 
-        <details class="relative inline-block text-left">
-            <summary class="list-none cursor-pointer text-xs font-bold px-3 py-2 rounded-xl border border-rose-200 text-rose-600 hover:bg-rose-50 transition select-none">
+        <form action="{{ route('admin.payments.reject', $payment) }}" method="POST" class="inline"
+              data-confirm="Bukti pembayaran {{ $payment->member->nama_lengkap ?? 'anggota' }} akan ditolak dan anggota diminta mengunggah ulang.&#10;Alasan ini akan dikirim ke anggota."
+              data-confirm-title="Tolak Pembayaran"
+              data-confirm-tone="danger"
+              data-confirm-ok="Tolak Pembayaran"
+              data-confirm-input="catatan_admin"
+              data-confirm-input-label="Alasan penolakan"
+              data-confirm-input-placeholder="Contoh: Nominal transfer tidak sesuai / bukti tidak terbaca.">
+            @csrf
+            <button type="submit" class="text-xs font-bold px-3 py-2 rounded-xl border border-rose-200 text-rose-600 hover:bg-rose-50 transition">
                 ✕ Tolak
-            </summary>
-            <form action="{{ route('admin.payments.reject', $payment) }}" method="POST"
-                  class="absolute right-0 z-20 mt-2 w-72 max-w-[calc(100vw-2rem)] bg-white border border-slate-200 rounded-2xl shadow-xl p-4 space-y-2.5 text-left">
-                @csrf
-                <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-500">Alasan penolakan</label>
-                <textarea name="catatan_admin" rows="3" required maxlength="500"
-                          placeholder="Contoh: Nominal transfer tidak sesuai / bukti tidak terbaca."
-                          class="w-full text-xs bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 focus:bg-white focus:border-asasi-navy outline-none"></textarea>
-                <button type="submit" class="w-full text-xs font-bold py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white transition">
-                    Kirim Penolakan
-                </button>
-            </form>
-        </details>
+            </button>
+        </form>
     @endif
 </div>

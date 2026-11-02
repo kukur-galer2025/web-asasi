@@ -1,0 +1,137 @@
+/* ASASI UI: modal konfirmasi/peringatan & flash message di tengah layar.
+   Murni CSS (tanpa Tailwind) agar tampil identik di semua layout. */
+
+:root {
+    --ui-navy: #0f2c59;
+    --ui-gold: #c5a059;
+    --ui-ink: #0f172a;
+    --ui-muted: #64748b;
+}
+html.ui-lock { overflow: hidden; }
+
+/* ============ MODAL ============ */
+.ui-overlay {
+    position: fixed; inset: 0; z-index: 10000;
+    display: grid; place-items: center;
+    padding: max(16px, env(safe-area-inset-top)) 16px max(16px, env(safe-area-inset-bottom));
+    background: rgba(8, 26, 56, .55);
+    -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+    opacity: 0; transition: opacity .2s ease;
+    overflow-y: auto;
+}
+.ui-overlay[hidden] { display: none; }
+.ui-overlay.is-open { opacity: 1; }
+
+.ui-dialog {
+    --tone: var(--ui-navy); --tone-soft: #e8eef8; --tone-ring: rgba(15, 44, 89, .18);
+    position: relative; width: 100%; max-width: 420px; margin: auto;
+    background: #fff; border-radius: 28px; padding: 32px 28px 24px;
+    text-align: center; font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    box-shadow: 0 30px 80px -20px rgba(2, 6, 23, .55), 0 0 0 1px rgba(15, 23, 42, .06);
+    transform: translateY(14px) scale(.94); transition: transform .28s cubic-bezier(.22, 1.2, .36, 1);
+    overflow: hidden;
+}
+.ui-overlay.is-open .ui-dialog { transform: none; }
+.ui-dialog::before { /* garis aksen warna nada */
+    content: ""; position: absolute; left: 0; right: 0; top: 0; height: 5px; background: var(--tone);
+}
+.ui-dialog[data-tone="success"] { --tone: #059669; --tone-soft: #d1fae5; --tone-ring: rgba(5, 150, 105, .2); }
+.ui-dialog[data-tone="warning"] { --tone: #d97706; --tone-soft: #fef3c7; --tone-ring: rgba(217, 119, 6, .22); }
+.ui-dialog[data-tone="danger"]  { --tone: #e11d48; --tone-soft: #ffe4e6; --tone-ring: rgba(225, 29, 72, .2); }
+
+.ui-icon {
+    width: 68px; height: 68px; margin: 0 auto 18px; border-radius: 50%;
+    display: grid; place-items: center; color: var(--tone); background: var(--tone-soft);
+    box-shadow: 0 0 0 8px var(--tone-ring);
+}
+.ui-icon svg { width: 32px; height: 32px; }
+.ui-overlay.is-open .ui-icon { animation: ui-pop .45s .08s cubic-bezier(.22, 1.4, .36, 1) both; }
+
+.ui-title { margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 1.4rem; line-height: 1.25; color: var(--ui-ink); }
+.ui-msg { margin: 10px 0 0; font-size: .92rem; line-height: 1.6; color: var(--ui-muted); white-space: pre-line; overflow-wrap: anywhere; }
+
+.ui-field { margin-top: 18px; text-align: left; }
+.ui-field label { display: block; margin-bottom: 6px; font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #475569; }
+.ui-field textarea {
+    display: block; width: 100%; box-sizing: border-box; min-height: 92px; resize: vertical;
+    padding: 12px 14px; font: inherit; font-size: .9rem; line-height: 1.5; color: var(--ui-ink);
+    background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 14px; outline: none; transition: border-color .15s, box-shadow .15s, background .15s;
+}
+.ui-field textarea:focus { background: #fff; border-color: var(--tone); box-shadow: 0 0 0 4px var(--tone-ring); }
+.ui-field.has-error textarea { border-color: #e11d48; }
+.ui-field .ui-err { margin: 6px 0 0; min-height: 1em; font-size: 12px; font-weight: 700; color: #e11d48; }
+
+.ui-actions { display: flex; gap: 10px; margin-top: 24px; }
+.ui-actions .ui-btn { flex: 1 1 0; }
+.ui-actions.is-single { justify-content: center; }
+.ui-actions.is-single .ui-btn { flex: 0 1 200px; }
+.ui-btn {
+    appearance: none; -webkit-appearance: none; cursor: pointer; border: 0; border-radius: 14px;
+    padding: 13px 18px; font: inherit; font-size: .9rem; font-weight: 800; line-height: 1.1;
+    transition: transform .12s, box-shadow .15s, background .15s, color .15s;
+}
+.ui-btn:active { transform: scale(.97); }
+.ui-btn:focus-visible { outline: 3px solid var(--tone-ring); outline-offset: 2px; }
+.ui-btn-ghost { background: #f1f5f9; color: #334155; }
+.ui-btn-ghost:hover { background: #e2e8f0; }
+.ui-btn-primary { background: var(--tone); color: #fff; box-shadow: 0 8px 20px -8px var(--tone); }
+.ui-btn-primary:hover { filter: brightness(1.08); box-shadow: 0 10px 24px -8px var(--tone); }
+.ui-btn[disabled] { opacity: .6; cursor: progress; }
+
+@keyframes ui-pop { 0% { transform: scale(.4); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+
+@media (max-width: 480px) {
+    .ui-dialog { padding: 28px 20px 20px; border-radius: 24px; }
+    .ui-title { font-size: 1.25rem; }
+    .ui-actions { flex-direction: column-reverse; }
+    .ui-actions.is-single .ui-btn { flex: 1 1 auto; }
+}
+
+/* ============ FLASH MESSAGE (tengah layar) ============ */
+.ui-flash-layer {
+    position: fixed; inset: 0; z-index: 10001;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+    padding: max(16px, env(safe-area-inset-top)) 16px max(16px, env(safe-area-inset-bottom));
+    background: rgba(8, 26, 56, .32);
+    -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+    opacity: 0; transition: opacity .25s ease; overflow-y: auto;
+}
+.ui-flash-layer.is-open { opacity: 1; }
+
+.ui-flash {
+    --tone: var(--ui-navy); --tone-soft: #e8eef8;
+    position: relative; width: 100%; max-width: 440px; box-sizing: border-box; overflow: hidden;
+    display: flex; gap: 14px; align-items: flex-start; padding: 20px 46px 22px 20px;
+    background: #fff; border-radius: 22px; font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    box-shadow: 0 30px 70px -22px rgba(2, 6, 23, .55), 0 0 0 1px rgba(15, 23, 42, .06);
+    transform: translateY(16px) scale(.94); opacity: 0; transition: transform .35s cubic-bezier(.22, 1.2, .36, 1), opacity .25s;
+}
+.ui-flash-layer.is-open .ui-flash { transform: none; opacity: 1; }
+.ui-flash[data-tone="success"] { --tone: #059669; --tone-soft: #d1fae5; }
+.ui-flash[data-tone="warning"] { --tone: #d97706; --tone-soft: #fef3c7; }
+.ui-flash[data-tone="danger"]  { --tone: #e11d48; --tone-soft: #ffe4e6; }
+.ui-flash .ui-flash-icon { flex: none; width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; color: var(--tone); background: var(--tone-soft); }
+.ui-flash .ui-flash-icon svg { width: 24px; height: 24px; }
+.ui-flash .ui-flash-body { min-width: 0; text-align: left; }
+.ui-flash .ui-flash-title { font-size: .72rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--tone); }
+.ui-flash .ui-flash-msg { margin-top: 3px; font-size: .92rem; line-height: 1.55; font-weight: 600; color: var(--ui-ink); overflow-wrap: anywhere; white-space: pre-line; }
+.ui-flash .ui-flash-close {
+    position: absolute; top: 12px; right: 12px; width: 28px; height: 28px; border: 0; border-radius: 50%;
+    background: transparent; color: #94a3b8; cursor: pointer; display: grid; place-items: center; transition: background .15s, color .15s;
+}
+.ui-flash .ui-flash-close:hover { background: #f1f5f9; color: #334155; }
+.ui-flash .ui-flash-close svg { width: 16px; height: 16px; }
+.ui-flash .ui-flash-bar { position: absolute; left: 0; bottom: 0; height: 4px; width: 100%; background: var(--tone); transform-origin: left; opacity: .85; animation: ui-bar linear forwards; animation-duration: var(--dur, 5s); }
+.ui-flash:hover .ui-flash-bar { animation-play-state: paused; }
+@keyframes ui-bar { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+
+@media (max-width: 480px) {
+    .ui-flash { padding: 18px 42px 20px 16px; border-radius: 20px; }
+    .ui-flash .ui-flash-icon { width: 40px; height: 40px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ui-overlay, .ui-dialog, .ui-flash-layer, .ui-flash { transition: none; }
+    .ui-overlay.is-open .ui-icon { animation: none; }
+    .ui-flash .ui-flash-bar { animation: none; transform: scaleX(0); }
+}

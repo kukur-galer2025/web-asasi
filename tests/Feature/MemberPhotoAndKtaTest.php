@@ -155,6 +155,6 @@ class MemberPhotoAndKtaTest extends TestCase
         $response = $this->actingAs($user)->get(route('member.cetak.kta'));
 
         $response->assertRedirect(route('member.dashboard'));
-        $response->assertSessionHas('success');
+        $response->assertSessionHas('warning');
     }
 }

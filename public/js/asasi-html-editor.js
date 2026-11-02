@@ -199,7 +199,7 @@
             preview: 'Tampilan sama seperti di website.'
         };
 
-        function setMode(mode) {
+        function setMode(mode, skipWarn) {
             if (mode === state.mode) return;
 
             if (state.mode === 'html') {
@@ -210,8 +210,16 @@
             }
 
             if (mode === 'visual') {
-                if (/<(table|style|script|form|iframe(?![^>]*ql-video)|svg|div|section|span[^>]*style)\b/i.test(state.source) &&
-                    !confirm('Kode HTML ini memuat elemen (mis. tabel, div, atau style khusus) yang tidak didukung editor Visual dan bisa hilang jika Anda mengedit di mode Visual.\n\nHTML asli tetap aman selama Anda TIDAK mengubah apa pun di mode Visual.\n\nLanjut ke mode Visual?')) {
+                var risky = /<(table|style|script|form|iframe(?![^>]*ql-video)|svg|div|section|span[^>]*style)\b/i.test(state.source);
+                if (risky && !skipWarn) {
+                    // Modal kustom (asinkron): lanjutkan perpindahan hanya bila pengguna setuju
+                    AsasiUI.confirm({
+                        title: 'Pindah ke Mode Visual?',
+                        message: 'Kode HTML ini memuat elemen (mis. tabel, div, atau style khusus) yang tidak didukung editor Visual dan bisa hilang jika Anda mengedit di mode Visual.\n\nHTML asli tetap aman selama Anda TIDAK mengubah apa pun di mode Visual.',
+                        tone: 'warning',
+                        confirmText: 'Ya, Lanjut ke Visual',
+                        cancelText: 'Tetap di Sini'
+                    }).then(function (ok) { if (ok) setMode('visual', true); });
                     return;
                 }
                 quill.setContents([], 'silent');

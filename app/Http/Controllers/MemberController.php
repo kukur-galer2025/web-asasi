@@ -28,7 +28,7 @@ class MemberController extends Controller
         }
 
         return redirect()->route('login')
-            ->with('success', 'Silakan masuk dengan akun Google terlebih dahulu untuk mengajukan keanggotaan ASASI.');
+            ->with('info', 'Silakan masuk dengan akun Google terlebih dahulu untuk mengajukan keanggotaan ASASI.');
     }
 
     // Menampilkan Dashboard Mandiri Member & Form Pengajuan KTA
@@ -198,7 +198,7 @@ class MemberController extends Controller
 
         if ($member->status !== 'active') {
             return redirect()->route('member.dashboard')
-                ->with('success', 'KTA hanya dapat diunduh setelah pengajuan Anda diverifikasi oleh Admin.');
+                ->with('warning', 'KTA hanya dapat diunduh setelah pengajuan Anda diverifikasi oleh Admin.');
         }
 
         // Gunakan ukuran ID Card dalam posisi portrait lalu dibalik oleh parameter 'landscape'

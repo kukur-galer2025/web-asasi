@@ -117,7 +117,10 @@
                                     @include('admin.partials.payment-actions', ['payment' => $member->pendingPayment])
                                 @elseif($member->status !== 'active' && ! $payment)
                                     <form action="{{ route('admin.approve', $member->id) }}" method="POST" class="inline"
-                                          onsubmit="return confirm('Aktifkan anggota ini tanpa bukti pembayaran (data lama)?')">
+                                          data-confirm="Anggota {{ $member->nama_lengkap }} akan diaktifkan tanpa bukti pembayaran. Gunakan hanya untuk data lama sebelum fitur pembayaran.&#10;&#10;Nomor KTA akan diterbitkan dan berlaku 1 tahun."
+                                          data-confirm-title="Aktifkan Tanpa Bukti Bayar?"
+                                          data-confirm-tone="warning"
+                                          data-confirm-ok="Ya, Aktifkan">
                                         @csrf
                                         <button type="submit" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs px-3.5 py-2 rounded-xl font-bold transition">
                                             ✓ Setujui & Terbitkan KTA

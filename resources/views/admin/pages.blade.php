@@ -91,7 +91,10 @@
                         </td>
                         <td class="px-4 py-3.5 text-right">
                             <a href="{{ route('admin.pages.edit', $p->id) }}" class="text-xs text-asasi-navy hover:underline font-bold mr-3">Edit</a>
-                            <form action="{{ route('admin.pages.delete', $p->id) }}" method="POST" class="inline">
+                            <form action="{{ route('admin.pages.delete', $p->id) }}" method="POST" class="inline"
+                                  data-confirm="Halaman &quot;{{ $p->judul }}&quot; akan dihapus permanen dan hilang dari menu navigasi. Tindakan ini tidak dapat dibatalkan."
+                                  data-confirm-title="Hapus Halaman?"
+                                  data-confirm-tone="danger" data-confirm-icon="trash" data-confirm-ok="Ya, Hapus">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="text-xs text-rose-600 hover:underline font-bold">Hapus</button>
@@ -154,7 +157,7 @@
                                     quill.setSelection(range.index + 1);
                                 }
                             } catch (e) {
-                                alert('Gagal mengunggah gambar. Pastikan ukuran gambar di bawah 3MB.');
+                                AsasiUI.alert({ tone: 'danger', title: 'Gagal Mengunggah Gambar', message: 'Pastikan ukuran gambar di bawah 3MB dan formatnya JPG, PNG, atau WEBP.' });
                             }
                         };
                     }

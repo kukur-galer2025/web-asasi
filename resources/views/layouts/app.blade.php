@@ -271,16 +271,7 @@
         </div>
     </header>
 
-    <!-- Notifikasi Sukses -->
     <main class="flex-grow w-full">
-        @if(session('success'))
-            <div class="max-w-7xl mx-auto px-4 sm:px-8 pt-6">
-                <div class="bg-emerald-50 text-emerald-900 border border-emerald-200 px-5 py-4 rounded-2xl shadow-sm flex items-center gap-3">
-                    <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-emerald-600 text-white text-xs font-bold">✓</span>
-                    <p class="text-sm font-semibold">{{ session('success') }}</p>
-                </div>
-            </div>
-        @endif
 
         @yield('content')
     </main>
@@ -397,6 +388,8 @@
 
         </div>
     </footer>
+
+    @include('partials.ui-dialogs')
 
     @livewireScripts
 </body>

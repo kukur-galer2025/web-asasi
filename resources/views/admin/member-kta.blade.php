@@ -267,7 +267,7 @@
                     } catch (e) {
                         if (wasHidden) card.classList.add('hidden');
                         console.error('Download KTA Image Error:', e);
-                        alert('Perhatian: Gagal mengekspor gambar (' + (e.message || e) + ').');
+                        AsasiUI.alert({ tone: 'danger', title: 'Gagal Mengekspor Gambar', message: 'Terjadi kendala saat membuat gambar kartu (' + (e.message || e) + '). Silakan coba lagi atau gunakan Unduh Versi PDF.' });
                     } finally {
                         if (btn && origHtml) {
                             btn.disabled = false;

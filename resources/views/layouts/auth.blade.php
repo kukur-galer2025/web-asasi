@@ -35,5 +35,6 @@
     <footer class="text-center text-xs text-slate-400 pb-6 px-4">
         &copy; {{ date('Y') }} Perkumpulan Akademisi dan Saintis Indonesia (ASASI).
     </footer>
+    @include('partials.ui-dialogs')
 </body>
 </html>

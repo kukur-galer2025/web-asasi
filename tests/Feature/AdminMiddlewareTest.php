@@ -135,6 +135,6 @@ class AdminMiddlewareTest extends TestCase
 
         $response = $this->actingAs($admin)->get(route('admin.cetak.kta', $profile->id));
         $response->assertRedirect();
-        $response->assertSessionHas('success', 'Setujui anggota terlebih dahulu sebelum mencetak KTA.');
+        $response->assertSessionHas('warning', 'Setujui anggota terlebih dahulu sebelum mencetak KTA.');
     }
 }

@@ -89,11 +89,6 @@
                     </div>
                 @endif
 
-                @if(session('success'))
-                    <div class="mb-6 bg-blue-50 border border-blue-200 text-asasi-navy px-4 py-3.5 rounded-2xl text-xs font-semibold">
-                        ℹ️ {{ session('success') }}
-                    </div>
-                @endif
 
                 <!-- Opsi 1: Login / Pengajuan Anggota via Google -->
                 <a href="{{ route('google.redirect') }}" class="w-full flex items-center justify-center gap-3 bg-white hover:bg-slate-50 text-slate-800 border-2 border-slate-200 hover:border-asasi-navy/40 font-bold py-3.5 px-5 rounded-2xl text-sm shadow-sm transition">
@@ -162,5 +157,6 @@
 
     </div>
 
+    @include('partials.ui-dialogs')
 </body>
 </html>
