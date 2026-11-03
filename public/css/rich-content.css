@@ -67,14 +67,14 @@
 .rich-content::after { content: ""; display: table; clear: both; }
 
 /* ===== Editor admin (Visual / Kode HTML / Pratinjau) ===== */
-.asasi-ed { border: 1px solid #e2e8f0; border-radius: 16px; background: #fff; box-shadow: 0 1px 2px rgba(15,23,42,.04); }
+.asasi-ed { container-type: inline-size; border: 1px solid #e2e8f0; border-radius: 16px; background: #fff; box-shadow: 0 1px 2px rgba(15,23,42,.04); }
 .asasi-ed:focus-within { border-color: #94a3b8; box-shadow: 0 0 0 3px rgba(15,44,89,.08); }
 .asasi-ed-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; padding: 8px 10px; background: #f8fafc; border-bottom: 1px solid #e2e8f0; border-radius: 16px 16px 0 0; }
 .asasi-ed-tabs { display: inline-flex; gap: 2px; padding: 3px; background: #e9eef4; border-radius: 12px; }
 .asasi-ed-tabs button { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; padding: 7px 14px; border-radius: 9px; color: #64748b; border: 0; background: transparent; transition: all .15s; }
 .asasi-ed-tabs button:hover { color: #0f2c59; }
 .asasi-ed-tabs button.is-active { background: #fff; color: #0f2c59; box-shadow: 0 1px 3px rgba(15,23,42,.15); }
-.asasi-ed-tools { display: flex; align-items: center; gap: 6px; }
+.asasi-ed-tools { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 .asasi-ed-tool-html, .asasi-ed-tool-preview { display: flex; align-items: center; gap: 6px; }
 .asasi-ed-tool-html[hidden], .asasi-ed-tool-preview[hidden] { display: none; }
 .asasi-ed-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; padding: 7px 12px; border-radius: 10px; color: #0f2c59; background: #fff; border: 1px solid #dbe3ec; transition: all .15s; }
@@ -100,12 +100,23 @@
 .asasi-ed-stage[data-device="tablet"] .asasi-ed-preview { width: 768px; max-width: 100%; }
 .asasi-ed-stage[data-device="phone"] .asasi-ed-preview { width: 390px; max-width: 100%; }
 .asasi-ed-preview { display: block; border: 1px solid #e2e8f0; border-radius: 12px; background: #fff; box-shadow: 0 10px 30px -14px rgba(15,23,42,.35); transition: width .2s; }
+/* Mode Kode HTML: kode + pratinjau langsung berdampingan (bertumpuk di layar sempit) */
+.asasi-ed-body.is-split { display: grid; grid-template-columns: minmax(0, 1fr); }
+.asasi-ed-body.is-split .asasi-ed-stage { border-top: 1px solid #e2e8f0; min-height: 260px; }
+@container (min-width: 760px) {
+    .asasi-ed-body.is-split { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    .asasi-ed-body.is-split .asasi-ed-stage { border-top: 0; border-left: 1px solid #e2e8f0; min-height: 0; }
+}
+.asasi-ed-body.is-split .asasi-ed-code { resize: none; white-space: pre-wrap; overflow-wrap: anywhere; }
+@container (max-width: 759px) { .asasi-ed:not(.is-full) .asasi-ed-body.is-split .asasi-ed-code { height: 200px !important; } }
 .asasi-ed-foot { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 7px 14px; font-size: 11px; color: #94a3b8; background: #f8fafc; border-top: 1px solid #e2e8f0; border-radius: 0 0 16px 16px; }
 .asasi-ed-stats { font-variant-numeric: tabular-nums; font-weight: 600; }
 
 /* Layar penuh */
 .asasi-ed.is-full { position: fixed; inset: 12px; z-index: 9999; display: flex; flex-direction: column; box-shadow: 0 30px 80px -20px rgba(2,6,23,.6); }
 .asasi-ed.is-full .asasi-ed-body { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.asasi-ed.is-full .asasi-ed-body.is-split { display: grid; grid-template-rows: minmax(0, 1fr) minmax(0, 1fr); }
+@container (min-width: 760px) { .asasi-ed.is-full .asasi-ed-body.is-split { grid-template-rows: minmax(0, 1fr); } }
 .asasi-ed.is-full .ql-container { flex: 1; min-height: 0; height: auto !important; overflow: auto; }
 .asasi-ed.is-full .asasi-ed-code { flex: 1; resize: none; }
 .asasi-ed.is-full .asasi-ed-stage { flex: 1; }

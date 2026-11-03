@@ -5,6 +5,7 @@
  *  - Visual    : editor Quill biasa.
  *  - Kode HTML : textarea HTML mentah (tabel, div ber-style, iframe, dsb. dipertahankan apa adanya),
  *                dilengkapi tombol sisipkan komponen siap pakai dan "Rapikan" kode.
+ *                Pratinjau tampil berdampingan dan diperbarui langsung saat mengetik.
  *  - Pratinjau : render persis seperti halaman publik, dengan pilihan lebar Desktop / Tablet / HP.
  *
  * Nilai yang dikirim ke server:
@@ -177,14 +178,35 @@
             stats.textContent = words + ' kata · ' + currentHtml().length + ' karakter HTML';
         }
 
-        function renderPreview(html) {
+        var frameReady = false, liveTimer = null;
+
+        // Kerangka iframe dimuat sekali; pembaruan berikutnya lewat postMessage agar tidak berkedip dan posisi gulir tetap.
+        function shellDoc(html) {
             var base = document.baseURI.replace(/\/admin.*$/, '/');
-            frame.srcdoc =
-                '<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><base href="' + esc(base) + '" target="_blank">' +
+            return '<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><base href="' + esc(base) + '" target="_blank">' +
                 (opts.appCssUrl ? '<link rel="stylesheet" href="' + esc(opts.appCssUrl) + '">' : '') +
                 '<link rel="stylesheet" href="' + esc(opts.cssUrl) + '">' +
                 '<style>body{margin:0;padding:24px;background:#fff;font-family:"Plus Jakarta Sans",ui-sans-serif,system-ui,sans-serif;}</style>' +
-                '</head><body><div class="rich-content">' + html + '</div></body></html>';
+                '</head><body><div class="rich-content" id="rc">' + html + '</div>' +
+                '<script>addEventListener("message",function(e){if(e.source!==parent||!e.data||e.data.t!=="asasi-html")return;' +
+                'var y=scrollY;document.getElementById("rc").innerHTML=e.data.h;scrollTo(0,y);});<\/script>' +
+                '</body></html>';
+        }
+
+        function renderPreview(html, live) {
+            // Skrip pengguna hanya berjalan pada muat penuh; selebihnya cukup tukar isi
+            if (live && frameReady && !/<script/i.test(html)) {
+                frame.contentWindow.postMessage({ t: 'asasi-html', h: html }, '*');
+                return;
+            }
+            frameReady = false;
+            frame.onload = function () { frameReady = true; };
+            frame.srcdoc = shellDoc(html);
+        }
+
+        function livePreview() {
+            clearTimeout(liveTimer);
+            liveTimer = setTimeout(function () { renderPreview(textarea.value, true); }, 120);
         }
 
         function setDevice(device) {
@@ -195,7 +217,7 @@
 
         var HINTS = {
             visual: 'Editor visual — klik gambar untuk mengubah ukurannya.',
-            html: 'HTML disimpan apa adanya. Tab = indentasi.',
+            html: 'Pratinjau langsung — berubah saat Anda mengetik. Tab = indentasi.',
             preview: 'Tampilan sama seperti di website.'
         };
 
@@ -227,15 +249,16 @@
                 state.visualDirty = false;
             }
             if (mode === 'html') textarea.value = state.source;
-            if (mode === 'preview') renderPreview(state.source);
+            if (mode === 'preview' || mode === 'html') renderPreview(state.source);
 
             state.mode = mode;
             toolbar.hidden = container.hidden = mode !== 'visual';
             toolbar.style.display = container.style.display = mode === 'visual' ? '' : 'none';
             textarea.hidden = mode !== 'html';
-            stage.hidden = mode !== 'preview';
+            stage.hidden = mode === 'visual';
+            body.classList.toggle('is-split', mode === 'html');
             toolHtml.hidden = mode !== 'html';
-            toolPreview.hidden = mode !== 'preview';
+            toolPreview.hidden = mode === 'visual';
             menu.hidden = true;
             shell.querySelectorAll('.asasi-ed-tabs button').forEach(function (b) {
                 var on = b.dataset.mode === mode;
@@ -272,7 +295,7 @@
             var act = t.closest('[data-act]');
             if (!act) return;
             if (act.dataset.act === 'snip') menu.hidden = !menu.hidden;
-            if (act.dataset.act === 'format') { textarea.value = beautify(textarea.value); updateStats(); }
+            if (act.dataset.act === 'format') { textarea.value = beautify(textarea.value); updateStats(); livePreview(); }
             if (act.dataset.act === 'full') setFull(!shell.classList.contains('is-full'));
         });
 
@@ -287,7 +310,7 @@
         textarea.addEventListener('keydown', function (e) {
             if (e.key === 'Tab') { e.preventDefault(); insertAtCursor('  '); }
         });
-        textarea.addEventListener('input', updateStats);
+        textarea.addEventListener('input', function () { updateStats(); livePreview(); });
 
         form.addEventListener('submit', function () {
             hidden.value = currentHtml();
