@@ -36,8 +36,7 @@
 <!-- Isi Konten Berita -->
 <div class="max-w-4xl mx-auto px-4 sm:px-8 -mt-12 relative z-10 pb-14">
     <article class="bg-white rounded-3xl border border-slate-200/90 shadow-lg p-7 sm:p-12">
-        <link rel="stylesheet" href="{{ asset('css/rich-content.css') }}">
-        <script src="{{ asset('js/asasi-slides.js') }}" defer></script>
+        <link rel="stylesheet" href="{{ asset('css/rich-content.css') }}?v={{ filemtime(public_path('css/rich-content.css')) }}">
 
         <!-- Konten HTML dari Rich Text Editor -->
         <div class="rich-content text-sm sm:text-base">

@@ -212,7 +212,6 @@
             return '<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><base href="' + esc(base) + '" target="_blank">' +
                 (opts.appCssUrl ? '<link rel="stylesheet" href="' + esc(opts.appCssUrl) + '">' : '') +
                 '<link rel="stylesheet" href="' + esc(opts.cssUrl) + '">' +
-                '<script src="' + esc(opts.cssUrl.replace(/css\/rich-content\.css.*$/, 'js/asasi-slides.js')) + '" defer><\/script>' +
                 (previewFontCss ? '<style>' + previewFontCss + '</style>' : '') +
                 '<style>body{margin:0;padding:24px;background:#fff;font-family:"Plus Jakarta Sans",ui-sans-serif,system-ui,sans-serif;}</style>' +
                 '</head><body><div class="rich-content" id="rc">' + html + '</div>' +

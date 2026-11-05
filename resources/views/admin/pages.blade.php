@@ -5,7 +5,7 @@
 <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/quill-blot-formatter@1.0.5/dist/quill-blot-formatter.min.js"></script>
-<link href="{{ asset('css/rich-content.css') }}" rel="stylesheet" />
+<link href="{{ asset('css/rich-content.css') }}?v={{ filemtime(public_path('css/rich-content.css')) }}" rel="stylesheet" />
 <script src="{{ asset('js/asasi-html-editor.js') }}"></script>
 
 <div class="grid lg:grid-cols-12 gap-6">
@@ -169,7 +169,7 @@
     AsasiHtmlEditor.attach(quill, {
         hiddenId: 'konten-input',
         initialHtml: '',
-        cssUrl: '{{ asset('css/rich-content.css') }}',
+        cssUrl: '{{ asset('css/rich-content.css') }}?v={{ filemtime(public_path('css/rich-content.css')) }}',
         appCssUrl: '{{ \Illuminate\Support\Facades\Vite::asset('resources/css/app.css') }}'
     });
 </script>

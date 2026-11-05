@@ -38,8 +38,7 @@
 <!-- Konten Artikel -->
 <div class="max-w-5xl mx-auto px-4 sm:px-8 -mt-12 relative z-10 pb-12">
     <div class="bg-white rounded-3xl border border-slate-200/90 shadow-lg p-8 md:p-12">
-        <link rel="stylesheet" href="{{ asset('css/rich-content.css') }}">
-        <script src="{{ asset('js/asasi-slides.js') }}" defer></script>
+        <link rel="stylesheet" href="{{ asset('css/rich-content.css') }}?v={{ filemtime(public_path('css/rich-content.css')) }}">
         <div class="rich-content text-sm md:text-base">
             {!! $page->konten !!}
         </div>
