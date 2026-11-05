@@ -28,3 +28,7 @@ Homestead.yaml
 Thumbs.db
 client_secret*.json
 resources/views/kartu-member-asasi-web*
+
+# Dump & berkas WordPress lama (berisi data pengguna, jangan di-commit)
+*.sql
+/uploads-sql/
