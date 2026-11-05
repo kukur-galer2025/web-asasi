@@ -40,6 +40,9 @@
 
     var VOID = /^(area|base|br|col|embed|hr|img|input|link|meta|source|track|wbr)$/i;
 
+    // Elemen yang tidak didukung editor Visual (Quill) dan akan hilang bila diedit di sana
+    var RISKY = /<(table|style|script|form|input|label|iframe(?![^>]*ql-video)|svg|div|section|span[^>]*style)\b/i;
+
     function esc(s) {
         return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
@@ -180,12 +183,37 @@
 
         var frameReady = false, liveTimer = null;
 
+        // Iframe pratinjau di-sandbox (origin null) sehingga tidak boleh memuat font dari situs (CORS).
+        // Font deck slide diambil oleh halaman admin (same-origin) lalu disisipkan sebagai data URL.
+        var previewFontCss = '';
+        (function loadPreviewFonts() {
+            if (!window.fetch || !window.FileReader) return;
+            var base = opts.cssUrl.replace(/css\/rich-content\.css.*$/, 'fonts/');
+            var fonts = [['Sora', '600 800', 'sora-latin.woff2'], ['DM Sans', '400 700', 'dm-sans-latin.woff2']];
+            Promise.all(fonts.map(function (f) {
+                return fetch(base + f[2]).then(function (r) { return r.ok ? r.blob() : Promise.reject(); }).then(function (blob) {
+                    return new Promise(function (resolve) {
+                        var fr = new FileReader();
+                        fr.onload = function () {
+                            resolve("@font-face{font-family:'" + f[0] + "';font-weight:" + f[1] + ";font-display:swap;src:url(" + fr.result + ") format('woff2')}");
+                        };
+                        fr.readAsDataURL(blob);
+                    });
+                });
+            })).then(function (rules) {
+                previewFontCss = rules.join('');
+                if (state.mode !== 'visual') renderPreview(currentHtml());
+            }).catch(function () {});
+        })();
+
         // Kerangka iframe dimuat sekali; pembaruan berikutnya lewat postMessage agar tidak berkedip dan posisi gulir tetap.
         function shellDoc(html) {
             var base = document.baseURI.replace(/\/admin.*$/, '/');
             return '<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><base href="' + esc(base) + '" target="_blank">' +
                 (opts.appCssUrl ? '<link rel="stylesheet" href="' + esc(opts.appCssUrl) + '">' : '') +
                 '<link rel="stylesheet" href="' + esc(opts.cssUrl) + '">' +
+                '<script src="' + esc(opts.cssUrl.replace(/css\/rich-content\.css.*$/, 'js/asasi-slides.js')) + '" defer><\/script>' +
+                (previewFontCss ? '<style>' + previewFontCss + '</style>' : '') +
                 '<style>body{margin:0;padding:24px;background:#fff;font-family:"Plus Jakarta Sans",ui-sans-serif,system-ui,sans-serif;}</style>' +
                 '</head><body><div class="rich-content" id="rc">' + html + '</div>' +
                 '<script>addEventListener("message",function(e){if(e.source!==parent||!e.data||e.data.t!=="asasi-html")return;' +
@@ -232,8 +260,7 @@
             }
 
             if (mode === 'visual') {
-                var risky = /<(table|style|script|form|iframe(?![^>]*ql-video)|svg|div|section|span[^>]*style)\b/i.test(state.source);
-                if (risky && !skipWarn) {
+                if (RISKY.test(state.source) && !skipWarn) {
                     // Modal kustom (asinkron): lanjutkan perpindahan hanya bila pengguna setuju
                     AsasiUI.confirm({
                         title: 'Pindah ke Mode Visual?',
@@ -319,6 +346,8 @@
         setDevice('desktop');
         hint.textContent = HINTS.visual;
         updateStats();
+        // Konten HTML kompleks (mis. deck slide) langsung dibuka di mode Kode HTML agar tidak rusak oleh editor Visual
+        if (RISKY.test(state.source)) setMode('html');
 
         return { setMode: setMode, getHtml: currentHtml };
     }

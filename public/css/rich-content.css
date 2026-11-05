@@ -63,8 +63,37 @@
 .rich-content .ql-size-huge { font-size: 2.5em; }
 .rich-content .ql-font-serif { font-family: Georgia, 'Times New Roman', serif; }
 .rich-content .ql-font-monospace { font-family: Monaco, Courier, monospace; }
-.rich-content img[style*="float"], .rich-content img[align] { margin: .25rem 1rem; }
+.rich-content img[style*="float"]:not(.asasi-slide-inner *), .rich-content img[align]:not(.asasi-slide-inner *) { margin: .25rem 1rem; }
 .rich-content::after { content: ""; display: table; clear: both; }
+
+/* ===== Deck slide (mis. Program Kerja Bidang): slide 560×840 diskalakan oleh js/asasi-slides.js ===== */
+@font-face { font-family: 'Sora'; font-style: normal; font-weight: 600 800; font-display: swap; src: url('../fonts/sora-latin.woff2') format('woff2'); }
+@font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 400 700; font-display: swap; src: url('../fonts/dm-sans-latin.woff2') format('woff2'); }
+.rich-content .asasi-deck { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr)); gap: 24px; align-items: start; }
+.rich-content .asasi-slide { position: relative; aspect-ratio: 560 / 840; overflow: hidden; border-radius: 18px; background: #fff; box-shadow: 0 14px 34px -18px rgba(15,23,42,.45); }
+/* Isi slide memakai inline style; gaya .rich-content dikembalikan ke bawaan browser agar tampil persis seperti desain asli */
+.rich-content .asasi-slide-inner, .rich-content .asasi-slide-inner *,
+.rich-content .asasi-slide-inner *::before, .rich-content .asasi-slide-inner *::after { all: revert; }
+.rich-content .asasi-slide-inner { position: absolute; top: 0; left: 0; width: 560px; height: 840px; transform-origin: 0 0;
+    font-size: 16px; line-height: normal; color: #000; text-align: left; letter-spacing: normal; overflow-wrap: normal; }
+/* Tab CSS: radio tersembunyi + label (slide interaktif tetap berfungsi tanpa JavaScript) */
+.rich-content .asasi-slide-inner > input.asasi-tab-input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none; }
+.rich-content .asasi-tabs > div.asasi-tab-panel { display: none; }
+.rich-content .asasi-tabs > input:nth-of-type(1):checked ~ div.asasi-tab-panel:nth-of-type(1),
+.rich-content .asasi-tabs > input:nth-of-type(2):checked ~ div.asasi-tab-panel:nth-of-type(2),
+.rich-content .asasi-tabs > input:nth-of-type(3):checked ~ div.asasi-tab-panel:nth-of-type(3),
+.rich-content .asasi-tabs > input:nth-of-type(4):checked ~ div.asasi-tab-panel:nth-of-type(4),
+.rich-content .asasi-tabs > input:nth-of-type(5):checked ~ div.asasi-tab-panel:nth-of-type(5),
+.rich-content .asasi-tabs > input:nth-of-type(6):checked ~ div.asasi-tab-panel:nth-of-type(6),
+.rich-content .asasi-tabs > input:nth-of-type(7):checked ~ div.asasi-tab-panel:nth-of-type(7),
+.rich-content .asasi-tabs > input:nth-of-type(8):checked ~ div.asasi-tab-panel:nth-of-type(8),
+.rich-content .asasi-tabs > input:nth-of-type(9):checked ~ div.asasi-tab-panel:nth-of-type(9),
+.rich-content .asasi-tabs > input:nth-of-type(10):checked ~ div.asasi-tab-panel:nth-of-type(10) { display: block; }
+/* label menggantikan <button> asli: samakan box-sizing bawaan tombol */
+.rich-content .asasi-slide-inner label.chip { box-sizing: border-box; cursor: pointer; transition: transform .15s; }
+.rich-content .asasi-slide-inner label.chip:hover { transform: translateY(-2px); }
+.rich-content .asasi-tabs:has(> input:focus-visible) label.chip.is-active { outline: 3px solid #12072E; outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .rich-content .asasi-slide-inner label.chip { transition: none; } }
 
 /* ===== Editor admin (Visual / Kode HTML / Pratinjau) ===== */
 .asasi-ed { container-type: inline-size; border: 1px solid #e2e8f0; border-radius: 16px; background: #fff; box-shadow: 0 1px 2px rgba(15,23,42,.04); }
@@ -125,8 +154,8 @@ html.asasi-ed-noscroll { overflow: hidden; }
 
 /* Pengaman responsif untuk HTML yang ditulis admin (inline style): layar HP */
 .rich-content > * { max-width: 100%; }
-.rich-content [style*="display: flex"], .rich-content [style*="display:flex"] { flex-wrap: wrap; }
+.rich-content [style*="display: flex"]:not(.asasi-slide-inner *), .rich-content [style*="display:flex"]:not(.asasi-slide-inner *) { flex-wrap: wrap; }
 @media (max-width: 520px) {
-    .rich-content [style*="grid-template-columns"] { grid-template-columns: minmax(0, 1fr) !important; }
-    .rich-content [style*="padding: 2rem"], .rich-content [style*="padding:2rem"] { padding: 1.25rem !important; }
+    .rich-content [style*="grid-template-columns"]:not(.asasi-slide-inner *) { grid-template-columns: minmax(0, 1fr) !important; }
+    .rich-content [style*="padding: 2rem"]:not(.asasi-slide-inner *), .rich-content [style*="padding:2rem"]:not(.asasi-slide-inner *) { padding: 1.25rem !important; }
 }

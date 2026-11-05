@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Page;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\File;
 
 class PageSeeder extends Seeder
 {
@@ -730,38 +731,7 @@ class PageSeeder extends Seeder
                 'hero_subtitle' => 'Penguatan citra kelembagaan, diseminasi sains kepada publik, dan inovasi komunikasi kreatif organisasi.',
                 'hero_image'    => 'images/kegiatan/kegiatan-asasi-pelantikan.webp',
                 'urutan'        => 7,
-                'konten'        => '<div style="background: linear-gradient(135deg, #0F2C59 0%, #0284c7 100%); color: white; padding: 2rem; border-radius: 1.25rem; margin-bottom: 2rem; box-shadow: 0 10px 25px -5px rgba(15, 44, 89, 0.2);">
-                    <div style="display: inline-block; background-color: #C5A059; color: #001D3D; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 9999px; margin-bottom: 0.75rem;">
-                        Pengurus Pusat ASASI
-                    </div>
-                    <h2 style="color: white; margin: 0 0 0.5rem 0; font-size: 1.75rem; font-weight: 800;">Bidang Branding & Kreativitas</h2>
-                    <p style="color: #cbd5e1; margin: 0; font-size: 0.95rem; line-height: 1.6;">
-                        Membangun reputasi visual perkumpulan, menyebarluaskan capaian riset saintis kepada masyarakat luas melalui media digital modern, dan memfasilitasi komunikasi publik yang berdaya jangkau luas.
-                    </p>
-                </div>
-
-                <h3 style="color: #0F2C59; font-size: 1.25rem; font-weight: 700; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; margin-top: 1.5rem;">
-                    Kepengurusan Bidang Branding & Kreativitas
-                </h3>
-
-                <div style="margin-top: 1rem; margin-bottom: 2rem;">
-                    <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #C5A059; border-radius: 0.75rem; padding: 1.25rem; max-width: 480px;">
-                        <span style="font-size: 11px; font-weight: 800; color: #92400e; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 4px;">Tim Branding dan Kreatifitas</span>
-                        <h4 style="margin: 0; font-size: 1.05rem; font-weight: 700; color: #0F2C59;">Dr. Ir. H. Nurul Hidayat, S.Pt., M.Kom.</h4>
-                        <span style="display: inline-block; background-color: #dbeafe; color: #1e40af; font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 6px; margin-top: 6px;">
-                            Universitas Jenderal Soedirman (Unsoed)
-                        </span>
-                    </div>
-                </div>
-
-                <h3 style="color: #0F2C59; font-size: 1.25rem; font-weight: 700; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem;">
-                    Fokus Tugas & Program Strategis
-                </h3>
-                <ul style="line-height: 1.8; color: #334155;">
-                    <li><strong>Pengelolaan Citra Digital Perkumpulan:</strong> Mengelola portal resmi web ASASI, media sosial, dan kanal informasi daring agar representatif, modern, dan informatif.</li>
-                    <li><strong>Sains Populer & Edukasi Publik:</strong> Mengemas narasi ilmiah dan hasil riset saintis ASASI ke dalam bentuk infografis, video kreatif, dan rilis media yang mudah dicerna khalayak luas.</li>
-                    <li><strong>Identitas Visual & Media Kreatif:</strong> Menjaga konsistensi brand identity, desain atribut organisasi, sertifikat resmi, dan dokumentasi multimedia di setiap perhelatan ASASI.</li>
-                </ul>',
+                'konten'        => '', // diisi dari database/seeders/data/pages/bidang-branding-kreativitas.html
             ],
 
             // =================================================================
@@ -836,6 +806,12 @@ class PageSeeder extends Seeder
         ];
 
         foreach ($pages as $data) {
+            // Konten panjang (mis. deck slide) disimpan sebagai berkas HTML terpisah
+            $file = database_path("seeders/data/pages/{$data['slug']}.html");
+            if (File::exists($file)) {
+                $data['konten'] = File::get($file);
+            }
+
             Page::updateOrCreate(
                 ['slug' => $data['slug']],
                 $data
