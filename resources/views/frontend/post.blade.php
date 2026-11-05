@@ -40,7 +40,7 @@
 
         <!-- Konten HTML dari Rich Text Editor -->
         <div class="rich-content text-sm sm:text-base">
-            {!! $post->konten !!}
+            {!! \App\Support\RichContent::prepare($post->konten) !!}
         </div>
 
         <!-- Daftar Tag Berita (Jika Ada) -->

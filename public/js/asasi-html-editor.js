@@ -209,7 +209,8 @@
         // Kerangka iframe dimuat sekali; pembaruan berikutnya lewat postMessage agar tidak berkedip dan posisi gulir tetap.
         function shellDoc(html) {
             var base = document.baseURI.replace(/\/admin.*$/, '/');
-            return '<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><base href="' + esc(base) + '" target="_blank">' +
+            // referrer: pemutar YouTube menolak diputar tanpa Referer (Error 153)
+            return '<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="strict-origin-when-cross-origin"><base href="' + esc(base) + '" target="_blank">' +
                 (opts.appCssUrl ? '<link rel="stylesheet" href="' + esc(opts.appCssUrl) + '">' : '') +
                 '<link rel="stylesheet" href="' + esc(opts.cssUrl) + '">' +
                 (previewFontCss ? '<style>' + previewFontCss + '</style>' : '') +
