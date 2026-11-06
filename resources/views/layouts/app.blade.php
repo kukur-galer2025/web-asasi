@@ -49,9 +49,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 sm:h-24 flex justify-between items-center">
             
             <!-- Logo Resmi ASASI di Kiri -->
-            <a href="{{ route('home') }}" class="flex items-center gap-3.5 group py-2">
+            <a href="{{ route('home') }}" class="flex shrink-0 items-center gap-3.5 group py-2">
                 <img src="{{ asset('images/logo/logo-asasi-transparent.webp') }}" alt="Logo Resmi ASASI" class="h-12 sm:h-14 w-auto object-contain transition duration-200 group-hover:scale-105">
-                <div class="hidden sm:flex flex-col">
+                <div class="hidden sm:flex lg:hidden xl:flex flex-col">
                     <span class="font-display font-extrabold text-base sm:text-lg tracking-[0.2em] text-asasi-navy leading-none">
                         ASASI
                     </span>
@@ -75,7 +75,7 @@
             </button>
 
             <!-- Menu Navigasi Desktop -->
-            <nav class="hidden lg:flex items-center space-x-7 text-[13px] font-bold tracking-wider text-slate-700 uppercase">
+            <nav class="hidden lg:flex items-center space-x-5 xl:space-x-7 text-[13px] font-bold tracking-wider text-slate-700 uppercase">
                 
                 <a href="{{ route('home') }}" class="hover:text-asasi-navy transition">HOME</a>
 
@@ -195,6 +195,25 @@
                     <a href="#kontak" class="hover:text-asasi-navy transition">KONTAK</a>
                 @endif
 
+                <!-- 6. Dropdown HIGHLIGHT (warna berbeda, situs acara dibuka di tab baru) -->
+                <div x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false" @click.outside="open = false" class="relative py-8 group">
+                    <button @click="open = !open" type="button" class="flex items-center gap-1 rounded-full font-extrabold uppercase transition"
+                            style="background: linear-gradient(135deg, #FBBF24 0%, #F97316 100%); color: #1F1300; padding: 7px 14px; box-shadow: 0 6px 16px -6px rgba(249, 115, 22, .6);">
+                        <span>HIGHLIGHT</span>
+                        <svg class="w-3.5 h-3.5 transition-transform duration-200" :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div x-show="open" :class="open ? '!block' : ''" x-transition class="hidden group-hover:block absolute right-0 top-20 w-60 bg-white rounded-2xl shadow-xl shadow-slate-200/70 border border-slate-100 py-2.5 z-50 normal-case font-semibold text-slate-600">
+                        <a href="https://starnas.asasi.or.id/" target="_blank" rel="noopener" class="flex items-center justify-between px-5 py-2.5 hover:bg-amber-50 hover:text-asasi-navy transition">
+                            <span>STARNAS</span>
+                            <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5h5v5M19 5l-8 8M10 7H6a1 1 0 00-1 1v10a1 1 0 001 1h10a1 1 0 001-1v-4"/></svg>
+                        </a>
+                        <a href="https://icoabcd.asasi.or.id/" target="_blank" rel="noopener" class="flex items-center justify-between px-5 py-2.5 hover:bg-amber-50 hover:text-asasi-navy transition">
+                            <span>ICOABCD</span>
+                            <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5h5v5M19 5l-8 8M10 7H6a1 1 0 00-1 1v10a1 1 0 001 1h10a1 1 0 001-1v-4"/></svg>
+                        </a>
+                    </div>
+                </div>
+
                 <!-- Ikon Search -->
                 <a href="{{ route('member.directory') }}" title="Cari Direktori Anggota" class="text-slate-600 hover:text-asasi-navy pl-2">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M21 21l-5.2-5.2m1.7-5.3a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
@@ -215,6 +234,18 @@
         <!-- Menu Dropdown Responsif Saat Dibuka di Layar HP -->
         <div x-show="mobileMenuOpen" x-transition class="lg:hidden bg-white border-t border-slate-200 px-6 py-5 space-y-4 text-sm font-semibold text-slate-700 max-h-[80vh] overflow-y-auto" style="display: none;">
             <a href="{{ route('home') }}" class="block font-bold text-asasi-navy">HOME</a>
+
+            <div class="rounded-2xl p-3 space-y-1" style="background: linear-gradient(135deg, #FEF3C7 0%, #FFEDD5 100%);">
+                <span class="block text-[10px] font-extrabold uppercase tracking-widest" style="color: #C2410C;">Highlight</span>
+                <a href="https://starnas.asasi.or.id/" target="_blank" rel="noopener" class="flex items-center justify-between py-1 font-bold text-slate-800">
+                    <span>STARNAS</span>
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5h5v5M19 5l-8 8M10 7H6a1 1 0 00-1 1v10a1 1 0 001 1h10a1 1 0 001-1v-4"/></svg>
+                </a>
+                <a href="https://icoabcd.asasi.or.id/" target="_blank" rel="noopener" class="flex items-center justify-between py-1 font-bold text-slate-800">
+                    <span>ICOABCD</span>
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5h5v5M19 5l-8 8M10 7H6a1 1 0 00-1 1v10a1 1 0 001 1h10a1 1 0 001-1v-4"/></svg>
+                </a>
+            </div>
 
             @if(count($menuProfil) > 0)
                 <div class="space-y-1.5 border-t border-slate-100 pt-3">
