@@ -23,12 +23,13 @@ return [
 
     /*
     | Rekening tujuan transfer yang ditampilkan kepada anggota.
-    | Isi melalui .env; bila kosong, anggota diarahkan menghubungi sekretariat.
+    | Bawaan: rekening resmi ASASI di BSI; dapat diganti melalui .env.
+    | (Memakai ?: agar baris .env yang dibiarkan kosong tetap jatuh ke nilai bawaan.)
     */
     'rekening' => [
-        'bank'      => env('ASASI_REKENING_BANK'),
-        'nomor'     => env('ASASI_REKENING_NOMOR'),
-        'atas_nama' => env('ASASI_REKENING_ATAS_NAMA'),
+        'bank'      => env('ASASI_REKENING_BANK') ?: 'Bank Syariah Indonesia (BSI)',
+        'nomor'     => env('ASASI_REKENING_NOMOR') ?: '7888854546',
+        'atas_nama' => env('ASASI_REKENING_ATAS_NAMA') ?: 'Akademisi dan Saintis Indonesia',
     ],
 
     /*
