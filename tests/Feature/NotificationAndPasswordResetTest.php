@@ -177,6 +177,18 @@ class NotificationAndPasswordResetTest extends TestCase
             ->assertSessionHas('status')->assertSessionHasNoErrors();
     }
 
+    public function test_forgot_password_shows_message_instead_of_500_when_smtp_fails(): void
+    {
+        config(['mail.default' => 'smtp', 'mail.mailers.smtp.host' => '127.0.0.1', 'mail.mailers.smtp.port' => 1, 'mail.mailers.smtp.timeout' => 1]);
+        User::factory()->create(['email' => 'dosen@kampus.ac.id']);
+
+        $this->from(route('password.request'))
+            ->post(route('password.email'), ['email' => 'dosen@kampus.ac.id'])
+            ->assertRedirect(route('password.request'))
+            ->assertSessionHasErrors('email')
+            ->assertSessionMissing('status');
+    }
+
     public function test_user_can_reset_password_with_valid_token(): void
     {
         Notification::fake();

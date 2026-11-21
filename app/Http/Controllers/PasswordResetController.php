@@ -26,7 +26,14 @@ class PasswordResetController extends Controller
             'email.email'    => 'Format email tidak valid.',
         ]);
 
-        $status = Password::sendResetLink($request->only('email'));
+        try {
+            $status = Password::sendResetLink($request->only('email'));
+        } catch (\Throwable $e) {
+            // Email dikirim langsung lewat SMTP; bila server email gagal, jangan tampilkan error 500
+            report($e);
+
+            return back()->withInput()->withErrors(['email' => 'Maaf, email atur ulang kata sandi belum dapat dikirim saat ini. Silakan coba beberapa saat lagi atau hubungi Sekretariat ASASI.']);
+        }
 
         if ($status === Password::RESET_THROTTLED) {
             return back()->withInput()->withErrors(['email' => 'Permintaan terlalu sering. Silakan tunggu beberapa saat sebelum mencoba lagi.']);
