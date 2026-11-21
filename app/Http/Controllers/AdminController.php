@@ -26,7 +26,7 @@ class AdminController extends Controller
         $filter = $request->query('filter', 'semua');
         $cari = trim((string) $request->query('cari', ''));
 
-        $members = MemberProfile::with(['latestPayment', 'pendingPayment'])
+        $members = MemberProfile::with(['latestPayment', 'pendingPayment', 'user:id,email,role'])
             ->when($cari !== '', fn ($q) => $q->where(fn ($w) => $w
                 ->where('nama_lengkap', 'like', "%{$cari}%")
                 ->orWhere('nomor_anggota', 'like', "%{$cari}%")

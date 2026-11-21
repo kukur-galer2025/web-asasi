@@ -74,6 +74,9 @@
                                 <div>
                                     <div class="font-bold text-slate-900">{{ $member->nama_lengkap }}</div>
                                     <div class="text-xs text-slate-400">WA: {{ $member->no_whatsapp }}</div>
+                                    @if($member->user)
+                                        <div class="text-xs text-slate-400">{{ $member->user->email }}</div>
+                                    @endif
                                 </div>
                             </div>
                         </td>
@@ -136,6 +139,10 @@
                                         <svg class="w-3.5 h-3.5 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                                         Unduh KTA HD (PNG)
                                     </a>
+                                @endif
+
+                                @if($member->user && $member->user->role !== 'admin')
+                                    @include('admin.partials.reset-password-button', ['user' => $member->user, 'nama' => $member->nama_lengkap])
                                 @endif
                             </div>
                         </td>

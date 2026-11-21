@@ -5,6 +5,7 @@ use App\Http\Controllers\PublicController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminAccountController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PasswordResetController;
 
@@ -54,6 +55,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/members', [AdminController::class, 'members'])->name('members');
         Route::post('/members/{id}/approve', [AdminController::class, 'approveMember'])->name('approve');
         Route::get('/members/{id}/cetak-kta', [AdminController::class, 'cetakKta'])->name('cetak.kta');
+
+        // Akun pengguna & atur ulang kata sandi oleh admin
+        Route::get('/akun', [AdminAccountController::class, 'index'])->name('accounts');
+        Route::post('/akun/{user}/reset-password', [AdminAccountController::class, 'resetPassword'])->name('accounts.reset-password');
 
         // Verifikasi Pembayaran Pendaftaran & Perpanjangan
         Route::get('/payments', [AdminController::class, 'payments'])->name('payments');
