@@ -15,6 +15,7 @@ class AdminAccountController extends Controller
     public function index(Request $request)
     {
         $cari = trim((string) $request->query('cari', ''));
+        $metode = in_array($request->query('metode'), [User::VIA_GOOGLE, User::VIA_MANUAL], true) ? $request->query('metode') : 'semua';
 
         $users = User::with('memberProfile:id,user_id,nama_lengkap,nomor_anggota,no_whatsapp')
             ->when($cari !== '', fn ($q) => $q->where(fn ($w) => $w
@@ -23,12 +24,20 @@ class AdminAccountController extends Controller
                 ->orWhereHas('memberProfile', fn ($m) => $m
                     ->where('nama_lengkap', 'like', "%{$cari}%")
                     ->orWhere('nomor_anggota', 'like', "%{$cari}%"))))
+            ->when($metode !== 'semua', fn ($q) => $q->where('registered_via', $metode))
             ->orderByRaw("role = 'admin' desc")
             ->latest()
             ->paginate(25)
             ->withQueryString();
 
-        return view('admin.accounts', compact('users', 'cari'));
+        $stats = [
+            'total'      => User::count(),
+            'google'     => User::where('registered_via', User::VIA_GOOGLE)->count(),
+            'manual'     => User::where('registered_via', User::VIA_MANUAL)->count(),
+            'kata_sandi' => User::whereNotNull('password_set_at')->count(),
+        ];
+
+        return view('admin.accounts', compact('users', 'cari', 'metode', 'stats'));
     }
 
     // Atur ulang kata sandi anggota: dibuatkan kata sandi sementara yang ditampilkan sekali kepada admin
@@ -39,8 +48,9 @@ class AdminAccountController extends Controller
         $password = self::temporaryPassword();
 
         $user->forceFill([
-            'password'       => Hash::make($password),
-            'remember_token' => Str::random(60), // keluarkan sesi "ingat saya" yang lama
+            'password'        => Hash::make($password),
+            'password_set_at' => now(),
+            'remember_token'  => Str::random(60), // keluarkan sesi "ingat saya" yang lama
         ])->save();
 
         // Tautan lupa-password yang mungkin masih berlaku tidak lagi relevan

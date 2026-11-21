@@ -38,6 +38,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+            Auth::user()->recordLogin(User::LOGIN_PASSWORD);
 
             if (Auth::user()->role === 'admin') {
                 return redirect()->intended(route('admin.members'))->with('success', 'Selamat datang di Panel Pengurus Pusat ASASI.');
@@ -63,16 +64,32 @@ class AuthController extends Controller
         try {
             $googleUser = Socialite::driver('google')->user();
 
-            $user = User::updateOrCreate(
-                ['email' => $googleUser->getEmail()],
-                [
-                    'name'     => $googleUser->getName(),
-                    'password' => bcrypt(Str::random(16)),
+            $user = User::where('google_id', $googleUser->getId())->first()
+                ?? User::where('email', $googleUser->getEmail())->first();
+
+            if ($user) {
+                // Akun yang sudah ada hanya ditautkan ke Google: kata sandi & peran tidak diubah
+                $user->forceFill([
+                    'google_id'         => $user->google_id ?? $googleUser->getId(),
+                    'email_verified_at' => $user->email_verified_at ?? now(),
+                ])->save();
+            } else {
+                $user = new User([
+                    'name'     => $googleUser->getName() ?: $googleUser->getEmail(),
+                    'email'    => $googleUser->getEmail(),
+                    'password' => Str::random(40), // tidak diketahui siapa pun; masuk lewat Google
                     'role'     => 'member',
-                ]
-            );
+                ]);
+                $user->forceFill([
+                    'registered_via'    => User::VIA_GOOGLE,
+                    'google_id'         => $googleUser->getId(),
+                    'email_verified_at' => now(),
+                ])->save();
+            }
 
             Auth::login($user);
+            request()->session()->regenerate();
+            $user->recordLogin(User::VIA_GOOGLE);
 
             return redirect()->intended(route('member.dashboard'))
                 ->with('success', "Selamat datang, {$user->name}! Silakan lengkapi pengajuan keanggotaan atau unduh KTA Anda.");

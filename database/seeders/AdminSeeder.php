@@ -28,6 +28,8 @@ class AdminSeeder extends Seeder
             ]
         );
 
+        $admin->forceFill(['password_set_at' => $admin->password_set_at ?? now()])->save();
+
         if ($this->command) {
             $this->command->info("✓ Akun Admin berhasil dibuat / diperbarui:");
             $this->command->line("  - Nama     : {$admin->name}");

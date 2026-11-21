@@ -75,7 +75,10 @@
                                     <div class="font-bold text-slate-900">{{ $member->nama_lengkap }}</div>
                                     <div class="text-xs text-slate-400">WA: {{ $member->no_whatsapp }}</div>
                                     @if($member->user)
-                                        <div class="text-xs text-slate-400">{{ $member->user->email }}</div>
+                                        <div class="mt-1 flex flex-wrap items-center gap-1.5">
+                                            @include('admin.partials.login-method-badge', ['user' => $member->user, 'compact' => true])
+                                            <span class="text-xs text-slate-400">{{ $member->user->email }}</span>
+                                        </div>
                                     @endif
                                 </div>
                             </div>
